@@ -263,36 +263,20 @@
 <context>
     <name>AssetsManageUi</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>当前地址:   </source>
-        <translation type="unfinished">current address:</translation>
+        <translation type="obsolete">current address:</translation>
     </message>
     <message>
         <source>估值 ≈ </source>
-        <translation type="unfinished">estimate ≈</translation>
-    </message>
-    <message>
-        <source>0 BTY</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">estimate ≈</translation>
     </message>
     <message>
         <source>刷新</source>
-        <translation type="unfinished">refresh</translation>
+        <translation type="obsolete">refresh</translation>
     </message>
     <message>
         <source>首页</source>
-        <translation type="unfinished">home</translation>
-    </message>
-    <message>
-        <source>&lt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">home</translation>
     </message>
 </context>
 <context>
@@ -332,30 +316,6 @@ NOTE:
 DO NOT transfer to this address any kind of coins other than %1, because the coins transferred in by mistake would not return;
 The coins can be received after being verified by 12 networks, and the minimum transaction fee is 0.001 %1;
 ONLY the third party wallet deposit supported, please use transfer-in and transfer-out to process C2C transfer.</translation>
-    </message>
-    <message>
-        <source>复制地址成功！
-请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY ；
-仅支持第三方钱包向本钱包充币，C2C交易划拨资产请使用转入、转出。</source>
-        <translation type="obsolete">Address copied!
-NOTE:
-DO NOT transfer to this address any kind of coins other than %1, because the coins transferred in by mistake would not return;
-The coins can be received after being verified by 12 networks, and the minimum transaction fee is 0.001 BTY;
-ONLY the third party wallet deposit supported, please use transfer-in and transfer-out to process C2C transfer.</translation>
-    </message>
-    <message>
-        <source>复制地址成功！
-请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY ；
-仅支持第三方钱包向本钱包充币。</source>
-        <translation type="obsolete">Address copied!
-NOTE:
-DO NOT transfer to this address any kind of coins other than %1, because the coins transferred in by mistake would not return;
-The coins can be received after being verified by 12 networks, and the minimum transaction fee is 0.001 BTY;
-ONLY the third party wallet deposit supported.</translation>
     </message>
 </context>
 <context>
@@ -413,97 +373,6 @@ ONLY the third party wallet deposit supported.</translation>
     <message>
         <source>转账成功，等区块链确认后，在列表中刷新!</source>
         <translation type="obsolete">Transfer successful, after block chain confirmation, refresh in the list!</translation>
-    </message>
-</context>
-<context>
-    <name>CToCtransactionUI</name>
-    <message>
-        <source>当前地址: </source>
-        <translation type="obsolete">current address</translation>
-    </message>
-    <message>
-        <source>刷新</source>
-        <translation type="obsolete">refresh</translation>
-    </message>
-    <message>
-        <source>订单管理</source>
-        <translation type="obsolete">orders</translation>
-    </message>
-    <message>
-        <source>我要卖出</source>
-        <translation type="obsolete">for sell</translation>
-    </message>
-    <message>
-        <source>首页</source>
-        <translation type="obsolete">home</translation>
-    </message>
-    <message>
-        <source>返回</source>
-        <translation type="obsolete">back</translation>
-    </message>
-    <message>
-        <source>  手续费仅 0.001 BTY</source>
-        <translation type="obsolete">   only 0.001 BTY transaction fee</translation>
-    </message>
-    <message>
-        <source>复制</source>
-        <translation type="obsolete">copy</translation>
-    </message>
-    <message>
-        <source>C2C全部转出</source>
-        <translation type="obsolete">C2C out</translation>
-    </message>
-    <message>
-        <source>简介</source>
-        <translation type="obsolete">intro</translation>
-    </message>
-    <message>
-        <source>提币</source>
-        <translation type="obsolete">withdraw</translation>
-    </message>
-    <message>
-        <source>充币</source>
-        <translation type="obsolete">deposit</translation>
-    </message>
-    <message>
-        <source>BTY 可用: %1</source>
-        <translation type="obsolete">BTY usable:%1</translation>
-    </message>
-    <message>
-        <source>BTY 可用: %1 | C2C 可用: %2</source>
-        <translation type="obsolete">BTY usable:%1 | C2C:%2</translation>
-    </message>
-    <message>
-        <source>可用: </source>
-        <translation type="obsolete">usable:</translation>
-    </message>
-    <message>
-        <source>提示</source>
-        <translation type="obsolete">note</translation>
-    </message>
-    <message>
-        <source>确定</source>
-        <translation type="obsolete">ok</translation>
-    </message>
-    <message>
-        <source>转账成功，等区块链确认后，在列表中刷新!</source>
-        <translation type="obsolete">Transfer successful, after block chain confirmation, refresh in the list!</translation>
-    </message>
-    <message>
-        <source>复制地址成功！
-请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY ；
-仅支持第三方钱包向本钱包充币。</source>
-        <translation type="obsolete">Address copied!
-NOTE:
-DO NOT transfer to this address any kind of coins other than %1, because the coins transferred in by mistake would not return;
-The coins can be received after being verified by 12 networks, and the minimum transaction fee is 0.001 BTY;
-ONLY the third party wallet deposit supported.</translation>
-    </message>
-    <message>
-        <source>确认</source>
-        <translation type="obsolete">ok</translation>
     </message>
 </context>
 <context>
@@ -709,148 +578,6 @@ ONLY the third party wallet deposit supported.</translation>
     </message>
 </context>
 <context>
-    <name>DealDialog</name>
-    <message>
-        <source>单价: </source>
-        <translation type="obsolete">price:</translation>
-    </message>
-    <message>
-        <source>数量: </source>
-        <translation type="obsolete">amount:</translation>
-    </message>
-    <message>
-        <source>全部</source>
-        <translation type="obsolete">all</translation>
-    </message>
-    <message>
-        <source>总额: </source>
-        <translation type="obsolete">total amount:</translation>
-    </message>
-    <message>
-        <source>可用量: </source>
-        <translation type="obsolete">available amount</translation>
-    </message>
-    <message>
-        <source>错误: </source>
-        <translation type="obsolete">error:</translation>
-    </message>
-    <message>
-        <source>错误提示</source>
-        <translation type="obsolete">error info</translation>
-    </message>
-    <message>
-        <source>卖出</source>
-        <translation type="obsolete">sell</translation>
-    </message>
-    <message>
-        <source>撤销</source>
-        <translation type="obsolete">undo</translation>
-    </message>
-    <message>
-        <source>确定要撤销该订单吗?</source>
-        <translation type="obsolete">Are you sure you want to cancel the order?</translation>
-    </message>
-    <message>
-        <source>买入</source>
-        <translation type="obsolete">buy</translation>
-    </message>
-    <message>
-        <source>可购买量:</source>
-        <translation type="obsolete">available for purchasing:</translation>
-    </message>
-    <message>
-        <source>确定</source>
-        <translation type="obsolete">ok</translation>
-    </message>
-    <message>
-        <source>取消</source>
-        <translation type="obsolete">cancel</translation>
-    </message>
-    <message>
-        <source>数量超过最大可用量!</source>
-        <translation type="obsolete">The quantity exceeds the maximum dosage</translation>
-    </message>
-    <message>
-        <source>BTY总额超过最大量!</source>
-        <translation type="obsolete">The quantity exceeds the maximum dosage!</translation>
-    </message>
-    <message>
-        <source>单价超过最大可设置单价!</source>
-        <translation type="obsolete">Unit price can be set if it exceeds maximum price!</translation>
-    </message>
-    <message>
-        <source>提示</source>
-        <translation type="obsolete">note</translation>
-    </message>
-    <message>
-        <source>操作成功，等区块链确认后，在列表中刷新!</source>
-        <translation type="obsolete">Operate succeed. Refresh in the list after blockchain confirmation!</translation>
-    </message>
-    <message>
-        <source>总额超过 BTY 可用量!</source>
-        <translation type="obsolete">Total amount exceeds BTY available!</translation>
-    </message>
-</context>
-<context>
-    <name>DrawCoinDialog</name>
-    <message>
-        <source>提币地址: </source>
-        <translation type="obsolete">withdraw address</translation>
-    </message>
-    <message>
-        <source>数量: </source>
-        <translation type="obsolete">amount:</translation>
-    </message>
-    <message>
-        <source>可用量: </source>
-        <translation type="obsolete">available amount</translation>
-    </message>
-    <message>
-        <source>错误: </source>
-        <translation type="obsolete">error:</translation>
-    </message>
-    <message>
-        <source>错误提示</source>
-        <translation type="obsolete">error info</translation>
-    </message>
-    <message>
-        <source>提币</source>
-        <translation type="obsolete">withdraw</translation>
-    </message>
-    <message>
-        <source>确定</source>
-        <translation type="obsolete">ok</translation>
-    </message>
-    <message>
-        <source>取消</source>
-        <translation type="obsolete">cancel</translation>
-    </message>
-    <message>
-        <source>数量超过最大可用量!</source>
-        <translation type="obsolete">The quantity exceeds the maximum dosage</translation>
-    </message>
-    <message>
-        <source>输入的地址 &quot;%1&quot; 不是有效的地址。</source>
-        <translation type="obsolete">Enter the address &quot;%1&quot; Not a valid address.</translation>
-    </message>
-    <message>
-        <source>提示</source>
-        <translation type="obsolete">note</translation>
-    </message>
-    <message>
-        <source>提币成功，等区块链确认后，在列表中刷新!</source>
-        <translation type="obsolete">Successful withdrawal, after block chain confirmation, refresh in the list!</translation>
-    </message>
-    <message>
-        <source>请注意：
-请勿使用非 BTY 地址，否则误提取的资产无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY。</source>
-        <translation type="obsolete">Please note:
-Please do not use non-bty address, otherwise the misextracted assets cannot be recovered.
-It will take 12 networks to confirm the receipt of the account, and the lowest fee is 0.001 BTY.</translation>
-    </message>
-</context>
-<context>
     <name>EditAddressDialog</name>
     <message>
         <source>Edit Address</source>
@@ -916,10 +643,6 @@ It will take 12 networks to confirm the receipt of the account, and the lowest f
 <context>
     <name>GUIUtil::HelpMessageBox</name>
     <message>
-        <source>bityuan-Qt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -945,6 +668,10 @@ It will take 12 networks to confirm the receipt of the account, and the lowest f
     </message>
     <message>
         <source>Show splash screen on startup (default: 1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>chain33-qt</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1062,7 +789,7 @@ It will take 12 networks to confirm the receipt of the account, and the lowest f
     </message>
     <message>
         <source>即将在该目录下创建一个名为 %1 的新目录</source>
-        <translation type="unfinished">A new directory named %1 will be created under this directory</translation>
+        <translation type="obsolete">A new directory named %1 will be created under this directory</translation>
     </message>
     <message>
         <source>路径已存在，并且不是一个目录。</source>
@@ -1092,6 +819,10 @@ It will take 12 networks to confirm the receipt of the account, and the lowest f
     </message>
     <message>
         <source>(大约需要 60GB 空间)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>即将在该目录下创建一个名为 %1Data 的新目录</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1311,10 +1042,6 @@ It will take 12 networks to confirm the receipt of the account, and the lowest f
         <translation type="unfinished">Authorized wallet address:</translation>
     </message>
     <message>
-        <source>授权数量(万个币): </source>
-        <translation type="obsolete">Authorized amount (10,000/BTY):</translation>
-    </message>
-    <message>
         <source>绑定交易: </source>
         <translation type="unfinished">Binding transactions:</translation>
     </message>
@@ -1479,16 +1206,6 @@ It will take 12 networks to confirm the receipt of the account, and the lowest f
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>请注意： 
-严禁向该地址转入非 BTY 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY；
-仅支持第三方钱包向 BTY 钱包充币，C2C 交易划拨资产请使用转入、转出。</source>
-        <translation type="unfinished">Please note:
-No transfer to this address is allowed %1 the assets transferred by mistake will not be recovered;
-It will take 12 networks to confirm the receipt of the account, and the lowest fee is 0.001 BTY.
-Only the third-party wallet can be used to charge money to BTY wallet, and the assets transferred in and out of C2C transactions can be used.</translation>
-    </message>
-    <message>
         <source>请注意：
 严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
 需要 12 个网络确认后才能到账，最低手续费 0.001 %1 ；
@@ -1496,32 +1213,19 @@ Only the third-party wallet can be used to charge money to BTY wallet, and the a
         <translation type="obsolete">Please note:
 No transfer to this address is allowed %1 the assets transferred by mistake will not be recovered;
 It will take 12 networks to confirm the receipt of the account, and the lowest fee is 0.001 %1.
-Only the third-party wallet can be used to charge money to BTY wallet, and the assets transferred in and out of C2C transactions can be used.</translation>
+Only the third-party wallet can be used to charge money to the wallet, and the assets transferred in and out of C2C transactions can be used.</translation>
+    </message>
+    <message>
+        <source>请注意： 
+严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；
+需要 12 个网络确认后才能到账，最低手续费 0.001 coin；
+仅支持第三方钱包向钱包充币，C2C 交易划拨资产请使用转入、转出。</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY ；
-仅支持第三方钱包向本钱包充币，C2C交易划拨资产请使用转入、转出。</source>
-        <translation type="obsolete">Please note:
-No transfer to this address is allowed %1 the assets transferred by mistake will not be recovered;
-It will take 12 networks to confirm the receipt of the account, and the lowest fee is 0.001 BTY.
-Only the third-party wallet can be used to charge money to BTY wallet, and the assets transferred in and out of C2C transactions can be used.</translation>
-    </message>
-    <message>
-        <source>请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY ；
-仅支持第三方钱包向本钱包充币。</source>
-        <translation type="obsolete">Please note:
-No transfer to this address is allowed %1 the assets transferred by mistake will not be recovered;
-It will take 12 networks to confirm the receipt of the account, and the lowest fee is 0.001 BTY.
-Only the third-party wallet can be used to charge money to BTY wallet.</translation>
-    </message>
-    <message>
-        <source>请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY。</source>
+严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；
+需要 12 个网络确认后才能到账，最低手续费 0.001。</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1812,10 +1516,6 @@ Only the third-party wallet can be used to charge money to BTY wallet.</translat
         <translation type="obsolete">total amount</translation>
     </message>
     <message>
-        <source>单价(BTY)</source>
-        <translation type="obsolete">price (BTY)</translation>
-    </message>
-    <message>
         <source>剩余数量</source>
         <translation type="obsolete">surplus amount</translation>
     </message>
@@ -1827,32 +1527,24 @@ Only the third-party wallet can be used to charge money to BTY wallet.</translat
 <context>
     <name>TradeTransferDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>数量:</source>
-        <translation type="unfinished">amount:</translation>
-    </message>
-    <message>
-        <source>BTY</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">amount:</translation>
     </message>
     <message>
         <source>可用量:</source>
-        <translation type="unfinished">can be use:</translation>
+        <translation type="obsolete">can be use:</translation>
     </message>
     <message>
         <source>0</source>
-        <translation type="unfinished">1 billion {0?}</translation>
+        <translation type="obsolete">1 billion {0?}</translation>
     </message>
     <message>
         <source>错误:</source>
-        <translation type="unfinished">error:</translation>
+        <translation type="obsolete">error:</translation>
     </message>
     <message>
         <source>错误提示</source>
-        <translation type="unfinished">error info</translation>
+        <translation type="obsolete">error info</translation>
     </message>
     <message>
         <source>转入</source>
@@ -2364,10 +2056,6 @@ Only the third-party wallet can be used to charge money to BTY wallet.</translat
     <message>
         <source>时间误差: %1 秒</source>
         <translation type="unfinished">Time error: %1 second</translation>
-    </message>
-    <message>
-        <source>手续费仅 0.001 BTY</source>
-        <translation type="obsolete">only 0.001 BTY transaction fee</translation>
     </message>
     <message>
         <source>手续费仅 %1 %2</source>

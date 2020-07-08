@@ -101,7 +101,6 @@ private:
     const PlatformStyle *m_platformStyle;
 public:
     // 如果是导入钱包 默认创建 5 个地址
- //   void AddNewAddr(int nCount = 1);
     bool GetOutOfSync();
     void SetTimeStatus(int nDiff);
 
@@ -140,9 +139,6 @@ private slots:
 
 extern MainUI*              g_lpMainUI;
 extern EncryptionStatus     g_nStatus;
-//extern QString              g_stylesheet_child;
-// extern bool                 g_bBty;
-//extern QString              g_strTitleName;
 extern QString              g_strVersion;
 extern QString              g_strPsd;
 

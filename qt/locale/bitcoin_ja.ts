@@ -69,12 +69,12 @@ MIT/X11 ソフトウェア ライセンスの下で配布されています。�
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+11"/>
         <source>版权所有 © 2018 %1开发组</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+5"/>
         <source>官网地址: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -84,7 +84,7 @@ MIT/X11 ソフトウェア ライセンスの下で配布されています。�
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+24"/>
         <source>版本获取失败，请在控制台输入 version 获取版本</source>
         <translation type="unfinished"></translation>
     </message>
@@ -483,44 +483,8 @@ MIT/X11 ソフトウェア ライセンスの下で配布されています。�
 <context>
     <name>AssetsManageUi</name>
     <message>
-        <location filename="../forms/assetsmanageui.ui" line="+14"/>
         <source>Form</source>
-        <translation type="unfinished">フォーム</translation>
-    </message>
-    <message>
-        <location line="+69"/>
-        <source>当前地址:   </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+36"/>
-        <source>估值 ≈ </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>0 BTY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>刷新</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+109"/>
-        <source>首页</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>&lt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">フォーム</translation>
     </message>
 </context>
 <context>
@@ -1511,18 +1475,22 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 <context>
     <name>GUIUtil::HelpMessageBox</name>
     <message>
-        <location filename="../functionui/guiutil.cpp" line="+384"/>
-        <location line="+12"/>
         <source>bityuan-Qt</source>
-        <translation>ブラックコインQT</translation>
+        <translation type="vanished">ブラックコインQT</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location filename="../functionui/guiutil.cpp" line="+243"/>
         <source>version</source>
         <translation>バージョン</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+0"/>
+        <location line="+12"/>
+        <source>chain33-qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-10"/>
         <source>Usage:</source>
         <translation>使用法</translation>
     </message>
@@ -1677,7 +1645,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../menu/introdialog.cpp" line="+19"/>
+        <location filename="../menu/introdialog.cpp" line="+32"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1693,7 +1661,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+11"/>
-        <source>即将在该目录下创建一个名为 %1 的新目录</source>
+        <source>即将在该目录下创建一个名为 %1Data 的新目录</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1705,7 +1673,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">エラー</translation>
     </message>
     <message numerus="yes">
-        <location line="+34"/>
+        <location line="+33"/>
         <source>有 %n GB 空闲空间</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -1798,7 +1766,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">メッセージの検証... (&amp;V)</translation>
     </message>
     <message>
-        <location filename="../mainui/mainui.cpp" line="+162"/>
+        <location filename="../mainui/mainui.cpp" line="+161"/>
         <source>E&amp;xit</source>
         <translation type="unfinished">終了(&amp;E)</translation>
     </message>
@@ -1944,12 +1912,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+8"/>
         <source>关于%1(&amp;A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+348"/>
+        <location line="+341"/>
         <source>%1钱包-test %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2047,7 +2015,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/manageui.cpp" line="+155"/>
+        <location filename="../mainui/manageui.cpp" line="+169"/>
         <location line="+16"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
@@ -2509,7 +2477,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">QRコードを保存</translation>
     </message>
     <message>
-        <location filename="../menu/receiverequestdialog.cpp" line="+26"/>
+        <location filename="../menu/receiverequestdialog.cpp" line="+23"/>
         <location line="+35"/>
         <source>保存二维码</source>
         <translation type="unfinished"></translation>
@@ -2646,9 +2614,9 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+25"/>
         <source>请注意： 
-严禁向该地址转入非 BTY 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY；
-仅支持第三方钱包向 BTY 钱包充币，C2C 交易划拨资产请使用转入、转出。</source>
+严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；
+需要 12 个网络确认后才能到账，最低手续费 0.001 coin；
+仅支持第三方钱包向钱包充币，C2C 交易划拨资产请使用转入、转出。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2664,8 +2632,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../menu/receiverequestdialog.cpp" line="+31"/>
         <source>请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY。</source>
+严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；
+需要 12 个网络确认后才能到账，最低手续费 0.001。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3119,7 +3087,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+66"/>
-        <location filename="../mainui/statusbarui.cpp" line="+508"/>
+        <location filename="../mainui/statusbarui.cpp" line="+509"/>
         <source>Synchronizing with network...</source>
         <translation type="unfinished">ネットワークに同期中……</translation>
     </message>
@@ -3348,39 +3316,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 <context>
     <name>TradeTransferDialog</name>
     <message>
-        <location filename="../forms/tradetransferdialog.ui" line="+14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <source>数量:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>BTY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <source>可用量:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
-    </message>
-    <message>
-        <location line="+43"/>
-        <source>错误:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>错误提示</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">0</translation>
     </message>
 </context>
 <context>
@@ -4005,7 +3942,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/transactionslistui.cpp" line="+53"/>
+        <location filename="../mainui/transactionslistui.cpp" line="+63"/>
         <source>out of sync</source>
         <translation type="unfinished">同期していない</translation>
     </message>
@@ -4116,7 +4053,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished">処理の詳細を表示</translation>
     </message>
     <message>
-        <location line="+246"/>
+        <location line="+237"/>
         <source>Export Transaction Data</source>
         <translation type="unfinished">処理のデータを書き出す</translation>
     </message>
@@ -4211,7 +4148,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+42"/>
-        <location filename="../mainui/walletsendui.cpp" line="+124"/>
+        <location filename="../mainui/walletsendui.cpp" line="+127"/>
         <source>时间误差: %1 秒</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4272,7 +4209,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../mainui/walletsendui.cpp" line="+54"/>
+        <location filename="../mainui/walletsendui.cpp" line="+53"/>
         <source>手续费仅 %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5047,7 +4984,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+57"/>
         <source>验证通过</source>
         <translation type="unfinished"></translation>
     </message>

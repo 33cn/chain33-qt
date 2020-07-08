@@ -1,11 +1,4 @@
-﻿#include "receiverequestdialog.h"
-#include "ui_receiverequestdialog.h"
-
-//#include "bitcoinunits.h"
-#include "guiconstants.h"
-#include "guiutil.h"
-
-#include <QClipboard>
+﻿#include <QClipboard>
 #include <QDrag>
 #include <QMenu>
 #include <QMimeData>
@@ -15,6 +8,10 @@
 #include <QUrl>
 #endif
 
+#include "receiverequestdialog.h"
+#include "ui_receiverequestdialog.h"
+#include "guiconstants.h"
+#include "guiutil.h"
 #include "qrencode.h"
 
 #define QR_IMAGE_SIZE 300
@@ -89,7 +86,7 @@ ReceiveRequestDialog::ReceiveRequestDialog(QWidget *parent, QString strAddr, boo
     ui->WarnWidget->setVisible(bShowWarn);
     if(bShowWarn)
     {
-        ui->labelWarn->setText(tr("请注意：\r\n严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；\r\n需要 12 个网络确认后才能到账，最低手续费 0.001 BTY。").arg(strSelectedSymbol));
+        ui->labelWarn->setText(tr("请注意：\r\n严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；\r\n需要 12 个网络确认后才能到账，最低手续费 0.001。"));
         this->setWindowTitle(strSelectedSymbol + tr(" 充币"));
     }
     else

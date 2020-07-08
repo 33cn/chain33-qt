@@ -1,4 +1,4 @@
-#ifndef BITCOIN_QT_RECEIVEREQUESTDIALOG_H
+﻿#ifndef BITCOIN_QT_RECEIVEREQUESTDIALOG_H
 #define BITCOIN_QT_RECEIVEREQUESTDIALOG_H
 
 /*
@@ -46,7 +46,7 @@ class ReceiveRequestDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ReceiveRequestDialog(QWidget *parent = 0, QString strAddr = "", bool bShowWarn = false, QString strSelectedSymbol = "BTY");
+    explicit ReceiveRequestDialog(QWidget *parent = 0, QString strAddr = "", bool bShowWarn = false, QString strSelectedSymbol = "");
     ~ReceiveRequestDialog();
 
 

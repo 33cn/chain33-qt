@@ -18,7 +18,7 @@ IntroDialog::IntroDialog(QWidget *parent) :
 {
 #ifndef Q_OS_MAC
     QString strMainIcon;
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         strMainIcon = ":/icons/bitcoin";
     } else {
         strMainIcon = ":/icons/yccIcon";

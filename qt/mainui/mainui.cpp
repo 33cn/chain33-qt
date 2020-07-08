@@ -97,10 +97,10 @@ void MainUI::initUI()
     m_platformStyle = PlatformStyle::instantiate("other");
 #ifndef Q_OS_MAC
     QString strMainIcon;
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        strMainIcon = ":/icons/bitcoin";
-    } else {
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         strMainIcon = ":/icons/yccIcon";
+    } else {
+        strMainIcon = ":/icons/bitcoin";
     }
     qApp->setWindowIcon(QIcon(strMainIcon));
     setWindowIcon(QIcon(strMainIcon));
@@ -177,10 +177,10 @@ void MainUI::createActions()
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("调试窗口(&D)"), this);
 
     QString strMainIcon;
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        strMainIcon = ":/icons/bitcoin";
-    } else {
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         strMainIcon = ":/icons/yccIcon";
+    } else {
+        strMainIcon = ":/icons/bitcoin";
     }
     aboutAction = new QAction(m_platformStyle->SingleColorIcon(strMainIcon), tr("关于%1(&A)").arg(CStyleConfig::GetInstance().GetAppName()), this);
 
@@ -240,10 +240,10 @@ void MainUI::createToolBars()
 {
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextOnly);
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        toolbar->setStyleSheet("QToolButton { background-color: transparent; width: 100px; color: #ffffff;} QToolButton:hover { background-color: #2c2c2c; } QToolButton:checked, QToolButton:pressed { background-color: transparent; color: #ffba26; }");
-    } else {
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         toolbar->setStyleSheet("QWidget {background-color:#9A9FB6;border:none;} QToolButton { background-color: transparent; width: 100px; color: #DDDEE3;} QToolButton:hover { color: #EEEFF4; } QToolButton:checked, QToolButton:pressed { color: #ffffff; }");
+    } else {
+        toolbar->setStyleSheet("QToolButton { background-color: transparent; width: 100px; color: #ffffff;} QToolButton:hover { background-color: #2c2c2c; } QToolButton:checked, QToolButton:pressed { background-color: transparent; color: #ffba26; }");
     }
     toolbar->addAction(m_lpHomepageAction);
     toolbar->addAction(m_lpAddressAction);
@@ -260,10 +260,10 @@ void MainUI::createTrayIcon()
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->setToolTip(tr("%1 客户端").arg(CStyleConfig::GetInstance().GetAppName()));
     QString strIcon;
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        strIcon = ":/icons/toolbar";
-    } else {
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         strIcon = ":/icons/yccSmallIcon";
+    } else {
+        strIcon = ":/icons/toolbar";
     }
     trayIcon->setIcon(QIcon(strIcon));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(iconIsActived(QSystemTrayIcon::ActivationReason)));

@@ -1,4 +1,4 @@
-#ifndef GUIUTIL_H
+﻿#ifndef GUIUTIL_H
 #define GUIUTIL_H
 
 #include <QString>
@@ -69,9 +69,6 @@ namespace GUIUtil
 
     // Determine whether a widget is hidden behind other windows
     bool isObscured(QWidget *w);
-
-    // Open debug.log
-    void openDebugLogfile();
 
     /** Qt event filter that intercepts ToolTipChange events, and replaces the tooltip with a rich text
       representation if needed. This assures that Qt can word-wrap long tooltip messages.

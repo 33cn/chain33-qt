@@ -136,7 +136,7 @@
         <file>res/newicons/staking_off.png</file>
         <file>res/newicons/staking_on.png</file>
         <file>res/newicons/synced.png</file>
-        <file alias="qss_bty">res/style_bty.qss</file>
-        <file alias="qss_ycc">res/style_ycc.qss</file>
+        <file alias="qss_yellow">res/qss_yellow.qss</file>
+        <file alias="qss_blue">res/qss_blue.qss</file>
     </qresource>
 </RCC>

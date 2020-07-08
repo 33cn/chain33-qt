@@ -1,4 +1,4 @@
-#include "bitcoinamountfield.h"
+﻿#include "bitcoinamountfield.h"
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "mainui.h"
@@ -21,7 +21,7 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent):
 
     allbtn = new QPushButton(this);
     allbtn->setText(tr("全部"));
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC) {
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
         allbtn->setStyleSheet("QPushButton { color: #37383C; }");
     }
 

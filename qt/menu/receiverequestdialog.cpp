@@ -1,7 +1,7 @@
 ﻿#include "receiverequestdialog.h"
 #include "ui_receiverequestdialog.h"
 
-#include "bitcoinunits.h"
+//#include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 

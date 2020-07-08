@@ -150,7 +150,7 @@ const PlatformStyle *PlatformStyle::instantiate(const QString &platformId)
 
 QColor PlatformStyle::SingleColor() const
 {
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC)
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
         return 0x7190FF;
 
     return 0xffba26;

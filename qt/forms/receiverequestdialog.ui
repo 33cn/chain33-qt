@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>527</width>
+    <width>551</width>
     <height>468</height>
    </rect>
   </property>
@@ -55,9 +55,9 @@
         </property>
         <property name="text">
          <string>请注意： 
-严禁向该地址转入非 BTY 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY；
-仅支持第三方钱包向 BTY 钱包充币，C2C 交易划拨资产请使用转入、转出。</string>
+严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；
+需要 12 个网络确认后才能到账，最低手续费 0.001 coin；
+仅支持第三方钱包向钱包充币，C2C 交易划拨资产请使用转入、转出。</string>
         </property>
        </widget>
       </item>

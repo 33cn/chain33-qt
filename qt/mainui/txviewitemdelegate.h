@@ -9,7 +9,7 @@
 #include <qglobal.h>
 #include <guiutil.h>
 #include <QStyledItemDelegate>
-#include "bitcoinunits.h"
+//#include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "enumtype.h"
 #include "mainui.h"
@@ -42,7 +42,7 @@ public:
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
 private:
-    int     unit;
+  //  int     unit;
     int     m_nTypeList;
     QColor  m_WhiteColor;
     QColor  m_GreyColor;

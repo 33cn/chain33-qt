@@ -119,14 +119,14 @@ StatusBarUI::StatusBarUI(QWidget *parent, const PlatformStyle *platformStyle)
     , m_platformStyle (platformStyle)
 {
     ui->setupUi(this);
-    if(CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY)
-    {
-        this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
-    }
-    else
+    if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
     {
         QString stylesheet = "QWidget {background-color:#DADBDE;border:none;}" + CStyleConfig::GetInstance().GetStylesheet();
         this->setStyleSheet(stylesheet);
+    }
+    else
+    {
+        this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
     }
     RestartChain33Init();
 

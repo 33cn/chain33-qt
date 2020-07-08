@@ -16,9 +16,6 @@
 QMap<QString, QString> g_mapErrorCode;
 std::map<std::string, std::string> mapArgs;
 
-#define BITYUAN_KEY "HKEY_CURRENT_USER\\Software\\bityuan\\bityuan-Qt"
-#define YCC_KEY "HKEY_CURRENT_USER\\Software\\YCC\\YCC-Qt"
-
 int g_nBaseFontSize = 9;
 
 //space a little bigger than all file size in windows
@@ -67,12 +64,7 @@ QString GetSpecialFolderPath(int nFolder, bool fCreate)
 
 QString GetRegDataDir()
 {
-    QString fileName;
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        fileName = BITYUAN_KEY;
-    } else {
-        fileName = YCC_KEY;
-    }
+    QString fileName = "HKEY_CURRENT_USER\\Software\\" + CStyleConfig::GetInstance().GetChain33Name() + "\\" + CStyleConfig::GetInstance().GetAppName();
     QSettings *pReg = new QSettings(fileName, QSettings::NativeFormat);
     QString strDir = pReg->value("strDataDir").toString(); //读取注册表值
     strDir.replace("/", "\\");
@@ -85,12 +77,7 @@ void SetRegDataDir(QString strDataDir)
 {
     strDataDir.replace("/", "\\");
     strDataDir.replace("\\\\", "\\");
-    QString fileName;
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        fileName = BITYUAN_KEY;
-    } else {
-        fileName = YCC_KEY;
-    }
+    QString fileName = "HKEY_CURRENT_USER\\Software\\" + CStyleConfig::GetInstance().GetChain33Name() + "\\" + CStyleConfig::GetInstance().GetAppName();
     QSettings *pReg = new QSettings(fileName, QSettings::NativeFormat);
     pReg->setValue("strDataDir", strDataDir);
     delete pReg;
@@ -98,12 +85,11 @@ void SetRegDataDir(QString strDataDir)
 
 QString GetDefaultDataDir()
 {
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\bityuan
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\bityuan
-    // Mac: ~/Library/Application Support/bityuan
-    // Unix: ~/.bityuan
+    //! Windows < Vista: C:\Documents and Settings\Username\Application Data\chain33-qt
+    //! Windows >= Vista: C:\Users\Username\AppData\Roaming\chain33-qt
+    //! Mac: ~/Library/Application Support/chain33-qt
+    //! Unix: ~/.chain33-qt
 #ifdef WIN32
-    // Windows
     QString strDir = GetRegDataDir();
     if(strDir.isEmpty())
     {
@@ -194,14 +180,14 @@ void InitMainUI(const SingleApplication& app)
     app.setFont(font);
 
     QPalette pa;
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        pa.setColor(QPalette::WindowText,Qt::white);
-        pa.setColor(QPalette::ButtonText,Qt::white);
-        pa.setColor(QPalette::Text,Qt::white);
-    } else {
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         pa.setColor(QPalette::WindowText, 0x37383C);
         pa.setColor(QPalette::ButtonText,Qt::white);
         pa.setColor(QPalette::Text, 0x37383C);
+    } else {
+        pa.setColor(QPalette::WindowText,Qt::white);
+        pa.setColor(QPalette::ButtonText,Qt::white);
+        pa.setColor(QPalette::Text,Qt::white);
     }
     app.setPalette(pa);
 
@@ -248,7 +234,7 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
     QString current_date_hour = QString("_%1_%2").arg(current_date_time.mid(0, 10)).arg(current_date_time.mid(11,2));
     QString message = QString("%1 %2 %3 (%4)").arg(text).arg(context_info).arg(msg).arg(current_date_time);
 
-    QString strUILog = GetDefaultDataDir() + "/logs/bityuanUIlog" + current_date_hour + ".txt";
+    QString strUILog = GetDefaultDataDir() + "/logs/chain33-qt" + current_date_hour + ".txt";
     QFile file(strUILog);
     file.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream text_stream(&file);
@@ -573,7 +559,7 @@ bool GetProcessidFromName()
     pe32.dwSize = sizeof(PROCESSENTRY32);
     if (Process32First(hProcessSnap, &pe32)) {
         do{
-            int nWcsicmp = wcsicmp(pe32.szExeFile, CStyleConfig::GetInstance().GetChain33Name().toStdWString().c_str());
+            int nWcsicmp = wcsicmp(pe32.szExeFile, CStyleConfig::GetInstance().GetChain33Exe().toStdWString().c_str());
             if(nWcsicmp == 0) {
                 bRet = true;
                 break;
@@ -593,7 +579,7 @@ bool GetProcessidFromName()
         fgets(line, sizeof(line)-1, fp);
         std::string strResult = line;
 
-        if(strResult.find(CStyleConfig::GetInstance().GetChain33Name().toStdString().c_str()) != std::string::npos)
+        if(strResult.find(CStyleConfig::GetInstance().GetChain33Exe().toStdString().c_str()) != std::string::npos)
             bRet = true;
     }
     pclose(fp);

@@ -17,7 +17,7 @@ veifySeedDialog::veifySeedDialog(QWidget *parent)
     ui->seedTextEdit->installEventFilter(this);
     ui->seedTextEdit->setContextMenuPolicy(Qt::NoContextMenu);
     ui->seedTextEdit->setStyleSheet("QTextEdit{ font: " + QString::number(GetBaseFontSize() + 4) + "pt; background-color: #202020; border-radius: 4px; border: none; padding: 10px; color: #ffba26;}");
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC)
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
         ui->seedTextEdit->setStyleSheet("QTextEdit{ font: " + QString::number(GetBaseFontSize() + 4) + "pt; background-color: #ffffff; border-radius: 4px; border: none; padding: 10px; color: #2241C7;}");
 }
 

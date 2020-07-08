@@ -23,7 +23,6 @@
 #include "introdialog.h"
 #include "cstyleconfig.h"
 
-
 ManageUI* lpManageUI = NULL;
 
 void SetEnvironmentDPI(){
@@ -58,7 +57,7 @@ int main(int argc, char *argv[])
 {
     SetEnvironmentDPI();
 
-    SingleApplication app(argc, argv, "bityuan");
+    SingleApplication app(argc, argv, "chain33-qt");
 #ifndef QT_DEBUG
     if (app.IsRunning())
     {

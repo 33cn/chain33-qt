@@ -106,7 +106,7 @@ void CreateSeedUi::AddLabelList(QHBoxLayout* lpHBoxLayout)
     lpSeedLabel->setObjectName("SeedLabel");
 
     lpSeedLabel->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffba26; border-radius: 4px; padding-left: 8px; padding-right: 8px; padding-top: 13px;padding-bottom: 13px; background: #202020; } ");
-    if(CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC)
+    if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
         lpSeedLabel->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #2241C7; border-radius: 4px; padding-left: 8px; padding-right: 8px; padding-top: 13px;padding-bottom: 13px; background: #ffffff; } ");
 
     lpHBoxLayout->addWidget(lpSeedLabel);

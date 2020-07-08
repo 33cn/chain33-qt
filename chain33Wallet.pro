@@ -5,13 +5,13 @@
 #-------------------------------------------------
 
 TEMPLATE = app
-TARGET = bityuan
+TARGET = chain33-qt
 CONFIG(debug, debug|release) {
-    TARGET = bityuan-test
+    TARGET = chain33-qt-test
 }
-VERSION = 1.0.0.6
+VERSION = 1.0.1.0
 INCLUDEPATH +=  /usr/local/include qt ./ ./qt/connector ./qt/seedUi ./qt/functionui ./qt/qrencode ./qt/menu ./qt/mainui
-DEFINES += QT_GUI WIN32_LEAN_AND_MEAN #BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
+DEFINES += QT_GUI WIN32_LEAN_AND_MEAN
 CONFIG += no_include_pwd
 CONFIG += thread
 
@@ -167,8 +167,6 @@ FORMS    += \
     qt/forms/switchcreateseedui.ui \
     qt/forms/manageui.ui \
     qt/forms/cliconsole.ui \
-    qt/forms/assetsmanageui.ui \
-    qt/forms/tradetransferdialog.ui \
     qt/forms/introdialog.ui \
     qt/forms/offlineminingdialog.ui \
     qt/forms/changedirdialog.ui \
@@ -226,7 +224,7 @@ macx:OBJECTIVE_SOURCES += qt/functionui/macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = qt/res/icons/bitcoin.icns
-macx:TARGET = "bityuan"
+macx:TARGET = "chain33-qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
@@ -247,6 +245,5 @@ contains(RELEASE, 1) {
     DEFINES += LINUX
     LIBS += -lrt -ldl
 }
-
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)

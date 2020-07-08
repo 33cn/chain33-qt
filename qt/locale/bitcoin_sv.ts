@@ -70,12 +70,12 @@ Denna produkten innehåller mjukvara utvecklad av OpenSSL Project för användni
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+11"/>
         <source>版权所有 © 2018 %1开发组</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+5"/>
         <source>官网地址: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -85,7 +85,7 @@ Denna produkten innehåller mjukvara utvecklad av OpenSSL Project för användni
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+24"/>
         <source>版本获取失败，请在控制台输入 version 获取版本</source>
         <translation type="unfinished"></translation>
     </message>
@@ -484,44 +484,8 @@ Denna produkten innehåller mjukvara utvecklad av OpenSSL Project för användni
 <context>
     <name>AssetsManageUi</name>
     <message>
-        <location filename="../forms/assetsmanageui.ui" line="+14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulär</translation>
-    </message>
-    <message>
-        <location line="+69"/>
-        <source>当前地址:   </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+36"/>
-        <source>估值 ≈ </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>0 BTY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>刷新</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+109"/>
-        <source>首页</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>&lt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Formulär</translation>
     </message>
 </context>
 <context>
@@ -1525,18 +1489,22 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
 <context>
     <name>GUIUtil::HelpMessageBox</name>
     <message>
-        <location filename="../functionui/guiutil.cpp" line="+384"/>
-        <location line="+12"/>
         <source>bityuan-Qt</source>
-        <translation>bityuan-Qt</translation>
+        <translation type="vanished">bityuan-Qt</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location filename="../functionui/guiutil.cpp" line="+243"/>
         <source>version</source>
         <translation>version</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+0"/>
+        <location line="+12"/>
+        <source>chain33-qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-10"/>
         <source>Usage:</source>
         <translation>Användning:</translation>
     </message>
@@ -1691,7 +1659,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../menu/introdialog.cpp" line="+19"/>
+        <location filename="../menu/introdialog.cpp" line="+32"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1707,7 +1675,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
     <message>
         <location line="+11"/>
-        <source>即将在该目录下创建一个名为 %1 的新目录</source>
+        <source>即将在该目录下创建一个名为 %1Data 的新目录</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1719,7 +1687,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="obsolete">Fel</translation>
     </message>
     <message numerus="yes">
-        <location line="+34"/>
+        <location line="+33"/>
         <source>有 %n GB 空闲空间</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -1821,7 +1789,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="obsolete">&amp;Verifiera meddelande...</translation>
     </message>
     <message>
-        <location filename="../mainui/mainui.cpp" line="+162"/>
+        <location filename="../mainui/mainui.cpp" line="+161"/>
         <source>E&amp;xit</source>
         <translation type="unfinished">&amp;Avsluta</translation>
     </message>
@@ -1967,12 +1935,12 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+8"/>
         <source>关于%1(&amp;A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+348"/>
+        <location line="+341"/>
         <source>%1钱包-test %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2070,7 +2038,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/manageui.cpp" line="+155"/>
+        <location filename="../mainui/manageui.cpp" line="+169"/>
         <location line="+16"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
@@ -2532,7 +2500,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="obsolete">Spara QR-kod</translation>
     </message>
     <message>
-        <location filename="../menu/receiverequestdialog.cpp" line="+26"/>
+        <location filename="../menu/receiverequestdialog.cpp" line="+23"/>
         <location line="+35"/>
         <source>保存二维码</source>
         <translation type="unfinished"></translation>
@@ -2669,9 +2637,9 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     <message>
         <location line="+25"/>
         <source>请注意： 
-严禁向该地址转入非 BTY 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY；
-仅支持第三方钱包向 BTY 钱包充币，C2C 交易划拨资产请使用转入、转出。</source>
+严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；
+需要 12 个网络确认后才能到账，最低手续费 0.001 coin；
+仅支持第三方钱包向钱包充币，C2C 交易划拨资产请使用转入、转出。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2687,8 +2655,8 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     <message>
         <location filename="../menu/receiverequestdialog.cpp" line="+31"/>
         <source>请注意：
-严禁向该地址转入非 %1 的资产，误转入的其他资产将无法找回；
-需要 12 个网络确认后才能到账，最低手续费 0.001 BTY。</source>
+严禁向该地址转入非该钱包资产，误转入的其他资产将无法找回；
+需要 12 个网络确认后才能到账，最低手续费 0.001。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3142,7 +3110,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
     <message>
         <location line="+66"/>
-        <location filename="../mainui/statusbarui.cpp" line="+508"/>
+        <location filename="../mainui/statusbarui.cpp" line="+509"/>
         <source>Synchronizing with network...</source>
         <translation type="unfinished">Synkroniserar med nätverk...</translation>
     </message>
@@ -3378,39 +3346,8 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
 <context>
     <name>TradeTransferDialog</name>
     <message>
-        <location filename="../forms/tradetransferdialog.ui" line="+14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <source>数量:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>BTY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <source>可用量:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
-    </message>
-    <message>
-        <location line="+43"/>
-        <source>错误:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>错误提示</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">0</translation>
     </message>
 </context>
 <context>
@@ -4043,7 +3980,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/transactionslistui.cpp" line="+53"/>
+        <location filename="../mainui/transactionslistui.cpp" line="+63"/>
         <source>out of sync</source>
         <translation type="unfinished">osynkroniserad</translation>
     </message>
@@ -4154,7 +4091,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
         <translation type="unfinished">Visa transaktionsdetaljer</translation>
     </message>
     <message>
-        <location line="+246"/>
+        <location line="+237"/>
         <source>Export Transaction Data</source>
         <translation type="unfinished">Exportera transaktionsdata</translation>
     </message>
@@ -4253,7 +4190,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
     <message>
         <location line="+42"/>
-        <location filename="../mainui/walletsendui.cpp" line="+124"/>
+        <location filename="../mainui/walletsendui.cpp" line="+127"/>
         <source>时间误差: %1 秒</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4314,7 +4251,7 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../mainui/walletsendui.cpp" line="+54"/>
+        <location filename="../mainui/walletsendui.cpp" line="+53"/>
         <source>手续费仅 %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5089,7 +5026,7 @@ Om filen inte existerar, skapa den med filrättigheten endast läsbar för ägar
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+57"/>
         <source>验证通过</source>
         <translation type="unfinished"></translation>
     </message>

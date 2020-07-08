@@ -89,7 +89,7 @@ AddressListUI::AddressListUI(AddrModeType mode, AddrTypeTabs tab, QWidget *paren
     this->resize(600, 400);
 
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
-    if(CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC) {
+    if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
         this->setStyleSheet("QWidget {background-color:#FFFFFF;border:none;}" + CStyleConfig::GetInstance().GetStylesheet());
     }
 
@@ -143,7 +143,7 @@ AddressListUI::AddressListUI(AddrModeType mode, AddrTypeTabs tab, QWidget *paren
     contextMenu->addAction(copyLabelAction);
     contextMenu->addAction(editAction);
     contextMenu->setStyleSheet("QMenu {background-color:#2c2c2c;} QMenu::item:selected { background-color:#454545; }");
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC)
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
         contextMenu->setStyleSheet("QMenu {background-color:#ffffff;color: #37383C;} QMenu::item:selected {background-color:#2241C7;color: #ffffff;}");
     contextMenu->addAction(deleteAction);
 

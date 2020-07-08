@@ -144,16 +144,7 @@ void CliConsole::on_ClearBtn_clicked()
 
     // TODO
     // Set default style sheet
-    if(CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        ui->messagesWidget->document()->setDefaultStyleSheet(
-                    "table { }"
-                    "td.time { color: #808080; padding-top: 3px; } "
-                    "td.message { font-family: Monospace; } " // font-size: 12px;
-                    "td.cmd-request { color: #ffba26; } "
-                    "td.cmd-error { color: red; } "
-                    "b { color: #ffba26; } "
-                    );
-    } else {
+    if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         ui->messagesWidget->document()->setDefaultStyleSheet(
                     "table { }"
                     "td.time { color: #808080; padding-top: 3px; } "
@@ -161,6 +152,15 @@ void CliConsole::on_ClearBtn_clicked()
                     "td.cmd-request { color: #2c77ef; } "
                     "td.cmd-error { color: red; } "
                     "b { color: #2c77ef; } "
+                    );
+    } else {
+        ui->messagesWidget->document()->setDefaultStyleSheet(
+                    "table { }"
+                    "td.time { color: #808080; padding-top: 3px; } "
+                    "td.message { font-family: Monospace; } " // font-size: 12px;
+                    "td.cmd-request { color: #ffba26; } "
+                    "td.cmd-error { color: red; } "
+                    "b { color: #ffba26; } "
                     );
     }
 

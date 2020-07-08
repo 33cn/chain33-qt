@@ -53,7 +53,7 @@ TransactionsListUI::TransactionsListUI(QWidget *parent)
     ui->setupUi(this);
 
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
-    if(CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC) {
+    if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
         this->setStyleSheet("QWidget {background-color:#FFFFFF;border:none;}" + CStyleConfig::GetInstance().GetStylesheet());
     }
 
@@ -435,15 +435,6 @@ void TransactionsListUI::changedAmount(const QString &/*amount*/)
 {
     if(!transactionProxyModel)
         return;
- /*   qint64 amount_parsed = 0;
-    if(BitcoinUnits::parse(model->getOptionsModel()->getDisplayUnit(), amount, &amount_parsed))
-    {
-        transactionProxyModel->setMinAmount(amount_parsed);
-    }
-    else
-    {
-        transactionProxyModel->setMinAmount(0);
-    }*/
 }
 
 void TransactionsListUI::focusTransaction(const QModelIndex &idx)

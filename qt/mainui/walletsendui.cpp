@@ -8,6 +8,7 @@
 #include "mainui.h"
 #include "basefuntion.h"
 #include "base64.h"
+#include "bitcoinunits.h"
 
 GetTicketBalanceThread::GetTicketBalanceThread()
 {
@@ -138,12 +139,11 @@ void WalletSendUI::initUI()
 {
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
     // TODO
-    if(CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#2c2c2c;border-radius: 4px;}");
-    } else {
-        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#F2F3F5;border-radius: 4px;}");
-
+    if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         this->setStyleSheet("QWidget {background-color:#FFFFFF;border:none;}" + CStyleConfig::GetInstance().GetStylesheet());
+        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#F2F3F5;border-radius: 4px;}");
+    } else {
+        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#2c2c2c;border-radius: 4px;}");
     }
 
 #ifndef MAC_OSX
@@ -345,7 +345,7 @@ void WalletSendUI::on_sendButton_clicked()
         QMap<QString, QString> mapFriAddr = g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList->m_mapAddrLabel;
         label = mapFriAddr[address];
     }
-    formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, amount), label, address));
+    formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::COIN, amount), label, address));
 
     int retval = QMessageBox::question(this, tr("Confirm send coins"), tr("Are you sure you want to send %1?").arg(formatted.join(tr(" and "))), tr("确定"), tr("取消"), QString(), 0, 1);
     if(retval != 0)

@@ -13,7 +13,7 @@
 
 TxViewItemDelegate::TxViewItemDelegate(TypeList typeList, const PlatformStyle *platformStyle)
     : QAbstractItemDelegate()
-    , unit(BitcoinUnits::BTC)
+  //  , unit(BitcoinUnits::BTC)
     , m_nTypeList(typeList)
     , m_platformStyle (platformStyle)
 {
@@ -21,14 +21,14 @@ TxViewItemDelegate::TxViewItemDelegate(TypeList typeList, const PlatformStyle *p
     m_GreyColor = 0x999999;
 
     // TODO
-    if(CStyleConfig::GetInstance().GetSymbol() == SYMBOL_BTY){
-        m_YellowColor = 0xffba26;
-        m_BlackColor = 0x353535;
-        m_WhiteColor = 0xffffff;
-    } else {
+    if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         m_YellowColor = 0x2c77ef;
         m_BlackColor = 0x1a1a38;
         m_WhiteColor = 0x3D3D3D;
+    } else {
+        m_YellowColor = 0xffba26;
+        m_BlackColor = 0x353535;
+        m_WhiteColor = 0xffffff;
     }
 }
 
@@ -166,7 +166,7 @@ void TxViewItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &op
     }
 
     painter->setPen(m_BlackColor);
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC)
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
         painter->setPen(0xF2F3F5);
     QLine l(mainRect.left() + MARGIN_x_y-2, mainRect.bottom()-1, mainRect.width() - MARGIN_x_y, mainRect.bottom()-1);
     painter->drawLine(l);

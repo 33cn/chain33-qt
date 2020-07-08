@@ -24,7 +24,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     // ui->AboutWidget->setStyleSheet("QWidget { background-color:#2c2c2c; }");
     ui->copyrightLabel->setText(tr("版权所有 © 2018 %1开发组").arg(CStyleConfig::GetInstance().GetAppName()));
     QString strColor = "#ffba26";
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC)
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
         strColor = "#2c77ef";
     ui->labelAbout->setStyleSheet("QLabel { color: " + strColor + "; font: " + QString::number(GetBaseFontSize() + 6) + "pt;}");
     ui->uccnLabel->setText(tr("官网地址: %1").arg("<a style='color: " + strColor + ";' href=\"https://www.bityuan.com/index\">https://www.bityuan.com/index"));
@@ -32,7 +32,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->browserLabel->setText(tr("区块链浏览器地址: %1").arg("<a style='color: " + strColor + ";' href=\"https://mainnet.bityuan.com/index\">https://mainnet.bityuan.com/index"));
     ui->browserLabel->setOpenExternalLinks(true);
 
-    if (CStyleConfig::GetInstance().GetSymbol() == SYMBOL_YCC)
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
     {
         ui->uccnLabel->setVisible(false);
         ui->browserLabel->setVisible(false);

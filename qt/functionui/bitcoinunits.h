@@ -1,4 +1,4 @@
-#ifndef BITCOINUNITS_H
+﻿#ifndef BITCOINUNITS_H
 #define BITCOINUNITS_H
 
 #include <QString>
@@ -17,9 +17,9 @@ public:
      */
     enum Unit
     {
-        BTC,
-        mBTC,
-        uBTC
+        COIN,
+        mCOIN,
+        uCOIN
     };
 
     //! @name Static API

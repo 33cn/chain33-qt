@@ -13,10 +13,10 @@
 typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
 #endif
 
-enum SymbolTokenName
+enum STYLE_QSS
 {
-    SYMBOL_BTY,
-    SYMBOL_YCC
+    QSS_YELLOW,
+    QSS_BLUE
 };
 
 class CStyleConfig
@@ -24,7 +24,8 @@ class CStyleConfig
 public:
     static const CStyleConfig &GetInstance();
 
-    SymbolTokenName GetSymbol() const;
+    STYLE_QSS GetStyleType() const;
+    const QString &GetChain33Name() const { return m_strChain33Name; }
     const QString &GetAppName() const { return m_strAppName; }
     const QString &GetAppName_en() const { return m_strAppName_en; }
     const QString &GetUnitName() const { return m_strUnitName; }
@@ -34,12 +35,12 @@ public:
     const QString &GetStylesheet_child() const { return m_stylesheet_child; }
     const QString &GetChain33Path() const { return m_strChain33Path; }
     const QString &GetChain33cliPath() const { return m_strChain33cliPath; }
-    const QString &GetChain33Name() const { return m_strChain33Name; }
+    const QString &GetChain33Exe() const { return m_strChain33Exe; }
 private:
     CStyleConfig();
     void readConfigFile();
     void readValue(QSettings *lpconfig, const QString &key, QString &ret);
-    void setChian33NamePath();
+    void setChain33NamePath();
 #ifdef WIN32
     bool isWow64();
 #endif
@@ -47,14 +48,14 @@ private:
 private:
     static CStyleConfig* s_lpStyleConfig;
 
-    QString m_strSymbol;            // 代币符号 目前只支持 BTY 和 YCC
-
-    QString m_strAppName;           // APP名称 默认 bityuan
-    QString m_strAppName_en;        // APP中文名称 默认 比特元
+    QString m_strChain33Name;       // 主链名称 默认 chain33
+    QString m_strAppName;           // APP名称 默认 chain33-qt
+    QString m_strAppName_en;        // APP英文名称 默认 chain33-qt
+    QString m_strAppName_zh;        // APP中文名称 默认 chain33-qt
     QString m_strUnitName;          // 代币单位
-    QString m_strMinFee;            // 最小手续费 BTY 0.001   YCC 20
+    QString m_strMinFee;            // 最小手续费
 
-    // QString m_stylesheet_file;      // qss 文件名称
+    QString m_stylesheet_type;      // qss
     QString m_stylesheet;
     QString m_stylesheet_main;      // 颜色主样式
     QString m_stylesheet_child;
@@ -62,8 +63,8 @@ private:
     QString m_strChain33Path;
     QString m_strChain33cliPath;
 
-    QString m_strChain33Name;
-    QString m_strChain33cliName;
+    QString m_strChain33Exe;
+    QString m_strChain33cliExe;
 };
 
 #endif // CSTYLECONFIG_H

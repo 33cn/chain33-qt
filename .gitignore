@@ -1,0 +1,7 @@
+.DS_Store
+btyWallet.pro.user
+qt/.DS_Store
+qt/forms/.DS_Store
+qt/locale/*.qm
+Release
+

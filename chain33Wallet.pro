@@ -10,7 +10,7 @@ CONFIG(debug, debug|release) {
     TARGET = chain33-qt-test
 }
 VERSION = 1.0.1.0
-INCLUDEPATH +=  /usr/local/include qt ./ ./qt/connector ./qt/seedUi ./qt/functionui ./qt/qrencode ./qt/menu ./qt/mainui
+INCLUDEPATH +=  /usr/local/include src ./ ./src/connector ./src/seedUi ./src/functionui ./src/qrencode ./src/menu ./src/mainui
 DEFINES += QT_GUI WIN32_LEAN_AND_MEAN
 CONFIG += no_include_pwd
 CONFIG += thread
@@ -31,167 +31,167 @@ MOC_DIR = build
 UI_DIR = build
 
 SOURCES += main.cpp \
-    qt/functionui/qvalidatedlineedit.cpp \
-    qt/functionui/notificator.cpp \
-    qt/functionui/bitcoinunits.cpp \
-    qt/functionui/guiutil.cpp \
-    qt/functionui/bitcoinaddressvalidator.cpp \
-    qt/menu/aboutdialog.cpp \
-    qt/functionui/bitcoinamountfield.cpp \
-    qt/functionui/transactionrecord.cpp \
-    qt/menu/transactiondescdialog.cpp \
-    qt/menu/editaddressdialog.cpp \
-    qt/menu/askpassphrasedialog.cpp \
-    qt/functionui/csvmodelwriter.cpp \
-    qt/functionui/transactionfilterproxy.cpp \
-    qt/mainui/mainui.cpp \
-    qt/mainui/homepageui.cpp \
-    qt/mainui/addressui.cpp \
-    qt/mainui/addresslistui.cpp \
-    qt/menu/veifyseeddialog.cpp \
-    qt/mainui/transactionslistui.cpp \
-    qt/mainui/walletsendui.cpp \
-    qt/mainui/statusbarui.cpp \
-    qt/connector/basejsonconnector.cpp \
-    qt/functionui/friendsaddrlistxml.cpp \
-    qt/mainui/transactionslistmodel.cpp \
-    qt/mainui/addresstablemodel.cpp \
-    qt/seedUi/seedui.cpp \
-    qt/seedUi/createseedui.cpp \
-    qt/seedUi/inputseedui.cpp \
-    qt/seedUi/switchcreateseedui.cpp \
-    qt/mainui/manageui.cpp \
-    qt/menu/cliconsole.cpp \
-    qt/connector/singleapplication.cpp \
-    qt/mainui/txviewitemdelegate.cpp \
-    qt/connector/basefuntion.cpp \
-    qt/functionui/platformstyle.cpp \
-    qt/menu/introdialog.cpp \
-    qt/menu/offlineminingdialog.cpp \
-    qt/menu/changedirdialog.cpp \
-    qt/menu/closeingdialog.cpp \
-    qt/connector/clearthread.cpp \
-    qt/connector/cstyleconfig.cpp
+    src/functionui/qvalidatedlineedit.cpp \
+    src/functionui/notificator.cpp \
+    src/functionui/bitcoinunits.cpp \
+    src/functionui/guiutil.cpp \
+    src/functionui/bitcoinaddressvalidator.cpp \
+    src/menu/aboutdialog.cpp \
+    src/functionui/bitcoinamountfield.cpp \
+    src/functionui/transactionrecord.cpp \
+    src/menu/transactiondescdialog.cpp \
+    src/menu/editaddressdialog.cpp \
+    src/menu/askpassphrasedialog.cpp \
+    src/functionui/csvmodelwriter.cpp \
+    src/functionui/transactionfilterproxy.cpp \
+    src/mainui/mainui.cpp \
+    src/mainui/homepageui.cpp \
+    src/mainui/addressui.cpp \
+    src/mainui/addresslistui.cpp \
+    src/menu/veifyseeddialog.cpp \
+    src/mainui/transactionslistui.cpp \
+    src/mainui/walletsendui.cpp \
+    src/mainui/statusbarui.cpp \
+    src/connector/basejsonconnector.cpp \
+    src/functionui/friendsaddrlistxml.cpp \
+    src/mainui/transactionslistmodel.cpp \
+    src/mainui/addresstablemodel.cpp \
+    src/seedUi/seedui.cpp \
+    src/seedUi/createseedui.cpp \
+    src/seedUi/inputseedui.cpp \
+    src/seedUi/switchcreateseedui.cpp \
+    src/mainui/manageui.cpp \
+    src/menu/cliconsole.cpp \
+    src/connector/singleapplication.cpp \
+    src/mainui/txviewitemdelegate.cpp \
+    src/connector/basefuntion.cpp \
+    src/functionui/platformstyle.cpp \
+    src/menu/introdialog.cpp \
+    src/menu/offlineminingdialog.cpp \
+    src/menu/changedirdialog.cpp \
+    src/menu/closeingdialog.cpp \
+    src/connector/clearthread.cpp \
+    src/connector/cstyleconfig.cpp
 
 greaterThan(QT_MAJOR_VERSION, 4) {
-    SOURCES += qt/menu/receiverequestdialog.cpp \
-    qt/qrencode/bitstream.c \
-    qt/qrencode/mask.c \
-    qt/qrencode/mmask.c \
-    qt/qrencode/mqrspec.c \
-    qt/qrencode/qrencode.c \
-    qt/qrencode/qrinput.c \
-    qt/qrencode/qrspec.c \
-    qt/qrencode/rscode.c \
-    qt/qrencode/split.c
+    SOURCES += src/menu/receiverequestdialog.cpp \
+    src/qrencode/bitstream.c \
+    src/qrencode/mask.c \
+    src/qrencode/mmask.c \
+    src/qrencode/mqrspec.c \
+    src/qrencode/qrencode.c \
+    src/qrencode/qrinput.c \
+    src/qrencode/qrspec.c \
+    src/qrencode/rscode.c \
+    src/qrencode/split.c
 }
 
 HEADERS  += \
-    qt/functionui/qvalidatedlineedit.h \
-    qt/functionui/guiconstants.h \
-    qt/functionui/notificator.h \
-    qt/functionui/bitcoinunits.h \
-    qt/functionui/guiutil.h \
-    qt/functionui/bitcoinaddressvalidator.h \
-    qt/menu/aboutdialog.h \
-    qt/functionui/bitcoinamountfield.h \
-    qt/functionui/transactionrecord.h \
-    qt/menu/transactiondescdialog.h \
-    qt/menu/editaddressdialog.h \
-    qt/menu/askpassphrasedialog.h \
-    qt/functionui/csvmodelwriter.h \
-    qt/functionui/transactionfilterproxy.h \
-    qt/functionui/uint256.h \
-    qt/mainui/mainui.h \
-    qt/mainui/homepageui.h \
-    qt/mainui/addressui.h \
-    qt/mainui/addresslistui.h \
-    qt/menu/veifyseeddialog.h \
-    qt/mainui/txviewitemdelegate.h \
-    qt/mainui/transactionslistui.h \
-    qt/mainui/walletsendui.h \
-    qt/mainui/statusbarui.h \
-    qt/connector/basejsonconnector.h \
-    qt/connector/enumtype.h \
-    qt/functionui/friendsaddrlistxml.h \
-    qt/mainui/transactionslistmodel.h \
-    qt/mainui/addresstablemodel.h \
-    qt/functionui/base58.h \
-    qt/functionui/mysha256.h \
-    qt/seedUi/seedui.h \
-    qt/seedUi/createseedui.h \
-    qt/seedUi/inputseedui.h \
-    qt/seedUi/switchcreateseedui.h \
-    qt/mainui/manageui.h \
-    qt/menu/cliconsole.h \
-    qt/connector/singleapplication.h \
-    qt/connector/basefuntion.h \
-    qt/functionui/platformstyle.h \
-    qt/menu/introdialog.h \
-    qt/menu/offlineminingdialog.h \
-    qt/menu/changedirdialog.h \
-    qt/menu/closeingdialog.h \
-    qt/connector/clearthread.h \
-    qt/connector/cstyleconfig.h
+    src/functionui/qvalidatedlineedit.h \
+    src/functionui/guiconstants.h \
+    src/functionui/notificator.h \
+    src/functionui/bitcoinunits.h \
+    src/functionui/guiutil.h \
+    src/functionui/bitcoinaddressvalidator.h \
+    src/menu/aboutdialog.h \
+    src/functionui/bitcoinamountfield.h \
+    src/functionui/transactionrecord.h \
+    src/menu/transactiondescdialog.h \
+    src/menu/editaddressdialog.h \
+    src/menu/askpassphrasedialog.h \
+    src/functionui/csvmodelwriter.h \
+    src/functionui/transactionfilterproxy.h \
+    src/functionui/uint256.h \
+    src/mainui/mainui.h \
+    src/mainui/homepageui.h \
+    src/mainui/addressui.h \
+    src/mainui/addresslistui.h \
+    src/menu/veifyseeddialog.h \
+    src/mainui/txviewitemdelegate.h \
+    src/mainui/transactionslistui.h \
+    src/mainui/walletsendui.h \
+    src/mainui/statusbarui.h \
+    src/connector/basejsonconnector.h \
+    src/connector/enumtype.h \
+    src/functionui/friendsaddrlistxml.h \
+    src/mainui/transactionslistmodel.h \
+    src/mainui/addresstablemodel.h \
+    src/functionui/base58.h \
+    src/functionui/mysha256.h \
+    src/seedUi/seedui.h \
+    src/seedUi/createseedui.h \
+    src/seedUi/inputseedui.h \
+    src/seedUi/switchcreateseedui.h \
+    src/mainui/manageui.h \
+    src/menu/cliconsole.h \
+    src/connector/singleapplication.h \
+    src/connector/basefuntion.h \
+    src/functionui/platformstyle.h \
+    src/menu/introdialog.h \
+    src/menu/offlineminingdialog.h \
+    src/menu/changedirdialog.h \
+    src/menu/closeingdialog.h \
+    src/connector/clearthread.h \
+    src/connector/cstyleconfig.h
 
 greaterThan(QT_MAJOR_VERSION, 4) {
-    HEADERS += qt/menu/receiverequestdialog.h \
-    qt/qrencode/bitstream.h \
-    qt/qrencode/config.h \
-    qt/qrencode/mask.h \
-    qt/qrencode/mmask.h \
-    qt/qrencode/mqrspec.h \
-    qt/qrencode/qrencode_inner.h \
-    qt/qrencode/qrencode.h \
-    qt/qrencode/qrinput.h \
-    qt/qrencode/qrspec.h \
-    qt/qrencode/rscode.h \
-    qt/qrencode/split.h
+    HEADERS += src/menu/receiverequestdialog.h \
+    src/qrencode/bitstream.h \
+    src/qrencode/config.h \
+    src/qrencode/mask.h \
+    src/qrencode/mmask.h \
+    src/qrencode/mqrspec.h \
+    src/qrencode/qrencode_inner.h \
+    src/qrencode/qrencode.h \
+    src/qrencode/qrinput.h \
+    src/qrencode/qrspec.h \
+    src/qrencode/rscode.h \
+    src/qrencode/split.h
 }
 
 FORMS    += \
-    qt/forms/aboutdialog.ui \
-    qt/forms/askpassphrasedialog.ui \
-    qt/forms/editaddressdialog.ui \
-    qt/forms/mainui.ui \
-    qt/forms/homepageui.ui \
-    qt/forms/addressui.ui \
-    qt/forms/addresslistui.ui \
-    qt/forms/transactionslistui.ui \
-    qt/forms/walletsendui.ui \
-    qt/forms/statusbarui.ui \
-    qt/forms/transactiondescdialog.ui \
-    qt/forms/seedui.ui \
-    qt/forms/createseedui.ui \
-    qt/forms/inputseedui.ui \
-    qt/forms/switchcreateseedui.ui \
-    qt/forms/manageui.ui \
-    qt/forms/cliconsole.ui \
-    qt/forms/introdialog.ui \
-    qt/forms/offlineminingdialog.ui \
-    qt/forms/changedirdialog.ui \
-    qt/forms/closeingdialog.ui \
-    qt/menu/veifyseeddialog.ui
+    src/forms/aboutdialog.ui \
+    src/forms/askpassphrasedialog.ui \
+    src/forms/editaddressdialog.ui \
+    src/forms/mainui.ui \
+    src/forms/homepageui.ui \
+    src/forms/addressui.ui \
+    src/forms/addresslistui.ui \
+    src/forms/transactionslistui.ui \
+    src/forms/walletsendui.ui \
+    src/forms/statusbarui.ui \
+    src/forms/transactiondescdialog.ui \
+    src/forms/seedui.ui \
+    src/forms/createseedui.ui \
+    src/forms/inputseedui.ui \
+    src/forms/switchcreateseedui.ui \
+    src/forms/manageui.ui \
+    src/forms/cliconsole.ui \
+    src/forms/introdialog.ui \
+    src/forms/offlineminingdialog.ui \
+    src/forms/changedirdialog.ui \
+    src/forms/closeingdialog.ui \
+    src/menu/veifyseeddialog.ui
 
 greaterThan(QT_MAJOR_VERSION, 4) {
-    FORMS    += qt/forms/receiverequestdialog.ui
+    FORMS    += src/forms/receiverequestdialog.ui
 }
 
-RESOURCES += qt/bitcoin.qrc
+RESOURCES += src/bitcoin.qrc
 
 #When define #QT_DEBUG do not use "change data dir" of the menu, otherwise data may be destroyed, caused by not close chain33 in void ManageUI::CloseChain33(){}
 
 CODECFORTR = UTF-8
 
 # for lrelease/lupdate
-# also add new translations to qt/bitcoin.qrc under translations/
-TRANSLATIONS = $$files(qt/locale/bitcoin_*.ts)
+# also add new translations to src/bitcoin.qrc under translations/
+TRANSLATIONS = $$files(src/locale/bitcoin_*.ts)
 
 isEmpty(QMAKE_LRELEASE) {
     win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\\lrelease.exe
     else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
 }
-isEmpty(QM_DIR):QM_DIR = $$PWD/qt/locale
+isEmpty(QM_DIR):QM_DIR = $$PWD/src/locale
 # automatically build translations, so they can be included in resource file
 TSQM.name = lrelease ${QMAKE_FILE_IN}
 TSQM.input = TRANSLATIONS
@@ -203,7 +203,7 @@ QMAKE_EXTRA_COMPILERS += TSQM
 windows:DEFINES += WIN32
 
 CONFIG(release, debug|release) {
-    windows:RC_FILE = qt/res/bitcoin-qt.rc
+    windows:RC_FILE = src/res/bitcoin-qt.rc
 }
 
 windows:!contains(MINGW_THREAD_BUGFIX, 0) {
@@ -217,13 +217,13 @@ windows:!contains(MINGW_THREAD_BUGFIX, 0) {
     QMAKE_LIBS_QT_ENTRY = -lmingwthrd $$QMAKE_LIBS_QT_ENTRY
 }
 
-macx:HEADERS += qt/functionui/macdockiconhandler.h
-macx:HEADERS += qt/functionui/macnotificationhandler.h
-macx:OBJECTIVE_SOURCES += qt/functionui/macdockiconhandler.mm
-macx:OBJECTIVE_SOURCES += qt/functionui/macnotificationhandler.mm
+macx:HEADERS += src/functionui/macdockiconhandler.h
+macx:HEADERS += src/functionui/macnotificationhandler.h
+macx:OBJECTIVE_SOURCES += src/functionui/macdockiconhandler.mm
+macx:OBJECTIVE_SOURCES += src/functionui/macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = qt/res/icons/bitcoin.icns
+macx:ICON = src/res/icons/bitcoin.icns
 macx:TARGET = "chain33-qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread

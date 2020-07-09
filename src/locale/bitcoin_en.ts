@@ -4,10 +4,6 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <source>About BitYuan</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>一种简单稳定、扩展性强的区块链网络</source>
         <translation type="unfinished">A simple, stable and highly expandable block chain network</translation>
     </message>
@@ -45,11 +41,23 @@
     </message>
     <message>
         <source>官网地址: %1</source>
-        <translation type="unfinished">The website address: %1</translation>
+        <translation type="obsolete">The website address: %1</translation>
     </message>
     <message>
         <source>区块链浏览器地址: %1</source>
-        <translation type="unfinished">Block chain browser address: %1</translation>
+        <translation type="obsolete">Block chain browser address: %1</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chain33 开发框架地址: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>官方网站 和 文档地址: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -957,10 +965,6 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
         <translation type="unfinished">Debug window(&amp;D)</translation>
     </message>
     <message>
-        <source>关于比特元(&amp;A)</source>
-        <translation type="obsolete">About bityuan(&amp;A)</translation>
-    </message>
-    <message>
         <source>%1钱包-正式版 %2</source>
         <translation type="unfinished">%1-%2</translation>
     </message>
@@ -1452,10 +1456,6 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
     <message>
         <source>武夷正韵茶叶的提货券代币，可用于茶叶提货，目前暂无提货渠道。</source>
         <translation type="obsolete">Wuyi zhengyun tea coupons can be used for tea pick-up, there is no pick-up channel at present.</translation>
-    </message>
-    <message>
-        <source>比特元网络第一个代币，具有纪念意义。</source>
-        <translation type="obsolete">The first token of the bitcoin network is of monumental significance.</translation>
     </message>
     <message>
         <source>英文名  </source>

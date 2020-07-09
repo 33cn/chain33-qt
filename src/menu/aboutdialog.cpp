@@ -27,16 +27,13 @@ AboutDialog::AboutDialog(QWidget *parent) :
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
         strColor = "#2c77ef";
     ui->labelAbout->setStyleSheet("QLabel { color: " + strColor + "; font: " + QString::number(GetBaseFontSize() + 6) + "pt;}");
-    ui->uccnLabel->setText(tr("官网地址: %1").arg("<a style='color: " + strColor + ";' href=\"https://www.bityuan.com/index\">https://www.bityuan.com/index"));
+    ui->uccnLabel->setText(tr("Chain33 开发框架地址: %1").arg("<a style='color: " + strColor + ";' href=\"https://github.com/33cn/chain33\">https://github.com/33cn/chain33"));
     ui->uccnLabel->setOpenExternalLinks(true);
-    ui->browserLabel->setText(tr("区块链浏览器地址: %1").arg("<a style='color: " + strColor + ";' href=\"https://mainnet.bityuan.com/index\">https://mainnet.bityuan.com/index"));
+    ui->browserLabel->setText(tr("官方网站 和 文档地址: %1").arg("<a style='color: " + strColor + ";' href=\"https://chain.33.cn\">https://chain.33.cn"));
     ui->browserLabel->setOpenExternalLinks(true);
 
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
     {
-        ui->uccnLabel->setVisible(false);
-        ui->browserLabel->setVisible(false);
-
         ui->label_6->setPixmap(QPixmap(":/icons/blue_about"));
     } else {
         ui->label_6->setPixmap(QPixmap(":/icons/yellow_about"));

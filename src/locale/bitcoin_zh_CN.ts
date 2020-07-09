@@ -12,17 +12,9 @@
         <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <source>About bityuan</source>
-        <translation type="obsolete">关于比特元</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;bityuan&lt;/b&gt; version</source>
-        <translation type="obsolete">&lt;b&gt;比特元客户端&lt;/b&gt; 版本</translation>
-    </message>
-    <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About BitYuan</source>
-        <translation type="unfinished">关于比特元</translation>
+        <source>About</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+79"/>
@@ -50,14 +42,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;BitYuan&lt;/b&gt; version</source>
-        <translation type="obsolete">&lt;b&gt;比特元客户端&lt;/b&gt; 版本</translation>
-    </message>
-    <message>
-        <source>Copyright © 2018 The BitYuan developers</source>
-        <translation type="obsolete">版权所有 © 2018 比特元bityuan开发组</translation>
-    </message>
-    <message>
         <location filename="../menu/aboutdialog.cpp" line="+14"/>
         <source>关于%1</source>
         <translation type="unfinished"></translation>
@@ -69,16 +53,16 @@
     </message>
     <message>
         <location line="+5"/>
-        <source>官网地址: %1</source>
+        <source>Chain33 开发框架地址: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>区块链浏览器地址: %1</source>
+        <source>官方网站 和 文档地址: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+23"/>
         <source>版本获取失败，请在控制台输入 version 获取版本</source>
         <translation type="unfinished"></translation>
     </message>
@@ -106,10 +90,6 @@
         <translation type="obsolete">新建地址(&amp;N)</translation>
     </message>
     <message>
-        <source>These are your bityuan addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation type="obsolete">这是您用来接收支付的比特元地址列表。为不同的支付方建立不同的地址以便于了解支付来源。</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation type="obsolete">复制地址(&amp;C)</translation>
     </message>
@@ -118,20 +98,12 @@
         <translation type="obsolete">显示二维码(&amp;Q)</translation>
     </message>
     <message>
-        <source>Sign a message to prove you own a bityuan address</source>
-        <translation type="obsolete">对信息进行签名以证明您对该比特元地址的所有权</translation>
-    </message>
-    <message>
         <source>Sign &amp;Message</source>
         <translation type="obsolete">签名(&amp;M)</translation>
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
         <translation type="obsolete">从列表中删除选中的地址</translation>
-    </message>
-    <message>
-        <source>Verify a message to ensure it was signed with a specified bityuan address</source>
-        <translation type="obsolete">验证信息以保证其经过指定比特元地址的签名</translation>
     </message>
     <message>
         <source>&amp;Verify Message</source>
@@ -399,10 +371,6 @@
         <translation type="obsolete">确认加密钱包</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR COINS&lt;/b&gt;!</source>
-        <translation type="obsolete">警告：如果您丢失了加密该钱包的密码，其中所有的比特元将会丢失！</translation>
-    </message>
-    <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation type="obsolete">您确定需要为钱包加密吗？</translation>
     </message>
@@ -420,10 +388,6 @@
         <location line="-80"/>
         <source>Wallet encrypted</source>
         <translation>钱包已加密</translation>
-    </message>
-    <message>
-        <source>bityuan will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation type="obsolete">比特元客户端即将关闭以完成加密过程。请记住，加密钱包并不能完全防止您的电子货币被入侵您计算机的木马软件盗窃。</translation>
     </message>
     <message>
         <location line="-22"/>
@@ -537,16 +501,8 @@
         <translation type="obsolete">管理已储存的地址和标签</translation>
     </message>
     <message>
-        <source>&amp;Receive coins</source>
-        <translation type="obsolete">接收比特元(&amp;R)</translation>
-    </message>
-    <message>
         <source>Show the list of addresses for receiving payments</source>
         <translation type="obsolete">显示用于接收支付的地址列表</translation>
-    </message>
-    <message>
-        <source>&amp;Send coins</source>
-        <translation type="obsolete">发送比特元(&amp;S)</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -555,10 +511,6 @@
     <message>
         <source>Quit application</source>
         <translation type="obsolete">退出程序</translation>
-    </message>
-    <message>
-        <source>Show information about bityuan</source>
-        <translation type="obsolete">显示关于比特元的信息</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -599,14 +551,6 @@
         <translation type="obsolete">导出(&amp;E)</translation>
     </message>
     <message>
-        <source>Send coins to a bityuan address</source>
-        <translation type="obsolete">向指定的地址发送比特元</translation>
-    </message>
-    <message>
-        <source>Modify configuration options for bityuan</source>
-        <translation type="obsolete">更改设置选项</translation>
-    </message>
-    <message>
         <source>Export the data in the current tab to a file</source>
         <translation type="obsolete">导出当前标签页的数据</translation>
     </message>
@@ -635,16 +579,8 @@
         <translation type="obsolete">验证消息(&amp;V)...</translation>
     </message>
     <message>
-        <source>bityuan</source>
-        <translation type="obsolete">比特元钱包找回正式版(1.2.1.2)</translation>
-    </message>
-    <message>
         <source>Wallet</source>
         <translation type="obsolete">钱包</translation>
-    </message>
-    <message>
-        <source>&amp;About bityuan</source>
-        <translation type="obsolete">关于比特元(&amp;A)</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -687,16 +623,6 @@
         <translation type="obsolete">[测试网络]</translation>
     </message>
     <message>
-        <source>bityuan client</source>
-        <translation type="obsolete">比特元客户端</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n active connection(s) to bityuan network</source>
-        <translation type="obsolete">
-            <numerusform>与比特元网络建立了 %n 个连接</numerusform>
-        </translation>
-    </message>
-    <message>
         <source>Downloaded %1 blocks of transaction history.</source>
         <translation type="obsolete">已下载 %1 个区块的交易记录</translation>
     </message>
@@ -715,10 +641,6 @@
     <message>
         <source>Not staking because wallet is syncing</source>
         <translation type="obsolete">未进行权益增值，因为钱包正在同步</translation>
-    </message>
-    <message>
-        <source>Not staking because you don&apos;t have mature coins</source>
-        <translation type="obsolete">未进行权益增值，因为钱包中没有成熟的比特元</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s) ago</source>
@@ -793,10 +715,6 @@ Address: %4
         <translation type="obsolete">URI处理</translation>
     </message>
     <message>
-        <source>URI can not be parsed! This can be caused by an invalid bityuan address or malformed URI parameters.</source>
-        <translation type="obsolete">无法解析URI：无效的比特元地址或错误的URI参数。</translation>
-    </message>
-    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation type="obsolete">钱包已被&lt;b&gt;加密&lt;/b&gt;，当前为&lt;b&gt;解锁&lt;/b&gt;状态</translation>
     </message>
@@ -847,10 +765,6 @@ Address: %4
     <message>
         <source>Not staking</source>
         <translation type="obsolete">未进行权益增值</translation>
-    </message>
-    <message>
-        <source>A fatal error occurred. bityuan can no longer continue safely and will quit.</source>
-        <translation type="obsolete">发生严重错误，比特元客户端即将关闭。</translation>
     </message>
 </context>
 <context>
@@ -1011,10 +925,6 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Welcome to the bityuan console.</source>
-        <translation type="obsolete">欢迎使用比特元RPC控制台。</translation>
-    </message>
-    <message>
         <location filename="../menu/cliconsole.cpp" line="+167"/>
         <source>欢迎使用%1RPC控制台。</source>
         <translation type="unfinished"></translation>
@@ -1090,10 +1000,6 @@ Address: %4
         <translation type="obsolete">命令行选项</translation>
     </message>
     <message>
-        <source>Show the bityuan-Qt help message to get a list with possible bityuan command-line options.</source>
-        <translation type="obsolete">显示关于命令行选项的帮助信息。</translation>
-    </message>
-    <message>
         <source>&amp;Show</source>
         <translation type="obsolete">显示(&amp;S)</translation>
     </message>
@@ -1106,28 +1012,12 @@ Address: %4
         <translation type="obsolete">创建时间</translation>
     </message>
     <message>
-        <source>bityuan - Debug window</source>
-        <translation type="obsolete">比特元客户端-调试窗口</translation>
-    </message>
-    <message>
-        <source>bityuan Core</source>
-        <translation type="obsolete">比特元核心进程</translation>
-    </message>
-    <message>
         <source>Debug log file</source>
         <translation type="obsolete">调试日志文件</translation>
     </message>
     <message>
-        <source>Open the bityuan debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation type="obsolete">打开调试日志文件，对于较大的文件，这可能持续几秒钟。</translation>
-    </message>
-    <message>
         <source>Clear console</source>
         <translation type="obsolete">清空控制台</translation>
-    </message>
-    <message>
-        <source>Welcome to the bityuan RPC console.</source>
-        <translation type="vanished">欢迎使用比特元RPC控制台。</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1171,10 +1061,6 @@ Address: %4
 </context>
 <context>
     <name>CoinControlDialog</name>
-    <message>
-        <source>Coin Control</source>
-        <translation type="obsolete">比特元控制</translation>
-    </message>
     <message>
         <source>Quantity:</source>
         <translation type="obsolete">总量：</translation>
@@ -1572,10 +1458,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="vanished">输入的地址“%1”已经存在于地址簿中。</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid bityuan address.</source>
-        <translation type="vanished">“%1” 不是有效的比特元地址。</translation>
-    </message>
-    <message>
         <source>Could not unlock wallet.</source>
         <translation type="vanished">无法解锁钱包</translation>
     </message>
@@ -1586,10 +1468,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 </context>
 <context>
     <name>GUIUtil::HelpMessageBox</name>
-    <message>
-        <source>bityuan-Qt</source>
-        <translation type="vanished">比特元客户端bityuan-Qt</translation>
-    </message>
     <message>
         <location filename="../functionui/guiutil.cpp" line="+243"/>
         <source>version</source>
@@ -1871,10 +1749,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">登出</translation>
     </message>
     <message>
-        <source>&lt;a href = &apos;https://zc.bityuan.org/user/findPass&apos;&gt;forget password&lt;/a&gt;</source>
-        <translation type="obsolete">&lt;a href = &apos;https://zc.bityuan.org/user/findPass&apos;&gt;忘记密码?&lt;/a&gt;</translation>
-    </message>
-    <message>
         <source>please login first or checking network!</source>
         <translation type="obsolete">请先登录或检查网络连接!</translation>
     </message>
@@ -1981,16 +1855,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">[测试网络]</translation>
     </message>
     <message>
-        <source>bityuan client</source>
-        <translation type="obsolete">比特元客户端</translation>
-    </message>
-    <message>
         <source>Show general overview of wallet</source>
         <translation type="obsolete">显示钱包概况</translation>
-    </message>
-    <message>
-        <source>bityuan test wallet</source>
-        <translation type="obsolete">比特元测试钱包</translation>
     </message>
     <message>
         <source>My Homepage</source>
@@ -2073,10 +1939,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <source>&amp;Options...</source>
         <translation type="obsolete">选项(&amp;O)...</translation>
-    </message>
-    <message>
-        <source>Modify configuration options for bityuan</source>
-        <translation type="obsolete">更改设置选项</translation>
     </message>
     <message>
         <location line="+336"/>
@@ -2235,14 +2097,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <source>Open debugging and diagnostic console</source>
         <translation type="obsolete">打开调试和诊断控制台</translation>
-    </message>
-    <message>
-        <source>&amp;About bityuan</source>
-        <translation type="obsolete">关于比特元(&amp;A)</translation>
-    </message>
-    <message>
-        <source>Show information about bityuan</source>
-        <translation type="obsolete">显示关于比特元的信息</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -2448,181 +2302,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>输入的地址&quot;%1&quot;不是有效的%2地址。</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>The entered address &quot;%1&quot; is not a valid bityuan address.</source>
-        <translation type="obsolete">“%1” 不是有效的比特元地址。</translation>
-    </message>
-</context>
-<context>
-    <name>OptionsDialog</name>
-    <message>
-        <source>Options</source>
-        <translation type="obsolete">选项</translation>
-    </message>
-    <message>
-        <source>&amp;Main</source>
-        <translation type="obsolete">主要(&amp;M)</translation>
-    </message>
-    <message>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</source>
-        <translation type="obsolete">支付可选的交易手续费以加速交易(每kB)。大多数交易的数据量为1kB。推荐额0.01。</translation>
-    </message>
-    <message>
-        <source>Pay transaction &amp;fee</source>
-        <translation type="obsolete">支付交易费用(&amp;F)</translation>
-    </message>
-    <message>
-        <source>Reserved amount does not participate in staking and is therefore spendable at any time.</source>
-        <translation type="obsolete">保留金额不参与权益累积，可以随时使用。</translation>
-    </message>
-    <message>
-        <source>Reserve</source>
-        <translation type="obsolete">保留</translation>
-    </message>
-    <message>
-        <source>Automatically start bityuan after logging in to the system.</source>
-        <translation type="obsolete">开机自动启动比特元客户端</translation>
-    </message>
-    <message>
-        <source>&amp;Start bityuan on system login</source>
-        <translation type="obsolete">开机时自动启动比特元客户端(&amp;S)</translation>
-    </message>
-    <message>
-        <source>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</source>
-        <translation type="obsolete">关机时断开区块和地址数据连接使得它们可以被移动到其他目录。这样做会使关机速度变慢。钱包数据总是断开存储的。</translation>
-    </message>
-    <message>
-        <source>&amp;Detach databases at shutdown</source>
-        <translation type="obsolete">关机时断开区块和地址数据库连接(&amp;D)</translation>
-    </message>
-    <message>
-        <source>&amp;Network</source>
-        <translation type="obsolete">网络(&amp;N)</translation>
-    </message>
-    <message>
-        <source>Automatically open the bityuan client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation type="obsolete">路由器自动打开比特元客户端端口。该功能仅在路由器开启UPnP支持时有效。</translation>
-    </message>
-    <message>
-        <source>Map port using &amp;UPnP</source>
-        <translation type="obsolete">使用 &amp;UPnP 映射端口</translation>
-    </message>
-    <message>
-        <source>Connect to the bityuan network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation type="obsolete">经SOCKS代理连接到比特元网络(例如使用Tor)</translation>
-    </message>
-    <message>
-        <source>&amp;Connect through SOCKS proxy:</source>
-        <translation type="obsolete">经SOCKS代理连接(&amp;C)</translation>
-    </message>
-    <message>
-        <source>Proxy &amp;IP:</source>
-        <translation type="obsolete">代理服务器 &amp;IP：</translation>
-    </message>
-    <message>
-        <source>IP address of the proxy (e.g. 127.0.0.1)</source>
-        <translation type="obsolete">代理地址(如：127.0.0.1)</translation>
-    </message>
-    <message>
-        <source>&amp;Port:</source>
-        <translation type="obsolete">端口(&amp;P)：</translation>
-    </message>
-    <message>
-        <source>Port of the proxy (e.g. 9050)</source>
-        <translation type="obsolete">代理端口（例如 9050）</translation>
-    </message>
-    <message>
-        <source>SOCKS &amp;Version:</source>
-        <translation type="obsolete">Socks 版本(&amp;V)：</translation>
-    </message>
-    <message>
-        <source>SOCKS version of the proxy (e.g. 5)</source>
-        <translation type="obsolete">Socks 代理版本（例如 5）</translation>
-    </message>
-    <message>
-        <source>&amp;Window</source>
-        <translation type="obsolete">窗口(&amp;W)</translation>
-    </message>
-    <message>
-        <source>Show only a tray icon after minimizing the window.</source>
-        <translation type="obsolete">最小化窗口后仅显示托盘图标</translation>
-    </message>
-    <message>
-        <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation type="obsolete">最小化到托盘(&amp;M)</translation>
-    </message>
-    <message>
-        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation type="obsolete">当窗口关闭时程序最小化而不是退出。当使用该选项时，程序只能通过在菜单中选择退出来关闭</translation>
-    </message>
-    <message>
-        <source>M&amp;inimize on close</source>
-        <translation type="obsolete">单击关闭按钮最小化(&amp;I)</translation>
-    </message>
-    <message>
-        <source>&amp;Display</source>
-        <translation type="obsolete">显示(&amp;D)</translation>
-    </message>
-    <message>
-        <source>User Interface &amp;language:</source>
-        <translation type="obsolete">用户界面语言(&amp;L)：</translation>
-    </message>
-    <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting bityuan.</source>
-        <translation type="obsolete">在此设置用户界面语言。重启比特元客户端后设置生效。</translation>
-    </message>
-    <message>
-        <source>&amp;Unit to show amounts in:</source>
-        <translation type="obsolete">比特元金额单位(&amp;U)：</translation>
-    </message>
-    <message>
-        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation type="obsolete">选择比特元单位。</translation>
-    </message>
-    <message>
-        <source>Whether to show bityuan addresses in the transaction list or not.</source>
-        <translation type="obsolete">是否在交易列表中显示比特元地址</translation>
-    </message>
-    <message>
-        <source>&amp;Display addresses in transaction list</source>
-        <translation type="obsolete">在交易清单中显示比特元地址(&amp;D)</translation>
-    </message>
-    <message>
-        <source>Whether to show coin control features or not.</source>
-        <translation type="obsolete">是否需要交易源地址控制功能。</translation>
-    </message>
-    <message>
-        <source>Display coin &amp;control features (experts only!)</source>
-        <translation type="obsolete">显示比特元控制选项(仅用于专家用户)</translation>
-    </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="obsolete">确定(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="obsolete">取消(&amp;C)</translation>
-    </message>
-    <message>
-        <source>&amp;Apply</source>
-        <translation type="obsolete">应用(&amp;A)</translation>
-    </message>
-    <message>
-        <source>default</source>
-        <translation type="obsolete">默认</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">警告</translation>
-    </message>
-    <message>
-        <source>This setting will take effect after restarting bityuan.</source>
-        <translation type="obsolete">重启客户端后设置生效</translation>
-    </message>
-    <message>
-        <source>The supplied proxy address is invalid.</source>
-        <translation type="obsolete">提供的代理服务器地址无效。</translation>
-    </message>
 </context>
 <context>
     <name>OrderManageUI</name>
@@ -2636,10 +2315,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <source>Form</source>
         <translation type="obsolete">表单</translation>
-    </message>
-    <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the bityuan network after a connection is established, but this process has not completed yet.</source>
-        <translation type="obsolete">所显示的信息尚未更新，建立连接后钱包客户端会自动和网络进行同步，但目前该过程尚未完成。</translation>
     </message>
     <message>
         <source>Stake:</source>
@@ -2724,10 +2399,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <source>Total of coins that was staked, and do not yet count toward the current balance</source>
         <translation type="obsolete">正在进行权益累积的货币总额（不计入目前钱包余额）</translation>
-    </message>
-    <message>
-        <source>&lt;a href = &apos;http://www.bityuan.org&apos;&gt;bityuan&lt;/a&gt;</source>
-        <translation type="obsolete">&lt;a href = &apos;http://www.bityuan.org&apos;&gt;比特元&lt;/a&gt;</translation>
     </message>
     <message>
         <source>out of sync</source>
@@ -2870,10 +2541,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished">表单</translation>
     </message>
     <message>
-        <source>bityuan test wallet</source>
-        <translation type="obsolete">比特元测试钱包</translation>
-    </message>
-    <message>
         <location filename="../seedUi/seedui.cpp" line="+38"/>
         <source>%1钱包-正式版 %2</source>
         <translation type="unfinished"></translation>
@@ -3000,10 +2667,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">发送(&amp;E)</translation>
     </message>
     <message>
-        <source>Enter a bityuan address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="obsolete">输入比特元地址(例如：1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
-    </message>
-    <message>
         <source>Copy quantity</source>
         <translation type="obsolete">复制金额</translation>
     </message>
@@ -3080,24 +2743,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">错误：交易被拒绝。可能由于钱包中部分金额已被使用，例如您使用了钱包数据的副本，在副本中某些金额已被使用，但在此处尚未被标记为已使用。</translation>
     </message>
     <message>
-        <source>WARNING: Invalid bityuan address</source>
-        <translation type="obsolete">警告：无效的比特元地址</translation>
-    </message>
-    <message>
         <source>(no label)</source>
         <translation type="obsolete">(没有标签)</translation>
     </message>
     <message>
         <source>WARNING: unknown change address</source>
         <translation type="obsolete">警告：未知的零钱地址</translation>
-    </message>
-    <message>
-        <source>sending fail </source>
-        <translation type="obsolete">发送比特元失败</translation>
-    </message>
-    <message>
-        <source>some exception</source>
-        <translation type="obsolete">发送比特元异常</translation>
     </message>
     <message>
         <source>please login first!</source>
@@ -3207,10 +2858,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">删除收款人</translation>
     </message>
     <message>
-        <source>Enter a bityuan address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="obsolete">输入一个比特元地址 (例：1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
-    </message>
-    <message>
         <source>sms sending complete!</source>
         <translation type="obsolete">验证请求发送完成!</translation>
     </message>
@@ -3262,10 +2909,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">复制当前签名至剪切板</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this bityuan address</source>
-        <translation type="obsolete">对该消息进行签名以证明您对该比特元地址的所有权</translation>
-    </message>
-    <message>
         <source>Reset all sign message fields</source>
         <translation type="obsolete">清空所有签名消息栏</translation>
     </message>
@@ -3282,28 +2925,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">在下面输入签名地址，消息（请确保换行符、空格符、制表符等等一个不漏）和签名以验证消息。请确保签名信息准确，提防中间人攻击。</translation>
     </message>
     <message>
-        <source>The address the message was signed with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="obsolete">用来签名该消息的比特元地址(例： 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
-    </message>
-    <message>
-        <source>Verify the message to ensure it was signed with the specified bityuan address</source>
-        <translation type="obsolete">确认该消息以保证它经由指定的比特元地址签名</translation>
-    </message>
-    <message>
         <source>Reset all verify message fields</source>
         <translation type="obsolete">清空所有验证消息栏</translation>
     </message>
     <message>
-        <source>Enter a bityuan address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="obsolete">输入比特元地址(例： 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
-    </message>
-    <message>
         <source>Click &quot;Sign Message&quot; to generate signature</source>
         <translation type="obsolete">单击“签名消息“产生签名。</translation>
-    </message>
-    <message>
-        <source>Enter bityuan signature</source>
-        <translation type="obsolete">输入比特元签名</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -3407,12 +3034,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+5"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation type="unfinished">钱包已被&lt;b&gt;加密&lt;/b&gt;，当前为&lt;b&gt;锁定&lt;/b&gt;状态</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n active connection(s) to bityuan network</source>
-        <translation type="obsolete">
-            <numerusform>与比特元网络建立了 %n 个连接</numerusform>
-        </translation>
     </message>
     <message>
         <location line="+103"/>
@@ -4459,10 +4080,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished">钱包</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the bityuan network after a connection is established, but this process has not completed yet.</source>
-        <translation type="obsolete">所显示的信息尚未更新，建立连接后钱包客户端会自动和网络进行同步，但目前该过程尚未完成。</translation>
-    </message>
-    <message>
         <location line="+42"/>
         <location filename="../mainui/walletsendui.cpp" line="+127"/>
         <source>时间误差: %1 秒</source>
@@ -4605,10 +4222,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">输入发送交易的备注信息</translation>
     </message>
     <message>
-        <source>Enter a bityuan address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation type="obsolete">输入比特元地址(例如：1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
-    </message>
-    <message>
         <location filename="../mainui/walletsendui.cpp" line="-11"/>
         <source>out of sync</source>
         <translation type="unfinished">数据未同步</translation>
@@ -4713,16 +4326,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>bityuan version</source>
-        <translation type="obsolete">比特元客户端 版本</translation>
-    </message>
-    <message>
         <source>Usage:</source>
         <translation type="obsolete">使用：</translation>
-    </message>
-    <message>
-        <source>Send command to -server or bityuand</source>
-        <translation type="obsolete">向-server服务器或bityuand发送命令</translation>
     </message>
     <message>
         <source>List commands</source>
@@ -4738,14 +4343,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>Options:</source>
         <translation type="obsolete">选项：
 </translation>
-    </message>
-    <message>
-        <source>Specify configuration file (default: bityuan.conf)</source>
-        <translation type="obsolete">指定配置文件(默认: bityuan.conf)</translation>
-    </message>
-    <message>
-        <source>Specify pid file (default: bityuand.pid)</source>
-        <translation type="obsolete">指定pid文件(默认: bityuand.pid)</translation>
     </message>
     <message>
         <source>Specify wallet file (within data directory)</source>
@@ -4783,10 +4380,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <source>Bind to given address. Use [host]:port notation for IPv6</source>
         <translation type="obsolete">以IPv6 [host]:端口绑定给定地址</translation>
-    </message>
-    <message>
-        <source>Stake your coins to support network and gain reward (default: 1)</source>
-        <translation type="obsolete">进行权益累积以支持比特元网络并获得报酬(默认: 1)</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
@@ -4867,10 +4460,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
         <translation type="obsolete">警告：-paytxfee 交易费设置得太高了！每笔交易都将支付交易费。</translation>
-    </message>
-    <message>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong bityuan will not work properly.</source>
-        <translation type="obsolete">警告：请确认您计算机的本地时间。如果时钟错误，比特元客户端将不能正常工作。</translation>
     </message>
     <message>
         <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
@@ -5019,30 +4608,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 </translation>
     </message>
     <message>
-        <source>%s, you must set a rpcpassword in the configuration file:
- %s
-It is recommended you use the following random password:
-rpcuser=bityuanrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;bityuan Alert&quot; admin@foo.com
-</source>
-        <translation type="obsolete">%s, 必须在配置文件里设置rpc密码:
- %s
-建议使用如下的随机密码:
-rpcuser=bityuanrpc
-rpcpassword=%s
-(不需要记住该密码)
-用户名和密码不能重复。
-如果该文件不存在，请自行创建并设为用户本身只读权限。
-建议创建提示以监测可能的问题，如：
-alertnotify=echo %%s | mail -s &quot;bityuan Alert&quot; admin@foo.com
-</translation>
-    </message>
-    <message>
         <source>Find peers using internet relay chat (default: 0)</source>
         <translation type="obsolete">寻找使用互联网接力聊天的节点 (默认: 1) {0)?}</translation>
     </message>
@@ -5143,14 +4708,6 @@ alertnotify=echo %%s | mail -s &quot;bityuan Alert&quot; admin@foo.com
         <translation type="obsolete">钱包 %s 位于数据目录 %s 之外.</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s.  bityuan is probably already running.</source>
-        <translation type="obsolete">无法从数据目录 %s 获得锁定.  比特元客户端可能已在运行中.</translation>
-    </message>
-    <message>
-        <source>bityuan</source>
-        <translation type="obsolete">比特元</translation>
-    </message>
-    <message>
         <source>Unable to bind to %s on this computer (bind returned error %d, %s)</source>
         <translation type="obsolete">无法绑定本机端口 %s  (返回错误消息 %d, %s)</translation>
     </message>
@@ -5173,14 +4730,6 @@ alertnotify=echo %%s | mail -s &quot;bityuan Alert&quot; admin@foo.com
     <message>
         <source>Error loading wallet.dat: Wallet corrupted</source>
         <translation type="obsolete">wallet.dat 钱包文件加载出错：钱包损坏</translation>
-    </message>
-    <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of bityuan</source>
-        <translation type="obsolete">wallet.dat 钱包文件加载出错：需要新版本的客户端</translation>
-    </message>
-    <message>
-        <source>Wallet needed to be rewritten: restart bityuan to complete</source>
-        <translation type="obsolete">需要重写钱包，重启客户端以完成该操作。</translation>
     </message>
     <message>
         <source>Error loading wallet.dat</source>
@@ -5233,10 +4782,6 @@ alertnotify=echo %%s | mail -s &quot;bityuan Alert&quot; admin@foo.com
     <message>
         <source>Add a node to connect to and attempt to keep the connection open</source>
         <translation type="obsolete">添加节点并与其保持连接</translation>
-    </message>
-    <message>
-        <source>Unable to bind to %s on this computer. bityuan is probably already running.</source>
-        <translation type="obsolete">无法绑定到该计算机上的 %s. 比特元客户端可能已在运行中。</translation>
     </message>
     <message>
         <source>Fee per KB to add to transactions you send</source>

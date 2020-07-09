@@ -1,4 +1,4 @@
-#ifndef BASEJSONCONNECTOR_H
+﻿#ifndef BASEJSONCONNECTOR_H
 #define BASEJSONCONNECTOR_H
 
 /* json Post
@@ -71,7 +71,8 @@ enum IdType{
     ID_CloseQueue,
     ID_SendToAddress_Token,
     ID_GetAccounts_GetBalance,
-    ID_CreateRawTxGroup
+    ID_CreateRawTxGroup,
+    ID_GetCoinSymbol
 };
 
 class BaseJsonConnector

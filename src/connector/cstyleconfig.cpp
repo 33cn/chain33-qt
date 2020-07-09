@@ -37,7 +37,6 @@ void CStyleConfig::readConfigFile()
         readValue(lpconfigIni, "Config/AppName", m_strAppName);
         readValue(lpconfigIni, "Config/AppName_zh", m_strAppName_zh);
         readValue(lpconfigIni, "Config/AppName_en", m_strAppName_en);
-        readValue(lpconfigIni, "Config/UnitName", m_strUnitName);
         readValue(lpconfigIni, "Config/MinFee", m_strMinFee);
         readValue(lpconfigIni, "Config/StyleType", m_stylesheet_type);
         delete lpconfigIni;

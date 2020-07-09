@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>About BitYuan</string>
+   <string>About</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
@@ -53,7 +53,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../bitcoin.qrc">:/icons/about</pixmap>
+           <pixmap>:/icons/about</pixmap>
           </property>
          </widget>
         </item>
@@ -235,8 +235,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../bitcoin.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -114,7 +114,6 @@ private slots:
     void gotoOverviewPage();
     void gotoAddressBookPage();
 
-
     /** Show window if hidden, unminimize when minimized, rise when obscured or show if hidden and fToggleHidden is true */
     void showNormalIfMinimized(bool fToggleHidden = false);
 

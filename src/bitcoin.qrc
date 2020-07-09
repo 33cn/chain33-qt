@@ -1,4 +1,4 @@
-﻿<RCC>
+<RCC>
     <qresource prefix="/icons">
         <file alias="RepairTime_closed">res/icons/RepairTime_closed.png</file>
         <file alias="RepairTime_open">res/icons/RepairTime_open.png</file>
@@ -33,7 +33,7 @@
         <file alias="warn">res/icons/warn.png</file>
         <file alias="about_qt">res/icons/about_qt.png</file>
         <file alias="downarrow">res/icons/downarrow.png</file>
-        <file alias="yellow_icon_icon">res/icons/yellow_novacoin_16.png</file>
+        <file alias="yellow_small_icon">res/icons/yellow_novacoin_16.png</file>
         <file alias="yellow_icon">res/icons/yellow_novacoin_80.png</file>
         <file alias="yellow_radio_checked">res/icons/yellow_radio_checked.png</file>
         <file alias="yellow_radio_unchecked">res/icons/yellow_radio_unchecked.png</file>

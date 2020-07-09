@@ -7,7 +7,7 @@
 TEMPLATE = app
 TARGET = chain33-qt
 CONFIG(debug, debug|release) {
-    TARGET = chain33-qt-test
+    TARGET = chain33-qt-Debug
 }
 VERSION = 1.0.1.0
 INCLUDEPATH +=  /usr/local/include src ./ ./src/connector ./src/seedUi ./src/functionui ./src/qrencode ./src/menu ./src/mainui

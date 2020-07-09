@@ -1,4 +1,4 @@
-#include "basejsonconnector.h"
+﻿#include "basejsonconnector.h"
 #include "manageui.h"
 #include <QCoreApplication>
 #include <QDebug>
@@ -241,7 +241,7 @@ void BaseJsonConnector::SendToTrade(const QString &strAddr, const QString &strSy
     jsonParms.insert("amount", nBalance);
     jsonParms.insert("note", "test");
 
-    if(strSymbol != "BTY")
+    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
     {
         jsonParms.insert("isToken", true);
         jsonParms.insert("tokenSymbol", strSymbol);
@@ -253,7 +253,7 @@ void BaseJsonConnector::SendToTrade(const QString &strAddr, const QString &strSy
     std::stringstream ostr;
     ostr << "{\"amount\":" << 0-nBalance;
     ostr << ",\"from\":\"" << strAddr.toStdString().c_str() << "\"";
-    if(strSymbol != "BTY")
+    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
     {
         ostr << ",\"isToken\":true,\"tokenSymbol\":\"" << strSymbol.toStdString().c_str() << "\"";
     }
@@ -271,7 +271,7 @@ void BaseJsonConnector::PostCreateRawTransaction(const QString &strSymbol, qint6
     jsonParms.insert("isWithdraw", isWithdraw);
     jsonParms.insert("note", "test");
     jsonParms.insert("fee", 100000);
-    if(strSymbol != "BTY")
+    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
     {
         jsonParms.insert("isToken", true);
         jsonParms.insert("tokenSymbol", strSymbol);
@@ -287,7 +287,7 @@ void BaseJsonConnector::PostCreateRawTransaction(const QString &strSymbol, qint6
 #else
     std::stringstream ostr;
     ostr << "{\"to\":\"1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4\",\"amount\":" << nAmount << ",\"note\":\"test\",\"execName\":\"cions\",\"isWithdraw\":" << isWithdraw;
-    if(strSymbol != "BTY")
+    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
     {
         ostr << ",\"isToken\":true,\"tokenSymbol\":\"" << strSymbol.toStdString().c_str() << "\"";
     }

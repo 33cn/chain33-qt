@@ -60,6 +60,8 @@ void RuningThread::run()
                 m_mutexFinish.unlock();
                 emit PostMsgGetWalletstatus();
                 sleep(5);
+                emit PostMsgGetCoinSymbol();
+                sleep(5);
             } else {
                 m_mutexFinish.unlock();
             }
@@ -93,6 +95,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
 
     m_lpThread = new RuningThread();
     connect(m_lpThread, SIGNAL(PostMsgGetWalletstatus()), this, SLOT(PostMsgGetWalletstatus()));
+    connect(m_lpThread, SIGNAL(PostMsgGetCoinSymbol()), this, SLOT(PostMsgGetCoinSymbol()));
     connect(m_lpThread, SIGNAL(startChain33()), this, SLOT(startChain33()));
 #ifdef WIN32
     m_clearThread = new ClearThread();
@@ -109,6 +112,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
     m_stylesheet = CStyleConfig::GetInstance().GetStylesheet_main();
 
     PostMsgGetWalletstatus();
+    PostMsgGetCoinSymbol();
 }
 
 ManageUI::~ManageUI()
@@ -153,9 +157,12 @@ void ManageUI::requestFinished(const QVariant &result, const QString &/*error*/)
             lpSeedUI->show();
         }
     }
-    else if (ID_CloseQueue == m_nID)
+    else if (ID_GetCoinSymbol == m_nID)
     {
-
+        QMap<QString, QVariant> resultMap = result.toMap();
+        QString strCoinSymbol = resultMap["data"].toString();
+        qInfo() << ("GetCoinSymbol: ") << strCoinSymbol;
+        CStyleConfig::SetUnitName(strCoinSymbol);
     }
     else if (ID_UnLock == m_nID)
     {
@@ -267,6 +274,11 @@ void ManageUI::UnlockWallet(bool isWalletLock, bool isTicketLock)
 void ManageUI::PostMsgGetWalletstatus()
 {
     PostJsonMessage(ID_GetWalletStatus);
+}
+
+void ManageUI::PostMsgGetCoinSymbol()
+{
+    PostJsonMessage(ID_GetCoinSymbol);
 }
 
 void ManageUI::startChain33()

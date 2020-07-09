@@ -29,10 +29,9 @@ public:
     void SetFinish();
     void SetQuit(bool bQuit);
 
- //   bool GetProcessidFromName();
-
 signals:
     void PostMsgGetWalletstatus();
+    void PostMsgGetCoinSymbol();
 
     void startChain33();
 
@@ -74,6 +73,8 @@ public:
 
 public slots:
     void PostMsgGetWalletstatus();
+
+    void PostMsgGetCoinSymbol();
 
     void startChain33();    
 

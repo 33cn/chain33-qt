@@ -26,7 +26,7 @@
 - 在 chain33-qt.exe 所在目录下运行命令 `windeployqt.exe btyWallet.exe` 会拷贝所需要的对应 DLL 文件，如果运行时还提示 DLL 文件缺少，可以在 Qt 的安装目录 bin 目录下寻找（例如 C:\Qt\Qt5.10.0\5.10.0\mingw53_32\bin）。
 - 同一目录下添加 chain33.exe、chain33-cli.exe、chain33-x86.exe、chain33-cli-x86.exe、chain33.toml 这 5 个文件。
 
-### 打包成可自行程序
+### 打包成可执行程序
 - 全选所有文件，右击 "添加到压缩文件"；
 - 压缩文件名的后缀改为 .exe；
 - 点击高级，自解压缩项；

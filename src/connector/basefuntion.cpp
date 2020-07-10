@@ -24,14 +24,6 @@ static const quint64 SPACE_MINUS_SIZE = 100*1024*1024;
 QNetworkAccessManager*  g_lpaccessManager;
 SingleApplication* g_lpapp;
 
-#ifdef QT_DEBUG
-double  g_dminFee = 20;
-QString g_strminFee = "20";
-#else
-double  g_dminFee = 0.001;
-QString g_strminFee = "0.001";
-#endif
-
 #ifdef WIN32
 #include <stdio.h>
 #include <shlobj.h>
@@ -192,8 +184,6 @@ void InitMainUI(const SingleApplication& app)
     app.setPalette(pa);
 
     g_lpaccessManager = new QNetworkAccessManager();
-
-    GetMinFee();
 
     InitErrorCode();
 }
@@ -623,54 +613,6 @@ void SetRepairTimeConfig(bool bConfig)
     QSettings *lpconfigIni = new QSettings(strPath, QSettings::IniFormat);
     lpconfigIni->setValue("Config/RepairTime", bConfig);
     delete lpconfigIni;
-}
-
-double GetMinFee()
-{
-    std::string strminFee;
-    QString strPath = QCoreApplication::applicationDirPath() + "/chain33.toml";
-    QFile file(strPath);
-    if(file.open(QIODevice::ReadOnly))
-    {
-        //判断文件是否已经读到末尾了
-        while(!file.atEnd())
-        {
-            char buffer[1024];
-            //读取一行数据
-            qint64 length = file.readLine(buffer,1024);
-            if(length != -1)
-            {
-                std::string strFine = buffer;
-                if( strFine.find("minFee") != std::string::npos )
-                {
-                    unsigned int nPos = strFine.find("minFee");
-                    if( nPos != std::string::npos )
-                    {
-                        nPos = strFine.find("=");
-                        if(nPos != std::string::npos)
-                        {
-                            strminFee = strFine.substr(nPos+1, strlen(strFine.c_str()));
-                            nPos = strminFee.find("\n");
-                            if(nPos != std::string::npos)
-                            {
-                                strminFee = strminFee.substr(0, nPos);
-                            }
-                        }
-                    }
-                    break;
-                }
-            }
-        }
-    }
-    file.close();
-
-    if(!strminFee.empty())
-    {
-        g_dminFee = QString(strminFee.c_str()).toDouble()/le8;
-        g_strminFee = QString::number(g_dminFee);
-    }
-
-    return g_dminFee;
 }
 
 qint64 DoubleToInt3(double dAmount)

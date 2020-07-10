@@ -14,8 +14,8 @@ CStyleConfig::CStyleConfig()
 , m_strAppName ("chain33-qt")
 , m_strAppName_en ("chain33-qt")
 , m_strAppName_zh ("chain33-qt")
-, m_strUnitName ("coin")
-, m_strMinFee ("0.001")
+, m_strUnitName ("")
+, m_dMinFee (0.0)
 {
     readConfigFile();
     setChain33NamePath();
@@ -37,7 +37,7 @@ void CStyleConfig::readConfigFile()
         readValue(lpconfigIni, "Config/AppName", m_strAppName);
         readValue(lpconfigIni, "Config/AppName_zh", m_strAppName_zh);
         readValue(lpconfigIni, "Config/AppName_en", m_strAppName_en);
-        readValue(lpconfigIni, "Config/MinFee", m_strMinFee);
+        readValueDouble(lpconfigIni, "Config/MinFee", m_dMinFee);
         readValue(lpconfigIni, "Config/StyleType", m_stylesheet_type);
         delete lpconfigIni;
     }
@@ -74,6 +74,15 @@ void CStyleConfig::readValue(QSettings *lpconfig, const QString &key, QString &r
         QString strConfig = lpconfig->value(key).toString();
         if(!strConfig.isEmpty())
             ret = strConfig;
+    }
+}
+
+void CStyleConfig::readValueDouble(QSettings *lpconfig, const QString &key, double &ret)
+{
+    if (lpconfig) {
+        QString strConfig = lpconfig->value(key).toString();
+        if(!strConfig.isEmpty())
+            ret = lpconfig->value(key).toDouble();
     }
 }
 

@@ -31,10 +31,8 @@ void TransactionDescDialog::requestFinished(const QVariant &/*result*/, const QS
 
 QString TransactionDescDialog::getHtmlText(const QModelIndex &idx)
 {
- //   QString strFromLabel = idx.data(TyItem_FromLabel).toString();
     QString strFromAddr = idx.data(TyItem_FromAddress).toString();
     contractAddr(strFromAddr);
- //   QString strToLabel = idx.data(TyItem_ToLabel).toString();
     QString strToAddr = idx.data(TyItem_ToAddress).toString();
     contractAddr(strToAddr);
     QString strTxHash = idx.data(TyItem_Hash).toString();
@@ -76,9 +74,6 @@ QString TransactionDescDialog::getHtmlText(const QModelIndex &idx)
         strHTML += "<b>" + tr("交易费") + ":</b> " + strFee + "<br>";
         strHTML += "<b>" + tr("净额") + ":</b> " + strFee + "<br>";
     } else {
-      /*  if (SendToSelf == typeTy) {
-            strHTML += "<b>" + tr("收入") + ":</b> " + dAmount + "<br>";
-        }*/
         if (SendToSelf != typeTy) {
             strHTML += "<b>" + tr("支出") + ":</b> " + dAmount + "<br>";
         }

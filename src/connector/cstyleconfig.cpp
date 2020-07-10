@@ -115,7 +115,7 @@ bool CStyleConfig::isWow64()
 }
 #endif
 
-const CStyleConfig &CStyleConfig::GetInstance()
+CStyleConfig &CStyleConfig::GetInstance()
 {
     if(s_lpStyleConfig == nullptr) {
           s_lpStyleConfig = new CStyleConfig;
@@ -130,3 +130,9 @@ STYLE_QSS CStyleConfig::GetStyleType() const
 
     return QSS_YELLOW;
 }
+
+//void CStyleConfig::SetUnitName(const QString &strUnitName)
+//{
+//    m_strUnitName = strUnitName;
+//    m_strUnitName = m_strUnitName.toUpper();
+//}

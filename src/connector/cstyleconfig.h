@@ -22,14 +22,14 @@ enum STYLE_QSS
 class CStyleConfig
 {
 public:
-    static const CStyleConfig &GetInstance();
+    static CStyleConfig &GetInstance();
 
     STYLE_QSS GetStyleType() const;
     const QString &GetChain33Name() const { return m_strChain33Name; }
     const QString &GetAppName() const { return m_strAppName; }
     const QString &GetAppName_en() const { return m_strAppName_en; }
     const QString &GetUnitName() const { return m_strUnitName; }
-    void SetUnitName(const QString &strUnitName) { m_strUnitName = strUnitName.toUpper(); }
+    void SetUnitName(const QString &strUnitName) { m_strUnitName = strUnitName.toUpper();}
     const QString &GetMinFee() const { return m_strMinFee; }
     const QString &GetStylesheet() const { return m_stylesheet; }
     const QString &GetStylesheet_main() const { return m_stylesheet_main; }

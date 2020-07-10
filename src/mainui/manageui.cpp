@@ -2,13 +2,15 @@
 #include "ui_manageui.h"
 #include "mainui.h"
 #include "seedui.h"
+#include "walletsendui.h"
+#include "homepageui.h"
+#include "basefuntion.h"
 #include <QPainter>
 #include <QString>
 #include <string.h>
 #include <QDir>
 #include <QMessageBox>
 #include <QCoreApplication>
-#include "basefuntion.h"
 #include <cstdlib>
 #include <string>
 #include <cstdio>
@@ -167,6 +169,9 @@ void ManageUI::requestFinished(const QVariant &result, const QString &/*error*/)
         QString strCoinSymbol = resultMap["data"].toString();
         qInfo() << ("GetCoinSymbol: ") << strCoinSymbol;
         CStyleConfig::GetInstance().SetUnitName(strCoinSymbol);
+
+        if(g_lpMainUI && g_lpMainUI->m_lpHomepageUI && g_lpMainUI->m_lpHomepageUI->m_lpWalletSendUI)
+            g_lpMainUI->m_lpHomepageUI->m_lpWalletSendUI->UpDataUnitNameMinFee();
     }
     else if (ID_GetProperFee == m_nID)
     {
@@ -176,6 +181,9 @@ void ManageUI::requestFinished(const QVariant &result, const QString &/*error*/)
         dProperFee /= le8;
         qInfo() << ("properFee: ") << dProperFee;
         CStyleConfig::GetInstance().SetMinFee(dProperFee);
+
+        if(g_lpMainUI && g_lpMainUI->m_lpHomepageUI && g_lpMainUI->m_lpHomepageUI->m_lpWalletSendUI)
+            g_lpMainUI->m_lpHomepageUI->m_lpWalletSendUI->UpDataUnitNameMinFee();
     }
     else if (ID_UnLock == m_nID)
     {

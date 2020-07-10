@@ -56,13 +56,7 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent):
     setFocusProxy(amount);
 
     connect(allbtn, SIGNAL(clicked()), this, SLOT(AllBtnClicked()));
- //   connect(unit, SIGNAL(currentIndexChanged(int)), this, SLOT(unitChanged(int)));
-
-    // Set default based on configuration
- //   unitChanged(unit->currentIndex());
     amount->setContextMenuPolicy(Qt::NoContextMenu);
-
-//    m_dminFee = GetMinFee();
 }
 
 void BitcoinAmountField::setText(const QString &text)
@@ -133,8 +127,8 @@ QWidget *BitcoinAmountField::setupTabChain(QWidget *prev)
 
 void BitcoinAmountField::setAmountRange(double dMax)
 {
-    if(dMax >= g_dminFee){
-        dMax -= g_dminFee;
+    if(dMax >= CStyleConfig::GetInstance().GetMinFee()){
+        dMax -= CStyleConfig::GetInstance().GetMinFee();
     }
     m_dMax = dMax;
     amount->setRange(0.0, dMax);  // 范围

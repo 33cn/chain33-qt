@@ -72,7 +72,8 @@ enum IdType{
     ID_SendToAddress_Token,
     ID_GetAccounts_GetBalance,
     ID_CreateRawTxGroup,
-    ID_GetCoinSymbol
+    ID_GetCoinSymbol,
+    ID_GetProperFee
 };
 
 class BaseJsonConnector

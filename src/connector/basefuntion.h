@@ -18,12 +18,8 @@
 #define MAX_TIMEOUT_WAIT_RESPONSE_RESULT (60000) //60 second
 
 const quint64 GB_BYTES = 1024*1024*1024;
-
 extern QMap<QString, QString> g_mapErrorCode;
 extern std::map<std::string, std::string> mapArgs;
-
-extern double  g_dminFee;
-extern QString g_strminFee;
 extern QNetworkAccessManager*  g_lpaccessManager;
 extern SingleApplication* g_lpapp;
 
@@ -62,8 +58,6 @@ void InitErrorCode();
 bool GetRepairTimeConfig();
 
 void SetRepairTimeConfig(bool bConfig);
-
-double GetMinFee();
 
 qint64 DoubleToInt3(double dAmount);
 

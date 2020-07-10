@@ -62,6 +62,8 @@ void InitMethodMap()
     g_methodMap.insert(ID_CloseQueue, "Chain33.CloseQueue");
     g_methodMap.insert(ID_SendToAddress_Token, "Chain33.SendToAddress");
     g_methodMap.insert(ID_CreateRawTxGroup, "Chain33.CreateRawTxGroup");
+    g_methodMap.insert(ID_GetCoinSymbol, "Chain33.GetCoinSymbol");
+    g_methodMap.insert(ID_GetProperFee, "Chain33.GetProperFee");
 }
 
 BaseJsonConnector::BaseJsonConnector()

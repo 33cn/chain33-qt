@@ -138,7 +138,6 @@ void WalletSendUI::SetTimeStatus(int nDiff)
 void WalletSendUI::initUI()
 {
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
-    // TODO
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         this->setStyleSheet("QWidget {background-color:#FFFFFF;border:none;}" + CStyleConfig::GetInstance().GetStylesheet());
         ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#F2F3F5;border-radius: 4px;}");
@@ -177,7 +176,11 @@ void WalletSendUI::initUI()
     ui->label_Balance_text->setText(tr("可用余额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
     ui->label_Frozen_text->setText(tr("挖矿冻结金额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
     ui->label_Stake_text->setText(tr("挖矿确认 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
-    ui->label_fee_text->setText(tr("手续费仅 %1 %2").arg(g_strminFee, CStyleConfig::GetInstance().GetUnitName()));
+    // +++++
+    QString strMinFeeText = tr("手续费仅 %1 ").arg(CStyleConfig::GetInstance().GetMinFee());
+    strMinFeeText = strMinFeeText + CStyleConfig::GetInstance().GetUnitName();
+    ui->label_fee_text->setText(strMinFeeText);
+    // ui->label_fee_text->setText(tr("手续费仅 %d %s").arg(CStyleConfig::GetInstance().GetMinFee(), CStyleConfig::GetInstance().GetUnitName()));
 
     ui->addAsLabel->setContextMenuPolicy(Qt::DefaultContextMenu);
     ui->payTo->setContextMenuPolicy(Qt::DefaultContextMenu);

@@ -61,6 +61,8 @@ void RuningThread::run()
                 emit PostMsgGetWalletstatus();
                 sleep(5);
                 emit PostMsgGetCoinSymbol();
+                sleep(1);
+                emit PostMsgGetProperFee();
                 sleep(5);
             } else {
                 m_mutexFinish.unlock();
@@ -96,6 +98,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
     m_lpThread = new RuningThread();
     connect(m_lpThread, SIGNAL(PostMsgGetWalletstatus()), this, SLOT(PostMsgGetWalletstatus()));
     connect(m_lpThread, SIGNAL(PostMsgGetCoinSymbol()), this, SLOT(PostMsgGetCoinSymbol()));
+    connect(m_lpThread, SIGNAL(PostMsgGetProperFee()), this, SLOT(PostMsgGetProperFee()));
     connect(m_lpThread, SIGNAL(startChain33()), this, SLOT(startChain33()));
 #ifdef WIN32
     m_clearThread = new ClearThread();
@@ -113,6 +116,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
 
     PostMsgGetWalletstatus();
     PostMsgGetCoinSymbol();
+    PostMsgGetProperFee();
 }
 
 ManageUI::~ManageUI()
@@ -163,6 +167,15 @@ void ManageUI::requestFinished(const QVariant &result, const QString &/*error*/)
         QString strCoinSymbol = resultMap["data"].toString();
         qInfo() << ("GetCoinSymbol: ") << strCoinSymbol;
         CStyleConfig::GetInstance().SetUnitName(strCoinSymbol);
+    }
+    else if (ID_GetProperFee == m_nID)
+    {
+        QMap<QString, QVariant> resultMap = result.toMap();
+        double dProperFee = resultMap["properFee"].toDouble();
+        qInfo() << ("properFee: ") << dProperFee;
+        dProperFee /= le8;
+        qInfo() << ("properFee: ") << dProperFee;
+        CStyleConfig::GetInstance().SetMinFee(dProperFee);
     }
     else if (ID_UnLock == m_nID)
     {
@@ -278,7 +291,16 @@ void ManageUI::PostMsgGetWalletstatus()
 
 void ManageUI::PostMsgGetCoinSymbol()
 {
-    PostJsonMessage(ID_GetCoinSymbol);
+    if (CStyleConfig::GetInstance().GetUnitName() == ""){
+        PostJsonMessage(ID_GetCoinSymbol);
+    }
+}
+
+void ManageUI::PostMsgGetProperFee()
+{
+    if (CStyleConfig::GetInstance().GetMinFee() <= 0){
+        PostJsonMessage(ID_GetProperFee);
+    }
 }
 
 void ManageUI::startChain33()

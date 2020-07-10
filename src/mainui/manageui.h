@@ -32,6 +32,7 @@ public:
 signals:
     void PostMsgGetWalletstatus();
     void PostMsgGetCoinSymbol();
+    void PostMsgGetProperFee();
 
     void startChain33();
 
@@ -75,6 +76,8 @@ public slots:
     void PostMsgGetWalletstatus();
 
     void PostMsgGetCoinSymbol();
+
+    void PostMsgGetProperFee();
 
     void startChain33();    
 

@@ -172,15 +172,7 @@ void WalletSendUI::initUI()
     ui->StakeWidget->setVisible(false);
     ui->UnconfirmedWidget->setVisible(false);
 
-    ui->labelTotalText->setText(tr("总额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
-    ui->label_Balance_text->setText(tr("可用余额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
-    ui->label_Frozen_text->setText(tr("挖矿冻结金额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
-    ui->label_Stake_text->setText(tr("挖矿确认 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
-    // +++++
-    QString strMinFeeText = tr("手续费仅 %1 ").arg(CStyleConfig::GetInstance().GetMinFee());
-    strMinFeeText = strMinFeeText + CStyleConfig::GetInstance().GetUnitName();
-    ui->label_fee_text->setText(strMinFeeText);
-    // ui->label_fee_text->setText(tr("手续费仅 %d %s").arg(CStyleConfig::GetInstance().GetMinFee(), CStyleConfig::GetInstance().GetUnitName()));
+    UpDataUnitNameMinFee();
 
     ui->addAsLabel->setContextMenuPolicy(Qt::DefaultContextMenu);
     ui->payTo->setContextMenuPolicy(Qt::DefaultContextMenu);
@@ -383,7 +375,6 @@ void WalletSendUI::on_sendButton_clicked()
 
 void WalletSendUI::contextualMenu(const QPoint &/*point*/)
 {
-    // contextMenu->exec(point);
     contextMenu->exec(QCursor::pos());
 }
 
@@ -400,20 +391,17 @@ void WalletSendUI::requestFinished(const QVariant &result, const QString &error)
             clear();
 
             PostJsonMessage(ID_GetAccounts);
-        //    emit SendAddrSucceedUpData();   // 刷新交易列表
         }
     } else if(ID_GetAccounts == m_nID) {
         QString strMaxAddr;
         double dMaxBalance = 0.0;
         double dBalance = 0.0;
-      //  double dFrozen = 0.0;
 
         QMap<QString, QVariant> resultMap = result.toMap();
         QList<QVariant> walletsList = (resultMap["wallets"]).toList();
         for (int i=0; i<walletsList.size(); ++i) {
             QMap<QString, QVariant> addrMap = walletsList[i].toMap();
             dBalance += (addrMap["acc"].toMap())["balance"].toDouble();
-         //   dFrozen += (addrMap["acc"].toMap())["frozen"].toDouble();
 
             if(dMaxBalance < (addrMap["acc"].toMap())["balance"].toDouble()) {
                 dMaxBalance = (addrMap["acc"].toMap())["balance"].toDouble();
@@ -460,4 +448,15 @@ void WalletSendUI::ResumeWalletSendUpdateThread()
     {
         m_getTicketBalanceThread->Resume();
     }
+}
+
+void WalletSendUI::UpDataUnitNameMinFee()
+{
+    ui->labelTotalText->setText(tr("总额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
+    ui->label_Balance_text->setText(tr("可用余额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
+    ui->label_Frozen_text->setText(tr("挖矿冻结金额 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
+    ui->label_Stake_text->setText(tr("挖矿确认 (%1)").arg(CStyleConfig::GetInstance().GetUnitName()));
+    QString strMinFeeText = tr("手续费仅 %1 ").arg(CStyleConfig::GetInstance().GetMinFee());
+    strMinFeeText = strMinFeeText + CStyleConfig::GetInstance().GetUnitName();
+    ui->label_fee_text->setText(strMinFeeText);
 }

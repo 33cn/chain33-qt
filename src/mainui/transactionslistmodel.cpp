@@ -1,13 +1,11 @@
-﻿#include "transactionslistmodel.h"
+﻿#include <QFont>
+#include <QColor>
+#include "transactionslistmodel.h"
 #include "guiutil.h"
 #include "addressui.h"
 #include "mainui.h"
 #include "addresslistui.h"
 #include "basefuntion.h"
-
-#include <QFont>
-#include <QColor>
-
 extern MainUI*      g_lpMainUI;
 
 TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const QString &strExecer, const QString &strActionname, int ReceiptTy, QString strNote, QString strError)
@@ -26,7 +24,6 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     QMap<QString, QString> mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
     m_strFromLabel = mapMyAddr[strFromAddress];
     m_strToLabel = mapMyAddr[strToAddress];
- //   QMap<QString, QString> mapFriAddr = g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList->m_mapAddrLabel;
 
     int npos = strExecer.toStdString().find("user.");
     if(ReceiptTy != 2 && strExecer != "none" && npos != 0) {

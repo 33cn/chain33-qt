@@ -58,6 +58,7 @@ public:
     void UpdateWalletInfo(const QList<QVariant> &walletsList);
     void StopWalletSendUpdateThread();
     void ResumeWalletSendUpdateThread();
+    void UpDataUnitNameMinFee();
 
 signals:
     void SendAddrSucceedUpData();

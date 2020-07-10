@@ -1,5 +1,5 @@
 .DS_Store
-btyWallet.pro.user
+*.pro.user
 qt/.DS_Store
 qt/forms/.DS_Store
 qt/locale/*.qm

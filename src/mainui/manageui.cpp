@@ -162,7 +162,7 @@ void ManageUI::requestFinished(const QVariant &result, const QString &/*error*/)
         QMap<QString, QVariant> resultMap = result.toMap();
         QString strCoinSymbol = resultMap["data"].toString();
         qInfo() << ("GetCoinSymbol: ") << strCoinSymbol;
-        CStyleConfig::SetUnitName(strCoinSymbol);
+        CStyleConfig::GetInstance().SetUnitName(strCoinSymbol);
     }
     else if (ID_UnLock == m_nID)
     {

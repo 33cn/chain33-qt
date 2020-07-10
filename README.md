@@ -1,141 +1,70 @@
-# btyWallet
+## 安装
+- 下载 Qt 地址： http://download.qt.io/archive/qt/ (选择 5.9 及以上版本)。
+- 选择对应平台的安装包后安装，选择组件中，一定要勾选 MinGW 和 Qt Creator。
+- 安装 git，下载地址：https://git-scm.com/ 。
+- Windows 下安装 WinRAR 打包工具。
 
 ## 编译
-安装 QT 环境(mingw编译)，设置环境变量
+- 下载代码 `git clone https://github.com/33cn/chain33-qt.git`
+- 双击打开 chain33-qt.pro 文件，左下角选择 Release 版本，开始构建项，等待构建完成。
+- 在 release 目录下 Windows 会生成 chain33-qt.exe 程序，Linux 会生成 chain33-qt 程序，MAC 会生成 chain33-qt.app 文件包。
+
+## 不同平台打包
+### Windows
+#### 构建 chain33.exe 程序
+- 根据 https://github.com/33cn/chain33 构建 chain33.exe 和 chain33-cli.exe。
+- 用 gox.exe (在 \chain33-qt\src\tool 下) 工具编译 x86 版本的 chain33.exe 和 chain33-cli.exe，步骤：
 ```
-cd btywallet
-qmake btyWallet.pro
-make
+    ./gox -osarch="windows/386" -ldflags="-X github.com/33cn/chain33/common/version.GitCommit=`git rev-parse --short=8 HEAD`" github.com/33cn/chain33/cmd/chain33
+    
+    ./gox -osarch="windows/386" github.com/33cn/chain33/cmd/cli 
+```
+- 改名称为 chain33-x86.exe 和 chain33-cli-x86.exe。
+
+#### 准备
+- 安装 WinRAR 工具，打包程序，可参考 [winrar 打包程序为 exe 文件](https://jingyan.baidu.com/article/6fb756ec9a9e09241858fbc1.html)
+- 在 chain33-qt.exe 所在目录下运行命令 `windeployqt.exe btyWallet.exe` 会拷贝所需要的对应 DLL 文件，如果运行时还提示 DLL 文件缺少，可以在 Qt 的安装目录 bin 目录下寻找（例如 C:\Qt\Qt5.10.0\5.10.0\mingw53_32\bin）。
+- 同一目录下添加 chain33.exe、chain33-cli.exe、chain33-x86.exe、chain33-cli-x86.exe、chain33.toml 这 5 个文件。
+
+#### 打包成可自行程序
+- 全选所有文件，右击 "添加到压缩文件"；
+- 压缩文件名的后缀改为 .exe；
+- 点击高级，自解压缩项；
+- 常规，解压路径写为 chain33-qt，选择在当前文件夹中创建；
+- 设置，提取后运行 chain33-qt.exe；
+- 高级，添加快捷方式；
+- 文本和图标，标题为：Chian33钱包安装，选择图标 novacoin.ico (在 \chain33-qt\src\res 下)；
+- 确定生成安装程序，修改名称为：chain33-qt-Win.exe。
+
+### Mac
+#### 准备 chain33-qt.app
+- 根据 https://github.com/33cn/chain33 构建 chain33 和 chain33-cli。
+- 拷贝 chain33、chain33-cli、chain33.toml 这 3 个文件到 chain33-qt.app/Contents/MacOS/ 目录下。
+- 打开终端，到 chain33-qt.app 所在目录，运行命令：
+```
+cd .../chain33-qt/release
+cp $GOPATH/src/github.com/33cn/chain33/build/chain33 /release/chain33-qt.app/Contents/MacOS/chain33
+cp $GOPATH/src/github.com/33cn/chain33/build/chain33-cli /release/chain33-qt.app/Contents/MacOS/chain33-cli
+cp $GOPATH/src/github.com/33cn/chain33/build/chain33.toml /release/chain33-qt.app/Contents/MacOS/chain33.toml
+otool -L chain33-qt.app/Contents/MacOS/chain33-qt 
+macdeployqt chain33-qt.app
 ```
 
-## 打包
-- [Windows 下钱包编译打包流程](http://note.youdao.com/noteshare?id=b2fcfe841a9cc919bcf414a7ce2d80e6&sub=63561FE638BF44B1B8B7441B353922D5)
-- [Mac 下钱包打包流程参考](http://note.youdao.com/noteshare?id=9370aae5ca4426fbcf2be97c94e3caa6)
-- Ubuntu 下钱包打包流程
-    + 把最新的 chian33, bityuan, chian33-cli，bityuan.toml 4个文件，都放在 Bityuan-Wallet-Linux 目录下
-    + 运行命令 `linuxdeployqt /home/qq/work/qt/btywallet/Bityuan-Wallet-Linux/bityuan -appimage` 打包完成
-- 打好的 4 个包放到 `https://gitlab.33.cn/yanchenta/btyres`仓库下，替换其中的 Bityuan-Wallet-Win.exe，Bityuan-Wallet-Win-xp.exe，Bityuan-Wallet-mac.dmg，Bityuan-Wallet-Linux.tar.gz，4个文件。
+#### 把 chain33-qt.app 打包成 dmg 文件
+- 通过 Disk Utility 创建一个空白的 dmg 镜像, File –> New –> Blank Disk Image
+- 默认设置 120MB，名称为 chain33-qt-Mac，最终制作出来的 dmg 文件会自动裁剪掉空白的。
+- 双击 “chain33-qt-Mac” 出来的空白窗口
+- 将上面制作好的 chain33-qt.app 拽到 “chain33-qt-Mac” 里面，再做一个 Applications 快捷方式 (右键–>Make Alias)
+- 将做好的 dmg，转换一下就完成了，在 Disk Utility 中如果没有的话，请将它拽回去就可以了，然后右键 chain33-qt-Mac.dmg –> Convert ”chain33-qt-Mac”
+- 可参考文档 [Qt Mac 下软件 Release 发布dmg](https://blog.csdn.net/fox64194167/article/details/38441331)
 
-
-## 逻辑
-### 启动程序
-#### 获取数据目录
-- 启动前先判断是否已经存在数据目录
-- 默认目录 
-    + Windows < Vista: C:\Documents and Settings\Username\Application Data\bityuan
-    + Windows >= Vista: C:\Users\Username\AppData\Roaming\bityuan
-    + Mac: ~/Library/Application Support/bityuan
-    + Unix: ~/.bityuan
-- Windows 的 数据目录写入注册表 "HKEY_CURRENT_USER\\Software\\bityuan\\bityuan-Qt"
-
-#### 启动 chain33
-- 启动 chain33 
-- 参数 `-datadir` 数据目录，`-fixtime` 是否启动自动修复时间（默认不开启）
-- 循环判断 chain33 进程是否存在，不存在重新启动
-- 记录 chain33 奔溃退出信息
-
-#### 获取seed
-- getstatus 获取钱包状态
-- 是否存在 seed
-- 不存在，显示 seed 界面，存在 seed，直接进入主界面
-- 新创建 seed 默认创建一个地址，导入 seed 默认创建 5 个地址
-- seed 中创建地址
-    + 解锁钱包
-    + 创建地址
-    + 判断地址是否创建成功
-    + 锁定钱包
-
-### 其他逻辑
-#### 状态
-- 循环获取 IsSync 是否同步成功
-- 循环获取 GetPeerInfo 更新高度，判断当前连上几个节点
-    + peer 减 1 个自身的节点
-    + 节点 1个，1 格信号
-    + 节点 2-5 个，2 格
-    + 5-15，3格
-    + 15 以上，4格
-- 循环获取 GetWalletStatus 显示当前钱包状态
-- 循环获取 GetTimeStatus 判断时间是否同步
-- 循环获取 NetInfo 判断是否可以对其他节点提供服务
-- Windows 下循环（24h）判断当前磁盘是否少于 5 G，少于给出提醒
-- 循环获取 GetAccounts 地址信息及金额
-
-#### 显示交易记录
-- 交易记录如果当前是首页，循环获取最新交易记录
-- 接口为`WalletTxList`
-    + 第一次获取交易记录 `fromTx` 为空字符串，`direction` 为 0
-    + 前一页 `direction` 为 1，`fromTx` 为上一次数据中第一条数据中 `height` 和 `index` 的拼接，格式:`QString().sprintf("%013d", txMap["height"].toInt()) + QString().sprintf("%05d", txMap["index"].toInt())`
-    + 后一页 `direction` 为 0，`fromTx` 为上一次数据中最后一条数据中 `height` 和 `index` 的拼接
-- `ty` == 1，有错误的交易要过滤
-- 双击显示交易详情
-- 合约地址，前面加上(合约)两个字特殊的地址
-    + 16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp
-    + 1GaHYpWmqAJsqRwrpoNcB8VvgKtSwjcHqt
-    + 1LFqVvGaRpxbEWCEJVpUHAwXnh5Rt591m
-    + 1DzTdTLa5JPpLdNNP2PrV1a6JCtULA7GsT 
-
-#### 退出/重启 chain33
-- 停止启动 chain33 线程
-- 退出 chain33 
-- 循环判断 chain33 进程是否退出
-- 启动 chain33 线程
-- 用于以下三种情况
-    + 退出整个程序，退出 chain33
-    + 开启或关闭自动修复时间，重启 chain33
-    + 修改数据目录，重启 chain33
-
-#### 开启自动修复时间
-- 修改状态，保存在数据目录下 "/wallet/QtConfig.ini" 文件中
-- 重启 chain33 修改 `-fixtime` 这个参数
-
-#### 修改数据目录
-- 只有 Windows 下版本才有这个功能
-- 退出 chain33
-- 新的数据目录下，要拷贝 wallet、datadir 和 FriendsAddrList.xml 文件
-- 旧的数据删除 datadir、logs 文件夹
-- 修改数据目录，修改注册表
-- 重启 chain33 修改 `-datadir` 这个参数
-
-#### 离线挖矿授权
-- 本地离线地址，绑定授权其他在线地址进行挖矿
-- 必须解锁钱包
-- 生成绑定交易，调用 CreateBindMiner
-- 生成转账交易，调用 CreateRawTransaction
-- 签名以上两笔交易，调用 SignRawTx
-- 保存成 TXT 文件，可以在区块链浏览器上发送以上两笔签名后的交易
-
-#### 调试窗口
-- 直接调用当前目录下 chain33-cli 程序，调用时加参数
-- 结果返回有多一行换行符，最好去掉
-
-#### 隐藏地址
-- 好友地址提供删除，本地数据目录下“FriendsAddrList.xml”文件中保存好友地址信息
-- 我的地址提供隐藏功能，隐藏后标签修改为“Deleted”+原标签名称+当前时间，不显示改地址
-- 地址提供导出功能
-
-#### C2C交易（暂时去掉不显示）
-- 删除资产管理界面，合并买入、卖出、撤销操作
-- 卖出 token
-    + token 转入合约，构建交易哈希
-    + 构建卖单交易哈希
-    + 合并上面两笔交易的哈希，构建合并交易哈希
-    + 签名交易
-    + 发送交易
-- 买入 token
-    + BTY 转入 token 合约
-    + 构建买单交易
-    + 合并上面两笔交易的哈希，构建合并交易哈希
-    + 签名交易
-    + 发送交易
-- 撤销交易
-    + 构建撤销交易
-    + 转出 token 交易哈希
-    + 合并上面两笔交易的哈希，构建合并交易哈希
-    + 签名交易
-    + 发送交易
-
-
-
-
-
-
+### Ubuntu
+#### 打包 chain33-qt-Ubuntu.tar.gz
+- 新建一个文件夹为 chain33-qt-Ubuntu，把 chain33 、chain33-cli、chain33-qt、chian33.toml 这 4 个文件，都放在 chain33-qt-Ubuntu 文件夹下。
+- 运行命令 
+```
+    cd chain33-qt-Ubuntu
+    linuxdeployqt ./chain33-qt -appimage
+    cd ..
+    tar -zcvf ./chain33-qt-Ubuntu.tar.gz /chain33-qt-Ubuntu
+```

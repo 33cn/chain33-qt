@@ -2180,7 +2180,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/manageui.cpp" line="+197"/>
+        <location filename="../mainui/manageui.cpp" line="+112"/>
+        <source>%1钱包-正式版 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+86"/>
         <location line="+16"/>
         <source>提示</source>
         <translation type="unfinished"></translation>

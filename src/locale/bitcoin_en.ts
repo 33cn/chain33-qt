@@ -1015,6 +1015,10 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
         <source>正在升级版本，会更新数据库文件，需要等待几个小时</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1钱包-正式版 %2</source>
+        <translation type="unfinished">%1-%2</translation>
+    </message>
 </context>
 <context>
     <name>Notificator</name>

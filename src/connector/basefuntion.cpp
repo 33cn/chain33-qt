@@ -563,7 +563,7 @@ bool GetProcessidFromName()
 #else
     char line[200];
     FILE *fp;
-    std::string cmd = "ps -fe|grep chain33 |grep -v grep";
+    std::string cmd = "ps -fe | grep '" + CStyleConfig::GetInstance().GetChain33Exe().toStdString() + " ' | grep -v grep";
     const char *sysCommand = cmd.data();
     if ((fp = popen(sysCommand, "r")) != NULL) {
         fgets(line, sizeof(line)-1, fp);

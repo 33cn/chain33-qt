@@ -58,12 +58,7 @@ macdeployqt chain33-qt.app
 - 可参考文档 [Qt Mac 下软件 Release 发布dmg](https://blog.csdn.net/fox64194167/article/details/38441331)
 
 ## Ubuntu
-### 打包 chain33-qt-Ubuntu.tar.gz
+### 打包 chain33-qt-x86_64.AppImage
 - 新建一个文件夹为 chain33-qt-Ubuntu，把 chain33 、chain33-cli、chain33-qt、chian33.toml 这 4 个文件，都放在 chain33-qt-Ubuntu 文件夹下。
-- 运行命令 
-```
-    cd chain33-qt-Ubuntu
-    linuxdeployqt ./chain33-qt -appimage
-    cd ..
-    tar -zcvf ./chain33-qt-Ubuntu.tar.gz /chain33-qt-Ubuntu
-```
+- 运行命令 `linuxdeployqt ./chain33-qt-Ubuntu/chain33-qt -appimage`
+- 改名为 chain33-qt-x86_64.AppImage。

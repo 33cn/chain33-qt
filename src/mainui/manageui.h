@@ -12,6 +12,7 @@
 #include <QProcess>
 #include "basejsonconnector.h"
 #include <mutex>
+#include <QMutex>
 
 #ifdef WIN32
 #include <windows.h>

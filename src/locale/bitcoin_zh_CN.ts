@@ -453,7 +453,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+113"/>
         <source>可发送: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2180,7 +2180,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/manageui.cpp" line="+169"/>
+        <location filename="../mainui/manageui.cpp" line="+197"/>
         <location line="+16"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
@@ -3388,7 +3388,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../menu/transactiondescdialog.cpp" line="+55"/>
+        <location filename="../menu/transactiondescdialog.cpp" line="+53"/>
         <source>日期</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3408,7 +3408,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>备注</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3454,7 +3454,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished">(合约)</translation>
     </message>
     <message>
-        <location line="-86"/>
+        <location line="-83"/>
         <source>发送</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3464,21 +3464,21 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
         <source>支出</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-8"/>
         <location line="+4"/>
-        <location line="+9"/>
+        <location line="+6"/>
         <source>交易费</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-8"/>
         <location line="+3"/>
-        <location line="+11"/>
+        <location line="+8"/>
         <location line="+10"/>
         <source>净额</source>
         <translation type="unfinished"></translation>
@@ -3763,7 +3763,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">钱包找回通知</translation>
     </message>
     <message>
-        <location filename="../mainui/transactionslistmodel.cpp" line="+215"/>
+        <location filename="../mainui/transactionslistmodel.cpp" line="+212"/>
         <source>失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4122,7 +4122,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../mainui/walletsendui.cpp" line="+53"/>
         <source>手续费仅 %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4222,12 +4221,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">输入发送交易的备注信息</translation>
     </message>
     <message>
-        <location filename="../mainui/walletsendui.cpp" line="-11"/>
+        <location filename="../mainui/walletsendui.cpp" line="+41"/>
         <source>out of sync</source>
         <translation type="unfinished">数据未同步</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+158"/>
         <source>钱包未同步成功，请稍等！</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4252,22 +4251,27 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished">和</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+45"/>
         <source>发送成功，等区块链确认后，等待列表中刷新!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="+69"/>
+        <source>手续费仅 %1 </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-133"/>
         <location line="+19"/>
         <location line="+6"/>
         <location line="+2"/>
-        <location line="+36"/>
+        <location line="+35"/>
         <location line="+2"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-46"/>
+        <location line="-45"/>
         <source>取消</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4275,13 +4279,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="-19"/>
         <location line="+25"/>
         <location line="+2"/>
-        <location line="+36"/>
+        <location line="+35"/>
         <location line="+2"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-235"/>
+        <location line="-230"/>
         <location line="+3"/>
         <source>输入发送交易的备注信息</source>
         <translation type="unfinished"></translation>
@@ -4293,7 +4297,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+291"/>
         <source>总额 (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4313,7 +4317,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="-107"/>
         <source>钱包只解锁买票挖矿功能，请先解锁！</source>
         <translation type="unfinished"></translation>
     </message>

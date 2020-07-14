@@ -109,6 +109,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
 
     ui->setupUi(this);
 
+    setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     setAttribute(Qt::WA_TranslucentBackground);
     setStyleSheet("background:transparent;");

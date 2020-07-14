@@ -2085,6 +2085,10 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
         <source>挖矿确认 (%1)</source>
         <translation type="unfinished">Mining (%1)</translation>
     </message>
+    <message>
+        <source>手续费仅 %1 </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>veifySeedDialog</name>

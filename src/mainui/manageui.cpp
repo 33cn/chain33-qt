@@ -419,10 +419,10 @@ void ManageUI::CloseChain33Temp()
 
     QuitThread();
 
- //   PostJsonMessage(ID_CloseQueue);
     CloseQueueChain33();
     g_lpMainUI->StopCommunicateChain33Thread();
 }
+
 void ManageUI::CloseChain33()
 {
 #ifndef WIN32
@@ -440,55 +440,5 @@ void ManageUI::CloseChain33()
         CloseingDialog dlg;
         dlg.exec();
     }
-
-    return;
-
-#ifdef WIN32
-    if(m_dwChain33ProcessId == DWORD(-1))
-    {
-        HANDLE hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-        if (hProcessSnap == INVALID_HANDLE_VALUE)
-            return;
-
-        PROCESSENTRY32 pe32;
-        memset(&pe32, 0, sizeof(PROCESSENTRY32));
-        pe32.dwSize = sizeof(PROCESSENTRY32);
-        if (Process32First(hProcessSnap, &pe32)) {
-            do{
-                int nWcsicmp = wcsicmp(pe32.szExeFile, CStyleConfig::GetInstance().GetChain33Path().toStdWString().c_str());
-                if(nWcsicmp == 0) {
-                    m_dwChain33ProcessId = pe32.th32ProcessID;
-                    break;
-                }
-            }
-            while (Process32Next(hProcessSnap, &pe32));
-        } else {
-            qCritical() << ("chain33 不在运行 获取 PID 失败");
-            CloseHandle(hProcessSnap);
-            return;
-        }
-        CloseHandle(hProcessSnap);
-    }
-
-    qDebug() << ("退出 chain33 PID = ") << (QString::number((int)m_dwChain33ProcessId, 10).toStdString().c_str());
-    HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, m_dwChain33ProcessId);
-    if(hProcess != NULL)
-    {
-        DWORD dwExitCode = 0;
-        GetExitCodeProcess(hProcess, &dwExitCode);
-        qDebug() << ("退出 chain33 dwExitCode = ") << dwExitCode;
-        TerminateProcess(hProcess, dwExitCode);
-     //   ExitProcess(dwExitCode);
-        CloseHandle(hProcess);
-    }
-    else
-    {
-        qCritical() << ("退出 chain33 失败，调用 OpenProcess 返回为句柄为空。");
-
-        ++m_nCloseChain33;
-        if(m_nCloseChain33 <= 10)
-            CloseChain33();
-    }
-#endif
 }
 

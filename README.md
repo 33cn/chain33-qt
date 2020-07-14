@@ -28,13 +28,12 @@
 
 ### 打包成可执行程序
 - 全选所有文件，右击 "添加到压缩文件"；
-- 压缩文件名的后缀改为 .exe；
+- 压缩文件名改为：chain33-qt-Win.exe；
 - 点击高级，自解压缩项；
-- 常规，解压路径写为 chain33-qt，选择在当前文件夹中创建；
-- 设置，提取后运行 chain33-qt.exe；
-- 高级，添加快捷方式；
-- 文本和图标，标题为：Chian33钱包安装，选择图标 novacoin.ico (在 \chain33-qt\src\res 下)；
-- 确定生成安装程序，修改名称为：chain33-qt-Win.exe。
+    - 常规，解压路径写为 chain33-qt，选择在 “Prpgram Files” 中创建；
+    - 设置，提取后运行 chain33-qt.exe；
+    - 高级，添加快捷方式；
+    - 文本和图标，标题为：chian33-qt安装，选择图标 novacoin.ico (在 \chain33-qt\src\res 下)；
 
 ## Mac
 ### 准备 chain33-qt.app

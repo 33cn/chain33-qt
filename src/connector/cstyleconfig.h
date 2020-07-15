@@ -38,6 +38,7 @@ public:
     const QString &GetChain33Path() const { return m_strChain33Path; }
     const QString &GetChain33cliPath() const { return m_strChain33cliPath; }
     const QString &GetChain33Exe() const { return m_strChain33Exe; }
+    const QString &GetNetworkUrl() const {return m_strNetworkUrl; }
 private:
     CStyleConfig();
     void readConfigFile();
@@ -57,6 +58,7 @@ private:
     QString m_strAppName_zh;        // APP中文名称 默认 chain33-qt
     QString m_strUnitName;          // 代币单位
     double m_dMinFee;               // 最小手续费
+    QString m_strNetworkUrl;        // 连接节点的url 默认 http://localhost:8801/
 
     QString m_stylesheet_type;      // qss
     QString m_stylesheet;

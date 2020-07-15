@@ -16,6 +16,7 @@ CStyleConfig::CStyleConfig()
 , m_strAppName_zh ("chain33-qt")
 , m_strUnitName ("")
 , m_dMinFee (0.0)
+, m_strNetworkUrl ("http://localhost:8801/")
 {
     readConfigFile();
     setChain33NamePath();
@@ -39,6 +40,7 @@ void CStyleConfig::readConfigFile()
         readValue(lpconfigIni, "Config/AppName_en", m_strAppName_en);
         readValueDouble(lpconfigIni, "Config/MinFee", m_dMinFee);
         readValue(lpconfigIni, "Config/StyleType", m_stylesheet_type);
+        readValue(lpconfigIni, "Config/NetworkUrl", m_strNetworkUrl);
         delete lpconfigIni;
     }
 

@@ -10,13 +10,13 @@ CStyleConfig* CStyleConfig::s_lpStyleConfig = nullptr;
 
 CStyleConfig::CStyleConfig()
 : m_strChain33Name ("chain33")
-, m_stylesheet_type ("yellow")
 , m_strAppName ("chain33-qt")
 , m_strAppName_en ("chain33-qt")
 , m_strAppName_zh ("chain33-qt")
 , m_strUnitName ("")
 , m_dMinFee (0.0)
 , m_strNetworkUrl ("http://localhost:8801/")
+, m_stylesheet_type ("yellow")
 {
     readConfigFile();
     setChain33NamePath();

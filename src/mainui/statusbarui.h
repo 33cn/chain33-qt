@@ -21,7 +21,7 @@ class StatusBarThread : public QThread
 {
     Q_OBJECT
 public:
-    StatusBarThread() {m_bOutOfSync = false;m_stop = false;/* m_bFirst = true;*/}
+    StatusBarThread() {m_bOutOfSync = false; m_stop = false; }
     ~StatusBarThread() {Stop();}
     void SetOutOfSync(bool bOutOfSync){m_bOutOfSync = bOutOfSync;}
 

@@ -115,8 +115,8 @@ void StatusBarThread::run()
 StatusBarUI::StatusBarUI(QWidget *parent, const PlatformStyle *platformStyle)
     : JsonConnectorDialog(parent)
     , ui(new Ui::StatusBarUI)
-    , m_bFirst (true)
     , m_platformStyle (platformStyle)
+    , m_bFirst (true)
 {
     ui->setupUi(this);
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)

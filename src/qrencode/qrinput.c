@@ -1,4 +1,4 @@
-/*
+﻿/*
  * qrencode - QR Code encoder
  *
  * Input data chunk class
@@ -760,14 +760,13 @@ ABORT:
  * FNC1
  *****************************************************************************/
 
-static int QRinput_checkModeFNC1Second(int size, const unsigned char *data)
+static int QRinput_checkModeFNC1Second(int size)
 {
 	if(size != 1) return -1;
-
 	return 0;
 }
 
-static int QRinput_encodeModeFNC1Second(QRinput_List *entry, int version)
+static int QRinput_encodeModeFNC1Second(QRinput_List *entry)
 {
 	int ret;
 
@@ -820,7 +819,7 @@ int QRinput_estimateBitsModeECI(unsigned char *data)
 	}
 }
 
-static int QRinput_encodeModeECI(QRinput_List *entry, int version)
+static int QRinput_encodeModeECI(QRinput_List *entry)
 {
 	int ret, words;
 	unsigned int ecinum, code;
@@ -879,7 +878,7 @@ int QRinput_check(QRencodeMode mode, int size, const unsigned char *data)
 		case QR_MODE_FNC1FIRST:
 			return 0;
 		case QR_MODE_FNC1SECOND:
-			return QRinput_checkModeFNC1Second(size, data);
+            return QRinput_checkModeFNC1Second(size);
 		case QR_MODE_NUL:
 			break;
 	}
@@ -1096,10 +1095,10 @@ static int QRinput_encodeBitStream(QRinput_List *entry, int version, int mqr)
 				ret = QRinput_encodeModeStructure(entry, mqr);
 				break;
 			case QR_MODE_ECI:
-				ret = QRinput_encodeModeECI(entry, version);
+                ret = QRinput_encodeModeECI(entry);
 				break;
 			case QR_MODE_FNC1SECOND:
-				ret = QRinput_encodeModeFNC1Second(entry, version);
+                ret = QRinput_encodeModeFNC1Second(entry);
 				break;
 			default:
 				break;

@@ -38,7 +38,6 @@ SOURCES += main.cpp \
     src/functionui/bitcoinaddressvalidator.cpp \
     src/menu/aboutdialog.cpp \
     src/functionui/bitcoinamountfield.cpp \
-    src/functionui/transactionrecord.cpp \
     src/menu/transactiondescdialog.cpp \
     src/menu/editaddressdialog.cpp \
     src/menu/askpassphrasedialog.cpp \

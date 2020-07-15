@@ -33,7 +33,7 @@
     - 常规，解压路径写为 chain33-qt，选择在 “Prpgram Files” 中创建；
     - 设置，提取后运行 chain33-qt.exe；
     - 高级，添加快捷方式；
-    - 文本和图标，标题为：chian33-qt安装，选择图标 novacoin.ico (在 \chain33-qt\src\res 下)；
+    - 文本和图标，标题为：chian33-qt 安装，选择图标 novacoin.ico (在 \chain33-qt\src\res 下)；
 
 ## Mac
 ### 准备 chain33-qt.app
@@ -55,10 +55,23 @@ macdeployqt chain33-qt.app
 - 双击 “chain33-qt-Mac” 出来的空白窗口
 - 将上面制作好的 chain33-qt.app 拽到 “chain33-qt-Mac” 里面，再做一个 Applications 快捷方式 (右键–>Make Alias)
 - 将做好的 dmg，转换一下就完成了，在 Disk Utility 中如果没有的话，请将它拽回去就可以了，然后右键 chain33-qt-Mac.dmg –> Convert ”chain33-qt-Mac”
-- 可参考文档 [Qt Mac 下软件 Release 发布dmg](https://blog.csdn.net/fox64194167/article/details/38441331)
+- 可参考文档 [Qt Mac 下软件 Release 发布 dmg](https://blog.csdn.net/fox64194167/article/details/38441331)
 
 ## Ubuntu
 ### 打包 chain33-qt-x86_64.AppImage
 - 新建一个文件夹为 chain33-qt-Ubuntu，把 chain33 、chain33-cli、chain33-qt、chian33.toml 这 4 个文件，都放在 chain33-qt-Ubuntu 文件夹下。
 - 运行命令 `linuxdeployqt ./chain33-qt-Ubuntu/chain33-qt -appimage`
 - 改名为 chain33-qt-x86_64.AppImage。
+
+# 配置文件
+* 默认不设置，用程序默认配置，src/config/StyleConfig.ini 有模板。
+* 字段解析：
+        
+| 字段名称 | 默认配置 | 备注 |
+|---|---|---|
+| Chain33Name | chain33 | 底层运行链的名称 |
+| AppName | chain33-qt |  |
+| AppName_zh | chain33-qt |  |
+| AppName_en | chain33-qt |  |
+| StyleType | yellow | 只支持两种样式：yellow 和 blue |
+| NetworkUrl | http://localhost:8801/ |  |

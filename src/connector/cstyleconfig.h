@@ -43,7 +43,6 @@ private:
     CStyleConfig();
     void readConfigFile();
     void readValue(QSettings *lpconfig, const QString &key, QString &ret);
-    void readValueDouble(QSettings *lpconfig, const QString &key, double &ret);
     void setChain33NamePath();
 #ifdef WIN32
     bool isWow64();

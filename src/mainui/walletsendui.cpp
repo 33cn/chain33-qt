@@ -340,7 +340,7 @@ void WalletSendUI::on_sendButton_clicked()
         QMap<QString, QString> mapFriAddr = g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList->m_mapAddrLabel;
         label = mapFriAddr[address];
     }
-    formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::COIN, amount), label, address));
+    formatted.append(tr("<b>%1 %2</b> to %3 (%4)").arg(BitcoinUnits::format(BitcoinUnits::COIN, amount), CStyleConfig::GetInstance().GetUnitName(), label, address));
 
     int retval = QMessageBox::question(this, tr("Confirm send coins"), tr("Are you sure you want to send %1?").arg(formatted.join(tr(" and "))), tr("确定"), tr("取消"), QString(), 0, 1);
     if(retval != 0)

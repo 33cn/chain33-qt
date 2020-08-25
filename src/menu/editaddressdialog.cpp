@@ -43,6 +43,8 @@ EditAddressDialog::EditAddressDialog(EditAddressDialogMode mode, QWidget *parent
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("确定")); //将buttonbox中的ok 变成汉化
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("取消"));
+
+    this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
 }
 
 EditAddressDialog::~EditAddressDialog()

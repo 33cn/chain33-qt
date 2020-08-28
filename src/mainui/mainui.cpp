@@ -228,7 +228,10 @@ void MainUI::createMenuBar()
 #ifdef WIN32
     settings->addAction(changeDirAction);
 #endif
-    settings->addAction(devolutionAction);
+    // ycc 先屏蔽离线授权挖矿
+    if (CStyleConfig::GetInstance().GetAppName_en() != "ycc"){
+        settings->addAction(devolutionAction);
+    }
     settings->addAction(veifySeedAction);
 
     QMenu *help = appMenuBar->addMenu(tr("&Help"));

@@ -249,7 +249,11 @@ void WalletSendUI::UpdateWalletInfo(const QList<QVariant> &walletsList)
         params.insert(0, jsonParms);
         PostJsonMessage(ID_GetBalance, params);*/
 
-        jsonCmd.append("\"execer\":\"ticket\"}");
+        if (CStyleConfig::GetInstance().GetAppName_en() == "ycc"){
+            jsonCmd.append("\"execer\":\"pos33\"}");
+        } else {
+            jsonCmd.append("\"execer\":\"ticket\"}");
+        }
         emit SendGetTicketBalanceCmd(jsonCmd);
         //PostJsonMessage(ID_GetBalance_ticket, jsonCmd.toStdString().c_str());
     //#endif

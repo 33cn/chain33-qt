@@ -206,12 +206,6 @@ void StatusBarUI::RestartChain33Init()
     ui->labelBlocksIcon->setPixmap(QIcon(strIcon).pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
     ui->labelNetInfoIcon->setPixmap(QIcon(":/icons/netinfo_not").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
     ui->labelNetInfoIcon->setToolTip(tr("不可以对其他节点提供服务"));
-
-    //PostJsonMessage(ID_GetWalletStatus);
-    //PostJsonMessage(ID_GetTicketCount);
-    //remove for thread will query info per 1 second
-    //PostJsonMessage(ID_GetPeerInfo);
-    //PostJsonMessage(ID_GetNetInfo);
     JudgefreeBytesAvailable();
 }
 
@@ -315,7 +309,7 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"TicketCount released semaphore";
+            qDebug() << "TicketCount released semaphore";
         }
     }
     else if (m_nID == ID_IsNtpClockSync)

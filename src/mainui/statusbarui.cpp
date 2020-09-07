@@ -229,8 +229,6 @@ void StatusBarUI::JudgefreeBytesAvailable()
     {
         ui->labelfreeBytes->setText(tr("数据目录磁盘空间少于 5G，请更改数据目录选择更大空闲盘符存储数据！"));
         ui->labelfreeBytes->setVisible(true);
-
-   //     QMessageBox::warning(g_lpMainUI, tr("警告"), tr("数据目录磁盘空间少于 5G，请更改数据目录选择更大空闲盘符存储数据！"));
     }
 #endif
 }
@@ -546,7 +544,7 @@ void StatusBarUI::setNumBlocks()
 void StatusBarUI::setAutoMiningStatus()
 {
     ui->labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    if(!m_AutoMining) {
+    if(!m_AutoMining && m_nMiningTicket <= 0) {
         ui->labelStakingIcon->setToolTip(tr("Not staking, because there is no automatic mining, click Settings to open automatic mining"));
     } else if (Wallet_Locked == m_LockStatus) {
         ui->labelStakingIcon->setToolTip(tr("Not staking, because wallet is locked"));

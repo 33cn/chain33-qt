@@ -28,8 +28,6 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     int npos = strExecer.toStdString().find("user.");
     if(ReceiptTy != 2 && strExecer != "none" && npos != 0) {
         m_typeTy = TyFailure;
-    } else if("coins" != strExecer && "ticket" != strExecer) {
-        m_typeTy = Other;
     } else if ("ticket" == strExecer && "withdraw" == strActionname) {
         m_typeTy = RecvFromMining;
     } else if ("ticket" == strExecer && "miner" == strActionname) {
@@ -40,6 +38,18 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
         m_typeTy = CloseTicket;
     } else if ("coins" == strExecer && "transfer" == strActionname && "16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp" == strToAddress) {
         m_typeTy = SendToMining;
+    } else if ("pos33" == strExecer && "withdraw" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+        m_typeTy = RecvFromMining;
+    } else if ("pos33" == strExecer && "miner" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+        m_typeTy = Generated;
+    } else if ("pos33" == strExecer && "topen" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+        m_typeTy = OpenTicket;
+    } else if ("pos33" == strExecer && "tclose" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+        m_typeTy = CloseTicket;
+    } else if ("coins" == strExecer && "transfer" == strActionname && "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq" == strToAddress && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+        m_typeTy = SendToMining;
+    } else if ("coins" == strExecer && "withdraw" == strActionname && "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq" == strFromAddress && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+        m_typeTy = RecvFromMining;
     } else if(!m_strFromLabel.isEmpty() && !m_strToLabel.isEmpty()) {
         m_typeTy = SendToSelf;
     } else if (!m_strFromLabel.isEmpty()) {

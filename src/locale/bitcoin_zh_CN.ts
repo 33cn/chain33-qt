@@ -186,7 +186,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+89"/>
+        <location line="+8"/>
+        <source>&amp;Set Minging</source>
+        <translation type="unfinished">设置为挖矿地址(&amp;S)</translation>
+    </message>
+    <message>
+        <location line="+86"/>
         <source>Export Address Book Data</source>
         <translation type="unfinished">导出地址簿数据</translation>
     </message>
@@ -227,17 +232,33 @@
     </message>
     <message>
         <location line="+65"/>
+        <location line="+135"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="-135"/>
         <source>空投地址不可用于转账、挖矿等操作!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+120"/>
+        <location line="+130"/>
         <source>新建地址失败</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>错误</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>设置挖矿地址失败,%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>设置挖矿地址成功</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -245,12 +266,12 @@
         <translation type="obsolete">钱包解锁失败</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="-5"/>
         <source>ok</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location line="-324"/>
+        <location line="-339"/>
         <location line="+2"/>
         <source>My address</source>
         <translation>我的地址</translation>
@@ -1417,7 +1438,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <location line="+60"/>
+        <location line="+62"/>
         <location line="+64"/>
         <location line="+20"/>
         <location line="+3"/>
@@ -1428,12 +1449,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-173"/>
+        <location line="-175"/>
         <source>取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+61"/>
         <location line="+84"/>
         <source>输入的地址&quot;%1&quot;不是有效的%2地址。</source>
         <translation type="unfinished"></translation>
@@ -1941,7 +1962,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">选项(&amp;O)...</translation>
     </message>
     <message>
-        <location line="+336"/>
+        <location line="+339"/>
         <location line="+12"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
@@ -1951,13 +1972,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">调试窗口(&amp;D)</translation>
     </message>
     <message>
-        <location line="-415"/>
-        <location line="+429"/>
+        <location line="-418"/>
+        <location line="+432"/>
         <source>%1钱包-正式版 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-378"/>
+        <location line="-381"/>
         <source>我的主页</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2042,7 +2063,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+341"/>
+        <location line="+344"/>
         <source>%1钱包-test %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2107,12 +2128,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">显示 Qt 相关信息</translation>
     </message>
     <message>
-        <location line="-321"/>
+        <location line="-324"/>
         <source>&amp;Show / Hide</source>
         <translation type="unfinished">显示 / 隐藏(&amp;S)</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+59"/>
         <source>%1 客户端</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2126,12 +2147,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">文件(&amp;F)</translation>
     </message>
     <message>
-        <location line="-291"/>
+        <location line="-294"/>
         <source>&amp;Settings</source>
         <translation type="unfinished">设置(&amp;S)</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+18"/>
         <source>&amp;Help</source>
         <translation type="unfinished">帮助(&amp;H)</translation>
     </message>
@@ -2995,7 +3016,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+66"/>
-        <location filename="../mainui/statusbarui.cpp" line="+509"/>
+        <location filename="../mainui/statusbarui.cpp" line="+501"/>
         <source>Synchronizing with network...</source>
         <translation type="unfinished">正在与网络同步...</translation>
     </message>
@@ -3052,18 +3073,18 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         </translation>
     </message>
     <message>
-        <location line="-359"/>
-        <location line="+131"/>
+        <location line="-351"/>
+        <location line="+123"/>
         <source>不可以对其他节点提供服务</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-103"/>
+        <location line="-101"/>
         <source>数据目录磁盘空间少于 5G，请更改数据目录选择更大空闲盘符存储数据！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+28"/>
         <source>当前/最新高度: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -3169,7 +3190,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-97"/>
+        <location line="-89"/>
         <source>Not staking</source>
         <translation type="unfinished">未进行挖矿</translation>
     </message>
@@ -3182,7 +3203,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">权益增值中 &lt;br&gt;您的权重为 %1 &lt;br&gt;网络总权重为 %2&lt;br&gt;预计将在 %3 之后获得收益</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+89"/>
         <source>Wallet lock failed error.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3768,7 +3789,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">钱包找回通知</translation>
     </message>
     <message>
-        <location filename="../mainui/transactionslistmodel.cpp" line="+212"/>
+        <location filename="../mainui/transactionslistmodel.cpp" line="+222"/>
         <source>失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3978,12 +3999,11 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished">编辑标签</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Show transaction details</source>
-        <translation type="unfinished">显示交易详情</translation>
+        <translation type="obsolete">显示交易详情</translation>
     </message>
     <message>
-        <location line="+237"/>
+        <location line="+144"/>
         <source>Export Transaction Data</source>
         <translation type="unfinished">输出交易数据</translation>
     </message>
@@ -4231,17 +4251,16 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished">数据未同步</translation>
     </message>
     <message>
-        <location line="+158"/>
+        <location line="+162"/>
         <source>钱包未同步成功，请稍等！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+17"/>
         <source>&lt;b&gt;%1&lt;/b&gt; to %2 (%3)</source>
-        <translation type="unfinished">&lt;b&gt;%1&lt;/b&gt; 至 %2 (%3)</translation>
+        <translation type="obsolete">&lt;b&gt;%1&lt;/b&gt; 至 %2 (%3)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+19"/>
         <source>Confirm send coins</source>
         <translation type="unfinished">确认发送货币</translation>
     </message>
@@ -4290,7 +4309,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-230"/>
+        <location line="-234"/>
         <location line="+3"/>
         <source>输入发送交易的备注信息</source>
         <translation type="unfinished"></translation>
@@ -4302,7 +4321,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+291"/>
+        <location line="+183"/>
+        <source>&lt;b&gt;%1 %2&lt;/b&gt; to %3 (%4)</source>
+        <translation type="unfinished">&lt;b&gt;%1&lt;/b&gt; 至 %2 (%3) {1 %2&lt;?} {3 ?} {4)?}</translation>
+    </message>
+    <message>
+        <location line="+112"/>
         <source>总额 (%1)</source>
         <translation type="unfinished"></translation>
     </message>

@@ -38,17 +38,17 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
         m_typeTy = CloseTicket;
     } else if ("coins" == strExecer && "transfer" == strActionname && "16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp" == strToAddress) {
         m_typeTy = SendToMining;
-    } else if ("pos33" == strExecer && "withdraw" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+    } else if ("pos33" == strExecer && "withdraw" == strActionname && CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
         m_typeTy = RecvFromMining;
-    } else if ("pos33" == strExecer && "miner" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+    } else if ("pos33" == strExecer && "miner" == strActionname && CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
         m_typeTy = Generated;
-    } else if ("pos33" == strExecer && "topen" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+    } else if ("pos33" == strExecer && "topen" == strActionname && CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
         m_typeTy = OpenTicket;
-    } else if ("pos33" == strExecer && "tclose" == strActionname && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+    } else if ("pos33" == strExecer && "tclose" == strActionname && CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
         m_typeTy = CloseTicket;
-    } else if ("coins" == strExecer && "transfer" == strActionname && "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq" == strToAddress && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+    } else if ("coins" == strExecer && "transfer" == strActionname && "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq" == strToAddress && CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
         m_typeTy = SendToMining;
-    } else if ("coins" == strExecer && "withdraw" == strActionname && "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq" == strFromAddress && CStyleConfig::GetInstance().GetAppName_en() == "ycc") {
+    } else if ("coins" == strExecer && "withdraw" == strActionname && "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq" == strFromAddress && CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
         m_typeTy = RecvFromMining;
     } else if(!m_strFromLabel.isEmpty() && !m_strToLabel.isEmpty()) {
         m_typeTy = SendToSelf;

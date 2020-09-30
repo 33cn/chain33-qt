@@ -131,3 +131,11 @@ STYLE_QSS CStyleConfig::GetStyleType() const
 
     return QSS_YELLOW;
 }
+
+COINS_TYPE CStyleConfig::GetCoinsType() const
+{
+    if (m_strAppName_en == "ycc")
+        return TOKEN_YCC;
+
+    return TOKEN_BTY;
+}

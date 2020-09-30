@@ -229,7 +229,7 @@ void MainUI::createMenuBar()
     settings->addAction(changeDirAction);
 #endif
     // ycc 先屏蔽离线授权挖矿
-    if (CStyleConfig::GetInstance().GetAppName_en() != "ycc"){
+    if (CStyleConfig::GetInstance().GetCoinsType() != TOKEN_YCC){
         settings->addAction(devolutionAction);
     }
     settings->addAction(veifySeedAction);

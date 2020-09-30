@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="en">
 <context>
@@ -161,6 +161,22 @@
     <message>
         <source>空投地址不可用于转账、挖矿等操作!</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Set Minging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>错误</source>
+        <translation type="unfinished">error</translation>
+    </message>
+    <message>
+        <source>设置挖矿地址失败,%1</source>
+        <translation type="unfinished">Failed to set mining address, %1 </translation>
+    </message>
+    <message>
+        <source>设置挖矿地址成功</source>
+        <translation type="unfinished">Set mining address successfully</translation>
     </message>
 </context>
 <context>
@@ -1836,10 +1852,6 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show transaction details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Export Transaction Data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2026,10 +2038,6 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
         <translation type="unfinished">ok</translation>
     </message>
     <message>
-        <source>&lt;b&gt;%1&lt;/b&gt; to %2 (%3)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Confirm send coins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2091,6 +2099,10 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
     </message>
     <message>
         <source>手续费仅 %1 </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1 %2&lt;/b&gt; to %3 (%4)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

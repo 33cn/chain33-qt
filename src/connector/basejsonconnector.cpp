@@ -40,7 +40,7 @@ void InitMethodMap()
     g_methodMap.insert(ID_GetBalance_coins, "Chain33.GetBalance");
     g_methodMap.insert(ID_GetBalance_ticket, "Chain33.GetBalance");
     g_methodMap.insert(ID_GetBalance_trade, "Chain33.GetBalance");
-    if (CStyleConfig::GetInstance().GetAppName_en() == "ycc"){
+    if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC){
         g_methodMap.insert(ID_SetAutoMining, "pos33.SetAutoMining");
         g_methodMap.insert(ID_GetTicketCount, "pos33.GetPos33TicketCount");
     } else {

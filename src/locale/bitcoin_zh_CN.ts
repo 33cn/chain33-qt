@@ -232,17 +232,23 @@
     </message>
     <message>
         <location line="+65"/>
-        <location line="+135"/>
+        <location line="+60"/>
+        <location line="+79"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-135"/>
+        <location line="-139"/>
         <source>空投地址不可用于转账、挖矿等操作!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+60"/>
+        <source>airdropaddr 地址不能设置为挖矿地址!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+74"/>
         <source>新建地址失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -271,7 +277,7 @@
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location line="-339"/>
+        <location line="-343"/>
         <location line="+2"/>
         <source>My address</source>
         <translation>我的地址</translation>
@@ -1916,7 +1922,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">验证消息(&amp;V)...</translation>
     </message>
     <message>
-        <location filename="../mainui/mainui.cpp" line="+161"/>
+        <location filename="../mainui/mainui.cpp" line="+164"/>
         <source>E&amp;xit</source>
         <translation type="unfinished">退出(&amp;X)</translation>
     </message>
@@ -1972,8 +1978,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">调试窗口(&amp;D)</translation>
     </message>
     <message>
-        <location line="-418"/>
-        <location line="+432"/>
+        <location line="-421"/>
+        <location line="+435"/>
         <source>%1钱包-正式版 %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2063,7 +2069,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+344"/>
+        <location line="-91"/>
+        <location line="+435"/>
+        <source>%1钱包-测试版 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>%1钱包-test %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2128,7 +2140,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">显示 Qt 相关信息</translation>
     </message>
     <message>
-        <location line="-324"/>
+        <location line="-327"/>
         <source>&amp;Show / Hide</source>
         <translation type="unfinished">显示 / 隐藏(&amp;S)</translation>
     </message>

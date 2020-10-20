@@ -178,6 +178,10 @@
         <source>设置挖矿地址成功</source>
         <translation type="unfinished">Set mining address successfully</translation>
     </message>
+    <message>
+        <source>airdropaddr 地址不能设置为挖矿地址!</source>
+        <translation type="unfinished">Airdropaddr address cannot be set to mine address!</translation>
+    </message>
 </context>
 <context>
     <name>AddressTableModel</name>
@@ -999,6 +1003,10 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
     <message>
         <source>验证助记词(&amp;V)</source>
         <translation type="unfinished">Verify Seed(&amp;V)</translation>
+    </message>
+    <message>
+        <source>%1钱包-测试版 %2</source>
+        <translation type="unfinished">%1-test-%2</translation>
     </message>
 </context>
 <context>

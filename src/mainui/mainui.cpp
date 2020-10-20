@@ -93,6 +93,9 @@ void MainUI::initUI()
     PostJsonMessage(ID_GetVersion);
 
     setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+    if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
+        setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+    }
 
     m_platformStyle = PlatformStyle::instantiate("other");
 #ifndef Q_OS_MAC
@@ -525,6 +528,9 @@ void MainUI::requestFinished(const QVariant &result, const QString &/*error*/)
         {
             g_strVersion = "chain33:" + resultMap["chain33"].toString() + " app:" + resultMap["app"].toString() + " localDb:" + resultMap["localDb"].toString();
             setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+            if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
+                setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+            }
 #ifdef QT_DEBUG
             setWindowTitle(tr("%1钱包-test %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
 #endif

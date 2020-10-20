@@ -369,6 +369,10 @@ void AddressListUI::onSetMiningAction()
         return;
 
     QModelIndex origIndex = proxyModel->mapToSource(indexes.at(0));
+    if (origIndex.data(Item_Label).toString() == "airdropaddr"){
+        QMessageBox::warning(this, tr("提示"), tr("airdropaddr 地址不能设置为挖矿地址!"));
+        return;
+    }
     QJsonObject jsonParms;
     jsonParms.insert("addr", origIndex.data(Item_Address).toString());
     jsonParms.insert("label", "mining");

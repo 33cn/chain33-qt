@@ -116,8 +116,7 @@ void TransactionsListUI::requestFinished(const QVariant &result, const QString &
         model->RemoveALLEntry();
         QString strFromFirst;
         QString strFromEnd;
-        for (int i = 0; i<txList.size(); ++i)
-        {
+        for (int i = 0; i<txList.size(); ++i) {
             QMap<QString, QVariant> txMap = txList[i].toMap();
             double dAmount = txMap["amount"].toDouble();
             QString strToAddr = txMap["tx"].toMap()["to"].toString();
@@ -131,20 +130,32 @@ void TransactionsListUI::requestFinished(const QVariant &result, const QString &
             QString strNote = txMap["tx"].toMap()["payload"].toMap()["Value"].toMap()["Transfer"].toMap()["note"].toString();
 
             QString strError;
-            if(nTy == 1)
-            {
+            if(nTy == 1) {
                 QList<QVariant> MapError = txMap["receipt"].toMap()["logs"].toList();
-                for(int j=0; j<MapError.size(); ++j)
-                {
-                    if(MapError[j].toMap()["ty"] == 1)
-                    {
+                for(int j=0; j<MapError.size(); ++j) {
+                    if(MapError[j].toMap()["ty"] == 1) {
                         strError = MapError[j].toMap()["log"].toString();
                         break;
                     }
                 }
             }
 
-            model->AdddateEntry(TransactionsListEntry(nTime, strToAddr, strFromAddr, strTxHash, dAmount, nFee, strExecer, strActionname, nTy, strNote, strError));
+            // YCC 专用
+            int nVoteCount = 0; // 参与投票的次数
+            if (strActionname == "miner") {
+                QList<QVariant> txLogsList = txMap["receipt"].toMap()["logs"].toList();
+                for (int j = 0; j<txLogsList.size(); ++j) {
+                    QMap<QString, QVariant> txLogMap = txLogsList[j].toMap();
+                    if (txLogMap["ty"] == "335") {
+                        QString strAddr = txLogMap["log"].toMap()["addr"].toString();
+                        if(strAddr == strFromAddr){
+                            ++nVoteCount;
+                        }
+                    }
+                }
+            }
+
+            model->AdddateEntry(TransactionsListEntry(nTime, strToAddr, strFromAddr, strTxHash, dAmount, nFee, strExecer, strActionname, nTy, strNote, strError, nVoteCount));
 
             if(i == 0)
                 strFromFirst = QString().sprintf("%013d", txMap["height"].toInt()) + QString().sprintf("%05d", txMap["index"].toInt());

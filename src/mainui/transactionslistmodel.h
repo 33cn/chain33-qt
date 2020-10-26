@@ -1,4 +1,4 @@
-#ifndef TRANSACTIONSLISTMODEL_H
+﻿#ifndef TRANSACTIONSLISTMODEL_H
 #define TRANSACTIONSLISTMODEL_H
 
 /*
@@ -15,7 +15,7 @@ class TransactionsListEntry
 {
 public:
     TransactionsListEntry() {}
-    TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const QString &strExecer, const QString &strActionname, int ReceiptTy, QString strNote, QString strError);
+    TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const QString &strExecer, const QString &strActionname, int ReceiptTy, QString strNote, QString strError, int nVoteCount);
     TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const TransactionsType &typeTy, const QString &strTypeTy);
 
 public:
@@ -34,6 +34,9 @@ public:
     QString             m_strActionname;
     QString             m_strNote;
     QString             m_strError;
+
+    // YCC 专用
+    int                 m_nVoteCount; // 参与投票的次数
 };
 
 class TransactionsListModel : public QAbstractTableModel

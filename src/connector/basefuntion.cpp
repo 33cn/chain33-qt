@@ -232,8 +232,7 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
 void InitErrorCode()
 {
     QString lang_territory = QString::fromStdString(QLocale::system().name().toStdString());
-    if(lang_territory == "zh_CN" /*|| lang_territory == "zh_TW"*/)
-    {
+    if(lang_territory != "en") {
         g_mapErrorCode.insert("ErrNotFound", "未找到");
         g_mapErrorCode.insert("ErrNoBalance", "余额不足");
         g_mapErrorCode.insert("ErrBalanceLessThanTenTimesFee", "余额小于十倍交易费");
@@ -333,9 +332,7 @@ void InitErrorCode()
         g_mapErrorCode.insert("ErrPrivkeyToPub", "私钥生成公钥错误");
         g_mapErrorCode.insert("ErrNotSync", "同步未完成");
         g_mapErrorCode.insert("ErrInvalidPassWord", "密码格式错误");
-    }
-    else
-    {
+    } else {
         g_mapErrorCode.insert("ErrNotFound", "Not Found");
         g_mapErrorCode.insert("ErrNoBalance", "Low Balance");
         g_mapErrorCode.insert("ErrBalanceLessThanTenTimesFee", "Balance Less Than Ten Times TxFee");

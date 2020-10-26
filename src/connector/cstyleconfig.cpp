@@ -62,10 +62,10 @@ void CStyleConfig::readConfigFile()
     }
 
     QString lang_territory = QString::fromStdString(QLocale::system().name().toStdString());
-    if(lang_territory == "zh_CN") {
-        m_strAppName = m_strAppName_zh;
-    } else {
+    if(lang_territory == "en") {
         m_strAppName = m_strAppName_en;
+    } else {
+        m_strAppName = m_strAppName_zh;
     }
 }
 

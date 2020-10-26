@@ -7,7 +7,7 @@
 CreateSeedUi::CreateSeedUi(QWidget *parent)
     : JsonConnectorWidget(parent)
     , ui(new Ui::CreateSeedUi)
-    , m_nLang(0)
+    , m_nLang(1)
 {
     ui->setupUi(this);
 
@@ -19,9 +19,9 @@ CreateSeedUi::CreateSeedUi(QWidget *parent)
     ui->WarnLabel->setStyleSheet("QLabel{background: transparent; color: #ec5151;}");
 
     QString lang_territory = QString::fromStdString(QLocale::system().name().toStdString());
-    if(lang_territory == "zh_CN" /*|| lang_territory == "zh_TW"*/)
+    if(lang_territory == "en")
     {
-        m_nLang = 1;
+        m_nLang = 0;
     }
 
     if(m_nLang == 1)

@@ -72,8 +72,8 @@ int main(int argc, char *argv[])
 
     // 翻译为当前语言 目前只支持中文 locale/bitcoin_zh_CN.ts 和英文 locale/bitcoin_en.ts
     QString lang_territory = QString::fromStdString(QLocale::system().name().toStdString());
-    if(lang_territory != "zh_CN")
-        lang_territory = "en";
+    if(lang_territory != "en")
+        lang_territory = "zh_CN";
 
     QString lang = lang_territory;
     lang.truncate(lang_territory.lastIndexOf('_'));

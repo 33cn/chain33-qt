@@ -8,7 +8,7 @@
 #include "basefuntion.h"
 extern MainUI*      g_lpMainUI;
 
-TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const QString &strExecer, const QString &strActionname, int ReceiptTy, QString strNote, QString strError)
+TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const QString &strExecer, const QString &strActionname, int ReceiptTy, QString strNote, QString strError, int nVoteCount)
     : m_strToAddress(strToAddress)
     , m_strFromAddress(strFromAddress)
     , m_strHash(strHash)
@@ -16,6 +16,7 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     , m_strActionname(strActionname)
     , m_strNote(strNote)
     , m_strError(strError)
+    , m_nVoteCount(nVoteCount)
 {
     m_nTime = nTimeData;
     QDateTime dateTime = QDateTime::fromTime_t(nTimeData);
@@ -63,6 +64,17 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     double amount = GetbalanceD(dAmount);
     m_strAmount = QString::number(amount, 'f', 4);
     m_strAmount = m_strAmount + " " + CStyleConfig::GetInstance().GetUnitName();
+
+    // YCC 专用 有投票奖励
+    if(CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC && nVoteCount > 0){
+        double amountVote = nVoteCount*0.35;
+        QString strAmountVote = QString::number(amountVote, 'f', 2);
+        QString strAmount = QString::number(amount, 'f', 2);
+        double amountAll = amountVote + amount;
+        m_strAmount = QString::number(amountAll, 'f', 4);
+        m_strAmount = m_strAmount + " " + CStyleConfig::GetInstance().GetUnitName();
+        m_strAmount = m_strAmount + " ( " + strAmount + " + " + strAmountVote + " )";
+    }
 
     if(Generated == m_typeTy || RecvWithAddress == m_typeTy || RecvFromMining == m_typeTy) {
         m_strAmount = "+ " + m_strAmount;

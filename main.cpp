@@ -23,7 +23,45 @@
 #include "introdialog.h"
 #include "cstyleconfig.h"
 
+
+
 ManageUI* lpManageUI = NULL;
+
+#if QT_VERSION > 0x050100
+#ifdef WIN32
+#include <Windows.h>
+#include <DbgHelp.h>
+
+LONG ApplicationCrashHandler(EXCEPTION_POINTERS *pException){//程式异常捕获
+    if(lpManageUI)
+    {
+        qCritical() << ("产生崩溃，退出chain33。");
+        lpManageUI->CloseChain33();
+    }
+
+    EXCEPTION_RECORD* record = pException->ExceptionRecord;
+    QString errCode(QString::number(record->ExceptionCode,16));
+    QString errAdr(QString::number((uint)record->ExceptionAddress,16));
+    qCritical() << ("错误代码：") << errCode << (" 错误地址： ") << errAdr;
+    //创建 Dump 文件
+
+    QString dmpName = CStyleConfig::GetInstance().GetAppName_en() + "_MMdd_hhmmss.dmp";
+    HANDLE hDumpFile = CreateFile(QDateTime::currentDateTime().toString(dmpName).toStdWString().c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    if( hDumpFile != INVALID_HANDLE_VALUE){
+        //Dump信息
+        MINIDUMP_EXCEPTION_INFORMATION dumpInfo;
+        dumpInfo.ExceptionPointers = pException;
+        dumpInfo.ThreadId = GetCurrentThreadId();
+        dumpInfo.ClientPointers = TRUE;
+        //写入Dump文件内容
+        MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(), hDumpFile, MiniDumpNormal, &dumpInfo, NULL, NULL);
+    }
+    //这里弹出一个错误对话框并退出程序
+    QMessageBox::critical(NULL, "程式崩溃", QString("%1").arg(errAdr)+QString("<div>错误代码：%1</div><div>错误地址：%2</div></FONT>").arg(errCode).arg(errAdr), QMessageBox::Ok);
+    return EXCEPTION_EXECUTE_HANDLER;
+}
+#endif
+#endif
 
 void SetEnvironmentDPI(){
 #if QT_VERSION > 0x050100
@@ -57,13 +95,34 @@ int main(int argc, char *argv[])
 {
     SetEnvironmentDPI();
 
-    SingleApplication app(argc, argv, "chain33-qt");
-#ifndef QT_DEBUG
-    if (app.IsRunning())
+    QString appName = "chain33-qt";
+    QFileInfo fileInfo("./StyleConfig.ini");
+    if(fileInfo.exists())
     {
+        QSettings *lpconfigIni = new QSettings("./StyleConfig.ini", QSettings::IniFormat);
+        lpconfigIni->setIniCodec(QTextCodec::codecForName("UTF-8"));
+
+        if (lpconfigIni) {
+            QString strConfig = lpconfigIni->value("Config/AppName").toString();
+            if(!strConfig.isEmpty()) {
+                appName = strConfig + "-qt";
+            }
+        }
+        delete lpconfigIni;
+    }
+
+    SingleApplication app(argc, argv, appName);
+#ifndef QT_DEBUG
+    if (app.IsRunning()) {
         QMessageBox::information(NULL, "提示", "钱包已经在运行");
         return 0;
     }
+#endif
+
+#if QT_VERSION > 0x050100
+#ifdef WIN32
+    SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)ApplicationCrashHandler);//注冊异常捕获函数
+#endif
 #endif
 
     qDebug("\r\nIn Main\r\n");

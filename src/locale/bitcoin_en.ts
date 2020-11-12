@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="en">
 <context>
@@ -450,10 +450,6 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
         <translation type="unfinished">close</translation>
     </message>
     <message>
-        <source>即将在该目录下创建一个名为 %1 的新目录</source>
-        <translation type="unfinished">A new directory named %1 will be created under this directory</translation>
-    </message>
-    <message>
         <source>提示: 需要较长的时候处理文件，操作过程中请不要关闭界面。</source>
         <translation type="unfinished">Tip: it takes a long time to process the file. Please do not close the interface during operation.</translation>
     </message>
@@ -492,10 +488,6 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
         <translation type="unfinished">finish</translation>
     </message>
     <message>
-        <source>正在处理，请稍等，大约需要 %1 分钟...</source>
-        <translation type="unfinished">Just a moment, please. It takes about %1 minute...</translation>
-    </message>
-    <message>
         <source>*</source>
         <translation type="unfinished"></translation>
     </message>
@@ -509,7 +501,22 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
     </message>
     <message>
         <source>(大约需要 60GB 空间)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">(of 60 GB needed.)</translation>
+    </message>
+    <message>
+        <source>即将在该目录下创建一个名为 %1Data 的新目录</source>
+        <translation type="unfinished">A new directory named %1Data will be created under this directory</translation>
+    </message>
+    <message numerus="yes">
+        <source>(需要 %n GB空间.)</source>
+        <translation type="unfinished">
+            <numerusform>(of %n GB needed.)</numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>正在处理，大约需要 %1 分钟...</source>
+        <translation type="unfinished">Just a moment, please. It takes about %1 minute...</translation>
     </message>
 </context>
 <context>
@@ -816,10 +823,6 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
         <translation type="unfinished">Welcome</translation>
     </message>
     <message>
-        <source>即将在该目录下创建一个名为 %1 的新目录</source>
-        <translation type="obsolete">A new directory named %1 will be created under this directory</translation>
-    </message>
-    <message>
         <source>路径已存在，并且不是一个目录。</source>
         <translation type="obsolete">Path already exists, and is not a directory</translation>
     </message>
@@ -847,11 +850,11 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
     </message>
     <message>
         <source>(大约需要 60GB 空间)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">(of 60 GB needed.)</translation>
     </message>
     <message>
         <source>即将在该目录下创建一个名为 %1Data 的新目录</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A new directory named %1Data will be created under this directory</translation>
     </message>
 </context>
 <context>
@@ -1127,68 +1130,6 @@ ONLY the third party wallet deposit supported, please use transfer-in and transf
     </message>
 </context>
 <context>
-    <name>OrderManageUI</name>
-    <message>
-        <source>组件</source>
-        <translation type="obsolete">component</translation>
-    </message>
-    <message>
-        <source>未完成</source>
-        <translation type="obsolete">unfinished</translation>
-    </message>
-    <message>
-        <source>未完成订单</source>
-        <translation type="obsolete">unfinished order</translation>
-    </message>
-    <message>
-        <source>已取消</source>
-        <translation type="obsolete">cancelled</translation>
-    </message>
-    <message>
-        <source>已取消订单</source>
-        <translation type="obsolete">cancelled order</translation>
-    </message>
-    <message>
-        <source>已完成</source>
-        <translation type="obsolete">finish</translation>
-    </message>
-    <message>
-        <source>已完成订单</source>
-        <translation type="obsolete">finish order</translation>
-    </message>
-</context>
-<context>
-    <name>OrderTableModel</name>
-    <message>
-        <source>时间</source>
-        <translation type="obsolete">time</translation>
-    </message>
-    <message>
-        <source>交易对</source>
-        <translation type="obsolete">symbol</translation>
-    </message>
-    <message>
-        <source>方向</source>
-        <translation type="obsolete">buy or sell</translation>
-    </message>
-    <message>
-        <source>价格</source>
-        <translation type="obsolete">price</translation>
-    </message>
-    <message>
-        <source>委托量</source>
-        <translation type="obsolete">amount</translation>
-    </message>
-    <message>
-        <source>已成交</source>
-        <translation type="obsolete">sold</translation>
-    </message>
-    <message>
-        <source>操作</source>
-        <translation type="obsolete">action</translation>
-    </message>
-</context>
-<context>
     <name>QRImageWidget</name>
     <message>
         <source>保存二维码</source>
@@ -1308,25 +1249,6 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
     </message>
 </context>
 <context>
-    <name>SellTokenAction</name>
-    <message>
-        <source>错误</source>
-        <translation type="obsolete">error</translation>
-    </message>
-    <message>
-        <source>确定</source>
-        <translation type="obsolete">ok</translation>
-    </message>
-    <message>
-        <source>提示</source>
-        <translation type="obsolete">note</translation>
-    </message>
-    <message>
-        <source>转账成功，等区块链确认后，在列表中刷新!</source>
-        <translation type="obsolete">Transfer successful, after block chain confirmation, refresh in the list!</translation>
-    </message>
-</context>
-<context>
     <name>StatusBarUI</name>
     <message>
         <source>Form</source>
@@ -1439,7 +1361,7 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
     <message numerus="yes">
         <source>与%1网络建立了 %n 个连接</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
+            <numerusform>%n connections were established with the %1 network</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -1449,88 +1371,6 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
     <message>
         <source>Form</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TokenSymbolIntroDialog</name>
-    <message>
-        <source>关闭</source>
-        <translation type="obsolete">close</translation>
-    </message>
-    <message>
-        <source>%1 简介</source>
-        <translation type="obsolete">%1 intro</translation>
-    </message>
-    <message>
-        <source>中文名  </source>
-        <translation type="obsolete">chinese name</translation>
-    </message>
-    <message>
-        <source>简称    </source>
-        <translation type="obsolete">abbreviation</translation>
-    </message>
-    <message>
-        <source>发布时间</source>
-        <translation type="obsolete">release time</translation>
-    </message>
-    <message>
-        <source>主要介绍</source>
-        <translation type="obsolete">main introduction</translation>
-    </message>
-    <message>
-        <source>知味观月饼的提货券代币，可用于月饼提货，目前币钱包中已开通提货渠道。</source>
-        <translation type="obsolete">To know the value of the mooncake pick up coupons can be used for the mooncake pick up, at present the coin wallet has opened the pick up channel.</translation>
-    </message>
-    <message>
-        <source>武夷正韵茶叶的提货券代币，可用于茶叶提货，目前暂无提货渠道。</source>
-        <translation type="obsolete">Wuyi zhengyun tea coupons can be used for tea pick-up, there is no pick-up channel at present.</translation>
-    </message>
-    <message>
-        <source>英文名  </source>
-        <translation type="obsolete">english name</translation>
-    </message>
-    <message>
-        <source>货币总量</source>
-        <translation type="obsolete">monetary aggregates</translation>
-    </message>
-    <message>
-        <source>10亿</source>
-        <translation type="obsolete">1 billion</translation>
-    </message>
-    <message>
-        <source>核心算法</source>
-        <translation type="obsolete">core algorithm</translation>
-    </message>
-    <message>
-        <source>POS算法</source>
-        <translation type="obsolete">POS algorithm</translation>
-    </message>
-    <message>
-        <source>主要特色</source>
-        <translation type="obsolete">predominant feature</translation>
-    </message>
-    <message>
-        <source>POS算法，加入了一些自主创新，不再需要大量消耗能源挖矿，在一定程度上缩短了共识达成的时间。</source>
-        <translation type="obsolete">The POS algorithm, which adds some independent innovations, no longer needs to consume a lot of energy to mine, to some extent shortening the time of reaching consensus.</translation>
-    </message>
-    <message>
-        <source>单家联盟应用，增加用户粘性，帮中小企业解决融资难的问题，提高企业竞争力。</source>
-        <translation type="obsolete">Single alliance application, increase user stickiness, help small and medium-sized enterprises to solve the problem of financing difficulty, improve enterprise competitiveness.</translation>
-    </message>
-    <message>
-        <source>基于金储仓单所发行的代币，用于金储仓单系统内代币流转、结算，同时可以对仓单系统内的挂牌商品进行摘牌。</source>
-        <translation type="obsolete">The tokens issued based on the warehouse receipt can be used to transfer and settle the tokens in the warehouse receipt system, and the listed commodities in the warehouse receipt system can be delisted.</translation>
-    </message>
-</context>
-<context>
-    <name>TokenTableItemDelegate</name>
-    <message>
-        <source>撤销</source>
-        <translation type="obsolete">undo</translation>
-    </message>
-    <message>
-        <source>买入</source>
-        <translation type="obsolete">buy</translation>
     </message>
 </context>
 <context>
@@ -2107,7 +1947,7 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
     </message>
     <message>
         <source>手续费仅 %1 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">only %1 transaction fee</translation>
     </message>
     <message>
         <source>&lt;b&gt;%1 %2&lt;/b&gt; to %3 (%4)</source>
@@ -2126,11 +1966,11 @@ Only the third-party wallet can be used to charge money to the wallet, and the a
     </message>
     <message>
         <source>助记词：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Seed: </translation>
     </message>
     <message>
         <source>密码：</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password: </translation>
     </message>
     <message>
         <source>验证</source>

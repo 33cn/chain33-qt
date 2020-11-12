@@ -166,7 +166,7 @@
         <translation type="unfinished">删除</translation>
     </message>
     <message>
-        <location filename="../mainui/addresslistui.cpp" line="+134"/>
+        <location filename="../mainui/addresslistui.cpp" line="+131"/>
         <source>Copy &amp;Label</source>
         <translation type="unfinished">复制标签(&amp;L)</translation>
     </message>
@@ -849,7 +849,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../menu/changedirdialog.cpp" line="+59"/>
+        <location filename="../menu/changedirdialog.cpp" line="+57"/>
         <source>更改数据目录</source>
         <translation type="unfinished"></translation>
     </message>
@@ -864,13 +864,8 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../menu/changedirdialog.cpp" line="+8"/>
-        <source>即将在该目录下创建一个名为 %1 的新目录</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <location line="+79"/>
+        <location filename="../menu/changedirdialog.cpp" line="+9"/>
+        <location line="+80"/>
         <source>提示: 需要较长的时候处理文件，操作过程中请不要关闭界面。</source>
         <translation type="unfinished"></translation>
     </message>
@@ -890,8 +885,20 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
-        <source>正在处理，请稍等，大约需要 %1 分钟...</source>
+        <location line="-25"/>
+        <source>即将在该目录下创建一个名为 %1Data 的新目录</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+7"/>
+        <source>(需要 %n GB空间.)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>正在处理，大约需要 %1 分钟...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1071,7 +1078,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../menu/closeingdialog.cpp" line="+46"/>
+        <location filename="../menu/closeingdialog.cpp" line="+43"/>
         <source>关闭</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1662,7 +1669,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../menu/introdialog.cpp" line="+32"/>
+        <location filename="../menu/introdialog.cpp" line="+30"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1693,14 +1700,14 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         </translation>
     </message>
     <message numerus="yes">
-        <location line="+3"/>
+        <location line="+2"/>
         <source>(需要 %n GB空间)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+14"/>
         <source>选择数据库目录</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2213,7 +2220,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/manageui.cpp" line="+112"/>
+        <location filename="../mainui/manageui.cpp" line="+108"/>
         <source>%1钱包-正式版 %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2339,108 +2346,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+5"/>
         <source>输入的地址&quot;%1&quot;不是有效的%2地址。</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>OrderManageUI</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">表单</translation>
-    </message>
-</context>
-<context>
-    <name>OverviewPage</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">表单</translation>
-    </message>
-    <message>
-        <source>Stake:</source>
-        <translation type="obsolete">挖矿确认：</translation>
-    </message>
-    <message>
-        <source>Unconfirmed:</source>
-        <translation type="obsolete">未确认：</translation>
-    </message>
-    <message>
-        <source>Wallet</source>
-        <translation type="obsolete">钱包</translation>
-    </message>
-    <message>
-        <source>Spendable:</source>
-        <translation type="obsolete">可用余额：</translation>
-    </message>
-    <message>
-        <source>Your current spendable balance</source>
-        <translation type="obsolete">您当前可使用的余额</translation>
-    </message>
-    <message>
-        <source>Immature:</source>
-        <translation type="obsolete">未成熟的：</translation>
-    </message>
-    <message>
-        <source>Mined balance that has not yet matured</source>
-        <translation type="obsolete">尚未成熟的挖矿收入余额</translation>
-    </message>
-    <message>
-        <source>Total:</source>
-        <translation type="obsolete">总额：</translation>
-    </message>
-    <message>
-        <source>Your current total balance</source>
-        <translation type="obsolete">您当前的总余额</translation>
-    </message>
-    <message>
-        <source>A&amp;mount:</source>
-        <translation type="obsolete">金额(&amp;M)</translation>
-    </message>
-    <message>
-        <source>Pay &amp;To:</source>
-        <translation type="obsolete">付给(&amp;T)：</translation>
-    </message>
-    <message>
-        <source>Enter a label for this address to add it to your address book</source>
-        <translation type="obsolete">为这个地址输入一个标签，以便将它添加到您的地址簿</translation>
-    </message>
-    <message>
-        <source>&amp;Label:</source>
-        <translation type="obsolete">标签(&amp;L)：</translation>
-    </message>
-    <message>
-        <source>Choose address from address book</source>
-        <translation type="obsolete">从地址簿选择地址</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation type="obsolete">Alt+A</translation>
-    </message>
-    <message>
-        <source>Paste address from clipboard</source>
-        <translation type="obsolete">从剪贴板粘贴地址</translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation type="obsolete">Alt+P</translation>
-    </message>
-    <message>
-        <source>Remove this recipient</source>
-        <translation type="obsolete">删除收款人</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;最近交易记录&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</source>
-        <translation type="obsolete">尚未确认的交易总额（不计入目前钱包余额）</translation>
-    </message>
-    <message>
-        <source>Total of coins that was staked, and do not yet count toward the current balance</source>
-        <translation type="obsolete">正在进行权益累积的货币总额（不计入目前钱包余额）</translation>
-    </message>
-    <message>
-        <source>out of sync</source>
-        <translation type="obsolete">数据未同步</translation>
     </message>
 </context>
 <context>
@@ -3028,7 +2933,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+66"/>
-        <location filename="../mainui/statusbarui.cpp" line="+501"/>
+        <location filename="../mainui/statusbarui.cpp" line="+522"/>
         <source>Synchronizing with network...</source>
         <translation type="unfinished">正在与网络同步...</translation>
     </message>
@@ -3243,21 +3148,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location filename="../forms/switchcreateseedui.ui" line="+20"/>
         <source>Form</source>
         <translation type="unfinished">表单</translation>
-    </message>
-</context>
-<context>
-    <name>TokenSymbolIntroDialog</name>
-    <message>
-        <source>2018-09-10</source>
-        <translation type="obsolete">2018-09-10</translation>
-    </message>
-    <message>
-        <source>10亿</source>
-        <translation type="obsolete">10亿</translation>
-    </message>
-    <message>
-        <source>2018-07-26</source>
-        <translation type="obsolete">2018-07-26</translation>
     </message>
 </context>
 <context>
@@ -3801,7 +3691,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="obsolete">钱包找回通知</translation>
     </message>
     <message>
-        <location filename="../mainui/transactionslistmodel.cpp" line="+222"/>
+        <location filename="../mainui/transactionslistmodel.cpp" line="+234"/>
         <source>失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3905,12 +3795,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainui/transactionslistui.cpp" line="+63"/>
+        <location filename="../mainui/transactionslistui.cpp" line="+64"/>
         <source>out of sync</source>
         <translation type="unfinished">数据未同步</translation>
     </message>
     <message>
-        <location line="+186"/>
+        <location line="+197"/>
         <location line="+8"/>
         <source>All</source>
         <translation type="unfinished">全部</translation>
@@ -4118,7 +4008,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+42"/>
-        <location filename="../mainui/walletsendui.cpp" line="+127"/>
+        <location filename="../mainui/walletsendui.cpp" line="+122"/>
         <source>时间误差: %1 秒</source>
         <translation type="unfinished"></translation>
     </message>

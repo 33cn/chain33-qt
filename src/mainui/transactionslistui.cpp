@@ -26,7 +26,6 @@ void TransactionsThread::run()
 {
     while (true)
     {
-        sleep(12);
         m_mutex.lock();
         if(m_bRunPostMsg) {
             m_mutex.unlock();
@@ -34,6 +33,8 @@ void TransactionsThread::run()
         } else {
             m_mutex.unlock();
         }
+
+        sleep(12);
     }
 }
 

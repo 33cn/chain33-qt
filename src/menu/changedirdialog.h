@@ -1,4 +1,4 @@
-#ifndef CHANGEDIRDIALOG_H
+﻿#ifndef CHANGEDIRDIALOG_H
 #define CHANGEDIRDIALOG_H
 
 /*
@@ -7,6 +7,7 @@
 
 #include <QDialog>
 #include <QThread>
+#include <QMutex>
 #include "basejsonconnector.h"
 
 class CopyThread : public QThread
@@ -26,6 +27,7 @@ protected:
 
 private:
     QString m_dataDirStr;
+    QMutex  m_mutex;
 };
 
 namespace Ui {

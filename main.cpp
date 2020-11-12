@@ -33,9 +33,9 @@ ManageUI* lpManageUI = NULL;
 #include <DbgHelp.h>
 
 LONG ApplicationCrashHandler(EXCEPTION_POINTERS *pException){//程式异常捕获
+    qCritical() << ("产生崩溃，退出chain33。");
     if(lpManageUI)
     {
-        qCritical() << ("产生崩溃，退出chain33。");
         lpManageUI->CloseChain33();
     }
 

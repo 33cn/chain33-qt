@@ -16,18 +16,36 @@ const quint64 MIN_FREE_SPACE_LEFT = 5; //GB
 
 extern ManageUI*   g_lpManageUI;
 
+StatusBarThread::StatusBarThread()
+    : m_bOutOfSync (false)
+    , m_stop (false)
+{
+}
+
+StatusBarThread::~StatusBarThread()
+{
+    Stop();
+}
+
+void StatusBarThread::SetOutOfSync(bool bOutOfSync)
+{
+    m_mutex.lock();
+    m_bOutOfSync = bOutOfSync;
+    m_mutex.unlock();
+}
+
 void StatusBarThread::Stop()
 {
-    if(!isRunning())
-    {
+    if(!isRunning()) {
         return;
     }
     m_mutex.lock();
     m_stop = true;
     m_mutex.unlock();
-    qDebug()<<"Stop semaphore available "<<m_sem.available();
+
+    qDebug() << "Stop semaphore available " << m_sem.available();
     m_sem.release(TOTAL_SEMAPHORE_NUM - m_sem.available());
-    qDebug()<<"Stop release 2 semaphore";
+    qDebug() << "Stop release semaphore";
     m_cond.wakeOne();
     wait();
 }
@@ -49,13 +67,20 @@ void StatusBarThread::run()
     int nNo = 0;
     int nNetInfo = 0;
     int nNtpClockSync = 0;
-    int sem = 0;
     while (true)
     {
+        m_mutex.lock();
+        if(m_stop) {
+            m_mutex.unlock();
+            break;
+        }
+        m_mutex.unlock();
+
         //warning:sem must refer to TOTAL_SEMAPHORE_NUM, max number of sem must equal to TOTAL_SEMAPHORE_NUM
-        sem = 0;
+        int sem = 0;
         while(m_sem.available() > 0)
         {
+            qDebug() << "thread acquire available:" << m_sem.available();
             m_sem.acquire(1);
         }
         // 一直同步数据 同步完成后 获取当前节点的信号 会出现又同步不成功的情况 需要继续获取
@@ -63,13 +88,17 @@ void StatusBarThread::run()
         emit PostMsgIsSync();
         sem += 2;
 
+        m_mutex.lock();
         if(m_bOutOfSync) {
+            m_mutex.unlock();
             ++nNo;
             if(nNo > 2) {
                 nNo = 0;
                 emit PostMsgGetTicketCount();
                 sem += 1;
             }
+        } else {
+            m_mutex.unlock();
         }
 
         ++nNetInfo;
@@ -92,21 +121,13 @@ void StatusBarThread::run()
            emit JudgefreeBytesAvailable();
        }
 #endif
-
-       qDebug()<<"thread acquire "<< sem <<" semaphore";
+       qDebug() << "thread acquire " << sem << " semaphore";
        m_sem.tryAcquire(sem, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
-       qDebug()<<"thread acquire semaphore suc:"<<m_sem.available();
-       if(m_stop)
-       {
-           break;
-       }
+       qDebug() << "thread acquire semaphore suc:" << m_sem.available();
+
        m_mutex.lock();
        m_cond.wait(&m_mutex, 1000);
        m_mutex.unlock();
-       if(m_stop)
-       {
-           break;
-       }
     }
 }
 

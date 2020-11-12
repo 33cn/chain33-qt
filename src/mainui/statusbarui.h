@@ -21,9 +21,9 @@ class StatusBarThread : public QThread
 {
     Q_OBJECT
 public:
-    StatusBarThread() {m_bOutOfSync = false; m_stop = false; }
-    ~StatusBarThread() {Stop();}
-    void SetOutOfSync(bool bOutOfSync){m_bOutOfSync = bOutOfSync;}
+    StatusBarThread();
+    ~StatusBarThread();
+    void SetOutOfSync(bool bOutOfSync);
 
     void ReleaseOneSem(){m_sem.release();}
     void Stop();

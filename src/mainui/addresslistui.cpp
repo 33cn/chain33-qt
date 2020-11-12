@@ -10,7 +10,9 @@
 
 AddressListThread::AddressListThread()
 {
+    m_mutex.lock();
     m_stop = false;
+    m_mutex.unlock();
 }
 
 AddressListThread::~AddressListThread()
@@ -22,28 +24,23 @@ void AddressListThread::run()
 {
     while (true)
     {
+        m_mutex.lock();
+        if(m_stop) {
+            m_mutex.unlock();
+            return;
+        }
+        m_mutex.unlock();
+
         emit PostMsgGetAccounts();
         m_mutex.lock();
         m_cond.wait(&m_mutex, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
         m_mutex.unlock();
-        if(m_stop)
-        {
-            break;
-        }
-        m_mutex.lock();
-        m_cond.wait(&m_mutex,2000);
-        m_mutex.unlock();
-        if(m_stop)
-        {
-            return;
-        }
     }
 }
 
 void AddressListThread::Wakeup()
 {
-    if(!isRunning())
-    {
+    if(!isRunning()) {
         return;
     }
     m_cond.wakeOne();
@@ -51,26 +48,26 @@ void AddressListThread::Wakeup()
 
 void AddressListThread::Stop()
 {
-    if(!isRunning())
-    {
+    if(!isRunning()) {
         return;
     }
     m_mutex.lock();
     m_stop = true;
     m_mutex.unlock();
+
     m_cond.wakeOne();
     wait();
 }
 
 void AddressListThread::Resume()
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         return;
     }
     m_mutex.lock();
     m_stop = false;
     m_mutex.unlock();
+
     start();
 }
 

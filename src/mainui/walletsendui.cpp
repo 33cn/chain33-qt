@@ -28,19 +28,18 @@ void GetTicketBalanceThread::run()
     while(true)
     {
         m_mutex.lock();
-        if(m_stop)
-        {
+        if(m_stop) {
             m_mutex.unlock();
             return;
         }
-        if(m_cmd.isNull())
-        {
+        m_mutex.unlock();
+
+        m_mutex.lock();
+        if(m_cmd.isNull()) {
             m_mutex.unlock();
             msleep(100);
             continue;
-        }
-        else
-        {
+        } else {
             cmd = m_cmd;
             m_cmd.clear();
             m_mutex.unlock();
@@ -51,7 +50,6 @@ void GetTicketBalanceThread::run()
             m_condOK.wait(&m_mutex, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
             m_mutex.unlock();
         }
-
     }
 }
 void GetTicketBalanceThread::Stop()
@@ -69,8 +67,7 @@ void GetTicketBalanceThread::Stop()
 
 void GetTicketBalanceThread::Resume()
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         return;
     }
     m_mutex.lock();
@@ -81,8 +78,7 @@ void GetTicketBalanceThread::Resume()
 
 void GetTicketBalanceThread::SetTicketBalanceCmd(const QString &cmd)
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         m_mutex.lock();
         m_cmd = cmd;
         m_mutex.unlock();
@@ -91,8 +87,7 @@ void GetTicketBalanceThread::SetTicketBalanceCmd(const QString &cmd)
 
 void GetTicketBalanceThread::Wakeup()
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         m_condOK.wakeOne();
     }
 }

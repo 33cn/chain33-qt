@@ -15,19 +15,18 @@ CopyThread::CopyThread()
 
 void CopyThread::SetDataDir(const QString &strDir)
 {
+    m_mutex.lock();
     m_dataDirStr = strDir;
+    m_mutex.unlock();
 }
 
 void CopyThread::run()
 {
     while (true)
     {
-        if(!GetProcessidFromName())
-        {
+        if(!GetProcessidFromName()) {
             break;
-        }
-        else
-        {
+        } else {
             if(g_lpManageUI)
                 g_lpManageUI->CloseChain33Temp();
         }
@@ -37,16 +36,15 @@ void CopyThread::run()
     bool bCopy0 = copyDirectoryFiles(GetDefaultDataDir() + "\\wallet", m_dataDirStr + "\\wallet", true);
     bool bCopy1 = QFile::copy(GetDefaultDataDir() + "\\FriendsAddrList.xml", m_dataDirStr + "\\FriendsAddrList.xml");
     bool bCopy2 = copyDirectoryFiles(GetDefaultDataDir() + "\\datadir", m_dataDirStr + "\\datadir", true);
-    if(bCopy2)
-    {
+    if(bCopy2) {
         DelDir(GetDefaultDataDir() + "\\datadir");
         DelDir(GetDefaultDataDir() + "\\logs");
-    }
-    else
-    {
+    } else {
         qCritical() << "拷贝文件失败 " << bCopy0 << bCopy1 << bCopy2;
     }
+    m_mutex.lock();
     SetRegDataDir(m_dataDirStr);
+    m_mutex.unlock();
 
     emit FinishCopy();
 }
@@ -64,13 +62,14 @@ ChangeDirDialog::ChangeDirDialog(QWidget *parent) :
     connect(m_lpCopyThread, SIGNAL(FinishCopy()), this, SLOT(FinishCopy()));
 
     ui->labelDatadir->setText(GetDefaultDataDir());
-    ui->errorMessage->setText(tr("即将在该目录下创建一个名为 %1 的新目录").arg(CStyleConfig::GetInstance().GetAppName_en()));
+    ui->errorMessage->setText(tr("即将在该目录下创建一个名为 %1Data 的新目录").arg(CStyleConfig::GetInstance().GetAppName_en()));
     ui->labelAttention->setText(tr("提示: 需要较长的时候处理文件，操作过程中请不要关闭界面。"));    
     ui->progressBar->setMaximum(0);
     ui->progressBar->setTextVisible(false);
     ui->progressBar->setVisible(false);
     ui->EditNewDataDir->setEnabled(false);
     ui->pushButton_Finish->setVisible(false);
+    ui->labelFreeSpace->setText(tr("(需要 %n GB空间.)", "", BASE_REQUIRED_SPACE));
 }
 
 ChangeDirDialog::~ChangeDirDialog()
@@ -94,7 +93,7 @@ void ChangeDirDialog::accept()
     ui->pushButton_Cancel->setEnabled(false);
     ui->ellipsisButton->setEnabled(false);
 
-    QString dataDirStr = ui->EditNewDataDir->text() + "\\" + CStyleConfig::GetInstance().GetAppName_en();
+    QString dataDirStr = ui->EditNewDataDir->text() + "\\" + CStyleConfig::GetInstance().GetAppName_en() + "Data";
     m_lpCopyThread->SetDataDir(dataDirStr);
     m_lpCopyThread->start();
 }
@@ -112,7 +111,7 @@ void ChangeDirDialog::requestFinished(const QVariant &result, const QString &/*e
 
             if(headerMap["self"].toBool())
             {
-                ui->labelAttention->setText(tr("正在处理，请稍等，大约需要 %1 分钟...").arg(QString::number((int)(nPeerHeight/100000) + 2)));
+                ui->labelAttention->setText(tr("正在处理，大约需要 %1 分钟...").arg(QString::number((int)(nPeerHeight/100000) + 2)));
                 break;
             }
         }

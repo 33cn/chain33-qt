@@ -147,7 +147,7 @@ AddressListUI::AddressListUI(AddrModeType mode, AddrTypeTabs tab, QWidget *paren
     contextMenu->addAction(deleteAction);
     contextMenu->setStyleSheet("QMenu {background-color:#2c2c2c;} QMenu::item:selected { background-color:#454545; }");
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
-        contextMenu->setStyleSheet("QMenu {background-color:#ffffff;color: #37383C;} QMenu::item:selected {background-color:#2241C7;color: #ffffff;}");
+        contextMenu->setStyleSheet("QMenu {background-color:#ffffff;color: #1B2740;} QMenu::item:selected {background-color:#5282DB;color: #ffffff;}");
 
     // Connect signals for context menu actions
     connect(copyAddressAction, SIGNAL(triggered()), this, SLOT(on_copyToClipboard_clicked()));

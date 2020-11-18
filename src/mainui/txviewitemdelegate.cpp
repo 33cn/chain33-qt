@@ -20,7 +20,6 @@ TxViewItemDelegate::TxViewItemDelegate(TypeList typeList, const PlatformStyle *p
     m_RedColor = 0xec5151;
     m_GreyColor = 0x999999;
 
-    // TODO
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         m_YellowColor = 0x2c77ef;
         m_BlackColor = 0x1a1a38;

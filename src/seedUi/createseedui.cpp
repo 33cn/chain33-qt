@@ -19,21 +19,17 @@ CreateSeedUi::CreateSeedUi(QWidget *parent)
     ui->WarnLabel->setStyleSheet("QLabel{background: transparent; color: #ec5151;}");
 
     QString lang_territory = QString::fromStdString(QLocale::system().name().toStdString());
-    if(lang_territory == "en")
-    {
+    if(lang_territory == "en") {
         m_nLang = 0;
     }
 
-    if(m_nLang == 1)
-    {
+    if(m_nLang == 1) {
         QHBoxLayout* lpHBoxLayout = new QHBoxLayout(this);
         lpHBoxLayout->setSpacing(1);
-        for(int i=0; i<15; ++i)
-        {
+        for(int i=0; i<15; ++i) {
             AddLabelList(lpHBoxLayout);
 
-            if(m_nLang == 1 && i > 0 && (i+1)%3 == 0)
-            {
+            if(m_nLang == 1 && i > 0 && (i+1)%3 == 0) {
                 QSpacerItem* lpSpacerItem = new QSpacerItem(40,20,QSizePolicy::Expanding);
                 lpHBoxLayout->addItem(lpSpacerItem);
             }
@@ -41,15 +37,11 @@ CreateSeedUi::CreateSeedUi(QWidget *parent)
         QSpacerItem* lpSpacerItem = new QSpacerItem(20,20,QSizePolicy::Expanding);
         lpHBoxLayout->addItem(lpSpacerItem);
         ui->SeedCodeLayout->addItem(lpHBoxLayout);
-    }
-    else
-    {
-        for(int j=0; j<2; ++j)
-        {
+    } else {
+        for(int j=0; j<2; ++j) {
             QHBoxLayout* lpHBoxLayout = new QHBoxLayout(this);
             lpHBoxLayout->setSpacing(4);
-            for(int i=0; i<8-j; ++i)
-            {
+            for(int i=0; i<8-j; ++i) {
                 AddLabelList(lpHBoxLayout);
             }
             QSpacerItem* lpSpacerItem = new QSpacerItem(20,20,QSizePolicy::Expanding);
@@ -73,10 +65,8 @@ void CreateSeedUi::requestFinished(const QVariant &result, const QString &/*erro
         m_strSeedCode = resultMap["seed"].toString();
         QStringList strListSeedCode = m_strSeedCode.split(" ");
 
-        if(strListSeedCode.size() >= 15)
-        {
-            for(int i=0; i<15; ++i)
-            {
+        if(strListSeedCode.size() >= 15) {
+            for(int i=0; i<15; ++i) {
                 m_listLabel[i]->setText(strListSeedCode[i]);
             }
         }
@@ -107,7 +97,7 @@ void CreateSeedUi::AddLabelList(QHBoxLayout* lpHBoxLayout)
 
     lpSeedLabel->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffba26; border-radius: 4px; padding-left: 8px; padding-right: 8px; padding-top: 13px;padding-bottom: 13px; background: #202020; } ");
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
-        lpSeedLabel->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #2241C7; border-radius: 4px; padding-left: 8px; padding-right: 8px; padding-top: 13px;padding-bottom: 13px; background: #ffffff; } ");
+        lpSeedLabel->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #5282DB; border-radius: 4px; padding-left: 8px; padding-right: 8px; padding-top: 13px;padding-bottom: 13px; background: #ffffff; } ");
 
     lpHBoxLayout->addWidget(lpSeedLabel);
 }

@@ -9,6 +9,7 @@
 #include "basefuntion.h"
 #include "base64.h"
 #include "bitcoinunits.h"
+#include "platformstyle.h"
 
 GetTicketBalanceThread::GetTicketBalanceThread()
 {
@@ -135,7 +136,7 @@ void WalletSendUI::initUI()
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         this->setStyleSheet("QWidget {background-color:#FFFFFF;border:none;}" + CStyleConfig::GetInstance().GetStylesheet());
-        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#F2F3F5;border-radius: 4px;}");
+        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#F5F4F9;border-radius: 4px;}");
     } else {
         ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#2c2c2c;border-radius: 4px;}");
     }
@@ -144,9 +145,9 @@ void WalletSendUI::initUI()
     ui->labelTotal->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 4) + "pt;}");
     ui->labelBalance->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt;}");
     ui->labelFrozen->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt;}");
-    ui->labelTotalText->setStyleSheet("QLabel { color: #808080; font: " + QString::number(GetBaseFontSize()) + "pt;}");
-    ui->label_Balance_text->setStyleSheet("QLabel { color: #808080; font: " + QString::number(GetBaseFontSize()) + "pt;}");
-    ui->label_Frozen_text->setStyleSheet("QLabel { color: #808080; font: " + QString::number(GetBaseFontSize()) + "pt;}");
+    ui->labelTotalText->setStyleSheet("QLabel { color: #969BA6; font: " + QString::number(GetBaseFontSize()) + "pt;}");
+    ui->label_Balance_text->setStyleSheet("QLabel { color: #969BA6; font: " + QString::number(GetBaseFontSize()) + "pt;}");
+    ui->label_Frozen_text->setStyleSheet("QLabel { color: #969BA6; font: " + QString::number(GetBaseFontSize()) + "pt;}");
 #endif
     ui->verticalWidget0->setStyleSheet("border-radius:4px;");
     ui->verticalWidget1->setStyleSheet("border-radius:4px;");
@@ -178,6 +179,9 @@ void WalletSendUI::initUI()
     connect(this, SIGNAL(SendGetTicketBalanceCmd(QString)), m_getTicketBalanceThread, SLOT(SetTicketBalanceCmd(QString)));
     connect(m_getTicketBalanceThread, SIGNAL(PostMsgGetTicketBalance(QString)), this, SLOT(DealPostMsgGetTicketBalance(QString)));
     m_getTicketBalanceThread->start();
+
+    ui->addressFromButton->setIcon(m_platformStyle->SingleColorIcon(":/address_book"));
+    ui->addressBookButton->setIcon(m_platformStyle->SingleColorIcon(":/address_book"));
 }
 
 void WalletSendUI::SetUpProperty(double dBalance, double dFrozen)

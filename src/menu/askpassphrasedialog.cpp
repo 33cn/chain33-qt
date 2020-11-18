@@ -13,11 +13,13 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent)
     : JsonConnectorDialog(parent)
     , ui(new Ui::AskPassphraseDialog)
     , mode(mode)
- //   model(0),
     , fCapsLock(false)
 {
     ui->setupUi(this);
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
+    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
+       this->setStyleSheet("QWidget {background-color:#E7EDF1;border:none;}" + CStyleConfig::GetInstance().GetStylesheet_child());
+    }
 
     ui->passEdit1->setMaxLength(MAX_PASSPHRASE_SIZE);
     ui->passEdit2->setMaxLength(MAX_PASSPHRASE_SIZE);
@@ -28,11 +30,8 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent)
     ui->passEdit2->installEventFilter(this);
     ui->passEdit3->installEventFilter(this);
 
-//    ui->stakingCheckBox->setChecked(fWalletUnlockStakingOnly);
-
     switch(mode)
     {
-   //     case UnlockStaking:
         case Unlock: // Ask passphrase
             ui->stakingCheckBox->setChecked(true);
             ui->stakingCheckBox->show();
@@ -42,7 +41,6 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent)
             ui->passLabel3->hide();
             ui->passEdit3->hide();
             setWindowTitle(tr("Unlock wallet"));
-        //    m_nStatus = Wallet_Locked;
             break;
         case Decrypt:   // Ask passphrase
             ui->warningLabel->setText(tr("This operation needs your wallet passphrase to decrypt the wallet."));

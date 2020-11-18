@@ -166,9 +166,9 @@ void InitMainUI(const SingleApplication& app)
 
     QPalette pa;
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
-        pa.setColor(QPalette::WindowText, 0x37383C);
+        pa.setColor(QPalette::WindowText, 0x1B2740);
         pa.setColor(QPalette::ButtonText,Qt::white);
-        pa.setColor(QPalette::Text, 0x37383C);
+        pa.setColor(QPalette::Text, 0x1B2740);
     } else {
         pa.setColor(QPalette::WindowText,Qt::white);
         pa.setColor(QPalette::ButtonText,Qt::white);

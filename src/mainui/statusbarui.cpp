@@ -142,7 +142,7 @@ StatusBarUI::StatusBarUI(QWidget *parent, const PlatformStyle *platformStyle)
     ui->setupUi(this);
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
     {
-        QString stylesheet = "QWidget {background-color:#DADBDE;border:none;}" + CStyleConfig::GetInstance().GetStylesheet();
+        QString stylesheet = "QWidget {background-color:#ffffff;border:none;}" + CStyleConfig::GetInstance().GetStylesheet();
         this->setStyleSheet(stylesheet);
     }
     else

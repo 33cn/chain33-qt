@@ -22,7 +22,7 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent):
     allbtn = new QPushButton(this);
     allbtn->setText(tr("全部"));
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
-        allbtn->setStyleSheet("QPushButton { color: #37383C; }");
+        allbtn->setStyleSheet("QPushButton { color: #1B2740; }");
     }
 
     amount = new QDoubleSpinBox(this);

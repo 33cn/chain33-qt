@@ -247,7 +247,7 @@ void MainUI::createToolBars()
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextOnly);
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
-        toolbar->setStyleSheet("QWidget {background-color:#9A9FB6;border:none;} QToolButton { background-color: transparent; width: 100px; color: #DDDEE3;} QToolButton:hover { color: #EEEFF4; } QToolButton:checked, QToolButton:pressed { color: #ffffff; }");
+        toolbar->setStyleSheet("QWidget {background-color:#5282DB;border:none;} QToolButton { background-color: transparent; width: 100px; color: #DDDEE3;} QToolButton:hover { color: #EEEFF4; } QToolButton:checked, QToolButton:pressed { color: #ffffff; }");
     } else {
         toolbar->setStyleSheet("QToolButton { background-color: transparent; width: 100px; color: #ffffff;} QToolButton:hover { background-color: #2c2c2c; } QToolButton:checked, QToolButton:pressed { background-color: transparent; color: #ffba26; }");
     }

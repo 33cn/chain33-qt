@@ -21,7 +21,6 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
 
-    // ui->AboutWidget->setStyleSheet("QWidget { background-color:#2c2c2c; }");
     ui->copyrightLabel->setText(tr("版权所有 © 2018 %1开发组").arg(CStyleConfig::GetInstance().GetAppName()));
     QString strColor = "#ffba26";
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)

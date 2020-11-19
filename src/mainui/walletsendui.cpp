@@ -207,57 +207,44 @@ void WalletSendUI::SetMaxPropertyAddr(QString strAddr, double dBalance)
 
 void WalletSendUI::UpdateWalletInfo(const QList<QVariant> &walletsList)
 {
-    //#if QT_VERSION >= 0x050000
-        QString strMaxAddr;
-      //  QJsonArray addresses;
-        QString jsonCmd = "{\"addresses\":[";
-        double dMaxBalance = 0.0;
-        m_dBalance = 0.0;
+    QString strMaxAddr;
+    QString jsonCmd = "{\"addresses\":[";
+    double dMaxBalance = 0.0;
+    m_dBalance = 0.0;
 
-        for (int i=0; i<walletsList.size(); ++i) {
-            QMap<QString, QVariant> addrMap = walletsList[i].toMap();
+    for (int i=0; i<walletsList.size(); ++i) {
+        QMap<QString, QVariant> addrMap = walletsList[i].toMap();
 
-         //   addresses.insert(i, (addrMap["acc"].toMap())["addr"].toString());
-            jsonCmd.append("\"").append((addrMap["acc"].toMap())["addr"].toString().toStdString().c_str()).append("\"");
-            if(i != walletsList.size() - 1){
-                jsonCmd.append(",");
-            } else {
-                jsonCmd.append("],");
-            }
-
-            m_dBalance += (addrMap["acc"].toMap())["balance"].toDouble();
-        //    dFrozen += (addrMap["acc"].toMap())["frozen"].toDouble();
-
-            if(dMaxBalance < (addrMap["acc"].toMap())["balance"].toDouble()) {
-                dMaxBalance = (addrMap["acc"].toMap())["balance"].toDouble();
-                strMaxAddr = (addrMap["acc"].toMap())["addr"].toString();
-            }
-
-            if(ui->fromAddr->text() == (addrMap["acc"].toMap())["addr"].toString()) {
-                ui->payAmount->setAmountRange(GetbalanceD((addrMap["acc"].toMap())["balance"].toDouble()));
-            }
-        }
-
-        if(m_bFirst) {
-            m_bFirst = false;
-            SetMaxPropertyAddr(strMaxAddr, GetbalanceD(dMaxBalance));
-        }
-
-     /*   QJsonObject jsonParms;
-        jsonParms.insert("addresses", addresses);
-        jsonParms.insert("execer", "ticket");
-        QJsonArray params;
-        params.insert(0, jsonParms);
-        PostJsonMessage(ID_GetBalance, params);*/
-
-        if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC){
-            jsonCmd.append("\"execer\":\"pos33\"}");
+        jsonCmd.append("\"").append((addrMap["acc"].toMap())["addr"].toString().toStdString().c_str()).append("\"");
+        if(i != walletsList.size() - 1){
+            jsonCmd.append(",");
         } else {
-            jsonCmd.append("\"execer\":\"ticket\"}");
+            jsonCmd.append("],");
         }
-        emit SendGetTicketBalanceCmd(jsonCmd);
-        //PostJsonMessage(ID_GetBalance_ticket, jsonCmd.toStdString().c_str());
-    //#endif
+
+        m_dBalance += (addrMap["acc"].toMap())["balance"].toDouble();
+
+        if(dMaxBalance < (addrMap["acc"].toMap())["balance"].toDouble()) {
+            dMaxBalance = (addrMap["acc"].toMap())["balance"].toDouble();
+            strMaxAddr = (addrMap["acc"].toMap())["addr"].toString();
+        }
+
+        if(ui->fromAddr->text() == (addrMap["acc"].toMap())["addr"].toString()) {
+            ui->payAmount->setAmountRange(GetbalanceD((addrMap["acc"].toMap())["balance"].toDouble()));
+        }
+    }
+
+    if(m_bFirst) {
+        m_bFirst = false;
+        SetMaxPropertyAddr(strMaxAddr, GetbalanceD(dMaxBalance));
+    }
+
+    if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC){
+        jsonCmd.append("\"execer\":\"pos33\"}");
+    } else {
+        jsonCmd.append("\"execer\":\"ticket\"}");
+    }
+    emit SendGetTicketBalanceCmd(jsonCmd);
 }
 
 bool WalletSendUI::validate()
@@ -367,7 +354,7 @@ void WalletSendUI::on_sendButton_clicked()
     }
 
     std::string strNode = ui->addAsLabel->text().toStdString();
-#if QT_VERSION >= 0x050000
+
     QJsonObject jsonParms;
     jsonParms.insert("from", ui->fromAddr->text());
     jsonParms.insert("to", address);
@@ -376,12 +363,6 @@ void WalletSendUI::on_sendButton_clicked()
     QJsonArray params;
     params.insert(0, jsonParms);
     PostJsonMessage(ID_SendToAddress, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"from\":\"" << ui->fromAddr->text().toStdString().c_str() << "\",\"to\":\"" << address.toStdString().c_str()
-         << "\",\"amount\":" << amount << ",\"note\":\"" << strNode.c_str() << "\"}";
-    PostJsonMessage(ID_SendToAddress, ostr.str().c_str());
-#endif
 }
 
 void WalletSendUI::contextualMenu(const QPoint &/*point*/)

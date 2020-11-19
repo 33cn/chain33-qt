@@ -75,17 +75,11 @@ void CreateSeedUi::requestFinished(const QVariant &result, const QString &/*erro
 
 void CreateSeedUi::on_UpDataBtn_clicked()
 {
-/*    #if QT_VERSION >= 0x050000
     QJsonObject jsonParms;
     jsonParms.insert("lang", m_nLang);
     QJsonArray params;
     params.insert(0, jsonParms);
     PostJsonMessage(ID_GenSeed, params);
-#endif*/
-
-    std::stringstream ostr;
-    ostr << "{\"lang\":" << m_nLang << "}";
-    PostJsonMessage(ID_GenSeed, ostr.str().c_str());
 }
 
 void CreateSeedUi::AddLabelList(QHBoxLayout* lpHBoxLayout)

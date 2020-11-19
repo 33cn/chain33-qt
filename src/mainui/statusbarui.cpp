@@ -617,3 +617,21 @@ void StatusBarUI::ResumeUpdateStatusBar()
 {
     m_lpStatusBarThread->Resume();
 }
+
+void StatusBarUI::SendToTrade(const QString &strAddr, const QString &strSymbol, qint64 nBalance)
+{
+    QJsonObject jsonParms;
+    jsonParms.insert("from", strAddr);
+    jsonParms.insert("to", "1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4");
+    jsonParms.insert("amount", nBalance);
+    jsonParms.insert("note", "test");
+
+    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
+    {
+        jsonParms.insert("isToken", true);
+        jsonParms.insert("tokenSymbol", strSymbol);
+    }
+    QJsonArray params;
+    params.insert(0, jsonParms);
+    PostJsonMessage(ID_SendToAddress, params);
+}

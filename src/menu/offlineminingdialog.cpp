@@ -52,7 +52,6 @@ void OfflineMiningDialog::PostMsgCreateBindMiner()
     qint64 nAmount = strAmount.toDouble()*le8;
     nAmount = 0; // 默认传入 0
 
-#if QT_VERSION >= 0x050000
     QJsonObject jsonParms;
     jsonParms.insert("bindAddr", strBindAddr);
     jsonParms.insert("originAddr", strOriginAddr);
@@ -61,11 +60,6 @@ void OfflineMiningDialog::PostMsgCreateBindMiner()
     QJsonArray params;
     params.insert(0, jsonParms);
     PostJsonMessage(ID_CreateBindMiner, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"amount\":" << nAmount << ",\"bindAddr\":\"" << strBindAddr.toStdString().c_str() << "\",\"checkBalance\":false,\"originAddr\":\"" << strOriginAddr.toStdString().c_str() << "\"}";
-    PostJsonMessage(ID_CreateBindMiner, ostr.str().c_str());
-#endif
 }
 
 void OfflineMiningDialog::PostMsgCreateRawTransaction()
@@ -73,7 +67,6 @@ void OfflineMiningDialog::PostMsgCreateRawTransaction()
     QString strAmount = ui->AmountEdit->text();
     qint64 nAmount = strAmount.toDouble()*le8;
 
-#if QT_VERSION >= 0x050000
     QJsonObject jsonParms;
     jsonParms.insert("to", "16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp");
     jsonParms.insert("amount", nAmount);
@@ -82,11 +75,6 @@ void OfflineMiningDialog::PostMsgCreateRawTransaction()
     QJsonArray params;
     params.insert(0, jsonParms);
     PostJsonMessage(ID_CreateRawTransaction, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"to\":\"16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp\",\"amount\":" << nAmount << ",\"note\":\"coins->ticket\",\"execName\":\"ticket\"}";
-    PostJsonMessage(ID_CreateRawTransaction, ostr.str().c_str());
-#endif
 }
 
 void OfflineMiningDialog::PostMsgSignRawTx()
@@ -100,7 +88,6 @@ void OfflineMiningDialog::PostMsgSignRawTx()
 
 void OfflineMiningDialog::PostMsgSignRawTx(IdType nID, const QString &strtxHex)
 {
-#if QT_VERSION >= 0x050000
     QJsonObject jsonParms;
     jsonParms.insert("addr", ui->originAddrEdit->text());
     jsonParms.insert("txhex", strtxHex);
@@ -108,11 +95,6 @@ void OfflineMiningDialog::PostMsgSignRawTx(IdType nID, const QString &strtxHex)
     QJsonArray params;
     params.insert(0, jsonParms);
     PostJsonMessage(nID, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"addr\":\"" << ui->originAddrEdit->text().toStdString().c_str() << "\",\"txhex\":\"" << strtxHex.toStdString().c_str() << "\",\"expire\":\"1h\"}";
-    PostJsonMessage(nID, ostr.str().c_str());
-#endif
 }
 
 void OfflineMiningDialog::requestFinished(const QVariant &result, const QString &error)

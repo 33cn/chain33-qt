@@ -86,10 +86,8 @@ void AskPassphraseDialog::accept()
 
     switch(mode)
     {
-    //case UnlockStaking:
     case Unlock:
      {
-/*#if QT_VERSION >= 0x050000
         QJsonObject jsonParms;
         jsonParms.insert("passwd", oldpass);
         jsonParms.insert("walletorticket", fWalletUnlockStakingOnly);
@@ -97,18 +95,6 @@ void AskPassphraseDialog::accept()
         QJsonArray params;
         params.insert(0, jsonParms);
         PostJsonMessage(ID_UnLock, params);
-#endif*/
-
-        std::stringstream ostr;
-        std::string strbool;
-        if(fWalletUnlockStakingOnly) {
-            strbool = "true";
-        } else {
-            strbool = "false";
-        }
-
-        ostr << "{\"passwd\":\"" << oldpass.toStdString().c_str() << "\",\"walletorticket\":" << strbool << ",\"timeout\":" << 0 << "}";
-        PostJsonMessage(ID_UnLock, ostr.str().c_str());
     }
         break;
     case Decrypt:
@@ -117,7 +103,6 @@ void AskPassphraseDialog::accept()
     case ChangePass:
         if(newpass1.size() >= 8) {
             if(newpass1 == newpass2) {
-             //   PostJsonMessage(ID_SetPasswd, "oldPass=" + oldpass + "<>newPass=" + newpass1);
                 std::stringstream ostr;
                 ostr << "{\"oldPass\":\"" << oldpass.toStdString().c_str() << "\",\"newPass\":\"" << newpass1.toStdString().c_str() << "\"}";
                 PostJsonMessage(ID_SetPasswd, ostr.str().c_str());

@@ -86,7 +86,6 @@ BaseJsonConnector::~BaseJsonConnector()
 {
 }
 
-#if QT_VERSION >= 0x050000
 void BaseJsonConnector::PostJsonMessage(IdType id, const QJsonArray &params)
 {
     m_nID = id;
@@ -106,12 +105,10 @@ void BaseJsonConnector::PostJson(const QJsonObject &PostJson)
     QByteArray postData = document.toJson(QJsonDocument::Compact);
     PostJsonData(postData);
 }
-#endif
 
 void BaseJsonConnector::PostJsonMessage(IdType id)
 {
     m_nID = id;
-#if QT_VERSION >= 0x050000
     QJsonObject json;
     json.insert("jsonrpc", "2.0");
     json.insert("id", m_nID);
@@ -119,13 +116,6 @@ void BaseJsonConnector::PostJsonMessage(IdType id)
     QJsonArray params;
     json.insert("params", params);
     PostJson(json);
-#else
-    QByteArray dataArray;
-    std::stringstream ostr;
-    ostr << "{\"id\":" << id << ",\"jsonrpc\":\"2.0\",\"method\":\"" << g_methodMap[id].toStdString().c_str() << "\",\"params\":[]}";
-    dataArray.append(ostr.str().c_str());
-    PostJsonData(dataArray);
-#endif
 }
 
 void BaseJsonConnector::PostJsonMessage(IdType id, const char* strParams)
@@ -240,129 +230,6 @@ void BaseJsonConnector::finishedNetwork(QNetworkReply *reply)
     reply->close();
     reply->deleteLater();
     g_lpapp->processEvents();
-}
-
-void BaseJsonConnector::SendToTrade(const QString &strAddr, const QString &strSymbol, qint64 nBalance)
-{
-#if QT_VERSION >= 0x050000
-    QJsonObject jsonParms;
-    jsonParms.insert("from", strAddr);
-    jsonParms.insert("to", "1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4");
-    jsonParms.insert("amount", nBalance);
-    jsonParms.insert("note", "test");
-
-    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
-    {
-        jsonParms.insert("isToken", true);
-        jsonParms.insert("tokenSymbol", strSymbol);
-    }
-    QJsonArray params;
-    params.insert(0, jsonParms);
-    PostJsonMessage(ID_SendToAddress, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"amount\":" << 0-nBalance;
-    ostr << ",\"from\":\"" << strAddr.toStdString().c_str() << "\"";
-    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
-    {
-        ostr << ",\"isToken\":true,\"tokenSymbol\":\"" << strSymbol.toStdString().c_str() << "\"";
-    }
-    ostr << ",\"note\":\"test\",\"to\":\"1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4\"}";
-    PostJsonMessage(ID_SendToAddress, ostr.str().c_str());
-#endif
-}
-
-void BaseJsonConnector::PostCreateRawTransaction(const QString &strSymbol, qint64 nAmount, bool isWithdraw)
-{
-#if QT_VERSION >= 0x050000
-    QJsonObject jsonParms;
-    jsonParms.insert("to", "1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4");
-    jsonParms.insert("amount", nAmount);
-    jsonParms.insert("isWithdraw", isWithdraw);
-    jsonParms.insert("note", "test");
-    jsonParms.insert("fee", 100000);
-    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
-    {
-        jsonParms.insert("isToken", true);
-        jsonParms.insert("tokenSymbol", strSymbol);
-        jsonParms.insert("execName", "coins");
-    }
-    else
-    {
-        jsonParms.insert("execName", "trade");
-    }
-    QJsonArray params;
-    params.insert(0, jsonParms);
-    PostJsonMessage(ID_CreateRawTransaction, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"to\":\"1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4\",\"amount\":" << nAmount << ",\"note\":\"test\",\"execName\":\"cions\",\"isWithdraw\":" << isWithdraw;
-    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
-    {
-        ostr << ",\"isToken\":true,\"tokenSymbol\":\"" << strSymbol.toStdString().c_str() << "\"";
-    }
-    ostr << "}";
-    PostJsonMessage(ID_CreateRawTransaction, ostr.str().c_str());
-#endif
-}
-
-void BaseJsonConnector::PostCreateRawTxGroup(const QString &strTxs)
-{
-    QStringList listTxs = strTxs.split(",");
-#if QT_VERSION >= 0x050000
-    QJsonObject jsonParms;
-    QJsonArray txs;
-    for(int i=0; i<listTxs.size(); ++i)
-    {
-        txs.insert(i, listTxs[i]);
-    }
-    jsonParms.insert("txs", txs);
-    QJsonArray params;
-    params.insert(0, jsonParms);
-    PostJsonMessage(ID_CreateRawTxGroup, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"txs\":[";
-    for(int i=0; i<listTxs.size(); ++i)
-    {
-        ostr << "\"" << QString(listTxs[i]).toStdString().c_str() << "\"";
-    }
-    ostr << "]\"}";
-    PostJsonMessage(ID_CreateRawTxGroup, ostr.str().c_str());
-#endif
-
-}
-
-void BaseJsonConnector::PostSignRawTx(const QString &strAddr, const QString &strTxhex)
-{
-#if QT_VERSION >= 0x050000
-    QJsonObject jsonParms;
-    jsonParms.insert("addr", strAddr);
-    jsonParms.insert("txhex", strTxhex);
-    jsonParms.insert("expire", "0s");
-    QJsonArray params;
-    params.insert(0, jsonParms);
-    PostJsonMessage(ID_SignRawTx, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"addr\":\"" << strAddr.toStdString().c_str() << "\",\"expire\":\"0s\",\"txhex\":\"" << strTxhex.toStdString().c_str() << "\"}";
-    PostJsonMessage(ID_SignRawTx, ostr.str().c_str());
-#endif
-}
-
-void BaseJsonConnector::PostSendTransaction(const QString &strData)
-{
-#if QT_VERSION >= 0x050000
-    QJsonObject jsonParms;
-    jsonParms.insert("data", strData);
-    QJsonArray params;
-    params.insert(0, jsonParms);
-    PostJsonMessage(ID_SendTransaction, params);
-#else
-    std::stringstream ostr;
-    ostr << "{\"data\":\"" << strData.toStdString().c_str() << "\"}";
-    PostJsonMessage(ID_SendTransaction, ostr.str().c_str());
-#endif
 }
 
 JsonConnectorDialog::JsonConnectorDialog(QWidget *parent) : QDialog(parent)

@@ -47,11 +47,8 @@
 #include "veifyseeddialog.h"
 #include "platformstyle.h"
 
-MainUI*             g_lpMainUI = NULL;
-EncryptionStatus    g_nStatus;          // 当前锁定状态
-QString             g_strVersion;
-extern ManageUI*    g_lpManageUI;
-QString             g_strPsd;
+MainUI*          g_lpMainUI = NULL;
+extern ManageUI* g_lpManageUI;
 
 MainUI::MainUI(QString &/*stylesheet*/, QWidget *parent)
     : JsonConnectorMainWindow(parent)
@@ -92,9 +89,9 @@ void MainUI::initUI()
 #endif    
     PostJsonMessage(ID_GetVersion);
 
-    setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+    setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), m_strVersion));
     if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
-        setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+        setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), m_strVersion));
     }
 
     m_platformStyle = PlatformStyle::instantiate("other");
@@ -342,7 +339,7 @@ void MainUI::showNormalIfMinimized(bool fToggleHidden)
 
 void MainUI::setEncryptionStatus(EncryptionStatus status)
 {
-    g_nStatus = status;
+    m_nStatus = status;
     switch(status)
     {
     case Wallet_Unlocked_MinerOnly:
@@ -526,13 +523,13 @@ void MainUI::requestFinished(const QVariant &result, const QString &/*error*/)
     {
         if(!resultMap["chain33"].toString().isEmpty())
         {
-            g_strVersion = "chain33:" + resultMap["chain33"].toString() + " app:" + resultMap["app"].toString() + " localDb:" + resultMap["localDb"].toString();
-            setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+            m_strVersion = "chain33:" + resultMap["chain33"].toString() + " app:" + resultMap["app"].toString() + " localDb:" + resultMap["localDb"].toString();
+            setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), m_strVersion));
             if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
-                setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+                setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), m_strVersion));
             }
 #ifdef QT_DEBUG
-            setWindowTitle(tr("%1钱包-test %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+            setWindowTitle(tr("%1钱包-test %2").arg(CStyleConfig::GetInstance().GetAppName(), m_strVersion));
 #endif
         }
         else

@@ -1,4 +1,4 @@
-#ifndef SEEDUI_H
+﻿#ifndef SEEDUI_H
 #define SEEDUI_H
 
 #include <QDialog>

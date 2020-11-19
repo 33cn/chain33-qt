@@ -7,6 +7,8 @@
 #include "addresslistui.h"
 #include "basefuntion.h"
 
+extern MainUI*              g_lpMainUI;
+
 TransactionDescDialog::TransactionDescDialog(const QModelIndex &idx, QWidget *parent)
     : JsonConnectorDialog(parent)
     , ui(new Ui::TransactionDescDialog)
@@ -118,8 +120,14 @@ QString TransactionDescDialog::getHtmlText(const QModelIndex &idx)
 QString TransactionDescDialog::getLabelName(const QString &strAddr)
 {
     QString strHTML;
-    QMap<QString, QString> mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
-    QMap<QString, QString> mapFriAddr = g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList->m_mapAddrLabel;
+    QMap<QString, QString> mapMyAddr;
+    if (g_lpMainUI && g_lpMainUI->m_lpAddressUI && g_lpMainUI->m_lpAddressUI->m_lpMyAddressList) {
+        mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
+    }
+    QMap<QString, QString> mapFriAddr;
+    if (g_lpMainUI && g_lpMainUI->m_lpAddressUI && g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList) {
+        mapFriAddr = g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList->m_mapAddrLabel;
+    }
     QString strLabel = mapMyAddr[strAddr];
     if(!strLabel.isEmpty()) {
         strHTML = " (" + tr("自己的地址") + ", " + tr("标签") + ": " + strLabel + ")";

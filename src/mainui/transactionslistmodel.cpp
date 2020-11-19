@@ -6,6 +6,7 @@
 #include "mainui.h"
 #include "addresslistui.h"
 #include "basefuntion.h"
+
 extern MainUI*      g_lpMainUI;
 
 TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const QString &strExecer, const QString &strActionname, int ReceiptTy, QString strNote, QString strError, int nVoteCount)
@@ -22,7 +23,10 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     QDateTime dateTime = QDateTime::fromTime_t(nTimeData);
     m_strTimeData = dateTime.toString("yyyy-MM-dd hh:mm:ss");
 
-    QMap<QString, QString> mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
+    QMap<QString, QString> mapMyAddr;
+    if (g_lpMainUI && g_lpMainUI->m_lpAddressUI && g_lpMainUI->m_lpAddressUI->m_lpMyAddressList)
+        mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
+
     m_strFromLabel = mapMyAddr[strFromAddress];
     m_strToLabel = mapMyAddr[strToAddress];
 

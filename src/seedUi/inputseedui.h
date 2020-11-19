@@ -1,4 +1,4 @@
-#ifndef INPUTSEEDUI_H
+﻿#ifndef INPUTSEEDUI_H
 #define INPUTSEEDUI_H
 
 #include <QWidget>
@@ -14,7 +14,7 @@ class InputSeedUi : public JsonConnectorWidget
     Q_OBJECT
 
 public:
-    explicit InputSeedUi(QWidget *parent = 0, int Tab = 0);
+    explicit InputSeedUi(QWidget *parent = 0, int Tab = 0, QWidget *seedUi = 0);
     ~InputSeedUi();
 
     void Init();
@@ -45,6 +45,8 @@ private:
 
     QString         m_strSeedCode;
     int             m_nCount;   // 记录创建地址的个数
+
+    QWidget *m_seedUi;
 };
 
 #endif // INPUTSEEDUI_H

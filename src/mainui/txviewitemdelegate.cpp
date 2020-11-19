@@ -195,7 +195,7 @@ bool TxViewItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model, c
         {
             QString address = index.data(Item_Address).toString();
 #if QT_VERSION >= 0x050000
-            ReceiveRequestDialog dlg(g_lpMainUI, address);
+            ReceiveRequestDialog dlg(NULL, address);
             dlg.exec();
 #else
             GUIUtil::setClipboard(address);

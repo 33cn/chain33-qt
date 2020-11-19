@@ -15,6 +15,7 @@
 const quint64 MIN_FREE_SPACE_LEFT = 5; //GB
 
 extern ManageUI*   g_lpManageUI;
+extern MainUI*              g_lpMainUI;
 
 StatusBarThread::StatusBarThread()
     : m_bOutOfSync (false)
@@ -194,7 +195,7 @@ bool StatusBarUI::eventFilter(QObject *watched, QEvent *event)
                 break;
             case Wallet_Locked: {
                 AskPassphraseDialog dlg(AskPassphraseDialog::Unlock, this);
-                if (dlg.exec())
+                if (dlg.exec() && g_lpMainUI)
                     g_lpMainUI->setEncryptionStatus(dlg.m_nStatus);
             }
                 break;

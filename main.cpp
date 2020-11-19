@@ -15,15 +15,12 @@
 #include <QDesktopWidget>
 #endif
 #include "mainui.h"
-#include "seedui.h"
 #include "manageui.h"
 #include "singleapplication.h"
 #include "enumtype.h"
 #include "basefuntion.h"
 #include "introdialog.h"
 #include "cstyleconfig.h"
-
-
 
 ManageUI* lpManageUI = NULL;
 
@@ -34,8 +31,7 @@ ManageUI* lpManageUI = NULL;
 
 LONG ApplicationCrashHandler(EXCEPTION_POINTERS *pException){//程式异常捕获
     qCritical() << ("产生崩溃，退出chain33。");
-    if(lpManageUI)
-    {
+    if(lpManageUI) {
         lpManageUI->CloseChain33();
     }
 

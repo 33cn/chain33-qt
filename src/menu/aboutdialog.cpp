@@ -5,6 +5,8 @@
 #include "mainui.h"
 #include "basefuntion.h"
 
+extern MainUI*  g_lpMainUI;
+
 AboutDialog::AboutDialog(QWidget *parent) :
     JsonConnectorDialog(parent),
     ui(new Ui::AboutDialog)
@@ -13,10 +15,15 @@ AboutDialog::AboutDialog(QWidget *parent) :
     setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint);
     this->setWindowTitle(tr("关于%1").arg(CStyleConfig::GetInstance().GetAppName()));
 
-    if(g_strVersion.isEmpty()){
+    QString strVersion;
+    if(g_lpMainUI) {
+        strVersion = g_lpMainUI->m_strVersion;
+    }
+
+    if(strVersion.isEmpty()){
         PostJsonMessage(ID_GetVersion);
     } else {
-        ui->versionLabel->setText(g_strVersion);
+        ui->versionLabel->setText(strVersion);
     }
 
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
@@ -48,8 +55,11 @@ void AboutDialog::requestFinished(const QVariant &result, const QString &/*error
 {
     QMap<QString, QVariant> resultMap = result.toMap();
     if(!resultMap["chain33"].toString().isEmpty()) {
-        g_strVersion = "chain33:" + resultMap["chain33"].toString() + " app:" + resultMap["app"].toString() + " localDb:" + resultMap["localDb"].toString();
-        ui->versionLabel->setText(g_strVersion);
+        QString strVersion = "chain33:" + resultMap["chain33"].toString() + " app:" + resultMap["app"].toString() + " localDb:" + resultMap["localDb"].toString();
+        ui->versionLabel->setText(strVersion);
+        if (g_lpMainUI) {
+            g_lpMainUI->m_strVersion = strVersion;
+        }
     } else {
         ui->versionLabel->setText(tr("版本获取失败，请在控制台输入 version 获取版本"));
     }

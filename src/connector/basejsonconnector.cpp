@@ -9,6 +9,7 @@
 #include "cstyleconfig.h"
 
 QMap<IdType, QString>   g_methodMap;
+extern MainUI*              g_lpMainUI;
 
 void InitMethodMap()
 {
@@ -231,7 +232,8 @@ void BaseJsonConnector::finishedNetwork(QNetworkReply *reply)
     }
     else
     {
-        g_lpMainUI->m_lpStatusBarUI->setNumConnections(0);
+        if (g_lpMainUI && g_lpMainUI->m_lpStatusBarUI)
+            g_lpMainUI->m_lpStatusBarUI->setNumConnections(0);
     }
 
     reply->abort();

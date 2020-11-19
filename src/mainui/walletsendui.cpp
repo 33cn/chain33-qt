@@ -11,6 +11,8 @@
 #include "bitcoinunits.h"
 #include "platformstyle.h"
 
+extern MainUI*              g_lpMainUI;
+
 GetTicketBalanceThread::GetTicketBalanceThread()
 {
     m_mutex.lock();
@@ -349,8 +351,14 @@ void WalletSendUI::on_sendButton_clicked()
     if(retval != 0)
         return;
 
-    if(Wallet_Unlocked != g_nStatus) {
-        if(Wallet_Unlocked_MinerOnly == g_nStatus) {
+
+    EncryptionStatus nStatus;
+    if (g_lpMainUI) {
+        nStatus = g_lpMainUI->m_nStatus;
+    }
+
+    if(Wallet_Unlocked != nStatus) {
+        if(Wallet_Unlocked_MinerOnly == nStatus) {
             QMessageBox::information(this, tr("提示"), tr("钱包只解锁买票挖矿功能，请先解锁！"), tr("确定"));
         } else {
             QMessageBox::information(this, tr("提示"), tr("钱包当前是加密状态，请先解锁！"), tr("确定"));

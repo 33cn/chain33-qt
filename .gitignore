@@ -4,4 +4,10 @@ qt/.DS_Store
 qt/forms/.DS_Store
 qt/locale/*.qm
 Release
+.qmake.stash
+.vs/
+build/
+chain33-qt-Debug_resource.rc
+chain33-qt.vcxproj.filters
+chain33-qt.vcxproj.user
 

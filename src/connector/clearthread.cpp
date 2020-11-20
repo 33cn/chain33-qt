@@ -42,7 +42,7 @@ void ClearThread::run()
         QStringList names = dir.entryList();
         QStringList newnames;
         newnames=names.filter(".txt");
-        if (newnames.length() > 1) {
+        if (newnames.length() > 2) {
             dir.remove(newnames[0]);
         }
         m_mutex.lock();

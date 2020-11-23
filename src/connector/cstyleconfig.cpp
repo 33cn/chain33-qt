@@ -103,15 +103,13 @@ void CStyleConfig::setChain33NamePath()
 #ifdef WIN32
 bool CStyleConfig::isWow64()
 {
-    LPFN_ISWOW64PROCESS fnIsWow64Process = (LPFN_ISWOW64PROCESS)GetProcAddress(GetModuleHandle(L"kernel32"), "IsWow64Process");
-    BOOL bIsWow64 = FALSE;
-
-    if (NULL != fnIsWow64Process) {
-        if (!fnIsWow64Process(GetCurrentProcess(),&bIsWow64)) {
-            return false;
-        }
-    }
-    return bIsWow64 == TRUE;
+	SYSTEM_INFO si;
+	GetNativeSystemInfo(&si);
+	if (si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||
+		si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64)
+		return true;
+	else
+        return false;
 }
 #endif
 

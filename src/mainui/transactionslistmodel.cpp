@@ -69,7 +69,7 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     m_strAmount = QString::number(amount, 'f', 4);
     m_strAmount = m_strAmount + " " + CStyleConfig::GetInstance().GetUnitName();
 
-    // YCC 专用 有投票奖励
+/*    // YCC 专用 有投票奖励 去掉不用了
     if(CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC && nVoteCount > 0){
         double amountVote = nVoteCount*0.35;
         QString strAmountVote = QString::number(amountVote, 'f', 2);
@@ -78,7 +78,7 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
         m_strAmount = QString::number(amountAll, 'f', 4);
         m_strAmount = m_strAmount + " " + CStyleConfig::GetInstance().GetUnitName();
         m_strAmount = m_strAmount + " ( " + strAmount + " + " + strAmountVote + " )";
-    }
+    }*/
 
     if(Generated == m_typeTy || RecvWithAddress == m_typeTy || RecvFromMining == m_typeTy) {
         m_strAmount = "+ " + m_strAmount;

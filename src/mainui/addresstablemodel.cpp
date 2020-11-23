@@ -1,4 +1,4 @@
-#include "addresstablemodel.h"
+﻿#include "addresstablemodel.h"
 #include "guiutil.h"
 #include "base58.h"
 

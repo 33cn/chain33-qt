@@ -1,4 +1,4 @@
-#ifndef BITCOINFIELD_H
+﻿#ifndef BITCOINFIELD_H
 #define BITCOINFIELD_H
 
 /*

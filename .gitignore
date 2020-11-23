@@ -1,8 +1,8 @@
-.DS_Store
+﻿.DS_Store
 *.pro.user
-qt/.DS_Store
-qt/forms/.DS_Store
-qt/locale/*.qm
+src/.DS_Store
+src/forms/.DS_Store
+src/locale/*.qm
 Release
 .qmake.stash
 .vs/
@@ -10,4 +10,4 @@ build/
 chain33-qt-Debug_resource.rc
 chain33-qt.vcxproj.filters
 chain33-qt.vcxproj.user
-
+debug/

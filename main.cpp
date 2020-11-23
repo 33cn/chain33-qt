@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
 #endif
 
 #ifdef WIN32
-//    SetUnhandledExceptionFilter(ExceptionFilter);//注冊异常捕获函数
+    //注冊异常捕获函数
     SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)ApplicationCrashHandler);
 #endif
 

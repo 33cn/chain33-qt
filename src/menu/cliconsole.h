@@ -1,4 +1,4 @@
-#ifndef CLICONSOLE_H
+﻿#ifndef CLICONSOLE_H
 #define CLICONSOLE_H
 
 /*

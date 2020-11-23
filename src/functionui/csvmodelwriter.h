@@ -1,4 +1,4 @@
-#ifndef CSVMODELWRITER_H
+﻿#ifndef CSVMODELWRITER_H
 #define CSVMODELWRITER_H
 
 /*

@@ -12,9 +12,7 @@
 #include "basejsonconnector.h"
 #include "enumtype.h"
 
-
 class PlatformStyle;
-
 class HomepageUI;
 class AddressUI;
 class Notificator;

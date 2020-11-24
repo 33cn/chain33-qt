@@ -29,7 +29,7 @@ void SingleApplication::receiveMessage()
     QLocalSocket *localSocket = localServer->nextPendingConnection();
     if (!localSocket->waitForReadyRead(timeout))
     {
-        qDebug(localSocket->errorString().toLatin1());
+        qDebug() << (localSocket->errorString().toLatin1());
         return;
     }
 
@@ -53,14 +53,14 @@ bool SingleApplication::sendMessage(const QString &message)
     localSocket.connectToServer(_uniqueKey, QIODevice::WriteOnly);
     if (!localSocket.waitForConnected(timeout))
     {
-        qDebug(localSocket.errorString().toLatin1());
+        qDebug() << (localSocket.errorString().toLatin1());
         return false;
     }
 
     localSocket.write(message.toUtf8());
     if (!localSocket.waitForBytesWritten(timeout))
     {
-        qDebug(localSocket.errorString().toLatin1());
+        qDebug() << (localSocket.errorString().toLatin1());
         return false;
     }
 

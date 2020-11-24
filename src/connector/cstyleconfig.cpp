@@ -27,7 +27,7 @@ void CStyleConfig::readConfigFile()
     QString strPath = QCoreApplication::applicationDirPath() + "/StyleConfig.ini";
     QFileInfo fileInfo(strPath);
 
-    qDebug(strPath.toStdString().c_str());
+    qDebug() << (strPath.toStdString().c_str());
 
     if(fileInfo.exists()) {
         QSettings *lpconfigIni = new QSettings(strPath, QSettings::IniFormat);

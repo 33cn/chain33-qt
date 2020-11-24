@@ -99,7 +99,7 @@ QString GetDefaultDataDir()
         pathRet = pszHome;
 #ifdef MAC_OSX
     // Mac
-    return pathRet + "/Library/Application\ Support/" + CStyleConfig::GetInstance().GetAppName_en();
+    return pathRet + "/Library/Application Support/" + CStyleConfig::GetInstance().GetAppName_en();
 #else
     // Unix
     return pathRet + "/." + CStyleConfig::GetInstance().GetAppName_en();

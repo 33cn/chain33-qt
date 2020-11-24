@@ -339,7 +339,7 @@ void WalletSendUI::on_sendButton_clicked()
         return;
 
 
-    EncryptionStatus nStatus;
+    EncryptionStatus nStatus = Wallet_Locked;
     if (g_lpMainUI) {
         nStatus = g_lpMainUI->m_nStatus;
     }

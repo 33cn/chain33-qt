@@ -12,10 +12,9 @@
 #include "manageui.h"
 
 #define TOTAL_SEMAPHORE_NUM 6
-const quint64 MIN_FREE_SPACE_LEFT = 5; //GB
 
 extern ManageUI*   g_lpManageUI;
-extern MainUI*              g_lpMainUI;
+extern MainUI*     g_lpMainUI;
 
 StatusBarThread::StatusBarThread()
     : m_bOutOfSync (false)
@@ -67,7 +66,6 @@ void StatusBarThread::run()
 {
     int nNo = 0;
     int nNetInfo = 0;
-    int nNtpClockSync = 0;
     while (true)
     {
         m_mutex.lock();

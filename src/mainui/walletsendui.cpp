@@ -320,56 +320,55 @@ void WalletSendUI::on_clearButton_clicked()
 
 void WalletSendUI::on_sendButton_clicked()
 {
-	if (g_lpMainUI && !g_lpMainUI->GetOutOfSync()) {
-		QMessageBox::information(this, tr("提示"), tr("钱包未同步成功，请稍等！"), tr("确定"));
-		return;
-	}
+    if(g_lpMainUI && !g_lpMainUI->GetOutOfSync()) {
+        QMessageBox::information(this, tr("提示"), tr("钱包未同步成功，请稍等！"), tr("确定"));
+        return;
+    }
 
-	// 1.验证地址,金额是否正确 2.弹框提醒 3.钱包如果加密锁定,要输入密码
-	if (!validate())
-		return;
+    // 1.验证地址,金额是否正确 2.弹框提醒 3.钱包如果加密锁定,要输入密码
+    if(!validate())
+        return;
 
-	QString address = ui->payTo->text();
-	qint64 amount = ui->payAmount->value();
+    QString address = ui->payTo->text();
+    qint64 amount = ui->payAmount->value();
 
-	QString label;
-	QStringList formatted;
-	if (g_lpMainUI) {
-		QMap<QString, QString> mapFriAddr = g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList->m_mapAddrLabel;
-		label = mapFriAddr[address];
-	}
-	formatted.append(tr("<b>%1 %2</b> to %3 (%4)").arg(BitcoinUnits::format(BitcoinUnits::COIN, amount), CStyleConfig::GetInstance().GetUnitName(), label, address));
+    QString label;
+    QStringList formatted;
+    if(g_lpMainUI) {
+        QMap<QString, QString> mapFriAddr = g_lpMainUI->m_lpAddressUI->m_lpFriendsAddressList->m_mapAddrLabel;
+        label = mapFriAddr[address];
+    }
+    formatted.append(tr("<b>%1 %2</b> to %3 (%4)").arg(BitcoinUnits::format(BitcoinUnits::COIN, amount), CStyleConfig::GetInstance().GetUnitName(), label, address));
 
-	int retval = QMessageBox::question(this, tr("Confirm send coins"), tr("Are you sure you want to send %1?").arg(formatted.join(tr(" and "))), tr("确定"), tr("取消"), QString(), 0, 1);
-	if (retval != 0)
-		return;
+    int retval = QMessageBox::question(this, tr("Confirm send coins"), tr("Are you sure you want to send %1?").arg(formatted.join(tr(" and "))), tr("确定"), tr("取消"), QString(), 0, 1);
+    if(retval != 0)
+        return;
 
 
-	EncryptionStatus nStatus;
-	if (g_lpMainUI) {
-		nStatus = g_lpMainUI->m_nStatus;
-	}
+    EncryptionStatus nStatus = Wallet_Locked;
+    if (g_lpMainUI) {
+        nStatus = g_lpMainUI->m_nStatus;
+    }
 
-	if (Wallet_Unlocked != nStatus) {
-		if (Wallet_Unlocked_MinerOnly == nStatus) {
-			QMessageBox::information(this, tr("提示"), tr("钱包只解锁买票挖矿功能，请先解锁！"), tr("确定"));
-		}
-		else {
-			QMessageBox::information(this, tr("提示"), tr("钱包当前是加密状态，请先解锁！"), tr("确定"));
-		}
-		return;
-	}
+    if(Wallet_Unlocked != nStatus) {
+        if(Wallet_Unlocked_MinerOnly == nStatus) {
+            QMessageBox::information(this, tr("提示"), tr("钱包只解锁买票挖矿功能，请先解锁！"), tr("确定"));
+        } else {
+            QMessageBox::information(this, tr("提示"), tr("钱包当前是加密状态，请先解锁！"), tr("确定"));
+        }
+        return;
+    }
 
-	std::string strNode = ui->addAsLabel->text().toStdString();
+    std::string strNode = ui->addAsLabel->text().toStdString();
 
-	QJsonObject jsonParms;
-	jsonParms.insert("from", ui->fromAddr->text());
-	jsonParms.insert("to", address);
-	jsonParms.insert("amount", amount);
-	jsonParms.insert("note", strNode.c_str());
-	QJsonArray params;
-	params.insert(0, jsonParms);
-	PostJsonMessage(ID_SendToAddress, params);
+    QJsonObject jsonParms;
+    jsonParms.insert("from", ui->fromAddr->text());
+    jsonParms.insert("to", address);
+    jsonParms.insert("amount", amount);
+    jsonParms.insert("note", strNode.c_str());
+    QJsonArray params;
+    params.insert(0, jsonParms);
+    PostJsonMessage(ID_SendToAddress, params);
 }
 
 void WalletSendUI::contextualMenu(const QPoint &/*point*/)

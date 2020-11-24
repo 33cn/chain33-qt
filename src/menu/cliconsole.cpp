@@ -13,7 +13,6 @@
 #include <QScrollBar>
 #include <QProcess>
 
-const int CONSOLE_SCROLLBACK = 50;
 const int CONSOLE_HISTORY = 50;
 
 const QSize ICON_SIZE(24, 24);

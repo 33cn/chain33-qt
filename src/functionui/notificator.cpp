@@ -1,4 +1,4 @@
-#include "notificator.h"
+﻿#include "notificator.h"
 
 #include <QMetaType>
 #include <QVariant>
@@ -49,9 +49,9 @@ Notificator::Notificator(const QString &programName, QSystemTrayIcon *trayicon, 
     }
 #endif
 #ifdef Q_OS_MAC
-        if( MacNotificationHandler::instance()->hasUserNotificationCenterSupport()) {
-            mode = UserNotificationCenter;
-        }
+    if( MacNotificationHandler::instance()->hasUserNotificationCenterSupport()) {
+        mode = UserNotificationCenter;
+    }
 #endif
 }
 

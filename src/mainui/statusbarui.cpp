@@ -66,6 +66,9 @@ void StatusBarThread::run()
 {
     int nNo = 0;
     int nNetInfo = 0;
+#ifdef WIN32
+    int nNtpClockSync = 0;
+#endif
     while (true)
     {
         m_mutex.lock();
@@ -117,6 +120,7 @@ void StatusBarThread::run()
        if(nNtpClockSync > 60*60*24)
        {
            nNtpClockSync = 0;
+           // 数据目录磁盘空间少于 5G 给出提醒
            emit JudgefreeBytesAvailable();
        }
 #endif
@@ -245,7 +249,7 @@ void StatusBarUI::JudgefreeBytesAvailable()
 
 #ifdef WIN32
     uint64_t freeBytesAvailable = GetfreeBytesAvailable(GetDefaultDataDir());
-    if(freeBytesAvailable < MIN_FREE_SPACE_LEFT * GB_BYTES)
+    if(freeBytesAvailable < 5 * GB_BYTES)
     {
         ui->labelfreeBytes->setText(tr("数据目录磁盘空间少于 5G，请更改数据目录选择更大空闲盘符存储数据！"));
         ui->labelfreeBytes->setVisible(true);

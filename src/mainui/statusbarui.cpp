@@ -124,9 +124,9 @@ void StatusBarThread::run()
            emit JudgefreeBytesAvailable();
        }
 #endif
-       qDebug() << "thread acquire " << sem << " semaphore";
+       //qDebug() << "thread acquire " << sem << " semaphore";
        m_sem.tryAcquire(sem, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
-       qDebug() << "thread acquire semaphore suc:" << m_sem.available();
+       //qDebug() << "thread acquire semaphore suc:" << m_sem.available();
 
        m_mutex.lock();
        m_cond.wait(&m_mutex, 1000);
@@ -285,7 +285,6 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"GetPeerInfo released semaphore";
         }
     }
     else if (m_nID == ID_GetWalletStatus)
@@ -294,7 +293,7 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"WalletStatus released semaphore";
+           // qDebug()<<"WalletStatus released semaphore";
         }
     }
     else if (m_nID == ID_IsSync)
@@ -304,7 +303,6 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         {
             m_lpStatusBarThread->SetOutOfSync(m_bOutOfSync);
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"Sync released semaphore";
         }
     }
     else if (m_nID == ID_Lock)
@@ -357,7 +355,7 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"NetInfo released semaphore";
+           // qDebug()<<"NetInfo released semaphore";
         }
     }
     else if(m_nID == ID_GetFatalFailure)
@@ -374,7 +372,7 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"TimeStatus released semaphore";
+          //  qDebug()<<"TimeStatus released semaphore";
         }
     }
     else if (m_nID == ID_GetAccounts)

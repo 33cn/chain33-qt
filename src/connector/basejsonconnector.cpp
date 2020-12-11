@@ -130,11 +130,6 @@ void BaseJsonConnector::PostJsonMessage(IdType id, const char* strParams)
 
 bool BaseJsonConnector::bPrintf()
 {
-    return true;
-#ifdef QT_DEBUG
-        return true;
-#endif
-
     if(m_nID == ID_SendToAddress
             || m_nID == ID_CreateRawTradeSellTx
             || m_nID == ID_CreateRawTradeBuyTx

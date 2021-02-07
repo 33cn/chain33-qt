@@ -1,9 +1,10 @@
-#include "switchcreateseedui.h"
+﻿#include "switchcreateseedui.h"
 #include "ui_switchcreateseedui.h"
 #include "createseedui.h"
 #include "inputseedui.h"
+#include "enumtype.h"
 
-SwitchCreateSeedUi::SwitchCreateSeedUi(QWidget *parent) :
+SwitchCreateSeedUi::SwitchCreateSeedUi(QWidget *parent, QWidget *seedUi) :
     QWidget(parent),
     ui(new Ui::SwitchCreateSeedUi)
 {
@@ -12,7 +13,7 @@ SwitchCreateSeedUi::SwitchCreateSeedUi(QWidget *parent) :
     m_lpcentralWidget = new QStackedWidget(this);
 
     m_lpCreateSeedUi = new CreateSeedUi(m_lpcentralWidget);
-    m_lpInputSeedUi = new InputSeedUi(m_lpcentralWidget);
+    m_lpInputSeedUi = new InputSeedUi(m_lpcentralWidget, CreateSeed_Tab, seedUi);
 
     m_lpcentralWidget->addWidget(m_lpCreateSeedUi);
     m_lpcentralWidget->addWidget(m_lpInputSeedUi);

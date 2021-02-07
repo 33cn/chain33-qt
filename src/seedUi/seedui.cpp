@@ -36,7 +36,7 @@ void SeedUi::initUI()
     setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint); // 没有帮助按钮
 
     QTabWidget* tabWidget = new QTabWidget(this);
-    tabWidget->addTab(new SwitchCreateSeedUi(tabWidget), tr("创建钱包"));
+    tabWidget->addTab(new SwitchCreateSeedUi(tabWidget, this), tr("创建钱包"));
     tabWidget->addTab(new InputSeedUi(tabWidget, InputSeed_Tab, this), tr("导入钱包"));
     ui->seed_tab->addWidget(tabWidget);
 }

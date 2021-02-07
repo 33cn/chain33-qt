@@ -3,7 +3,7 @@
 src/.DS_Store
 src/forms/.DS_Store
 src/locale/*.qm
-Release
+Release*
 .qmake.stash
 .vs/
 build/
@@ -11,3 +11,4 @@ chain33-qt-Debug_resource.rc
 chain33-qt.vcxproj.filters
 chain33-qt.vcxproj.user
 debug/
+chain33-qt.pro.user*

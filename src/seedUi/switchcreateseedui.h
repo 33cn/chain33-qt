@@ -1,4 +1,4 @@
-#ifndef SWITCHCREATESEEDUI_H
+﻿#ifndef SWITCHCREATESEEDUI_H
 #define SWITCHCREATESEEDUI_H
 
 #include <QWidget>
@@ -15,7 +15,7 @@ class SwitchCreateSeedUi : public QWidget
     Q_OBJECT
 
 public:
-    explicit SwitchCreateSeedUi(QWidget *parent = 0);
+    explicit SwitchCreateSeedUi(QWidget *parent = 0, QWidget *seedUi = 0);
     ~SwitchCreateSeedUi();    
 
 public slots:

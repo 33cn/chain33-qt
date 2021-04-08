@@ -13,6 +13,7 @@
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "qrencode.h"
+#include "cstyleconfig.h"
 
 #define QR_IMAGE_SIZE 300
 
@@ -97,6 +98,7 @@ ReceiveRequestDialog::ReceiveRequestDialog(QWidget *parent, QString strAddr, boo
     ui->buttonBox->button(QDialogButtonBox::Close)->setText(tr("关闭")); //将buttonbox 汉化
     update();
     connect(ui->btnSaveAs, SIGNAL(clicked()), ui->lblQRCode, SLOT(saveImage()));
+    this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
 }
 
 ReceiveRequestDialog::~ReceiveRequestDialog()

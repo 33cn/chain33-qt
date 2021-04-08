@@ -5,6 +5,7 @@
 #include "manageui.h"
 
 extern ManageUI*   g_lpManageUI;
+extern MainUI*              g_lpMainUI;
 
 CloseingThread::CloseingThread()
 {
@@ -71,16 +72,14 @@ void CloseingDialog::requestFinished(const QVariant &result, const QString &/*er
 void CloseingDialog::Chain33Closed()
 {
     qDebug() << ("关闭 退出 Chain33Closed 界面");
-    if(m_Type == RestartNewChain33)
-    {
-        if(g_lpManageUI)
-        {
+    if(m_Type == RestartNewChain33) {
+        if(g_lpManageUI) {
             g_lpManageUI->StartThread();
             g_lpManageUI->startChain33();
             g_lpManageUI->UnlockWallet(m_isWalletLock, m_isTicketLock);
         }
-        if(NULL != g_lpMainUI)
-        {
+
+        if(g_lpMainUI) {
             g_lpMainUI->ResumeCommunicateChain33Thread();
         }
     }

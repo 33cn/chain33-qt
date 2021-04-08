@@ -10,7 +10,6 @@
 
 #ifdef WIN32
 #include <windows.h>
-typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
 #endif
 
 enum STYLE_QSS

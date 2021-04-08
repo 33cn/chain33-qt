@@ -9,13 +9,10 @@
 #include <QTextCodec>
 #include <QDebug>
 #include <QSettings>
-#if QT_VERSION >= 0x050600
 #include <QGuiApplication>
 #include <QScreen>
 #include <QDesktopWidget>
-#endif
 #include "mainui.h"
-#include "seedui.h"
 #include "manageui.h"
 #include "singleapplication.h"
 #include "enumtype.h"
@@ -23,55 +20,48 @@
 #include "introdialog.h"
 #include "cstyleconfig.h"
 
-
-
 ManageUI* lpManageUI = NULL;
 
-#if QT_VERSION > 0x050100
 #ifdef WIN32
-#include <Windows.h>
-#include <DbgHelp.h>
+#include <windows.h>
+#include <dbghelp.h>
 
-LONG ApplicationCrashHandler(EXCEPTION_POINTERS *pException){//程式异常捕获
-    qCritical() << ("产生崩溃，退出chain33。");
-    if(lpManageUI)
-    {
-        lpManageUI->CloseChain33();
-    }
+long ApplicationCrashHandler(EXCEPTION_POINTERS *pException) {
+	qCritical() << ("产生崩溃，退出chain33。");
+	if (lpManageUI) {
+		lpManageUI->CloseChain33();
+	}
 
-    EXCEPTION_RECORD* record = pException->ExceptionRecord;
-    QString errCode(QString::number(record->ExceptionCode,16));
-    QString errAdr(QString::number((uint)record->ExceptionAddress,16));
-    qCritical() << ("错误代码：") << errCode << (" 错误地址： ") << errAdr;
-    //创建 Dump 文件
+    QDateTime current_date_time = QDateTime::currentDateTime();
+    QString current_date = current_date_time.toString("_MMdd_hhmmss");
+    QString dmpName = CStyleConfig::GetInstance().GetAppName_en() + current_date + ".dmp";
 
-    QString dmpName = CStyleConfig::GetInstance().GetAppName_en() + "_MMdd_hhmmss.dmp";
-    HANDLE hDumpFile = CreateFile(QDateTime::currentDateTime().toString(dmpName).toStdWString().c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-    if( hDumpFile != INVALID_HANDLE_VALUE){
-        //Dump信息
+    EXCEPTION_RECORD *record = pException->ExceptionRecord;
+    QString errCode(QString::number(record->ExceptionCode, 16));
+    QString errAddr(QString::number((uint)record->ExceptionAddress, 16));
+    QString errFlag(QString::number(record->ExceptionFlags, 16));
+    QString errPara(QString::number(record->NumberParameters, 16));
+    qCritical() << "errCode: " << errCode << "errAddr: " << errAddr << "errFlag: " << errFlag << "errPara: " << errPara;
+    HANDLE hDumpFile = CreateFile((LPCWSTR)QString("./" + dmpName).utf16(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    if(hDumpFile != INVALID_HANDLE_VALUE) {
         MINIDUMP_EXCEPTION_INFORMATION dumpInfo;
         dumpInfo.ExceptionPointers = pException;
         dumpInfo.ThreadId = GetCurrentThreadId();
         dumpInfo.ClientPointers = TRUE;
-        //写入Dump文件内容
-        MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(), hDumpFile, MiniDumpNormal, &dumpInfo, NULL, NULL);
+        MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(),hDumpFile, MiniDumpNormal, &dumpInfo, NULL, NULL);
+        CloseHandle(hDumpFile);
+    } else{
+        qCritical() << "hDumpFile == null";
     }
-    //这里弹出一个错误对话框并退出程序
-    QMessageBox::critical(NULL, "程式崩溃", QString("%1").arg(errAdr)+QString("<div>错误代码：%1</div><div>错误地址：%2</div></FONT>").arg(errCode).arg(errAdr), QMessageBox::Ok);
     return EXCEPTION_EXECUTE_HANDLER;
 }
 #endif
-#endif
 
 void SetEnvironmentDPI(){
-#if QT_VERSION > 0x050100
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
 
-#if QT_VERSION >= 0x050600
     bool bEnableHighDpiScaling = true;
-
 #ifdef WIN32
     DEVMODE DevMode;
     EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &DevMode);
@@ -84,7 +74,6 @@ void SetEnvironmentDPI(){
 
     if(bEnableHighDpiScaling)
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
 
 #ifdef Q_OS_MAC
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
@@ -119,10 +108,9 @@ int main(int argc, char *argv[])
     }
 #endif
 
-#if QT_VERSION > 0x050100
 #ifdef WIN32
-    SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)ApplicationCrashHandler);//注冊异常捕获函数
-#endif
+    //注冊异常捕获函数
+    SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)ApplicationCrashHandler);
 #endif
 
     qDebug("\r\nIn Main\r\n");

@@ -88,9 +88,6 @@ namespace GUIUtil
         int size_threshold;
     };
 
-    bool GetStartOnSystemStartup();
-    bool SetStartOnSystemStartup(bool fAutoStart);
-
     /** Help message for Bitcoin-Qt, shown with --help. */
     class HelpMessageBox : public QMessageBox
     {

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>623</width>
-    <height>417</height>
+    <width>585</width>
+    <height>384</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -192,9 +192,23 @@
       </layout>
      </item>
      <item>
+      <widget class="QLabel" name="frameLabel">
+       <property name="text">
+        <string>开发框架地址:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="uccnLabel">
        <property name="text">
         <string>官网地址: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="documentLabel">
+       <property name="text">
+        <string>文档地址:</string>
        </property>
       </widget>
      </item>

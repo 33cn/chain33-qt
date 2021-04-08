@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QKeyEvent>
 
+extern MainUI*              g_lpMainUI;
 
 AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent)
     : JsonConnectorDialog(parent)
@@ -63,9 +64,6 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent)
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("确定")); //将buttonbox中的ok 变成汉化
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("取消"));
-
-//    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet("QPushButton { background-color: #575757; border-radius: 4px;border: none; height: 20px;} QPushButton:pressed { color: #333333; background: #ffba26; }");
-//    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet("QPushButton { background-color: #575757; border-radius: 4px;border: none; height: 20px;} QPushButton:pressed { color: #333333; background: #ffba26; }");
 }
 
 AskPassphraseDialog::~AskPassphraseDialog()
@@ -73,11 +71,6 @@ AskPassphraseDialog::~AskPassphraseDialog()
     secureClearPassFields();
     delete ui;
 }
-/*
-void AskPassphraseDialog::setModel(WalletModel *model)
-{
-    this->model = model;
-}*/
 
 void AskPassphraseDialog::accept()
 {
@@ -93,10 +86,8 @@ void AskPassphraseDialog::accept()
 
     switch(mode)
     {
-    //case UnlockStaking:
     case Unlock:
      {
-/*#if QT_VERSION >= 0x050000
         QJsonObject jsonParms;
         jsonParms.insert("passwd", oldpass);
         jsonParms.insert("walletorticket", fWalletUnlockStakingOnly);
@@ -104,40 +95,21 @@ void AskPassphraseDialog::accept()
         QJsonArray params;
         params.insert(0, jsonParms);
         PostJsonMessage(ID_UnLock, params);
-#endif*/
-
-        std::stringstream ostr;
-        std::string strbool;
-        if(fWalletUnlockStakingOnly) {
-            strbool = "true";
-        } else {
-            strbool = "false";
-        }
-
-        ostr << "{\"passwd\":\"" << oldpass.toStdString().c_str() << "\",\"walletorticket\":" << strbool << ",\"timeout\":" << 0 << "}";
-        PostJsonMessage(ID_UnLock, ostr.str().c_str());
     }
         break;
     case Decrypt:
         QDialog::accept(); // Success
         break;
     case ChangePass:
-        if(newpass1.size() >= 8)
-        {
-            if(newpass1 == newpass2)
-            {
-             //   PostJsonMessage(ID_SetPasswd, "oldPass=" + oldpass + "<>newPass=" + newpass1);
+        if(newpass1.size() >= 8) {
+            if(newpass1 == newpass2) {
                 std::stringstream ostr;
                 ostr << "{\"oldPass\":\"" << oldpass.toStdString().c_str() << "\",\"newPass\":\"" << newpass1.toStdString().c_str() << "\"}";
                 PostJsonMessage(ID_SetPasswd, ostr.str().c_str());
-            }
-            else
-            {
+            } else {
                 QMessageBox::critical(this, tr("Wallet encryption failed"), tr("The supplied passphrases do not match."), tr("ok"));
             }
-        }
-        else
-        {
+        } else {
             QMessageBox::critical(this, tr("Wallet encryption failed"), tr("密码不能少于8位!"), tr("ok"));
         }
         break;
@@ -149,36 +121,32 @@ void AskPassphraseDialog::requestFinished(const QVariant &result, const QString 
     QMap<QString, QVariant> resultMap = result.toMap();
     bool isOK = resultMap["isOK"].toBool();
 
-    if(ID_SetPasswd == m_nID)
-    {        
-        if (ChangePass == mode)
-        {
-            if(isOK)
-            {
+    if(ID_SetPasswd == m_nID) {
+        if (ChangePass == mode) {
+            if(isOK) {
                 QMessageBox::information(this, tr("Wallet encrypted"), tr("Wallet passphrase was successfully changed."), tr("ok"));
-                g_strPsd = m_strNewPsd;
+                if (g_lpMainUI) {
+                    g_lpMainUI->m_strPsd = m_strNewPsd;
+                }
+
                 QDialog::accept(); // Success
-            }
-            else
-            {
+            } else {
                 QMessageBox::critical(this, tr("Wallet encryption failed"), g_mapErrorCode[resultMap["msg"].toString()], tr("ok"));
             }
         }
-    }
-    else if (ID_UnLock == m_nID)
-    {
-        if(!isOK)
-        {
+    } else if (ID_UnLock == m_nID) {
+        if(!isOK) {
             QMessageBox::critical(this, tr("Wallet unlock failed"), g_mapErrorCode[resultMap["msg"].toString()], tr("ok"));
-        }
-        else
-        {
-            if(ui->stakingCheckBox->isChecked()){
+        } else {
+            if(ui->stakingCheckBox->isChecked()) {
                 m_nStatus = Wallet_Unlocked_MinerOnly;
             } else {
                 m_nStatus = Wallet_Unlocked;
             }
-            g_strPsd = m_strOldPsd;
+
+            if (g_lpMainUI) {
+                g_lpMainUI->m_strPsd = m_strOldPsd;
+            }
             QDialog::accept(); // Success
         }
     }

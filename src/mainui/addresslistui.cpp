@@ -444,9 +444,9 @@ void AddressListUI::requestFinished(const QVariant &result, const QString &error
             QMessageBox::critical(this, tr("新建地址失败"), error, tr("ok"));
     } else if (ID_SetLabl == m_nID) {
         if(!error.isEmpty()){
-            QMessageBox::critical(this, tr("错误"), tr("设置挖矿地址失败,%1").arg(error));
+            QMessageBox::critical(this, tr("错误"), tr("操作失败,%1").arg(error));
         } else {
-            QMessageBox::information(this, tr("提示"), tr("设置挖矿地址成功"));
+            QMessageBox::information(this, tr("提示"), tr("操作成功"));
         }
     }
 }

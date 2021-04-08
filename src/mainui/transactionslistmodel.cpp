@@ -6,6 +6,7 @@
 #include "mainui.h"
 #include "addresslistui.h"
 #include "basefuntion.h"
+
 extern MainUI*      g_lpMainUI;
 
 TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QString &strToAddress, const QString &strFromAddress, const QString &strHash, const double &dAmount, const double &nFee, const QString &strExecer, const QString &strActionname, int ReceiptTy, QString strNote, QString strError, int nVoteCount)
@@ -22,7 +23,10 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     QDateTime dateTime = QDateTime::fromTime_t(nTimeData);
     m_strTimeData = dateTime.toString("yyyy-MM-dd hh:mm:ss");
 
-    QMap<QString, QString> mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
+    QMap<QString, QString> mapMyAddr;
+    if (g_lpMainUI && g_lpMainUI->m_lpAddressUI && g_lpMainUI->m_lpAddressUI->m_lpMyAddressList)
+        mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
+
     m_strFromLabel = mapMyAddr[strFromAddress];
     m_strToLabel = mapMyAddr[strToAddress];
 
@@ -65,7 +69,7 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
     m_strAmount = QString::number(amount, 'f', 4);
     m_strAmount = m_strAmount + " " + CStyleConfig::GetInstance().GetUnitName();
 
-    // YCC 专用 有投票奖励
+/*    // YCC 专用 有投票奖励 去掉不用了
     if(CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC && nVoteCount > 0){
         double amountVote = nVoteCount*0.35;
         QString strAmountVote = QString::number(amountVote, 'f', 2);
@@ -74,7 +78,7 @@ TransactionsListEntry::TransactionsListEntry(const uint &nTimeData, const QStrin
         m_strAmount = QString::number(amountAll, 'f', 4);
         m_strAmount = m_strAmount + " " + CStyleConfig::GetInstance().GetUnitName();
         m_strAmount = m_strAmount + " ( " + strAmount + " + " + strAmountVote + " )";
-    }
+    }*/
 
     if(Generated == m_typeTy || RecvWithAddress == m_typeTy || RecvFromMining == m_typeTy) {
         m_strAmount = "+ " + m_strAmount;

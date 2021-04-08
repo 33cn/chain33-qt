@@ -16,7 +16,7 @@ class BitcoinAddressValidator : public QValidator
 public:
     explicit BitcoinAddressValidator(QObject *parent = 0);
 
-    State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &) const;
 
     static const int MaxAddressLength = 35;
 signals:

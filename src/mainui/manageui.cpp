@@ -24,7 +24,8 @@
 #endif
 #include <closeingdialog.h>
 
-ManageUI*   g_lpManageUI = NULL;
+ManageUI*       g_lpManageUI = NULL;
+extern MainUI*  g_lpMainUI;
 
 RuningThread::RuningThread()
     : m_bFinish (false)
@@ -105,7 +106,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
 
     ui->setupUi(this);
 
-    setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+    setWindowTitle(tr("%1钱包").arg(CStyleConfig::GetInstance().GetAppName()));
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     setAttribute(Qt::WA_TranslucentBackground);
     setStyleSheet("background:transparent;");
@@ -274,7 +275,7 @@ void ManageUI::ShowHide()
 
 void ManageUI::UnlockWallet(bool isWalletLock, bool isTicketLock)
 {
-    if(!isWalletLock || !isTicketLock)
+    if((!isWalletLock || !isTicketLock) && g_lpMainUI)
     {
         std::stringstream ostr;
         std::string strbool;
@@ -284,7 +285,7 @@ void ManageUI::UnlockWallet(bool isWalletLock, bool isTicketLock)
             strbool = "false";
         }
 
-        ostr << "{\"passwd\":\"" << g_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << strbool << ",\"timeout\":" << 0 << "}";
+        ostr << "{\"passwd\":\"" << g_lpMainUI->m_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << strbool << ",\"timeout\":" << 0 << "}";
         PostJsonMessage(ID_UnLock, ostr.str().c_str());
     }
 }
@@ -417,7 +418,10 @@ void ManageUI::CloseChain33Temp()
     QuitThread();
 
     CloseQueueChain33();
-    g_lpMainUI->StopCommunicateChain33Thread();
+
+    if (g_lpMainUI) {
+        g_lpMainUI->StopCommunicateChain33Thread();
+    }
 }
 
 void ManageUI::CloseChain33()
@@ -438,4 +442,3 @@ void ManageUI::CloseChain33()
         dlg.exec();
     }
 }
-

@@ -12,9 +12,7 @@
 #include "basejsonconnector.h"
 #include "enumtype.h"
 
-
 class PlatformStyle;
-
 class HomepageUI;
 class AddressUI;
 class Notificator;
@@ -61,13 +59,14 @@ private:
 public:
     HomepageUI* m_lpHomepageUI;
     AddressUI*  m_lpAddressUI;
-
     StatusBarUI* m_lpStatusBarUI;
 
+    QString     m_strPsd;
+    QString     m_strVersion;
+    EncryptionStatus m_nStatus; // 当前锁定状态
 private:
     QAction *m_lpHomepageAction;
     QAction *m_lpAddressAction;
-
 
     QStackedWidget *centralWidget;
     QMenuBar *appMenuBar;
@@ -76,7 +75,6 @@ private:
     Notificator *notificator;
 
     QAction *quitAction;
-
     QAction *changePassphraseAction;
     QAction *unlockWalletAction;
     QAction *lockWalletAction;
@@ -88,10 +86,8 @@ private:
     QAction *openRepairTimeAction;
     QAction *closeRepairTimeAction;
     QAction *veifySeedAction;
-
     QAction *openRPCConsoleAction;
     QAction *aboutAction;
-
     QAction *toggleHideAction;
 
     QNetworkAccessManager *m_lpaccessManager;
@@ -135,10 +131,5 @@ private slots:
 
     virtual void requestFinished(const QVariant &result, const QString &error);
 };
-
-extern MainUI*              g_lpMainUI;
-extern EncryptionStatus     g_nStatus;
-extern QString              g_strVersion;
-extern QString              g_strPsd;
 
 #endif // MAINUI_H

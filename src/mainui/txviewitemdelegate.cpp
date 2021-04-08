@@ -4,7 +4,7 @@
 #include <QCheckBox>
 #include <QApplication>
 #include <QMouseEvent>
-#if QT_VERSION >= 0x050000
+#ifndef _MSC_VER
 #include "receiverequestdialog.h"
 #endif
 
@@ -13,7 +13,6 @@
 
 TxViewItemDelegate::TxViewItemDelegate(TypeList typeList, const PlatformStyle *platformStyle)
     : QAbstractItemDelegate()
-  //  , unit(BitcoinUnits::BTC)
     , m_nTypeList(typeList)
     , m_platformStyle (platformStyle)
 {
@@ -142,8 +141,7 @@ void TxViewItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &op
         QPalette palette;
         palette.setColor(QPalette::ButtonText, m_YellowColor);
         copyBtn.palette = palette;
-#if QT_VERSION >= 0x050000
-        copyBtn.text = tr("详情");
+
 #ifdef LINUX
         copyBtn.features = QStyleOptionButton::Flat;
 #else
@@ -154,6 +152,9 @@ void TxViewItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &op
         }
 #endif
         copyBtn.iconSize = QSize(16, 16);
+
+#ifndef _MSC_VER
+        copyBtn.text = tr("详情");
 #else
         copyBtn.text = tr("复制");
 #endif
@@ -194,8 +195,8 @@ bool TxViewItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model, c
                 && !index.data(Item_Label).toString().startsWith("node award") && !index.data(Item_Label).toString().startsWith("airdropaddr"))
         {
             QString address = index.data(Item_Address).toString();
-#if QT_VERSION >= 0x050000
-            ReceiveRequestDialog dlg(g_lpMainUI, address);
+#ifndef _MSC_VER
+            ReceiveRequestDialog dlg(NULL, address);
             dlg.exec();
 #else
             GUIUtil::setClipboard(address);

@@ -13,8 +13,7 @@
 #include <QDebug>
 #include <QObjectUserData>
 
-extern SeedUi*  g_lpSeedUi;
-
+extern MainUI* g_lpMainUI;
 
 class CDataBtn : public QObjectUserData
 {
@@ -24,10 +23,11 @@ public:
     bool m_bCheck;
 };
 
-InputSeedUi::InputSeedUi(QWidget *parent, int Tab)
+InputSeedUi::InputSeedUi(QWidget *parent, int Tab, QWidget *seedUi)
     : JsonConnectorWidget (parent)
     , ui (new Ui::InputSeedUi)
     , m_nTab (Tab)
+    , m_seedUi (seedUi)
 {
     ui->setupUi(this);
     Init();
@@ -130,7 +130,6 @@ void InputSeedUi::requestFinished(const QVariant &result, const QString &error)
     bool isOK = resultMap["isOK"].toBool();
     if(ID_SaveSeed == m_nID) {
         if(isOK) {
- /*           #if QT_VERSION >= 0x050000
             QJsonObject jsonParms;
             jsonParms.insert("passwd", ui->SeedPsdEdit->text());
             jsonParms.insert("timeout", 0);
@@ -138,13 +137,9 @@ void InputSeedUi::requestFinished(const QVariant &result, const QString &error)
             QJsonArray params;
             params.insert(0, jsonParms);
             PostJsonMessage(ID_UnLock, params);
-#endif*/
-            std::stringstream ostr;
-            ostr << "{\"passwd\":\"" << ui->SeedPsdEdit->text().toStdString().c_str() << "\",\"timeout\":" << 0 << ",\"ismineronly\":" << false << "}";
-            PostJsonMessage(ID_UnLock, ostr.str().c_str());
 
-            if(g_lpSeedUi)
-                g_lpSeedUi->hide();
+            if(m_seedUi)
+                m_seedUi->hide();
         } else {
             // error
             ui->SeedErrorLabel->setVisible(true);

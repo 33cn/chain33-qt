@@ -141,9 +141,9 @@ void TransactionsListUI::requestFinished(const QVariant &result, const QString &
                 }
             }
 
-            // YCC 专用
+            // YCC 专用 现在不用了 都写在 amount 数据中
             int nVoteCount = 0; // 参与投票的次数
-            if (strActionname == "miner") {
+           /* if (strActionname == "miner") {
                 QList<QVariant> txLogsList = txMap["receipt"].toMap()["logs"].toList();
                 for (int j = 0; j<txLogsList.size(); ++j) {
                     QMap<QString, QVariant> txLogMap = txLogsList[j].toMap();
@@ -154,7 +154,7 @@ void TransactionsListUI::requestFinished(const QVariant &result, const QString &
                         }
                     }
                 }
-            }
+            }*/
 
             model->AdddateEntry(TransactionsListEntry(nTime, strToAddr, strFromAddr, strTxHash, dAmount, nFee, strExecer, strActionname, nTy, strNote, strError, nVoteCount));
 
@@ -182,7 +182,6 @@ void TransactionsListUI::requestFinished(const QVariant &result, const QString &
 
 void TransactionsListUI::PostMsgWalletTxList()
 {
-/*#if QT_VERSION >= 0x050000
     QJsonObject jsonParams;
     jsonParams.insert("fromTx", m_strFromTx);
     jsonParams.insert("count", COUNT_NUM);
@@ -191,11 +190,6 @@ void TransactionsListUI::PostMsgWalletTxList()
     QJsonArray params;
     params.insert(0, jsonParams);
     PostJsonMessage(ID_WalletTxList, params);
-#endif*/
-
-    std::stringstream ostr;
-    ostr << "{\"fromTx\":\"" << m_strFromTx.toStdString().c_str() << "\",\"count\":" << COUNT_NUM << ",\"direction\":" << m_ndirection <<"}";
-    PostJsonMessage(ID_WalletTxList, ostr.str().c_str());
 }
 
 void TransactionsListUI::on_firstPageBtn_clicked()

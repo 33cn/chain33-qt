@@ -83,30 +83,22 @@ bool EditAddressDialog::saveCurrentRow()
     if(!model)
         return false;
 
- //   model->setEditStatus(EditStatus_OK);
-
     switch(mode)
     {
     case NewReceivingAddress:
     {
-/*#if QT_VERSION >= 0x050000
         QJsonObject jsonParms;
-        jsonParms.insert("label", ui->labelEdit->text().toStdString().c_str());
+        jsonParms.insert("label", ui->labelEdit->text());
         QJsonArray params;
         params.insert(0, jsonParms);
         PostJsonMessage(ID_NewAccount, params);
-#endif*/
-        std::stringstream ostr;
-        ostr << "{\"label\":\"" << ui->labelEdit->text().toStdString().c_str() << "\"}";
-        PostJsonMessage(ID_NewAccount, ostr.str().c_str());
     }
         break;
     case NewSendingAddress:
     {
         address = ui->addressEdit->text();
         label = ui->labelEdit->text();
-        if(!IsAddrValid(address.toStdString().c_str()))
-        {
+        if(!IsAddrValid(address.toStdString().c_str())) {
             QMessageBox::warning(this, windowTitle(), tr("输入的地址\"%1\"不是有效的%2地址。").arg(ui->addressEdit->text(), CStyleConfig::GetInstance().GetAppName()), tr("确定"));
             return false;
         }
@@ -115,32 +107,22 @@ bool EditAddressDialog::saveCurrentRow()
         break;
     case EditReceivingAddress:
     case EditSendingAddress:
-        if(mapper->submit())
-        {
+        if(mapper->submit()) {
             label = ui->labelEdit->text();
 
-            if (model->getEditStatus() == EditStatus_OK || model->getEditStatus() == EditStatus_NO_CHANGES)
-            {
+            if (model->getEditStatus() == EditStatus_OK || model->getEditStatus() == EditStatus_NO_CHANGES) {
                 address = ui->addressEdit->text();
-            }
-            else
-            {
+            } else {
                 address = "";
             }
 
-            if(mode == EditReceivingAddress)
-            {
-/*#if QT_VERSION >= 0x050000
+            if(mode == EditReceivingAddress) {
                 QJsonObject jsonParms;
                 jsonParms.insert("addr", address);
                 jsonParms.insert("label", label);
                 QJsonArray params;
                 params.insert(0, jsonParms);
                 PostJsonMessage(ID_SetLabl, params);
-#endif*/
-                std::stringstream ostr;
-                ostr << "{\"addr\":\"" << address.toStdString().c_str() << "\",\"label\":\"" << label.toStdString().c_str() << "\"}";
-                PostJsonMessage(ID_SetLabl, ostr.str().c_str());
                 address = "";
             }
         }

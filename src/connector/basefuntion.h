@@ -15,6 +15,10 @@
 #include "singleapplication.h"
 #include "cstyleconfig.h"
 
+#if _MSC_VER >= 1600
+#pragma execution_character_set("utf-8")
+#endif
+
 #define MAX_TIMEOUT_WAIT_RESPONSE_RESULT (60000) //60 second
 
 const quint64 BASE_REQUIRED_SPACE = 30; //GB

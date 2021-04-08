@@ -1,4 +1,4 @@
-#ifndef ENUMTYPE_H
+﻿#ifndef ENUMTYPE_H
 #define ENUMTYPE_H
 
 /*

@@ -232,9 +232,6 @@ bool ToolTipToRichTextFilter::eventFilter(QObject *obj, QEvent *evt)
 // TODO: OSX startup stuff; see:
 // https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPSystemStartup/Articles/CustomLogin.html
 
-bool GetStartOnSystemStartup() { return false; }
-bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
-
 #endif
 
 HelpMessageBox::HelpMessageBox(QWidget *parent) :

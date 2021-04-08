@@ -82,13 +82,9 @@ public:
     BaseJsonConnector();
     ~BaseJsonConnector();
 
-#if QT_VERSION >= 0x050000
 protected:
     void PostJsonMessage(IdType id, const QJsonArray &params);
     void PostJson(const QJsonObject &PostJson);
-#endif
-
-protected:
     void PostJsonMessage(IdType id);
     void PostJsonMessage(IdType id, const char* strParams);
     void finishedNetwork(QNetworkReply *reply);
@@ -96,14 +92,6 @@ protected:
     virtual void PostJsonData(const QByteArray &postData) = 0;
     bool bPrintf();
     QNetworkReply* GetNetworkReplyPost(const QByteArray &postData);
-
-public:
-    // 经常被调用
-    void SendToTrade(const QString &strAddr, const QString &strSymbol, qint64 nBalance);
-    void PostCreateRawTransaction(const QString &strSymbol, qint64 nAmount, bool isWithdraw = false);
-    void PostCreateRawTxGroup(const QString &strTxs);
-    void PostSignRawTx(const QString &strAddr, const QString &strTxhex);
-    void PostSendTransaction(const QString &strData);
 
 protected:
     int                     m_nID;

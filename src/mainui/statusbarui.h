@@ -70,6 +70,7 @@ public:
 
     void StopUpdateStatusBar();
     void ResumeUpdateStatusBar();
+    void SendToTrade(const QString &strAddr, const QString &strSymbol, qint64 nBalance);
 protected:
     virtual void requestFinished(const QVariant &result, const QString &error);
 

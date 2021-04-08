@@ -18,7 +18,7 @@ BitcoinAddressValidator::BitcoinAddressValidator(QObject *parent) :
 {
 }
 
-QValidator::State BitcoinAddressValidator::validate(QString &input, int &pos) const
+QValidator::State BitcoinAddressValidator::validate(QString &input, int &) const
 {
     // Correction
     for(int idx=0; idx<input.size();)

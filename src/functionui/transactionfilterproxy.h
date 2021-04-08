@@ -1,4 +1,4 @@
-#ifndef TRANSACTIONFILTERPROXY_H
+﻿#ifndef TRANSACTIONFILTERPROXY_H
 #define TRANSACTIONFILTERPROXY_H
 
 #include <QSortFilterProxyModel>
@@ -35,8 +35,6 @@ public:
     void setShowInactive(bool showInactive);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
-protected:
-    bool filterAcceptsRow(int source_row, const QModelIndex & source_parent) const;
 
 private:
     QDateTime dateFrom;

@@ -1,4 +1,4 @@
-#include "transactionfilterproxy.h"
+﻿#include "transactionfilterproxy.h"
 #include "transactionrecord.h"
 
 #include <QDateTime>
@@ -20,31 +20,6 @@ TransactionFilterProxy::TransactionFilterProxy(QObject *parent) :
     limitRows(-1),
     showInactive(true)
 {
-}
-
-bool TransactionFilterProxy::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
-{
-    QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
-/*
-    int type = index.data(TransactionTableModel::TypeRole).toInt();
-    QDateTime datetime = index.data(TransactionTableModel::DateRole).toDateTime();
-    QString address = index.data(TransactionTableModel::AddressRole).toString();
-    QString label = index.data(TransactionTableModel::LabelRole).toString();
-    qint64 amount = llabs(index.data(TransactionTableModel::AmountRole).toLongLong());
-    int status = index.data(TransactionTableModel::StatusRole).toInt();
-
-    if(!showInactive && (status == TransactionStatus::Conflicted || status == TransactionStatus::NotAccepted))
-        return false;
-    if(!(TYPE(type) & typeFilter))
-        return false;
-    if(datetime < dateFrom || datetime > dateTo)
-        return false;
-    if (!address.contains(addrPrefix, Qt::CaseInsensitive) && !label.contains(addrPrefix, Qt::CaseInsensitive))
-        return false;
-    if(amount < minAmount)
-        return false;
-*/
-    return true;
 }
 
 void TransactionFilterProxy::setDateRange(const QDateTime &from, const QDateTime &to)

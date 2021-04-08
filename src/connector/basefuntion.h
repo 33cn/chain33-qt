@@ -19,7 +19,6 @@
 
 const quint64 GB_BYTES = 1024*1024*1024;
 extern QMap<QString, QString> g_mapErrorCode;
-extern std::map<std::string, std::string> mapArgs;
 extern QNetworkAccessManager*  g_lpaccessManager;
 extern SingleApplication* g_lpapp;
 
@@ -37,8 +36,6 @@ void SetRegDataDir(QString strDataDir);
 QString GetDefaultDataDir();
 
 int GetBaseFontSize();
-
-std::string GetArg(std::string strArg, const std::string& strDefault);
 
 void InitMainUI(const SingleApplication& app);
 
@@ -58,8 +55,6 @@ void InitErrorCode();
 bool GetRepairTimeConfig();
 
 void SetRepairTimeConfig(bool bConfig);
-
-qint64 DoubleToInt3(double dAmount);
 
 // 不进行四舍五入
 double Getbalance(QVariant& value);

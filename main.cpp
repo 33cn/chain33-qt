@@ -108,11 +108,6 @@ int main(int argc, char *argv[])
     lpmainUI->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_main());
     lpmainUI->hide();
 
-#ifdef QT_DEBUG
-  //  lpManageUI->hide();
-  //  lpmainUI->show();
-#endif
-
     app.connect( &app, SIGNAL( lastWindowClosed() ), lpManageUI, SLOT( CloseChain33() ) );
     app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 

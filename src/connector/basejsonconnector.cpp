@@ -166,7 +166,7 @@ QNetworkReply *BaseJsonConnector::GetNetworkReplyPost(const QByteArray &postData
         qDebug() << ("Post 内容: ") << postData;
 
     QNetworkRequest request;
-    request.setUrl(QUrl("http://localhost:8801/"));
+    request.setUrl(QUrl(CStyleConfig::GetInstance().GetNetworkUrl()));
 
     return g_lpaccessManager->post(request, postData);
 }

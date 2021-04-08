@@ -10,12 +10,13 @@ CStyleConfig* CStyleConfig::s_lpStyleConfig = nullptr;
 
 CStyleConfig::CStyleConfig()
 : m_strChain33Name ("chain33")
-, m_stylesheet_type ("yellow")
 , m_strAppName ("chain33-qt")
 , m_strAppName_en ("chain33-qt")
 , m_strAppName_zh ("chain33-qt")
 , m_strUnitName ("")
 , m_dMinFee (0.0)
+, m_strNetworkUrl ("http://localhost:8801/")
+, m_stylesheet_type ("yellow")
 {
     readConfigFile();
     setChain33NamePath();
@@ -37,8 +38,8 @@ void CStyleConfig::readConfigFile()
         readValue(lpconfigIni, "Config/AppName", m_strAppName);
         readValue(lpconfigIni, "Config/AppName_zh", m_strAppName_zh);
         readValue(lpconfigIni, "Config/AppName_en", m_strAppName_en);
-        readValueDouble(lpconfigIni, "Config/MinFee", m_dMinFee);
         readValue(lpconfigIni, "Config/StyleType", m_stylesheet_type);
+        readValue(lpconfigIni, "Config/NetworkUrl", m_strNetworkUrl);
         delete lpconfigIni;
     }
 
@@ -74,15 +75,6 @@ void CStyleConfig::readValue(QSettings *lpconfig, const QString &key, QString &r
         QString strConfig = lpconfig->value(key).toString();
         if(!strConfig.isEmpty())
             ret = strConfig;
-    }
-}
-
-void CStyleConfig::readValueDouble(QSettings *lpconfig, const QString &key, double &ret)
-{
-    if (lpconfig) {
-        QString strConfig = lpconfig->value(key).toString();
-        if(!strConfig.isEmpty())
-            ret = lpconfig->value(key).toDouble();
     }
 }
 
@@ -139,9 +131,3 @@ STYLE_QSS CStyleConfig::GetStyleType() const
 
     return QSS_YELLOW;
 }
-
-//void CStyleConfig::SetUnitName(const QString &strUnitName)
-//{
-//    m_strUnitName = strUnitName;
-//    m_strUnitName = m_strUnitName.toUpper();
-//}

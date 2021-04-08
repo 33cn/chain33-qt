@@ -14,7 +14,6 @@
 #endif
 
 QMap<QString, QString> g_mapErrorCode;
-std::map<std::string, std::string> mapArgs;
 
 int g_nBaseFontSize = 9;
 
@@ -29,7 +28,7 @@ SingleApplication* g_lpapp;
 #include <shlobj.h>
 #include <windows.h>
 
-#pragma   comment(lib,   "shell32.lib")
+#pragma comment(lib, "shell32.lib")
 
 QString GetSpecialFolderPath(int nFolder, bool fCreate)
 {
@@ -117,12 +116,6 @@ int GetBaseFontSize()
 #else
     return 12;
 #endif
-}
-std::string GetArg(std::string strArg, const std::string& strDefault)
-{
-    if (mapArgs.count(strArg))
-        return mapArgs[strArg];
-    return strDefault;
 }
 
 void InitMainUI(const SingleApplication& app)
@@ -613,11 +606,6 @@ void SetRepairTimeConfig(bool bConfig)
     QSettings *lpconfigIni = new QSettings(strPath, QSettings::IniFormat);
     lpconfigIni->setValue("Config/RepairTime", bConfig);
     delete lpconfigIni;
-}
-
-qint64 DoubleToInt3(double dAmount)
-{
-    return qint64(le6*(dAmount+lem7)/le3);
 }
 
 double Getbalance(QVariant &value)

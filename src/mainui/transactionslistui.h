@@ -70,8 +70,6 @@ signals:
 
 private:
     void initUI();  // 暂时不调用 过滤等功能不增加
-//    TransactionsType GetTypeTy(const QString &strToAddress, const QString &strFromAddress, const QString &strExecer, const QString &strActionname, int ReceiptTy);
-//    QString GetStrTypeTy(const TransactionsType &typeTy);
     void createDateRangeWidget();
 
 public slots:
@@ -91,14 +89,9 @@ private slots:
 
     void SendAddrSucceedUpData();
 
-    void updateDisplayUnit();
-//    void handleTransactionClicked(const QModelIndex &index);
-
     void contextualMenu(const QPoint &);
     void dateRangeChanged();
-    void showDetails();
     void copyAddress();
-  //  void editLabel();
     void copyLabel();
     void copyAmount();
     void copyTxID();

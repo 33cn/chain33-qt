@@ -9,6 +9,7 @@
 #include "basefuntion.h"
 #include "base64.h"
 #include "bitcoinunits.h"
+#include "platformstyle.h"
 
 GetTicketBalanceThread::GetTicketBalanceThread()
 {
@@ -28,19 +29,18 @@ void GetTicketBalanceThread::run()
     while(true)
     {
         m_mutex.lock();
-        if(m_stop)
-        {
+        if(m_stop) {
             m_mutex.unlock();
             return;
         }
-        if(m_cmd.isNull())
-        {
+        m_mutex.unlock();
+
+        m_mutex.lock();
+        if(m_cmd.isNull()) {
             m_mutex.unlock();
             msleep(100);
             continue;
-        }
-        else
-        {
+        } else {
             cmd = m_cmd;
             m_cmd.clear();
             m_mutex.unlock();
@@ -51,7 +51,6 @@ void GetTicketBalanceThread::run()
             m_condOK.wait(&m_mutex, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
             m_mutex.unlock();
         }
-
     }
 }
 void GetTicketBalanceThread::Stop()
@@ -69,8 +68,7 @@ void GetTicketBalanceThread::Stop()
 
 void GetTicketBalanceThread::Resume()
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         return;
     }
     m_mutex.lock();
@@ -81,8 +79,7 @@ void GetTicketBalanceThread::Resume()
 
 void GetTicketBalanceThread::SetTicketBalanceCmd(const QString &cmd)
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         m_mutex.lock();
         m_cmd = cmd;
         m_mutex.unlock();
@@ -91,8 +88,7 @@ void GetTicketBalanceThread::SetTicketBalanceCmd(const QString &cmd)
 
 void GetTicketBalanceThread::Wakeup()
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         m_condOK.wakeOne();
     }
 }
@@ -140,7 +136,7 @@ void WalletSendUI::initUI()
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         this->setStyleSheet("QWidget {background-color:#FFFFFF;border:none;}" + CStyleConfig::GetInstance().GetStylesheet());
-        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#F2F3F5;border-radius: 4px;}");
+        ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#F5F4F9;border-radius: 4px;}");
     } else {
         ui->sendwidget1_3->setStyleSheet("QWidget {background-color:#2c2c2c;border-radius: 4px;}");
     }
@@ -149,9 +145,9 @@ void WalletSendUI::initUI()
     ui->labelTotal->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 4) + "pt;}");
     ui->labelBalance->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt;}");
     ui->labelFrozen->setStyleSheet("QLabel { font: " + QString::number(GetBaseFontSize() + 2) + "pt;}");
-    ui->labelTotalText->setStyleSheet("QLabel { color: #808080; font: " + QString::number(GetBaseFontSize()) + "pt;}");
-    ui->label_Balance_text->setStyleSheet("QLabel { color: #808080; font: " + QString::number(GetBaseFontSize()) + "pt;}");
-    ui->label_Frozen_text->setStyleSheet("QLabel { color: #808080; font: " + QString::number(GetBaseFontSize()) + "pt;}");
+    ui->labelTotalText->setStyleSheet("QLabel { color: #969BA6; font: " + QString::number(GetBaseFontSize()) + "pt;}");
+    ui->label_Balance_text->setStyleSheet("QLabel { color: #969BA6; font: " + QString::number(GetBaseFontSize()) + "pt;}");
+    ui->label_Frozen_text->setStyleSheet("QLabel { color: #969BA6; font: " + QString::number(GetBaseFontSize()) + "pt;}");
 #endif
     ui->verticalWidget0->setStyleSheet("border-radius:4px;");
     ui->verticalWidget1->setStyleSheet("border-radius:4px;");
@@ -183,6 +179,9 @@ void WalletSendUI::initUI()
     connect(this, SIGNAL(SendGetTicketBalanceCmd(QString)), m_getTicketBalanceThread, SLOT(SetTicketBalanceCmd(QString)));
     connect(m_getTicketBalanceThread, SIGNAL(PostMsgGetTicketBalance(QString)), this, SLOT(DealPostMsgGetTicketBalance(QString)));
     m_getTicketBalanceThread->start();
+
+    ui->addressFromButton->setIcon(m_platformStyle->SingleColorIcon(":/address_book"));
+    ui->addressBookButton->setIcon(m_platformStyle->SingleColorIcon(":/address_book"));
 }
 
 void WalletSendUI::SetUpProperty(double dBalance, double dFrozen)
@@ -249,7 +248,11 @@ void WalletSendUI::UpdateWalletInfo(const QList<QVariant> &walletsList)
         params.insert(0, jsonParms);
         PostJsonMessage(ID_GetBalance, params);*/
 
-        jsonCmd.append("\"execer\":\"ticket\"}");
+        if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC){
+            jsonCmd.append("\"execer\":\"pos33\"}");
+        } else {
+            jsonCmd.append("\"execer\":\"ticket\"}");
+        }
         emit SendGetTicketBalanceCmd(jsonCmd);
         //PostJsonMessage(ID_GetBalance_ticket, jsonCmd.toStdString().c_str());
     //#endif

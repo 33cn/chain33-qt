@@ -45,6 +45,10 @@ EditAddressDialog::EditAddressDialog(EditAddressDialogMode mode, QWidget *parent
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("取消"));
 
     this->setStyleSheet(CStyleConfig::GetInstance().GetStylesheet_child());
+
+//    if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
+//       this->setStyleSheet("QWidget {background-color:#E7EDF1;border:none;}" + CStyleConfig::GetInstance().GetStylesheet_child());
+//    }
 }
 
 EditAddressDialog::~EditAddressDialog()

@@ -15,13 +15,10 @@ void CloseingThread::run()
 {
     while (true)
     {
-        if(!GetProcessidFromName())
-        {
+        if(!GetProcessidFromName()) {
             emit Chain33Closed();
             break;
-        }
-        else
-        {
+        } else {
             if(g_lpManageUI)
                 g_lpManageUI->CloseChain33Temp();
         }

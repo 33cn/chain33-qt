@@ -29,8 +29,7 @@ void CStyleConfig::readConfigFile()
 
     qDebug(strPath.toStdString().c_str());
 
-    if(fileInfo.exists())
-    {
+    if(fileInfo.exists()) {
         QSettings *lpconfigIni = new QSettings(strPath, QSettings::IniFormat);
         lpconfigIni->setIniCodec(QTextCodec::codecForName("UTF-8"));
 
@@ -57,15 +56,17 @@ void CStyleConfig::readConfigFile()
     m_stylesheet_child = "QWidget {background-color:#3d3d3d;border:none;}" + m_stylesheet;
 
     if (m_stylesheet_type == "blue") {
-        m_stylesheet_main = "QWidget {background-color:#EDEEF2;border:none;}" + m_stylesheet;
-        m_stylesheet_child = "QWidget {background-color:#EDEEF2;border:none;}" + m_stylesheet;
+        m_stylesheet_main = m_stylesheet;
+        m_stylesheet_child = m_stylesheet;
+//        m_stylesheet_main = "QWidget {background-color:#E7EDF1;border:none;}" + m_stylesheet;
+//        m_stylesheet_child = "QWidget {background-color:#E7EDF1;border:none;}" + m_stylesheet;
     }
 
     QString lang_territory = QString::fromStdString(QLocale::system().name().toStdString());
-    if(lang_territory == "zh_CN") {
-        m_strAppName = m_strAppName_zh;
-    } else {
+    if(lang_territory == "en") {
         m_strAppName = m_strAppName_en;
+    } else {
+        m_strAppName = m_strAppName_zh;
     }
 }
 
@@ -105,10 +106,8 @@ bool CStyleConfig::isWow64()
     LPFN_ISWOW64PROCESS fnIsWow64Process = (LPFN_ISWOW64PROCESS)GetProcAddress(GetModuleHandle(L"kernel32"), "IsWow64Process");
     BOOL bIsWow64 = FALSE;
 
-    if (NULL != fnIsWow64Process)
-    {
-        if (!fnIsWow64Process(GetCurrentProcess(),&bIsWow64))
-        {
+    if (NULL != fnIsWow64Process) {
+        if (!fnIsWow64Process(GetCurrentProcess(),&bIsWow64)) {
             return false;
         }
     }
@@ -130,4 +129,12 @@ STYLE_QSS CStyleConfig::GetStyleType() const
         return QSS_BLUE;
 
     return QSS_YELLOW;
+}
+
+COINS_TYPE CStyleConfig::GetCoinsType() const
+{
+    if (m_strAppName_en == "ycc")
+        return TOKEN_YCC;
+
+    return TOKEN_BTY;
 }

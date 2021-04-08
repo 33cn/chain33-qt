@@ -1,4 +1,4 @@
-#include <QDir>
+﻿#include <QDir>
 #include "clearthread.h"
 #include "basefuntion.h"
 
@@ -9,11 +9,12 @@ ClearThread::ClearThread(QObject *parent):QThread(parent)
 
 void ClearThread::Resume()
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         return;
     }
+    m_mutex.lock();
     m_quit = false;
+    m_mutex.unlock();
     start();
 }
 
@@ -29,18 +30,19 @@ void ClearThread::run()
     dir.setPath(strUILog);
     dir.setFilter(QDir::Files | QDir::Modified);
     dir.setSorting(QDir::Name);
-    while(true)
-    {
-        if(m_quit)
-        {
+    while(true) {
+        m_mutex.lock();
+        if(m_quit) {
+            m_mutex.unlock();
             return;
         }
+        m_mutex.unlock();
+
         dir.refresh();
         QStringList names = dir.entryList();
         QStringList newnames;
         newnames=names.filter(".txt");
-        if (newnames.length() > 1)
-        {
+        if (newnames.length() > 1) {
             dir.remove(newnames[0]);
         }
         m_mutex.lock();
@@ -51,13 +53,13 @@ void ClearThread::run()
 
 void ClearThread::Stop()
 {
-    if(!isRunning())
-    {
+    if(!isRunning()) {
         return;
     }
     m_mutex.lock();
     m_quit = true;
     m_mutex.unlock();
+
     m_cond.wakeAll();
     wait();
 }

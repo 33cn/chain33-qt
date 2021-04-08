@@ -170,7 +170,7 @@ FORMS    += \
     src/forms/offlineminingdialog.ui \
     src/forms/changedirdialog.ui \
     src/forms/closeingdialog.ui \
-    src/menu/veifyseeddialog.ui
+    src/forms/veifyseeddialog.ui
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     FORMS    += src/forms/receiverequestdialog.ui

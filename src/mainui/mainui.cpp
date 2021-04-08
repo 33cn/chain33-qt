@@ -93,6 +93,9 @@ void MainUI::initUI()
     PostJsonMessage(ID_GetVersion);
 
     setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+    if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
+        setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+    }
 
     m_platformStyle = PlatformStyle::instantiate("other");
 #ifndef Q_OS_MAC
@@ -228,7 +231,10 @@ void MainUI::createMenuBar()
 #ifdef WIN32
     settings->addAction(changeDirAction);
 #endif
-    settings->addAction(devolutionAction);
+    // ycc 先屏蔽离线授权挖矿
+    if (CStyleConfig::GetInstance().GetCoinsType() != TOKEN_YCC){
+        settings->addAction(devolutionAction);
+    }
     settings->addAction(veifySeedAction);
 
     QMenu *help = appMenuBar->addMenu(tr("&Help"));
@@ -241,7 +247,7 @@ void MainUI::createToolBars()
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextOnly);
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
-        toolbar->setStyleSheet("QWidget {background-color:#9A9FB6;border:none;} QToolButton { background-color: transparent; width: 100px; color: #DDDEE3;} QToolButton:hover { color: #EEEFF4; } QToolButton:checked, QToolButton:pressed { color: #ffffff; }");
+        toolbar->setStyleSheet("QWidget {background-color:#5282DB;border:none;} QToolButton { background-color: transparent; width: 100px; color: #DDDEE3;} QToolButton:hover { color: #EEEFF4; } QToolButton:checked, QToolButton:pressed { color: #ffffff; }");
     } else {
         toolbar->setStyleSheet("QToolButton { background-color: transparent; width: 100px; color: #ffffff;} QToolButton:hover { background-color: #2c2c2c; } QToolButton:checked, QToolButton:pressed { background-color: transparent; color: #ffba26; }");
     }
@@ -522,6 +528,9 @@ void MainUI::requestFinished(const QVariant &result, const QString &/*error*/)
         {
             g_strVersion = "chain33:" + resultMap["chain33"].toString() + " app:" + resultMap["app"].toString() + " localDb:" + resultMap["localDb"].toString();
             setWindowTitle(tr("%1钱包-正式版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+            if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
+                setWindowTitle(tr("%1钱包-测试版 %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
+            }
 #ifdef QT_DEBUG
             setWindowTitle(tr("%1钱包-test %2").arg(CStyleConfig::GetInstance().GetAppName(), g_strVersion));
 #endif

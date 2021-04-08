@@ -1,4 +1,4 @@
-#include "seedui.h"
+﻿#include "seedui.h"
 #include "ui_seedui.h"
 #include <QVBoxLayout>
 #include <QLineEdit>
@@ -41,5 +41,5 @@ void SeedUi::initUI()
     QTabWidget* tabWidget = new QTabWidget(this);
     tabWidget->addTab(new SwitchCreateSeedUi(tabWidget), tr("创建钱包"));
     tabWidget->addTab(new InputSeedUi(tabWidget, InputSeed_Tab), tr("导入钱包"));
-    ui->horizontalLayout_2->addWidget(tabWidget);
+    ui->seed_tab->addWidget(tabWidget);
 }

@@ -6,6 +6,7 @@
 #include "mainui.h"
 #include "statusbarui.h"
 #include "basefuntion.h"
+#include "cstyleconfig.h"
 
 QMap<IdType, QString>   g_methodMap;
 
@@ -39,8 +40,13 @@ void InitMethodMap()
     g_methodMap.insert(ID_GetBalance_coins, "Chain33.GetBalance");
     g_methodMap.insert(ID_GetBalance_ticket, "Chain33.GetBalance");
     g_methodMap.insert(ID_GetBalance_trade, "Chain33.GetBalance");
-    g_methodMap.insert(ID_SetAutoMining, "ticket.SetAutoMining");
-    g_methodMap.insert(ID_GetTicketCount, "ticket.GetTicketCount");
+    if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC){
+        g_methodMap.insert(ID_SetAutoMining, "pos33.SetAutoMining");
+        g_methodMap.insert(ID_GetTicketCount, "pos33.GetPos33TicketCount");
+    } else {
+        g_methodMap.insert(ID_SetAutoMining, "ticket.SetAutoMining");
+        g_methodMap.insert(ID_GetTicketCount, "ticket.GetTicketCount");
+    }
     g_methodMap.insert(ID_GetVersion, "Chain33.Version");
     g_methodMap.insert(ID_IsSync, "Chain33.IsSync");
     g_methodMap.insert(ID_IsNtpClockSync, "Chain33.IsNtpClockSync");

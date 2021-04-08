@@ -10,8 +10,6 @@
 #include <shlobj.h>
 #endif
 
-const quint64 BASE_REQUIRED_SPACE = 30; //GB
-
 IntroDialog::IntroDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::IntroDialog)
@@ -77,14 +75,11 @@ int IntroDialog::CheckDir()
     int replyStatus = ST_OK;
 
     QString freeString = tr("有 %n GB 空闲空间", "", freeBytesAvailable/GB_BYTES);
-    if(freeBytesAvailable < BASE_REQUIRED_SPACE * GB_BYTES)
-    {
+    if(freeBytesAvailable < BASE_REQUIRED_SPACE * GB_BYTES) {
         freeString += " " + tr("(需要 %n GB空间)", "", BASE_REQUIRED_SPACE);
         ui->freeSpace->setStyleSheet("QLabel { color: #EC5151 }");
         replyStatus = ST_ERROR;
-    }
-    else
-    {
+    } else {
         ui->freeSpace->setStyleSheet("");
     }
     ui->freeSpace->setText(freeString + ".");

@@ -9,41 +9,62 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>293</width>
-    <height>184</height>
+    <width>554</width>
+    <height>356</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
-    <number>20</number>
+    <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>20</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>20</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>20</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>20</number>
+    <number>0</number>
    </property>
    <item>
-    <widget class="QStackedWidget" name="horizontalStackedWidget1">
-     <widget class="QWidget" name="horizontalStackedWidget_2Page1" native="true">
-      <layout class="QHBoxLayout" name="horizontalLayout_3"/>
-     </widget>
-    </widget>
-   </item>
-   <item>
-    <widget class="QStackedWidget" name="horizontalStackedWidget2">
-     <widget class="QWidget" name="horizontalStackedWidgetPage1" native="true">
-      <layout class="QHBoxLayout" name="horizontalLayout_2"/>
-     </widget>
+    <widget class="QWidget" name="Widget_bk_main" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>20</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>20</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      <item>
+       <widget class="QStackedWidget" name="horizontalStackedWidget1">
+        <widget class="QWidget" name="horizontalStackedWidget_2Page1">
+         <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="horizontalStackedWidget2">
+        <widget class="QWidget" name="horizontalStackedWidgetPage1">
+         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+        </widget>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

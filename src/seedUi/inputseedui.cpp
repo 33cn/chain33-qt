@@ -65,14 +65,11 @@ void InputSeedUi::Init()
     ui->SeedSurePsdEdit->setPlaceholderText(tr("请重复密码"));
 #endif
 
-    if(m_nTab == CreateSeed_Tab)
-    {
-        for(int j=0; j<2; ++j)
-        {
+    if(m_nTab == CreateSeed_Tab) {
+        for(int j=0; j<2; ++j) {
             QHBoxLayout* lpHBoxLayout = new QHBoxLayout(this);
             lpHBoxLayout->setSpacing(10);
-            for(int i=0; i<8-j; ++i)
-            {
+            for(int i=0; i<8-j; ++i) {
                 QPushButton* lpPushBtn = new QPushButton(this);
                 lpPushBtn->setUserData(0, new CDataBtn(false));
                 lpPushBtn->setObjectName("inputseedBtn");
@@ -93,7 +90,7 @@ void InputSeedUi::Init()
 
     ui->SeedTextEdit->setStyleSheet("QTextEdit{ font: " + QString::number(GetBaseFontSize() + 4) + "pt; background-color: #202020; border-radius: 4px; border: none; padding: 10px; color: #ffba26;}");
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
-        ui->SeedTextEdit->setStyleSheet("QTextEdit{ font: " + QString::number(GetBaseFontSize() + 4) + "pt; background-color: #ffffff; border-radius: 4px; border: none; padding: 10px; color: #2241C7;}");
+        ui->SeedTextEdit->setStyleSheet("QTextEdit{ font: " + QString::number(GetBaseFontSize() + 4) + "pt; background-color: #ffffff; border-radius: 4px; border: none; padding: 10px; color: #4574CC;}");
 }
 
 void InputSeedUi::SetSeedCodeShow(const char *lpcSeedCode)
@@ -104,24 +101,19 @@ void InputSeedUi::SetSeedCodeShow(const char *lpcSeedCode)
     int n = 15;
     int a[15];
     int t;
-    for(int i=0;i<n;i++)
-    {
+    for(int i=0;i<n;i++) {
         t=rand()%n;
         a[i]=t;   //赋值
-        for(int j=0; j<i;j++)
-        {
-            if(a[j] == t)
-            {
+        for(int j=0; j<i;j++) {
+            if(a[j] == t) {
                 i--;    //如果相等 把i减1，跳出循环
                 break;
             }
         }
     }
 
-    if(m_listBtn.size() >= n && strListSeedCode.size() >= n)
-    {
-        for(int i=0; i<n; ++i)
-        {
+    if(m_listBtn.size() >= n && strListSeedCode.size() >= n) {
+        for(int i=0; i<n; ++i) {
             int j = a[i];
             m_listBtn[i]->setText(strListSeedCode[j]);
             m_listBtn[i]->setObjectName(strListSeedCode[j]);
@@ -322,20 +314,21 @@ void InputSeedUi::on_SeedItemBtn_clicked()
 
     QString strSeed = ui->SeedTextEdit->toPlainText();
 
-    if(lpDataBth->m_bCheck)
-    {
+    if(lpDataBth->m_bCheck) {
         strSeed += buttonName;
         strSeed += " ";
-        lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #333333; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #ffba26; height: 30px; } QPushButton:hover{ background-color: #ffdc26 }");
-        if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
-            lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffffff; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #2241C7; height: 30px; } QPushButton:hover{ background-color: #5574E9 }");
-    }
-    else
-    {
+        if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
+            lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffffff; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #5282DB; height: 30px; } QPushButton:hover{ background-color: #5574E9 }");
+        } else {
+            lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #333333; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #ffba26; height: 30px; } QPushButton:hover{ background-color: #ffdc26 }");
+        }
+     } else {
         strSeed.replace(buttonName + " ", "");
-        lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffffff; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #3d3d3d; height: 30px; } QPushButton:hover{ background-color: #4d4d4d }");
-        if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
-            lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #37383C; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #DADBDE; height: 30px; } QPushButton:hover{ background-color: #C9CACD }");
+        if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
+            lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #1B2740; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #FFFFFF; height: 30px; } QPushButton:hover{ background-color: #6F9EF7 }");
+        } else {
+            lpPushBtn->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffffff; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #3d3d3d; height: 30px; } QPushButton:hover{ background-color: #4d4d4d }");
+        }
     }
 
     ui->SeedTextEdit->setText(strSeed);
@@ -349,13 +342,14 @@ void InputSeedUi::on_SeedClearBtn_clicked()
 
     for(int i=0; i<15; ++i)
     {
-     //   m_listBtn[i]->setEnabled(true);
         CDataBtn* lpDataBth = (CDataBtn*)m_listBtn[i]->userData(0);
         lpDataBth->m_bCheck = false;
         m_listBtn[i]->setUserData(0, lpDataBth);
-        m_listBtn[i]->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffffff; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #3d3d3d; height: 30px; } QPushButton:hover{ background-color: #4d4d4d }");
-        if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
-            m_listBtn[i]->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #37383C; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #DADBDE; height: 30px; } QPushButton:hover{ background-color: #C9CACD }");
+        if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE) {
+            m_listBtn[i]->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #1B2740; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #FFFFFF; height: 30px; } QPushButton:hover{ background-color: #6F9EF7 }");
+        } else {
+            m_listBtn[i]->setStyleSheet("QPushButton{ font: " + QString::number(GetBaseFontSize() + 2) + "pt; color: #ffffff; border-radius: 4px; padding-left: 13px; padding-right: 13px;background: #3d3d3d; height: 30px; } QPushButton:hover{ background-color: #4d4d4d }");
+        }
     }
 }
 

@@ -10,7 +10,9 @@
 
 AddressListThread::AddressListThread()
 {
+    m_mutex.lock();
     m_stop = false;
+    m_mutex.unlock();
 }
 
 AddressListThread::~AddressListThread()
@@ -22,28 +24,23 @@ void AddressListThread::run()
 {
     while (true)
     {
+        m_mutex.lock();
+        if(m_stop) {
+            m_mutex.unlock();
+            return;
+        }
+        m_mutex.unlock();
+
         emit PostMsgGetAccounts();
         m_mutex.lock();
         m_cond.wait(&m_mutex, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
         m_mutex.unlock();
-        if(m_stop)
-        {
-            break;
-        }
-        m_mutex.lock();
-        m_cond.wait(&m_mutex,2000);
-        m_mutex.unlock();
-        if(m_stop)
-        {
-            return;
-        }
     }
 }
 
 void AddressListThread::Wakeup()
 {
-    if(!isRunning())
-    {
+    if(!isRunning()) {
         return;
     }
     m_cond.wakeOne();
@@ -51,26 +48,26 @@ void AddressListThread::Wakeup()
 
 void AddressListThread::Stop()
 {
-    if(!isRunning())
-    {
+    if(!isRunning()) {
         return;
     }
     m_mutex.lock();
     m_stop = true;
     m_mutex.unlock();
+
     m_cond.wakeOne();
     wait();
 }
 
 void AddressListThread::Resume()
 {
-    if(isRunning())
-    {
+    if(isRunning()) {
         return;
     }
     m_mutex.lock();
     m_stop = false;
     m_mutex.unlock();
+
     start();
 }
 
@@ -142,10 +139,15 @@ AddressListUI::AddressListUI(AddrModeType mode, AddrTypeTabs tab, QWidget *paren
     contextMenu->addAction(copyAddressAction);
     contextMenu->addAction(copyLabelAction);
     contextMenu->addAction(editAction);
+    if (tab == TabsReceiving && CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC) {
+        QAction *editMiningAction = new QAction(tr("&Set Minging"), this);
+        contextMenu->addAction(editMiningAction);
+        connect(editMiningAction, SIGNAL(triggered()), this, SLOT(onSetMiningAction()));
+    }
+    contextMenu->addAction(deleteAction);
     contextMenu->setStyleSheet("QMenu {background-color:#2c2c2c;} QMenu::item:selected { background-color:#454545; }");
     if (CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE)
-        contextMenu->setStyleSheet("QMenu {background-color:#ffffff;color: #37383C;} QMenu::item:selected {background-color:#2241C7;color: #ffffff;}");
-    contextMenu->addAction(deleteAction);
+        contextMenu->setStyleSheet("QMenu {background-color:#ffffff;color: #1B2740;} QMenu::item:selected {background-color:#5282DB;color: #ffffff;}");
 
     // Connect signals for context menu actions
     connect(copyAddressAction, SIGNAL(triggered()), this, SLOT(on_copyToClipboard_clicked()));
@@ -355,6 +357,27 @@ void AddressListUI::onEditAction()
     }
 }
 
+void AddressListUI::onSetMiningAction()
+{
+    if(!ui->tableView->selectionModel())
+        return;
+    QModelIndexList indexes = ui->tableView->selectionModel()->selectedRows();
+    if(indexes.isEmpty())
+        return;
+
+    QModelIndex origIndex = proxyModel->mapToSource(indexes.at(0));
+    if (origIndex.data(Item_Label).toString() == "airdropaddr"){
+        QMessageBox::warning(this, tr("提示"), tr("airdropaddr 地址不能设置为挖矿地址!"));
+        return;
+    }
+    QJsonObject jsonParms;
+    jsonParms.insert("addr", origIndex.data(Item_Address).toString());
+    jsonParms.insert("label", "mining");
+    QJsonArray params;
+    params.insert(0, jsonParms);
+    PostJsonMessage(ID_SetLabl, params);
+}
+
 void AddressListUI::contextualMenu(const QPoint &point)
 {
     QModelIndex index = ui->tableView->indexAt(point);
@@ -393,22 +416,17 @@ bool caseInsensitiveLessThan(const QVariant &s1, const QVariant &s2)
 
 void AddressListUI::requestFinished(const QVariant &result, const QString &error)
 {
-   if(ID_GetAccounts == m_nID)
-    {
+    if(ID_GetAccounts == m_nID) {
         ChangeType status;
 
         QMap<QString, QVariant> resultMap = result.toMap();
         QList<QVariant> walletsList = (resultMap["wallets"]).toList();
 
-        for (int i=0; i<walletsList.size(); ++i)
-        {
+        for (int i=0; i<walletsList.size(); ++i) {
             QMap<QString, QVariant> addrMap = walletsList[i].toMap();
-            if(m_mapAddrLabel.find((addrMap["acc"].toMap())["addr"].toString()) == m_mapAddrLabel.end())
-            {
+            if(m_mapAddrLabel.find((addrMap["acc"].toMap())["addr"].toString()) == m_mapAddrLabel.end()) {
                 status = CT_NEW;
-            }
-            else
-            {
+            } else {
                 status = CT_UPDATED;
             }
 
@@ -416,16 +434,20 @@ void AddressListUI::requestFinished(const QVariant &result, const QString &error
             if (addrMap["label"].toString().indexOf("Deleted") == -1)
                 m_mapAddrLabel.insert((addrMap["acc"].toMap())["addr"].toString(), addrMap["label"].toString());
         }
+
         emit updateWalletInfo(walletsList);
-        if(NULL!= m_lpAddressListThread)
-        {
+        if(NULL!= m_lpAddressListThread) {
             m_lpAddressListThread->Wakeup();
         }
-    }
-    else if (ID_NewAccount == m_nID)
-    {
+    } else if (ID_NewAccount == m_nID) {
         if(!error.isEmpty())
             QMessageBox::critical(this, tr("新建地址失败"), error, tr("ok"));
+    } else if (ID_SetLabl == m_nID) {
+        if(!error.isEmpty()){
+            QMessageBox::critical(this, tr("错误"), tr("设置挖矿地址失败,%1").arg(error));
+        } else {
+            QMessageBox::information(this, tr("提示"), tr("设置挖矿地址成功"));
+        }
     }
 }
 

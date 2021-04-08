@@ -19,12 +19,19 @@ enum STYLE_QSS
     QSS_BLUE
 };
 
+enum COINS_TYPE
+{
+    TOKEN_BTY,
+    TOKEN_YCC
+};
+
 class CStyleConfig
 {
 public:
     static CStyleConfig &GetInstance();
 
     STYLE_QSS GetStyleType() const;
+    COINS_TYPE GetCoinsType() const;
     const QString &GetChain33Name() const { return m_strChain33Name; }
     const QString &GetAppName() const { return m_strAppName; }
     const QString &GetAppName_en() const { return m_strAppName_en; }

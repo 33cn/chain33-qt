@@ -1,5 +1,5 @@
 ﻿QPushButton {
-    background-color: #9A9FB6;
+    background-color: #5282DB;
     color:#ffffff;
     border-radius: 4px;
     border: none;
@@ -8,42 +8,20 @@
     height: 20px;
 }
 
-QPushButton:hover{
-    background-color: #ABAFC7;
-}
-
-QPushButton:pressed {
-    background: #2241C7;
-}
-
-QPushButton:!enabled{
-    background: #C7CCE4;
-}
-
 QPushButton#sendButton, QPushButton#clearButton {
-    background-color: #9A9FB6;
-    border-radius: 4px;
-    border: none;
     height: 30px;
 }
 
-QPushButton:hover#sendButton, QPushButton:hover#clearButton{
-    background-color: #ABAFC7;
+QPushButton:hover{
+    background-color: #4574CC;
 }
 
-QPushButton:pressed#sendButton, QPushButton:pressed#clearButton {
-    background: #2241C7;
+QPushButton:pressed {
+    background: #6F9EF7;
 }
 
-QPushButton#UpDataBtn, QPushButton#SeedNextBtn, QPushButton#SeedPrevBtn, QPushButton#SeedCreateWalletBtn, QPushButton#SeedClearBtn {
-    background-color: #9A9FB6;
-    color:#ffffff;
-    border-radius: 4px;
-    border: none;
-}
-
-QPushButton:pressed#UpDataBtn, QPushButton:pressed#SeedNextBtn, QPushButton:pressed#SeedPrevBtn, QPushButton:pressed#SeedCreateWalletBtn, QPushButton:pressed#SeedClearBtn {
-    background: #2241C7;
+QPushButton:!enabled{
+    background: #DADBDE;
 }
 
 QLineEdit {
@@ -54,7 +32,7 @@ QLineEdit {
 }
 
 QLineEdit:!enabled {
-    color: #808080;
+    color: #969BA6;
     background: #DADBDE;
 }
 
@@ -74,7 +52,7 @@ QListView {
 }
 
 QComboBox {
-    background-color: #EDEEF2;
+    background-color: #E7EDF1;
     border-radius: 4px;
     border: 1px solid #575757;
     height: 20px;
@@ -100,23 +78,23 @@ QDateEdit {
 
 QMenu {
     background-color:#ffffff;
-    color: #37383C;
+    color: #1B2740;
 }
 
 QMenu::item:!enabled {
-    color: #B2B7CB;
+    color: #969BA6;
 }
 
 QMenu::item:selected {
-    background-color:#2241C7;
+    background-color:#5282DB;
     color: #ffffff;
 }
 
-QMenuBar { background-color:#101F1A; }
+QMenuBar { background-color:#E7EDF1; color: #474747;}
 
-QMenuBar::item { background-color:#101F1A; }
+QMenuBar::item { background-color:#E7EDF1; }
 
-QMenuBar::item:selected { background-color:#575757; }
+QMenuBar::item:selected { background-color:#D7DDD1; color: #464646;}
 
 QMenuBarExtension { background-color:#101F1A; }
 
@@ -126,12 +104,12 @@ QProgressBar {
 }
 
 QProgressBar::chunk {
-    background-color: #2241C7;
+    background-color: #5282DB;
     border-radius: 2px;
 }
 
 QToolButton {
-    background-color: #EDEEF2;
+    background-color: #E7EDF1;
     border-radius: 4px;
     border: none;
     height: 20px;
@@ -155,13 +133,13 @@ QTextEdit#detailText {
 /* seed */
 QLabel#manage_label {
     background: transparent;
-    color: #2241C7;
+    color: #5282DB;
     font: 30px;
 }
 
 QLabel#manage_label2 {
     background: transparent;
-    color: #2241C7;
+    color: #5282DB;
     font: 20px;
 }
 
@@ -176,14 +154,14 @@ QTabWidget::tab-bar {
 QTabBar::tab {
     min-width: 100px;
     height: 30px;
-    border: 1px solid #2241C7;
+    border: 1px solid #5282DB;
     border-radius: 0px;
-    color: #2241C7;
+    color: #5282DB;
 }
 
 QTabBar::tab:selected {
-    color: #EDEEF2;
-    background: #2241C7;
+    color: #E7EDF1;
+    background: #5282DB;
     border-radius: 0px
 }
 
@@ -196,14 +174,14 @@ QLineEdit#SeedPsdEdit, QLineEdit#SeedSurePsdEdit{
 }
 
 QTableView {
-    color: #808080;
+    color: #969BA6;
     selection-background-color: #F2F3F5;        /*选中区域的背景色*/
     padding: 0px;
     border: none;
 }
 
 QTableView#tableToken, QTableView#tableAsset {
-    color: #808080;
+    color: #969BA6;
     gridline-color: #353535;                              /*表格内框颜色 表格线颜色*/
     selection-color: white;                             /*选中区域的文字颜色*/
     selection-background-color: #F2F3F5;        /*选中区域的背景色*/
@@ -216,9 +194,9 @@ QTableView::item#tableToken,QTableView::item#tableAsset {
 }
 
 QTableView#listSymbol {
-    color: #808080;
+    color: #969BA6;
     gridline-color: #353535;                              /*表格内框颜色 表格线颜色*/
-    selection-color: #2241C7;                             /*选中区域的文字颜色*/
+    selection-color: #5282DB;                             /*选中区域的文字颜色*/
     selection-background-color: #F2F3F5;        /*选中区域的背景色*/
     padding: 0px;
     border: none;
@@ -230,7 +208,7 @@ QHeaderView::section {
     padding: 0px;
     border: none;
     height:34;
-    border-bottom: 1px solid #EDEEF2;
+    border-bottom: 1px solid #E7EDF1;
 }
 
 /**********滚动条-垂直**********/
@@ -249,14 +227,14 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 QScrollBar::handle:vertical {
     width: 5px;
     min-height: 30px;
-    background: #DADBDE;
+    background: #6F9EF7;
     margin-top: 2px;
     margin-bottom: 2px;
     border-radius: 4px;
 }
 
 QScrollBar::handle:vertical:hover {
-    background: #9A9FB6;
+    background: #5282DB;
 }
 
 QScrollBar::sub-line:vertical {
@@ -288,19 +266,44 @@ QRadioButton::indicator:unchecked {
     image: url(:/icons/blue_radio_unchecked);
 }
 
-QFrame#line1px, QFrame#line_2_1px { background-color: #EDEEF2; height: 1px; }
+QFrame#line1px, QFrame#line_2_1px { background-color: #E7EDF1; height: 1px; }
 
-QWidget#sendwidget1_0, QWidget#sendwidget1_1, QWidget#sendwidget1_2, QWidget#sendwidget1_3 {background-color:#EDEEF2;border-radius: 4px;}
+QWidget#sendwidget1_0, QWidget#sendwidget1_1, QWidget#sendwidget1_2, QWidget#sendwidget1_3 {
+    background-color:#F5F4F9;
+    border-radius: 4px;
+}
 
 QLabel { background: transparent; }
 
 QLineEdit#fromAddr, QLineEdit#payTo, QLineEdit#addAsLabel{
-    background-color: #EDEEF2;
+    background-color: #F5F4F9;
     border-radius: 4px;
     border: none;
     height: 20px;
 }
 
-QLineEdit:!enabled#fromAddr { background: #DADBDE; }
+QLineEdit:!enabled#fromAddr { background: #EBECEF; }
 
+QWidget#Widget_bk_main {
+    border-image:url(:/icons/bk_seed);
+}
+
+QWidget#Widget_bk_seed {
+    border-image:url(:/icons/bk_main);
+}
+
+QWidget#Widget_bk_small {
+    border-image:url(:/icons/bk_small);
+  /*  background-color: #F5F5F5;*/
+}
+
+QHBoxLayout#seed_tab {
+    background-color:#FFFF00;
+}
+
+QCheckBox#stakingCheckBox {
+    background: transparent;
+}
+
+QStatusBar{background-color: #FFFFFF;}
 

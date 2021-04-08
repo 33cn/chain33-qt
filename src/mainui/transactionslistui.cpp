@@ -26,7 +26,6 @@ void TransactionsThread::run()
 {
     while (true)
     {
-        sleep(12);
         m_mutex.lock();
         if(m_bRunPostMsg) {
             m_mutex.unlock();
@@ -34,6 +33,8 @@ void TransactionsThread::run()
         } else {
             m_mutex.unlock();
         }
+
+        sleep(12);
     }
 }
 
@@ -116,8 +117,7 @@ void TransactionsListUI::requestFinished(const QVariant &result, const QString &
         model->RemoveALLEntry();
         QString strFromFirst;
         QString strFromEnd;
-        for (int i = 0; i<txList.size(); ++i)
-        {
+        for (int i = 0; i<txList.size(); ++i) {
             QMap<QString, QVariant> txMap = txList[i].toMap();
             double dAmount = txMap["amount"].toDouble();
             QString strToAddr = txMap["tx"].toMap()["to"].toString();
@@ -131,20 +131,32 @@ void TransactionsListUI::requestFinished(const QVariant &result, const QString &
             QString strNote = txMap["tx"].toMap()["payload"].toMap()["Value"].toMap()["Transfer"].toMap()["note"].toString();
 
             QString strError;
-            if(nTy == 1)
-            {
+            if(nTy == 1) {
                 QList<QVariant> MapError = txMap["receipt"].toMap()["logs"].toList();
-                for(int j=0; j<MapError.size(); ++j)
-                {
-                    if(MapError[j].toMap()["ty"] == 1)
-                    {
+                for(int j=0; j<MapError.size(); ++j) {
+                    if(MapError[j].toMap()["ty"] == 1) {
                         strError = MapError[j].toMap()["log"].toString();
                         break;
                     }
                 }
             }
 
-            model->AdddateEntry(TransactionsListEntry(nTime, strToAddr, strFromAddr, strTxHash, dAmount, nFee, strExecer, strActionname, nTy, strNote, strError));
+            // YCC 专用
+            int nVoteCount = 0; // 参与投票的次数
+            if (strActionname == "miner") {
+                QList<QVariant> txLogsList = txMap["receipt"].toMap()["logs"].toList();
+                for (int j = 0; j<txLogsList.size(); ++j) {
+                    QMap<QString, QVariant> txLogMap = txLogsList[j].toMap();
+                    if (txLogMap["ty"] == "335") {
+                        QString strAddr = txLogMap["log"].toMap()["addr"].toString();
+                        if(strAddr == strFromAddr){
+                            ++nVoteCount;
+                        }
+                    }
+                }
+            }
+
+            model->AdddateEntry(TransactionsListEntry(nTime, strToAddr, strFromAddr, strTxHash, dAmount, nFee, strExecer, strActionname, nTy, strNote, strError, nVoteCount));
 
             if(i == 0)
                 strFromFirst = QString().sprintf("%013d", txMap["height"].toInt()) + QString().sprintf("%05d", txMap["index"].toInt());
@@ -275,7 +287,6 @@ void TransactionsListUI::initUI()
     QAction *copyAmountAction = new QAction(tr("Copy amount"), this);
     QAction *copyTxIDAction = new QAction(tr("Copy transaction ID"), this);
     QAction *editLabelAction = new QAction(tr("Edit label"), this);
-    QAction *showDetailsAction = new QAction(tr("Show transaction details"), this);
 
     contextMenu = new QMenu();
     contextMenu->addAction(copyAddressAction);
@@ -283,7 +294,6 @@ void TransactionsListUI::initUI()
     contextMenu->addAction(copyAmountAction);
     contextMenu->addAction(copyTxIDAction);
     contextMenu->addAction(editLabelAction);
-    contextMenu->addAction(showDetailsAction);
 
     connect(ui->dateWidget, SIGNAL(activated(int)), this, SLOT(chooseDate(int)));
     connect(ui->typeWidget, SIGNAL(activated(int)), this, SLOT(chooseType(int)));
@@ -296,73 +306,7 @@ void TransactionsListUI::initUI()
     connect(copyLabelAction, SIGNAL(triggered()), this, SLOT(copyLabel()));
     connect(copyAmountAction, SIGNAL(triggered()), this, SLOT(copyAmount()));
     connect(copyTxIDAction, SIGNAL(triggered()), this, SLOT(copyTxID()));
- //   connect(editLabelAction, SIGNAL(triggered()), this, SLOT(editLabel()));
-    connect(showDetailsAction, SIGNAL(triggered()), this, SLOT(showDetails()));
 }
-/*
-TransactionsType TransactionsListUI::GetTypeTy(const QString &strToAddress, const QString &strFromAddress, const QString &strExecer, const QString &strActionname, int ReceiptTy)
-{
-    QMap<QString, QString> mapMyAddr = g_lpMainUI->m_lpAddressUI->m_lpMyAddressList->m_mapAddrLabel;
-    QString strFromLabel = mapMyAddr[strFromAddress];
-    QString strToLabel = mapMyAddr[strToAddress];
-
-    if(ReceiptTy != 3) {
-        return TyFailure;
-    } else if ("ticket" == strExecer && "withdraw" == strActionname) {
-        return RecvFromMining;
-    } else if ("ticket" == strExecer && "miner" == strActionname) {
-        return Generated;
-    } else if ("coins" == strExecer && "transfer" == strActionname && "16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp" == strToAddress) {
-        return SendToMining;
-    } else if(!strFromLabel.isEmpty() && !strToLabel.isEmpty()) {
-        return SendToSelf;
-    } else if (!strFromLabel.isEmpty()) {
-        return SendToAddress;
-    } else if (!strToLabel.isEmpty()) {
-        return RecvWithAddress;
-    } else {
-        return Other;
-    }
-}
-
-QString TransactionsListUI::GetStrTypeTy(const TransactionsType &typeTy)
-{
-    QString strTypeTy;
-    switch (typeTy) {
-    case TyFailure:
-        strTypeTy = tr("失败");
-        break;
-    case Other:
-        strTypeTy = tr("其他");
-        break;
-    case Generated:
-        strTypeTy = tr("挖矿所得");
-        break;
-    case SendToAddress:
-        strTypeTy = tr("发送");
-        break;
-    case SendToMining:
-        strTypeTy = tr("冻结挖矿");
-        break;
-    case RecvWithAddress:
-        strTypeTy = tr("接收");
-        break;
-    case RecvFromMining:
-        strTypeTy = tr("挖矿取回");
-        break;
-    case SendToSelf:
-        strTypeTy = tr("到自己");
-        break;
-    case BackDecl:
-        strTypeTy = tr("钱包找回通知");
-        break;
-    default:
-        strTypeTy = tr("其他");
-        break;
-    }
-
-    return strTypeTy;
-}*/
 
 void TransactionsListUI::createDateRangeWidget()
 {
@@ -447,20 +391,6 @@ void TransactionsListUI::focusTransaction(const QModelIndex &idx)
     ui->listTransactions->setFocus();
 }
 
-void TransactionsListUI::updateDisplayUnit()
-{
-  /*  if(model && model->getOptionsModel())
-    {
-      //  if(currentBalance != -1)
-      //      setBalance(currentBalance, model->getStake(), currentUnconfirmedBalance, currentImmatureBalance);
-
-        // Update txdelegate->unit with the current unit
-        txdelegate->unit = model->getOptionsModel()->getDisplayUnit();
-
-        ui->listTransactions->update();
-    }*/
-}
-
 void TransactionsListUI::contextualMenu(const QPoint &point)
 {
     QModelIndex index = ui->listTransactions->indexAt(point);
@@ -475,18 +405,6 @@ void TransactionsListUI::dateRangeChanged()
     if(!transactionProxyModel)
         return;
     transactionProxyModel->setDateRange( QDateTime(ui->dateFrom->date()), QDateTime(ui->dateTo->date()).addDays(1));
-}
-
-void TransactionsListUI::showDetails()
-{
- /*   if(!ui->listTransactions->selectionModel())
-        return;
-    QModelIndexList selection = ui->listTransactions->selectionModel()->selectedRows();
-    if(!selection.isEmpty())
-    {
-        TransactionDescDialog dlg(selection.at(0));
-        dlg.exec();
-    }*/
 }
 
 void TransactionsListUI::copyAddress()

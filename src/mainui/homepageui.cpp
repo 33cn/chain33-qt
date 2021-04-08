@@ -20,8 +20,6 @@ HomepageUI::HomepageUI(QWidget *parent, const PlatformStyle *platformStyle) :
     ui->horizontalStackedWidget2->setCurrentWidget(m_lpTransactionsListUI);
 
     connect(m_lpWalletSendUI, SIGNAL(SendAddrSucceedUpData()), m_lpTransactionsListUI, SLOT(SendAddrSucceedUpData()));
-
-  //  ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 }
 
 HomepageUI::~HomepageUI()

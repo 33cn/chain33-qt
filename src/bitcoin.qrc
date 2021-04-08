@@ -43,6 +43,9 @@
         <file alias="blue_radio_checked">res/icons/blue_radio_checked.png</file>
         <file alias="blue_radio_unchecked">res/icons/blue_radio_unchecked.png</file>
         <file alias="blue_about">res/icons/blue_about.png</file>
+        <file alias="bk_main">res/icons/bk_main.png</file>
+        <file alias="bk_seed">res/icons/bk_seed.png</file>
+        <file alias="bk_small">res/icons/bk_small.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="update_spinner">res/movies/update_spinner.mng</file>
@@ -89,7 +92,7 @@
         <file alias="zh_CN">locale/bitcoin_zh_CN.qm</file>
     </qresource>
     <qresource prefix="/">
-        <file>res/icons/address_book.png</file>
+        <file alias="address_book">res/icons/address_book.png</file>
         <file>res/icons/search.png</file>
         <file>res/icons/selected.png</file>
         <file alias="qss_yellow">res/qss_yellow.qss</file>

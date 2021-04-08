@@ -147,7 +147,7 @@ void CliConsole::on_ClearBtn_clicked()
     if(CStyleConfig::GetInstance().GetStyleType() == QSS_BLUE){
         ui->messagesWidget->document()->setDefaultStyleSheet(
                     "table { }"
-                    "td.time { color: #808080; padding-top: 3px; } "
+                    "td.time { color: #969BA6; padding-top: 3px; } "
                     "td.message { font-family: Monospace; } " // font-size: 12px;
                     "td.cmd-request { color: #2c77ef; } "
                     "td.cmd-error { color: red; } "
@@ -156,7 +156,7 @@ void CliConsole::on_ClearBtn_clicked()
     } else {
         ui->messagesWidget->document()->setDefaultStyleSheet(
                     "table { }"
-                    "td.time { color: #808080; padding-top: 3px; } "
+                    "td.time { color: #969BA6; padding-top: 3px; } "
                     "td.message { font-family: Monospace; } " // font-size: 12px;
                     "td.cmd-request { color: #ffba26; } "
                     "td.cmd-error { color: red; } "

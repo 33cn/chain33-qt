@@ -17,6 +17,8 @@
 
 #define MAX_TIMEOUT_WAIT_RESPONSE_RESULT (60000) //60 second
 
+const quint64 BASE_REQUIRED_SPACE = 30; //GB
+
 const quint64 GB_BYTES = 1024*1024*1024;
 extern QMap<QString, QString> g_mapErrorCode;
 extern QNetworkAccessManager*  g_lpaccessManager;

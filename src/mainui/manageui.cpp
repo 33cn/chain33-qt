@@ -49,17 +49,14 @@ void RuningThread::SetQuit(bool bQuit)
 
 void RuningThread::run()
 {
-    while (true)
-    {
-        if(!GetProcessidFromName())
-        {
+    while (true) {
+        if(!GetProcessidFromName()) {
             emit startChain33();
-        }
-        else
-        {
+        } else {
             m_mutexFinish.lock();
             if(!m_bFinish) {
                 m_mutexFinish.unlock();
+
                 emit PostMsgGetWalletstatus();
                 sleep(5);
                 emit PostMsgGetCoinSymbol();
@@ -76,10 +73,9 @@ void RuningThread::run()
         m_mutexQuit.lock();
         if(m_bQuit) {
             m_mutexQuit.unlock();
-            break;
-        } else {
-            m_mutexQuit.unlock();
+            return;
         }
+        m_mutexQuit.unlock();
     }
 }
 

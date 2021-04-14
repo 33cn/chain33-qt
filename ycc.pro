@@ -5,9 +5,9 @@
 #-------------------------------------------------
 
 TEMPLATE = app
-TARGET = bityuan-qt
+TARGET = ycc-qt
 CONFIG(debug, debug|release) {
-    TARGET = bityuan-qt-Debug
+    TARGET = ycc-qt-Debug
 }
 VERSION = 1.0.0
 INCLUDEPATH +=  /usr/local/include src ./ ./src/connector ./src/seedUi ./src/functionui ./src/qrencode ./src/menu ./src/mainui
@@ -173,7 +173,7 @@ FORMS    += \
     src/forms/veifyseeddialog.ui \
     src/forms/receiverequestdialog.ui
 
-RESOURCES += src/bityuan.qrc
+RESOURCES += src/ycc.qrc
 
 #When define #QT_DEBUG do not use "change data dir" of the menu, otherwise data may be destroyed, caused by not close chain33 in void ManageUI::CloseChain33(){}
 
@@ -199,7 +199,7 @@ QMAKE_EXTRA_COMPILERS += TSQM
 windows:DEFINES += WIN32
 
 CONFIG(release, debug|release) {
-    windows:RC_FILE = src/res/bty-qt.rc
+    windows:RC_FILE = src/res/ycc-qt.rc
 }
 
 windows:!contains(MINGW_THREAD_BUGFIX, 0) {
@@ -219,8 +219,8 @@ macx:OBJECTIVE_SOURCES += src/functionui/macdockiconhandler.mm
 macx:OBJECTIVE_SOURCES += src/functionui/macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/res/bty-icons/bitcoin.icns
-macx:TARGET = "bityuan"
+macx:ICON = src/res/ycc-icons/bitcoin.icns
+macx:TARGET = "ycc"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread

@@ -34,6 +34,7 @@ public:
     const QString &GetChain33Name() const { return m_strChain33Name; }
     const QString &GetAppName() const { return m_strAppName; }
     const QString &GetAppName_en() const { return m_strAppName_en; }
+    const QString &GetWinRegDir() const { return m_strWinRegDir; }
     const QString &GetUnitName() const { return m_strUnitName; }
     void SetUnitName(const QString &strUnitName) { m_strUnitName = strUnitName.toUpper();}
     const double &GetMinFee() const { return m_dMinFee; }
@@ -64,6 +65,7 @@ private:
     QString m_strUnitName;          // 代币单位
     double m_dMinFee;               // 最小手续费
     QString m_strNetworkUrl;        // 连接节点的url 默认 http://localhost:8801/
+    QString m_strWinRegDir;         // bityuan 特有，兼容老版本
 
     QString m_stylesheet_type;      // qss
     QString m_stylesheet;

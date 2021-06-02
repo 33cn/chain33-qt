@@ -273,20 +273,25 @@ void ManageUI::ShowHide()
     ui->manage_label->setText("");
 }
 
-void ManageUI::UnlockWallet(bool isWalletLock, bool isTicketLock)
+void ManageUI::UnlockWallet()
 {
-    if((!isWalletLock || !isTicketLock) && g_lpMainUI)
-    {
+    if(g_lpMainUI) {
+        EncryptionStatus status = g_lpMainUI->m_nStatus;
+        qDebug() << ("UnlockWallet: ") << status;
         std::stringstream ostr;
-        std::string strbool;
-        if(isWalletLock) {
-            strbool = "true";
-        } else {
-            strbool = "false";
+        switch (status)
+        {
+        case Wallet_Unlocked_MinerOnly:
+            ostr << "{\"passwd\":\"" << g_lpMainUI->m_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << "true" << ",\"timeout\":" << 0 << "}";
+            PostJsonMessage(ID_UnLock, ostr.str().c_str());
+            break;
+        case Wallet_Unlocked:
+            ostr << "{\"passwd\":\"" << g_lpMainUI->m_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << "false" << ",\"timeout\":" << 0 << "}";
+            PostJsonMessage(ID_UnLock, ostr.str().c_str());
+            break;
+        case Wallet_Locked:
+            break;
         }
-
-        ostr << "{\"passwd\":\"" << g_lpMainUI->m_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << strbool << ",\"timeout\":" << 0 << "}";
-        PostJsonMessage(ID_UnLock, ostr.str().c_str());
     }
 }
 
@@ -409,6 +414,8 @@ void ManageUI::startChain33()
     m_lpQProcess->start(strPath, strList);
     m_dwChain33ProcessId = m_lpQProcess->pid();
 #endif
+
+    UnlockWallet();
 }
 
 void ManageUI::CloseChain33Temp()

@@ -94,6 +94,9 @@ void CStyleConfig::setChain33NamePath()
         m_strChain33Exe += "-x86";
         m_strChain33cliExe += "-x86";
     }
+
+    m_strChain33Exe += ".exe";
+    m_strChain33cliExe += ".exe";
 #endif
 
     m_strChain33Path = QCoreApplication::applicationDirPath() + "/" + m_strChain33Exe;

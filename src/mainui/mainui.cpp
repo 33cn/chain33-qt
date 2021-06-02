@@ -55,6 +55,7 @@ MainUI::MainUI(QString &/*stylesheet*/, QWidget *parent)
 	, trayIcon(0)
 	, notificator(0)
 	, rpcConsole(NULL)
+    , m_nStatus(Wallet_Locked)
 {
 	g_lpMainUI = this;
 	initUI();

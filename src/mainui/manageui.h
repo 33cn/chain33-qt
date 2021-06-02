@@ -71,7 +71,7 @@ public:
 
     void ShowHide();
 
-    void UnlockWallet(bool isWalletLock, bool isTicketLock);
+    void UnlockWallet();
 
 public slots:
     void PostMsgGetWalletstatus();

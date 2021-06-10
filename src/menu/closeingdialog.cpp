@@ -76,7 +76,7 @@ void CloseingDialog::Chain33Closed()
         if(g_lpManageUI) {
             g_lpManageUI->StartThread();
             g_lpManageUI->startChain33();
-            //g_lpManageUI->UnlockWallet(m_isWalletLock, m_isTicketLock);
+            g_lpManageUI->UnlockWallet();
         }
 
         if(g_lpMainUI) {

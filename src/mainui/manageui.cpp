@@ -53,6 +53,8 @@ void RuningThread::run()
     while (true) {
         if(!GetProcessidFromName()) {
             emit startChain33();
+            sleep(5);
+            emit UnlockWallet();
         } else {
             m_mutexFinish.lock();
             if(!m_bFinish) {
@@ -99,6 +101,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
     connect(m_lpThread, SIGNAL(PostMsgGetCoinSymbol()), this, SLOT(PostMsgGetCoinSymbol()));
     connect(m_lpThread, SIGNAL(PostMsgGetProperFee()), this, SLOT(PostMsgGetProperFee()));
     connect(m_lpThread, SIGNAL(startChain33()), this, SLOT(startChain33()));
+    connect(m_lpThread, SIGNAL(UnlockWallet()), this, SLOT(UnlockWallet()));
 #ifdef WIN32
     m_clearThread = new ClearThread();
 #endif
@@ -414,8 +417,6 @@ void ManageUI::startChain33()
     m_lpQProcess->start(strPath, strList);
     m_dwChain33ProcessId = m_lpQProcess->pid();
 #endif
-
-    UnlockWallet();
 }
 
 void ManageUI::CloseChain33Temp()

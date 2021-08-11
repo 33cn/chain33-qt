@@ -267,7 +267,6 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         setNumConnections(peersList.size()-1);
         m_npeersList = peersList.size();
 
-        m_nPeerHeight = 0;
         for (int i=0; i<peersList.size(); ++i) {
             QMap<QString, QVariant> headerMap = peersList[i].toMap();
             int nPeerHeight = (headerMap["header"].toMap())["height"].toInt();

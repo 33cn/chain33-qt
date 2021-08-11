@@ -243,3 +243,6 @@ contains(RELEASE, 1) {
 }
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
+
+
+RC_ICONS="src/res/ycc-icons/novacoin.ico"

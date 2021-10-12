@@ -280,7 +280,7 @@ void ManageUI::UnlockWallet()
 {
     if(g_lpMainUI) {
         EncryptionStatus status = g_lpMainUI->m_nStatus;
-        qDebug() << ("UnlockWallet: ") << status;
+        qDebug() << ("重启chain33后 查询之前解锁状态 UnlockWallet: ") << status;
         std::stringstream ostr;
         switch (status)
         {

@@ -310,7 +310,7 @@ bool MainUI::GetOutOfSync()
 
 void MainUI::SetTimeStatus(int nDiff)
 {
-	m_lpHomepageUI->m_lpWalletSendUI->SetTimeStatus(nDiff);
+    m_lpHomepageUI->m_lpWalletSendUI->SetTimeStatus(nDiff);
 }
 
 void MainUI::gotoOverviewPage()
@@ -342,31 +342,37 @@ void MainUI::showNormalIfMinimized(bool fToggleHidden)
 		hide();
 }
 
+void MainUI::updateEncryptionStatus(EncryptionStatus status)
+{
+    switch (status)
+    {
+    case Wallet_Unlocked_MinerOnly:
+        changePassphraseAction->setEnabled(true);
+        unlockWalletAction->setVisible(false);
+        lockWalletAction->setVisible(true);
+        lockWalletAction->setIcon(QIcon(":/icons/lock_open_mineronly"));
+        break;
+    case Wallet_Unlocked:
+        changePassphraseAction->setEnabled(true);
+        unlockWalletAction->setVisible(false);
+        lockWalletAction->setVisible(true);
+        lockWalletAction->setIcon(m_platformStyle->SingleColorIcon(":/icons/lock_open"));
+        break;
+    case Wallet_Locked:
+        changePassphraseAction->setEnabled(true);
+        lockWalletAction->setVisible(false);
+        unlockWalletAction->setVisible(true);
+        break;
+    }
+
+    m_lpStatusBarUI->setEncryptionStatus(status);
+}
+
 void MainUI::setEncryptionStatus(EncryptionStatus status)
 {
+    qDebug() << ("设置解锁状态 setEncryptionStatus: ") << status;
 	m_nStatus = status;
-	switch (status)
-	{
-	case Wallet_Unlocked_MinerOnly:
-		changePassphraseAction->setEnabled(true);
-		unlockWalletAction->setVisible(false);
-		lockWalletAction->setVisible(true);
-		lockWalletAction->setIcon(QIcon(":/icons/lock_open_mineronly"));
-		break;
-	case Wallet_Unlocked:
-		changePassphraseAction->setEnabled(true);
-		unlockWalletAction->setVisible(false);
-		lockWalletAction->setVisible(true);
-		lockWalletAction->setIcon(m_platformStyle->SingleColorIcon(":/icons/lock_open"));
-		break;
-	case Wallet_Locked:
-		changePassphraseAction->setEnabled(true);
-		lockWalletAction->setVisible(false);
-		unlockWalletAction->setVisible(true);
-		break;
-	}
-
-	m_lpStatusBarUI->setEncryptionStatus(status);
+    updateEncryptionStatus(status);
 }
 
 void MainUI::setMiningStatus(bool bMining)

@@ -6,6 +6,7 @@
 #include "base58.h"
 #include "addresslistui.h"
 #include "basefuntion.h"
+#include "platformstyle.h"
 
 OfflineMiningDialog::OfflineMiningDialog(QWidget *parent, const PlatformStyle *platformStyle) :
     JsonConnectorDialog(parent),
@@ -25,7 +26,9 @@ OfflineMiningDialog::OfflineMiningDialog(QWidget *parent, const PlatformStyle *p
 
     ui->buttonBox->button(QDialogButtonBox::Save)->setVisible(false);
     ui->ErrorVerticalWidget->setVisible(false);
-    ui->ResultVerticalWidget->setVisible(false);
+    ui->ResultVerticalWidget->setVisible(false);    
+
+    ui->toolButton->setIcon(m_platformStyle->SingleColorIcon(":/address_book"));
 }
 
 OfflineMiningDialog::~OfflineMiningDialog()

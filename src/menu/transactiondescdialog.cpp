@@ -150,6 +150,7 @@ void TransactionDescDialog::contractAddr(QString &strAddr)
             || "1DzTdTLa5JPpLdNNP2PrV1a6JCtULA7GsT" == strAddr
             || "12hpJBHybh1mSyCijQ2MQJPk7z7kZ7jnQa" == strAddr
             || "1BXvgjmBw1aBgmGn1hjfGyRkmN3krWpFP4" == strAddr
+            || "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq" == strAddr
             ){
         strAddr = tr("(contract)") + strAddr;
     }

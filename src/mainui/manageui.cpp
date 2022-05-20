@@ -53,6 +53,8 @@ void RuningThread::run()
     while (true) {
         if(!GetProcessidFromName()) {
             emit startChain33();
+            sleep(5);
+            emit UnlockWallet();
         } else {
             m_mutexFinish.lock();
             if(!m_bFinish) {
@@ -99,6 +101,7 @@ ManageUI::ManageUI(QWidget *parent, const char* lpstylesheet)
     connect(m_lpThread, SIGNAL(PostMsgGetCoinSymbol()), this, SLOT(PostMsgGetCoinSymbol()));
     connect(m_lpThread, SIGNAL(PostMsgGetProperFee()), this, SLOT(PostMsgGetProperFee()));
     connect(m_lpThread, SIGNAL(startChain33()), this, SLOT(startChain33()));
+    connect(m_lpThread, SIGNAL(UnlockWallet()), this, SLOT(UnlockWallet()));
 #ifdef WIN32
     m_clearThread = new ClearThread();
 #endif
@@ -273,20 +276,25 @@ void ManageUI::ShowHide()
     ui->manage_label->setText("");
 }
 
-void ManageUI::UnlockWallet(bool isWalletLock, bool isTicketLock)
+void ManageUI::UnlockWallet()
 {
-    if((!isWalletLock || !isTicketLock) && g_lpMainUI)
-    {
+    if(g_lpMainUI) {
+        EncryptionStatus status = g_lpMainUI->m_nStatus;
+        qDebug() << ("重启chain33后 查询之前解锁状态 UnlockWallet: ") << status;
         std::stringstream ostr;
-        std::string strbool;
-        if(isWalletLock) {
-            strbool = "true";
-        } else {
-            strbool = "false";
+        switch (status)
+        {
+        case Wallet_Unlocked_MinerOnly:
+            ostr << "{\"passwd\":\"" << g_lpMainUI->m_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << "true" << ",\"timeout\":" << 0 << "}";
+            PostJsonMessage(ID_UnLock, ostr.str().c_str());
+            break;
+        case Wallet_Unlocked:
+            ostr << "{\"passwd\":\"" << g_lpMainUI->m_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << "false" << ",\"timeout\":" << 0 << "}";
+            PostJsonMessage(ID_UnLock, ostr.str().c_str());
+            break;
+        case Wallet_Locked:
+            break;
         }
-
-        ostr << "{\"passwd\":\"" << g_lpMainUI->m_strPsd.toStdString().c_str() << "\",\"walletorticket\":" << strbool << ",\"timeout\":" << 0 << "}";
-        PostJsonMessage(ID_UnLock, ostr.str().c_str());
     }
 }
 

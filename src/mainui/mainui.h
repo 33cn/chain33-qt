@@ -103,6 +103,7 @@ public:
 signals:
     void UpdateWalletStatus(const QVariant &result);
 public slots:
+    void updateEncryptionStatus(EncryptionStatus status);
     void setEncryptionStatus(EncryptionStatus status);
     void setMiningStatus(bool bMining);
 

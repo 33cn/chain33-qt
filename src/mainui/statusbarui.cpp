@@ -267,7 +267,6 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         setNumConnections(peersList.size()-1);
         m_npeersList = peersList.size();
 
-        m_nPeerHeight = 0;
         for (int i=0; i<peersList.size(); ++i) {
             QMap<QString, QVariant> headerMap = peersList[i].toMap();
             int nPeerHeight = (headerMap["header"].toMap())["height"].toInt();
@@ -329,7 +328,6 @@ void StatusBarUI::requestFinished(const QVariant &result, const QString &error)
         if(NULL != m_lpStatusBarThread)
         {
             m_lpStatusBarThread->ReleaseOneSem();
-            qDebug() << "TicketCount released semaphore";
         }
     }
     else if (m_nID == ID_IsNtpClockSync)
@@ -591,12 +589,12 @@ void StatusBarUI::UpdateWalletStatus(const QVariant &result)
     bool bisLock = resultMap["isWalletLock"].toBool();
     if(bisLock) {
         if(resultMap["isTicketLock"].toBool()){
-            g_lpMainUI->setEncryptionStatus(Wallet_Locked);
+            g_lpMainUI->updateEncryptionStatus(Wallet_Locked);
         } else {
-            g_lpMainUI->setEncryptionStatus(Wallet_Unlocked_MinerOnly);
+            g_lpMainUI->updateEncryptionStatus(Wallet_Unlocked_MinerOnly);
         }
     } else {
-        g_lpMainUI->setEncryptionStatus(Wallet_Unlocked);
+        g_lpMainUI->updateEncryptionStatus(Wallet_Unlocked);
 
         if(m_bFirst)
         {

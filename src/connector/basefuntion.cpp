@@ -55,7 +55,7 @@ QString GetSpecialFolderPath(int nFolder, bool fCreate)
 
 QString GetRegDataDir()
 {
-    QString fileName = "HKEY_CURRENT_USER\\Software\\" + CStyleConfig::GetInstance().GetChain33Name() + "\\" + CStyleConfig::GetInstance().GetAppName_en();
+    QString fileName = "HKEY_CURRENT_USER\\Software\\" + CStyleConfig::GetInstance().GetChain33Name() + "\\" + CStyleConfig::GetInstance().GetWinRegDir();
     QSettings *pReg = new QSettings(fileName, QSettings::NativeFormat);
     QString strDir = pReg->value("strDataDir").toString(); //读取注册表值
     strDir.replace("/", "\\");
@@ -68,7 +68,7 @@ void SetRegDataDir(QString strDataDir)
 {
     strDataDir.replace("/", "\\");
     strDataDir.replace("\\\\", "\\");
-    QString fileName = "HKEY_CURRENT_USER\\Software\\" + CStyleConfig::GetInstance().GetChain33Name() + "\\" + CStyleConfig::GetInstance().GetAppName_en();
+    QString fileName = "HKEY_CURRENT_USER\\Software\\" + CStyleConfig::GetInstance().GetChain33Name() + "\\" + CStyleConfig::GetInstance().GetWinRegDir();
     QSettings *pReg = new QSettings(fileName, QSettings::NativeFormat);
     pReg->setValue("strDataDir", strDataDir);
     delete pReg;

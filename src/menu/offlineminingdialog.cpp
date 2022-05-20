@@ -6,6 +6,7 @@
 #include "base58.h"
 #include "addresslistui.h"
 #include "basefuntion.h"
+#include "platformstyle.h"
 
 OfflineMiningDialog::OfflineMiningDialog(QWidget *parent, const PlatformStyle *platformStyle) :
     JsonConnectorDialog(parent),
@@ -25,7 +26,9 @@ OfflineMiningDialog::OfflineMiningDialog(QWidget *parent, const PlatformStyle *p
 
     ui->buttonBox->button(QDialogButtonBox::Save)->setVisible(false);
     ui->ErrorVerticalWidget->setVisible(false);
-    ui->ResultVerticalWidget->setVisible(false);
+    ui->ResultVerticalWidget->setVisible(false);    
+
+    ui->toolButton->setIcon(m_platformStyle->SingleColorIcon(":/address_book"));
 }
 
 OfflineMiningDialog::~OfflineMiningDialog()
@@ -34,14 +37,7 @@ OfflineMiningDialog::~OfflineMiningDialog()
 }
 
 void OfflineMiningDialog::accept()
-{/*
-#ifdef QT_DEBUG
-    ui->buttonBox->button(QDialogButtonBox::Save)->setVisible(true);
-    ui->ErrorVerticalWidget->setVisible(false);
-    ui->ResultVerticalWidget->setVisible(true);
-    ui->txhexBindEdit->setText(tr("0x7ee6331ed623de7f02721f84f898a502494f9a2f6524cce942fb077e0624896d"));
-    ui->txhexTransEdit->setText(tr("0x652ee6331ed623de7f02721f84f4cce942fb077e0624896d7898a502494f9a2f"));
-#endif*/
+{
 }
 
 void OfflineMiningDialog::PostMsgCreateBindMiner()
@@ -68,10 +64,16 @@ void OfflineMiningDialog::PostMsgCreateRawTransaction()
     qint64 nAmount = strAmount.toDouble()*le8;
 
     QJsonObject jsonParms;
-    jsonParms.insert("to", "16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp");
     jsonParms.insert("amount", nAmount);
-    jsonParms.insert("note", "coins->ticket");
-    jsonParms.insert("execName", "ticket");
+    if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC){
+        jsonParms.insert("to", "1Wj2mPoBwJMVwAQLKPNDseGpDNibDt9Vq");
+        jsonParms.insert("note", "coins->pos33");
+        jsonParms.insert("execName", "pos33");
+    } else {
+        jsonParms.insert("to", "16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp");
+        jsonParms.insert("note", "coins->ticket");
+        jsonParms.insert("execName", "ticket");
+    }
     QJsonArray params;
     params.insert(0, jsonParms);
     PostJsonMessage(ID_CreateRawTransaction, params);

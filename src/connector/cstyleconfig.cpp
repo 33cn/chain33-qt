@@ -39,7 +39,12 @@ void CStyleConfig::readConfigFile()
         readValue(lpconfigIni, "Config/AppName_en", m_strAppName_en);
         readValue(lpconfigIni, "Config/StyleType", m_stylesheet_type);
         readValue(lpconfigIni, "Config/NetworkUrl", m_strNetworkUrl);
+        readValue(lpconfigIni, "Config/WinRegDir", m_strWinRegDir);
         delete lpconfigIni;
+    }
+
+    if (m_strWinRegDir.isEmpty()) {
+        m_strWinRegDir = m_strAppName_en;
     }
 
     QString strQssName = ":/qss_yellow";
@@ -89,6 +94,7 @@ void CStyleConfig::setChain33NamePath()
         m_strChain33Exe += "-x86";
         m_strChain33cliExe += "-x86";
     }
+
     m_strChain33Exe += ".exe";
     m_strChain33cliExe += ".exe";
 #endif

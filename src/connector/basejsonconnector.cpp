@@ -44,9 +44,11 @@ void InitMethodMap()
     if (CStyleConfig::GetInstance().GetCoinsType() == TOKEN_YCC){
         g_methodMap.insert(ID_SetAutoMining, "pos33.SetAutoMining");
         g_methodMap.insert(ID_GetTicketCount, "pos33.GetPos33TicketCount");
+        g_methodMap.insert(ID_CreateBindMiner, "pos33.CreateBindMiner");
     } else {
         g_methodMap.insert(ID_SetAutoMining, "ticket.SetAutoMining");
         g_methodMap.insert(ID_GetTicketCount, "ticket.GetTicketCount");
+        g_methodMap.insert(ID_CreateBindMiner, "ticket.CreateBindMiner");
     }
     g_methodMap.insert(ID_GetVersion, "Chain33.Version");
     g_methodMap.insert(ID_IsSync, "Chain33.IsSync");
@@ -63,7 +65,6 @@ void InitMethodMap()
     g_methodMap.insert(ID_GetAccountTokenAssets_token, "Chain33.Query");
     g_methodMap.insert(ID_GetAccountTokenAssets_trade, "Chain33.Query");
     g_methodMap.insert(ID_GetFatalFailure, "Chain33.GetFatalFailure");
-    g_methodMap.insert(ID_CreateBindMiner, "ticket.CreateBindMiner");
     g_methodMap.insert(ID_CreateRawTransaction, "Chain33.CreateRawTransaction");
     g_methodMap.insert(ID_GetTimeStatus, "Chain33.GetTimeStatus");
     g_methodMap.insert(ID_CloseQueue, "Chain33.CloseQueue");

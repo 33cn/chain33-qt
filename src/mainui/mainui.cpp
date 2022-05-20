@@ -55,6 +55,7 @@ MainUI::MainUI(QString &/*stylesheet*/, QWidget *parent)
 	, trayIcon(0)
 	, notificator(0)
 	, rpcConsole(NULL)
+    , m_nStatus(Wallet_Locked)
 {
 	g_lpMainUI = this;
 	initUI();
@@ -230,10 +231,7 @@ void MainUI::createMenuBar()
 #ifdef WIN32
 	settings->addAction(changeDirAction);
 #endif
-	// ycc 先屏蔽离线授权挖矿
-	if (CStyleConfig::GetInstance().GetCoinsType() != TOKEN_YCC) {
-		settings->addAction(devolutionAction);
-	}
+    settings->addAction(devolutionAction);
 	settings->addAction(veifySeedAction);
 
 	QMenu *help = appMenuBar->addMenu(tr("&Help"));
@@ -309,7 +307,7 @@ bool MainUI::GetOutOfSync()
 
 void MainUI::SetTimeStatus(int nDiff)
 {
-	m_lpHomepageUI->m_lpWalletSendUI->SetTimeStatus(nDiff);
+    m_lpHomepageUI->m_lpWalletSendUI->SetTimeStatus(nDiff);
 }
 
 void MainUI::gotoOverviewPage()
@@ -341,31 +339,37 @@ void MainUI::showNormalIfMinimized(bool fToggleHidden)
 		hide();
 }
 
+void MainUI::updateEncryptionStatus(EncryptionStatus status)
+{
+    switch (status)
+    {
+    case Wallet_Unlocked_MinerOnly:
+        changePassphraseAction->setEnabled(true);
+        unlockWalletAction->setVisible(false);
+        lockWalletAction->setVisible(true);
+        lockWalletAction->setIcon(QIcon(":/icons/lock_open_mineronly"));
+        break;
+    case Wallet_Unlocked:
+        changePassphraseAction->setEnabled(true);
+        unlockWalletAction->setVisible(false);
+        lockWalletAction->setVisible(true);
+        lockWalletAction->setIcon(m_platformStyle->SingleColorIcon(":/icons/lock_open"));
+        break;
+    case Wallet_Locked:
+        changePassphraseAction->setEnabled(true);
+        lockWalletAction->setVisible(false);
+        unlockWalletAction->setVisible(true);
+        break;
+    }
+
+    m_lpStatusBarUI->setEncryptionStatus(status);
+}
+
 void MainUI::setEncryptionStatus(EncryptionStatus status)
 {
+    qDebug() << ("设置解锁状态 setEncryptionStatus: ") << status;
 	m_nStatus = status;
-	switch (status)
-	{
-	case Wallet_Unlocked_MinerOnly:
-		changePassphraseAction->setEnabled(true);
-		unlockWalletAction->setVisible(false);
-		lockWalletAction->setVisible(true);
-		lockWalletAction->setIcon(QIcon(":/icons/lock_open_mineronly"));
-		break;
-	case Wallet_Unlocked:
-		changePassphraseAction->setEnabled(true);
-		unlockWalletAction->setVisible(false);
-		lockWalletAction->setVisible(true);
-		lockWalletAction->setIcon(m_platformStyle->SingleColorIcon(":/icons/lock_open"));
-		break;
-	case Wallet_Locked:
-		changePassphraseAction->setEnabled(true);
-		lockWalletAction->setVisible(false);
-		unlockWalletAction->setVisible(true);
-		break;
-	}
-
-	m_lpStatusBarUI->setEncryptionStatus(status);
+    updateEncryptionStatus(status);
 }
 
 void MainUI::setMiningStatus(bool bMining)

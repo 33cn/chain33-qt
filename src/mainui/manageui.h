@@ -37,6 +37,8 @@ signals:
 
     void startChain33();
 
+    void UnlockWallet();
+
 protected:
     virtual void run();
 
@@ -71,8 +73,6 @@ public:
 
     void ShowHide();
 
-    void UnlockWallet(bool isWalletLock, bool isTicketLock);
-
 public slots:
     void PostMsgGetWalletstatus();
 
@@ -80,7 +80,9 @@ public slots:
 
     void PostMsgGetProperFee();
 
-    void startChain33();    
+    void startChain33();
+
+    void UnlockWallet();
 
     void CloseChain33Temp();
 

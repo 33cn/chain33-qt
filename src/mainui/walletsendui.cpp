@@ -42,8 +42,7 @@ void GetTicketBalanceThread::run()
 			m_mutex.unlock();
 			msleep(100);
 			continue;
-		}
-		else {
+        } else {
 			cmd = m_cmd;
 			m_cmd.clear();
 			m_mutex.unlock();
@@ -53,6 +52,8 @@ void GetTicketBalanceThread::run()
 			m_mutex.lock();
 			m_condOK.wait(&m_mutex, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
 			m_mutex.unlock();
+
+            sleep(10); //停留10秒
 		}
 	}
 }

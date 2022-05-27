@@ -35,6 +35,8 @@ void AddressListThread::run()
         m_mutex.lock();
         m_cond.wait(&m_mutex, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
         m_mutex.unlock();
+
+        sleep(20);
     }
 }
 

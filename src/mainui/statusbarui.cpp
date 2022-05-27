@@ -131,6 +131,8 @@ void StatusBarThread::run()
        m_mutex.lock();
        m_cond.wait(&m_mutex, 1000);
        m_mutex.unlock();
+
+       sleep(2);
     }
 }
 

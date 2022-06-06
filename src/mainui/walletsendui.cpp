@@ -52,8 +52,6 @@ void GetTicketBalanceThread::run()
 			m_mutex.lock();
 			m_condOK.wait(&m_mutex, MAX_TIMEOUT_WAIT_RESPONSE_RESULT);
 			m_mutex.unlock();
-
-            sleep(10); //停留10秒
 		}
 	}
 }
@@ -424,10 +422,9 @@ void WalletSendUI::requestFinished(const QVariant &result, const QString &error)
 		}
 
 		SetUpProperty(GetbalanceD(m_dBalance), GetbalanceD(m_dFrozen));
-		if (NULL != m_getTicketBalanceThread)
-		{
-			m_getTicketBalanceThread->Wakeup();
-		}
+        if (NULL != m_getTicketBalanceThread) {
+            m_getTicketBalanceThread->Wakeup();
+        }
 	}
 }
 

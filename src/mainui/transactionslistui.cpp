@@ -104,6 +104,8 @@ TransactionsListUI::~TransactionsListUI()
     if(m_lpTransactionsThread) {
         m_lpTransactionsThread->terminate();
         m_lpTransactionsThread->wait();
+        delete m_lpTransactionsThread;
+        m_lpTransactionsThread = NULL;
     }
     delete ui;
 }

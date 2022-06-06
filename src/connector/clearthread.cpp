@@ -48,8 +48,6 @@ void ClearThread::run()
         m_mutex.lock();
         m_cond.wait(&m_mutex, 1000*1000);
         m_mutex.unlock();
-
-        sleep(5);
     }
 }
 

@@ -23,7 +23,7 @@ void CloseingThread::run()
             if(g_lpManageUI)
                 g_lpManageUI->CloseChain33Temp();
         }
-        sleep(10);
+        sleep(1);
     }
 }
 

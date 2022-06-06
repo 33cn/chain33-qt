@@ -61,17 +61,17 @@ void RuningThread::run()
                 m_mutexFinish.unlock();
 
                 emit PostMsgGetWalletstatus();
-                sleep(5);
+                sleep(1);
                 emit PostMsgGetCoinSymbol();
                 sleep(1);
                 emit PostMsgGetProperFee();
-                sleep(5);
+                sleep(1);
             } else {
                 m_mutexFinish.unlock();
             }
         }
 
-        sleep(5);
+        sleep(1);
 
         m_mutexQuit.lock();
         if(m_bQuit) {

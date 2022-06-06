@@ -129,10 +129,8 @@ void StatusBarThread::run()
        //qDebug() << "thread acquire semaphore suc:" << m_sem.available();
 
        m_mutex.lock();
-       m_cond.wait(&m_mutex, 1000);
+       m_cond.wait(&m_mutex, 2000);
        m_mutex.unlock();
-
-       sleep(2);
     }
 }
 

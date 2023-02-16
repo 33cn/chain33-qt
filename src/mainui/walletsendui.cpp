@@ -42,8 +42,7 @@ void GetTicketBalanceThread::run()
 			m_mutex.unlock();
 			msleep(100);
 			continue;
-		}
-		else {
+        } else {
 			cmd = m_cmd;
 			m_cmd.clear();
 			m_mutex.unlock();
@@ -423,10 +422,9 @@ void WalletSendUI::requestFinished(const QVariant &result, const QString &error)
 		}
 
 		SetUpProperty(GetbalanceD(m_dBalance), GetbalanceD(m_dFrozen));
-		if (NULL != m_getTicketBalanceThread)
-		{
-			m_getTicketBalanceThread->Wakeup();
-		}
+        if (NULL != m_getTicketBalanceThread) {
+            m_getTicketBalanceThread->Wakeup();
+        }
 	}
 }
 

@@ -43,7 +43,7 @@ void AddressListThread::Wakeup()
     if(!isRunning()) {
         return;
     }
-    m_cond.wakeOne();
+//    m_cond.wakeOne();
 }
 
 void AddressListThread::Stop()
@@ -436,9 +436,9 @@ void AddressListUI::requestFinished(const QVariant &result, const QString &error
         }
 
         emit updateWalletInfo(walletsList);
-        if(NULL!= m_lpAddressListThread) {
-            m_lpAddressListThread->Wakeup();
-        }
+//        if(NULL!= m_lpAddressListThread) {
+//            m_lpAddressListThread->Wakeup();
+//        }
     } else if (ID_NewAccount == m_nID) {
         if(!error.isEmpty())
             QMessageBox::critical(this, tr("新建地址失败"), error, tr("ok"));

@@ -30,7 +30,7 @@ void CopyThread::run()
             if(g_lpManageUI)
                 g_lpManageUI->CloseChain33Temp();
         }
-        sleep(10);
+        sleep(1);
     }
 
     bool bCopy0 = copyDirectoryFiles(GetDefaultDataDir() + "\\wallet", m_dataDirStr + "\\wallet", true);
